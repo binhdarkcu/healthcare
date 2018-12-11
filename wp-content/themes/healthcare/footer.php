@@ -69,6 +69,7 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/wow.min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/main.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/underscore-min.js"></script>
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.dropdown').hover(

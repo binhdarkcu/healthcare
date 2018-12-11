@@ -65,8 +65,12 @@ body#home .slider_horizontal {
     margin-bottom: 100px;
 }
 
-body#home .slider_horizontal .owl-controls {
-    display: none !important;
+body#home .slider_horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+body#home .slider_horizontal img {
+    display: inline-block;
 }
 body #info {
     margin-bottom: 60px;

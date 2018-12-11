@@ -2,11 +2,11 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /wordpress/healthcare/
+RewriteBase /2018/freelancer/BE/healthcare/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wordpress/healthcare/index.php [L]
+RewriteRule . /2018/freelancer/BE/healthcare/index.php [L]
 </IfModule>
 
 # END WordPress
