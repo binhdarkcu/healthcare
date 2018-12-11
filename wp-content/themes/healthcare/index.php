@@ -94,7 +94,7 @@
     <section id="services">
       <div class="container">
           <div class="section-header">
-              <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Giới thiệu</h2>
+              <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hình ảnh</h2>
           </div>
         <div class="slider_horizontal">
             <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
