@@ -5,7 +5,7 @@
 	   // Scroll();
 	});
 
-	
+
 	$('.navbar-collapse ul li.scroll a').on('click', function (event) {
 	    $('html, body').animate({ scrollTop: $(this.hash).offset().top - 5 }, 1000);
 	    return false;
@@ -30,7 +30,7 @@
 			if ( winTop > contentTop[i] - rangeTop ){
 				$('.navbar-collapse li.scroll')
 				.removeClass('active')
-				.eq(i).addClass('active');			
+				.eq(i).addClass('active');
 			}
 		})
 		return false;
@@ -55,12 +55,11 @@
 		var time = 7; // time in seconds
 
 	 	var $progressBar,
-	      $bar, 
-	      $elem, 
-	      isPause, 
+	      $bar,
+	      $elem,
+	      isPause,
 	      tick,
 	      percentTime;
-	 
 	    //Init the carousel
 	 	$("#main-slider").find('.carousel-inner').owlCarousel({
 	      slideSpeed : 500,
@@ -76,7 +75,21 @@
 	      startDragging : pauseOnDragging,
 	      transitionStyle : "fadeUp"
 	    });
-	 
+
+		$("#services-slider").find('.carousel-inner').owlCarousel({
+	      slideSpeed : 700,
+	      paginationSpeed : 500,
+		  autoplay: false,
+	      navigation : true,
+			navigationText: [
+			"<i class='fa fa-angle-left'></i>",
+			"<i class='fa fa-angle-right'></i>"
+			],
+	      afterMove : moved,
+	      startDragging : pauseOnDragging
+	    });
+
+
 	    //Init progressBar where elem is $("#owl-demo")
 	    function progressBar(elem){
 	      $elem = elem;
@@ -85,7 +98,7 @@
 	      //start counting
 	      start();
 	    }
-	 
+
 	    //create div#progressBar and div#bar then append to $(".owl-carousel")
 	    function buildProgressBar(){
 	      $progressBar = $("<div>",{
@@ -96,7 +109,7 @@
 	      });
 	      $progressBar.append($bar).appendTo($elem);
 	    }
-	 
+
 	    function start() {
 	      //reset timer
 	      percentTime = 0;
@@ -104,7 +117,7 @@
 	      //run interval every 0.01 second
 	      tick = setInterval(interval, 10);
 	    };
-	 
+
 	    function interval() {
 	      if(isPause === false){
 	        percentTime += 1 / time;
@@ -113,17 +126,17 @@
 	         });
 	        //if percentTime is equal or greater than 100
 	        if(percentTime >= 100){
-	          //slide to next item 
+	          //slide to next item
 	          $elem.trigger('owl.next')
 	        }
 	      }
 	    }
-	 
-	    //pause while dragging 
+
+	    //pause while dragging
 	    function pauseOnDragging(){
 	      isPause = true;
 	    }
-	 
+
 	    //moved callback
 	    function moved(){
 	      //clear interval
@@ -146,7 +159,7 @@
 			itemSelector : '.portfolio-item',
 			layoutMode : 'fitRows'
 		});
-		
+
 		$portfolio_selectors.on('click', function(){
 			$portfolio_selectors.removeClass('active');
 			$(this).addClass('active');
@@ -203,7 +216,7 @@
 		$('.animated-number').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
 			var $this = $(this);
 			if (visible) {
-				$this.animateNumbers($this.data('digit'), false, $this.data('duration')); 
+				$this.animateNumbers($this.data('digit'), false, $this.data('duration'));
 				$this.unbind('inview');
 			}
 		});
