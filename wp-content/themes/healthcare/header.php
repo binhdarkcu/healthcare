@@ -39,6 +39,7 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/Site.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/default.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/loading-screen.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">
 </head>
 
 <body id="home" class="homepage" ng-controller="AppController" style="">
