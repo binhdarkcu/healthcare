@@ -65,6 +65,11 @@
 
                     <div class="navbar-right">
                         <div class="nav-menu">
+                            <div class="text-right language">
+                                <a href="">Việt Nam</a>
+                                <span>/</span>
+                                <a href="">English</a>
+                            </div>
                             <div class="collapse navbar-collapse" id="top-nav">
 
 

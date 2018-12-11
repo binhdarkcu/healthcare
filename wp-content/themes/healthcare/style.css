@@ -23,13 +23,14 @@ body#home #services-slider .owl-carousel {
     overflow: inherit;
 }
 body#home #services-slider .owl-carousel .owl-item {
-    padding-bottom: 70px;
+    padding-bottom: 30px;
 }
 
 body#home #services-slider .owl-controls .owl-pagination {
     position: absolute;
     width: 100%;
     bottom: 40px;
+    display: none !important;
 }
 body#home #services-slider .owl-controls .owl-buttons {
     position: absolute;
@@ -41,11 +42,15 @@ body#home #services-slider .owl-controls .owl-buttons {
 body#home #services-slider .owl-controls .owl-buttons .owl-prev {
     position: absolute;
     left: -30px;
+    padding: 0;
+    width: 26px;
 }
 
 body#home #services-slider .owl-controls .owl-buttons .owl-next {
     position: absolute;
     right: -30px;
+    padding: 0;
+    width: 26px;
 }
 
 body#home .chuyenkhoa {
@@ -74,4 +79,23 @@ body#home .slider_horizontal img {
 }
 body #info {
     margin-bottom: 60px;
+}
+.footer-mid a {
+    display: table;
+    margin-left: 15px;
+}
+#main-menu .navbar-right {
+    vertical-align: inherit;
+    line-height: 1.2;
+}
+.language {
+    padding-top: 15px;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+.footer-title strong {
+    font-size: 17px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: block;
 }
