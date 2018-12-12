@@ -4,199 +4,40 @@
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Dịch vụ</h2>
     </div>
     <div class="row">
-        <section id="services-slider" style="position:relative;" class="container">
+        <section id="services-slider" style="position:relative;">
             <div class="carousel-inner" role="listbox">
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
+                <?php
+                    $args = array(
+                        'post_type'	 => 'dich_vu',
+                        'post_status'	 => 'publish',
+                        'posts_per_page' => -1
+                    );
+                    $query = new WP_Query( $args );
+                    if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
+                    $feature_image_id = get_post_thumbnail_id(get_the_ID());
+                    $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                ?>
+                    <div class="owl-item" style="width: 1588px;">
+                        <div class="item">
+                            <div class="slider-inner">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="carousel-content">
+                                            <div class="feature-col">
+                                              <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
+                                              <div class="content">
+                                                <h2><?php echo the_title() ?></h2>
+                                                <p><?php echo the_content() ?></p>
+                                              </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-item" style="width: 1588px;">
-                    <div class="item">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-content">
-                                        <div class="feature-col">
-                                          <div class="ehr-title"><img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG"/></div>
-                                          <div class="content">
-                                            <h2>Quản lý khám chữa bệnh</h2>
-                                            <p>Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.</p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
+                <?php endwhile;endif; wp_reset_postdata();?>
+            </div>
         </div>
     </div>
   </div>
