@@ -81,6 +81,7 @@
 	      paginationSpeed : 500,
 		  autoplay: false,
 	      navigation : true,
+		  dots: false,
 			navigationText: [
 			"<i class='fa fa-angle-left'></i>",
 			"<i class='fa fa-angle-right'></i>"

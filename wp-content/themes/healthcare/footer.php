@@ -1,8 +1,76 @@
+<style>
+    video::-internal-media-controls-download-button {
+        display: none;
+    }
 
-<!------------------------------>
-<!---------------SCRIP---------->
-<!------------------------------>
+    video::-webkit-media-controls-enclosure {
+        overflow: hidden;
+    }
 
+    video::-webkit-media-controls-panel {
+        width: calc(100% + 30px); /* Adjust as needed */
+    }
+
+    .catItemImageBlock {
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+        .catItemImageBlock .catItemDateCreated {
+            bottom: 9px;
+            margin-left: 15px;
+            position: absolute;
+        }
+
+            .catItemImageBlock .catItemDateCreated span {
+                color: #ffffff;
+                display: inline-block;
+                margin-right: -4px;
+                text-transform: uppercase;
+                height: 20px;
+                padding-right: 5px;
+            }
+
+            .catItemImageBlock .catItemDateCreated .day {
+                background: #0ba2eb none repeat scroll 0 0;
+            }
+
+            .catItemImageBlock .catItemDateCreated .month {
+                background: #5c58bb none repeat scroll 0 0;
+                border-radius: 0px 20px 20px 0px;
+            }
+
+    .readMore {
+        display: block;
+        /*font-weight: 600;*/
+        padding: 5px 10px;
+        /*text-transform: uppercase;*/
+        border: 1px solid #0ba2eb;
+        color: #0ba2eb;
+        margin-left: 15px;
+    }
+
+        .readMore:hover {
+            color: #fff;
+            background: #0ba2eb none repeat scroll 0 0;
+        }
+
+    .catItemImageBlock .catItemDateCreated {
+        bottom: -4px;
+        left: -15px;
+        position: absolute;
+    }
+
+    .article, .thumb {
+        width: 100%;
+    }
+
+    .input-group-btn {
+        position: absolute !important;
+        padding-left: 300px;
+    }
+</style>
 </ng-view>
         <!--<ui-view></ui-view>-->
     </div>
@@ -77,6 +145,7 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/main.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/underscore-min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('.dropdown').hover(
