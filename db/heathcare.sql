@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2018 at 02:36 PM
+-- Generation Time: Dec 13, 2018 at 02:40 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -391,7 +391,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (110, 39, '_button', 'field_5c111f10e4063'),
 (111, 39, '_edit_lock', '1544629863:1'),
 (112, 41, '_edit_last', '1'),
-(113, 41, '_edit_lock', '1544630220:1'),
+(113, 41, '_edit_lock', '1544708338:1'),
 (114, 42, '_wp_attached_file', '2018/12/DSC_1540.jpg'),
 (115, 42, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:430;s:6:\"height\";i:286;s:4:\"file\";s:20:\"2018/12/DSC_1540.jpg\";s:5:\"sizes\";a:2:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:20:\"DSC_1540-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:20:\"DSC_1540-300x200.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (116, 41, '_thumbnail_id', '42'),
@@ -413,7 +413,19 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (132, 48, '_edit_lock', '1544707553:1'),
 (133, 49, '_wp_attached_file', '2018/12/doctor.jpg'),
 (134, 49, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:371;s:6:\"height\";i:425;s:4:\"file\";s:18:\"2018/12/doctor.jpg\";s:5:\"sizes\";a:2:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:18:\"doctor-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:18:\"doctor-262x300.jpg\";s:5:\"width\";i:262;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"1\";s:8:\"keywords\";a:0:{}}}'),
-(135, 48, '_thumbnail_id', '49');
+(135, 48, '_thumbnail_id', '49'),
+(136, 51, '_edit_last', '1'),
+(137, 51, '_edit_lock', '1544708213:1'),
+(138, 51, '_thumbnail_id', '42'),
+(139, 52, '_edit_last', '1'),
+(140, 52, '_edit_lock', '1544708225:1'),
+(141, 52, '_thumbnail_id', '42'),
+(142, 53, '_edit_last', '1'),
+(143, 53, '_edit_lock', '1544708241:1'),
+(144, 53, '_thumbnail_id', '42'),
+(145, 54, '_edit_last', '1'),
+(146, 54, '_edit_lock', '1544708396:1'),
+(147, 54, '_thumbnail_id', '42');
 
 -- --------------------------------------------------------
 
@@ -500,7 +512,12 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (46, 1, '2018-12-13 13:15:42', '2018-12-13 13:15:42', '', 'Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch', '', 'publish', 'closed', 'closed', '', 'phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach-2', '', '', '2018-12-13 13:15:42', '2018-12-13 13:15:42', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=hoat_dong&#038;p=46', 0, 'hoat_dong', '', 0),
 (47, 1, '2018-12-13 13:15:50', '2018-12-13 13:15:50', '', 'Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch', '', 'publish', 'closed', 'closed', '', 'phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach-3', '', '', '2018-12-13 13:15:50', '2018-12-13 13:15:50', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=hoat_dong&#038;p=47', 0, 'hoat_dong', '', 0),
 (48, 1, '2018-12-13 13:16:32', '2018-12-13 13:16:32', '', 'Danh mục dịch vụ kỹ thuật thực hiện tại Bệnh viện Phạm Ngọc Thạch', '', 'publish', 'closed', 'closed', '', 'danh-muc-dich-vu-ky-thuat-thuc-hien-tai-benh-vien-pham-ngoc-thach', '', '', '2018-12-13 13:16:32', '2018-12-13 13:16:32', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=hoat_dong&#038;p=48', 0, 'hoat_dong', '', 0),
-(49, 1, '2018-12-13 13:16:28', '2018-12-13 13:16:28', '', 'doctor', '', 'inherit', 'open', 'closed', '', 'doctor', '', '', '2018-12-13 13:16:28', '2018-12-13 13:16:28', '', 48, 'http://localhost/2018/freelancer/BE/healthcare/wp-content/uploads/2018/12/doctor.jpg', 0, 'attachment', 'image/jpeg', 0);
+(49, 1, '2018-12-13 13:16:28', '2018-12-13 13:16:28', '', 'doctor', '', 'inherit', 'open', 'closed', '', 'doctor', '', '', '2018-12-13 13:16:28', '2018-12-13 13:16:28', '', 48, 'http://localhost/2018/freelancer/BE/healthcare/wp-content/uploads/2018/12/doctor.jpg', 0, 'attachment', 'image/jpeg', 0),
+(50, 1, '2018-12-13 13:37:02', '0000-00-00 00:00:00', '', 'Lưu bản nháp tự động', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2018-12-13 13:37:02', '0000-00-00 00:00:00', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=dich_vu&p=50', 0, 'dich_vu', '', 0),
+(51, 1, '2018-12-13 13:39:15', '2018-12-13 13:39:15', 'Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.', 'Quản lý khám chữa bệnh3', '', 'publish', 'closed', 'closed', '', 'quan-ly-kham-chua-benh3', '', '', '2018-12-13 13:39:15', '2018-12-13 13:39:15', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=dich_vu&#038;p=51', 0, 'dich_vu', '', 0),
+(52, 1, '2018-12-13 13:39:28', '2018-12-13 13:39:28', 'Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.', 'Quản lý khám chữa bệnh4', '', 'publish', 'closed', 'closed', '', 'quan-ly-kham-chua-benh4', '', '', '2018-12-13 13:39:28', '2018-12-13 13:39:28', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=dich_vu&#038;p=52', 0, 'dich_vu', '', 0),
+(53, 1, '2018-12-13 13:39:39', '2018-12-13 13:39:39', 'Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.', 'Quản lý khám chữa bệnh5', '', 'publish', 'closed', 'closed', '', 'quan-ly-kham-chua-benh5', '', '', '2018-12-13 13:39:39', '2018-12-13 13:39:39', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=dich_vu&#038;p=53', 0, 'dich_vu', '', 0),
+(54, 1, '2018-12-13 13:39:56', '2018-12-13 13:39:56', 'Quản lý quy trình khám chữa bệnh, thống kê báo cáo tình hình khám chữa bệnh dễ dàng.', 'Quản lý khám chữa bệnh6', '', 'publish', 'closed', 'closed', '', 'quan-ly-kham-chua-benh6', '', '', '2018-12-13 13:39:56', '2018-12-13 13:39:56', '', 0, 'http://localhost/2018/freelancer/BE/healthcare/?post_type=dich_vu&#038;p=54', 0, 'dich_vu', '', 0);
 
 -- --------------------------------------------------------
 
@@ -783,13 +800,13 @@ ALTER TABLE `wp_options`
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `wp_termmeta`
