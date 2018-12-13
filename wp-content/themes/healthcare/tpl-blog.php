@@ -9,23 +9,35 @@
         <div class="row">
             <div class="col-sm-4" style="">
                 <div class="blog-post blog-media wow fadeInRight animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 100ms; animation-name: undefined;">
-                    <article class="media clearfix">
-                        <div class="entry-thumbnail">
-                            <!----><a href="http://bvpnt.org.vn/danh-muc-ky-thuat/danh-muc-dich-vu-ky-thuat-thuc-hien-tai-benh-vien-pham-ngoc-thach/2390" title="Danh mục dịch vụ kỹ thuật thực hiện tại Bệnh viện Phạm Ngọc Thạch">
-                                <div class="img-thumbnail-post" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/doctor.jpg)"></div>
-                            </a><!---->
-                            <!---->
-                        </div>
-                        <div class="media-body">
-                            <header class="entry-header">
-                                <div class="entry-date">Ngày 26-11-2018 </div>
-                                <h3 class="entry-title entry-title-seo block-ellipsis-home-news-2line" style="height: 43px;">
-                                    <!----><a href="http://bvpnt.org.vn/danh-muc-ky-thuat/danh-muc-dich-vu-ky-thuat-thuc-hien-tai-benh-vien-pham-ngoc-thach/2390">Danh mục dịch vụ kỹ thuật thực hiện tại Bệnh viện Phạm Ngọc Thạch</a><!---->
-                                    <!---->
-                                </h3>
-                            </header>
-                        </div>
-                    </article>
+                    <?php
+                        $args = array(
+                            'post_type'	 => 'hoat_dong',
+                            'post_status'	 => 'publish',
+                            'posts_per_page' => 1
+                        );
+                        $query = new WP_Query( $args );
+                        if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
+                        $feature_image_id = get_post_thumbnail_id(get_the_ID());
+                        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                    ?>
+                        <article class="media clearfix">
+                            <div class="entry-thumbnail">
+                                <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>" title="<?php echo get_the_title() ?>">
+                                    <div class="img-thumbnail-post" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
+                                </a><!---->
+                                <!---->
+                            </div>
+                            <div class="media-body">
+                                <header class="entry-header">
+                                    <div class="entry-date">Ngày <?php echo get_the_date( 'd-m-Y' ) ?></div>
+                                    <h3 class="entry-title entry-title-seo block-ellipsis-home-news-2line" style="height: 43px;">
+                                        <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>"><?php echo get_the_title() ?></a><!---->
+                                        <!---->
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    <?php endwhile;endif; wp_reset_postdata();?>
                 </div>
             </div>
             <div class="col-sm-8" ng-repeat="item in Posts">
@@ -39,20 +51,32 @@
                         </div>
                         <div class="media-body">
                             <div class="row">
-                                <div class="col-sm-4" ng-repeat="item in Posts">
+                                <?php
+                                    $args = array(
+                                        'post_type'	 => 'hoat_dong',
+                                        'post_status'	 => 'publish',
+                                        'posts_per_page' => 3,
+                                        'offset'    => 1
+                                    );
+                                    $query = new WP_Query( $args );
+                                    if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
+                                    $feature_image_id = get_post_thumbnail_id(get_the_ID());
+                                    $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                                ?>
+                                <div class="col-sm-4">
                                     <div class="blog-post blog-media wow fadeInRight animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 100ms; animation-name: undefined;">
                                         <article class="media clearfix">
                                             <div class="entry-thumbnail">
-                                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389" title="Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch">
-                                                    <div class="img-thumbnail-post" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/no-image.jpg); height: 120px;"></div>
+                                                <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>" title="<?php echo get_the_title() ?>">
+                                                    <div class="img-thumbnail-post" style="background-image: url(<?php echo $feature_image_meta[0] ?>); height: 120px;"></div>
                                                 </a><!---->
                                                 <!---->
                                             </div>
                                             <div class="media-body">
                                                 <header class="entry-header">
-                                                    <div class="entry-date">Ngày 23-11-2018 </div>
+                                                    <div class="entry-date">Ngày <?php echo get_the_date( 'd-m-Y' ) ?></div>
                                                     <h3 class="entry-title entry-title-seo block-ellipsis-home-news-2line" style="height: 43px;">
-                                                        <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389">Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch</a><!---->
+                                                        <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>"><?php echo get_the_title() ?></a><!---->
                                                         <!---->
                                                     </h3>
                                                 </header>
@@ -60,48 +84,7 @@
                                         </article>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" ng-repeat="item in Posts">
-                                    <div class="blog-post blog-media wow fadeInRight animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 100ms; animation-name: undefined;">
-                                        <article class="media clearfix">
-                                            <div class="entry-thumbnail">
-                                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389" title="Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch">
-                                                    <div class="img-thumbnail-post" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/no-image.jpg); height: 120px;"></div>
-                                                </a><!---->
-                                                <!---->
-                                            </div>
-                                            <div class="media-body">
-                                                <header class="entry-header">
-                                                    <div class="entry-date">Ngày 23-11-2018 </div>
-                                                    <h3 class="entry-title entry-title-seo block-ellipsis-home-news-2line" style="height: 43px;">
-                                                        <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389">Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch</a><!---->
-                                                        <!---->
-                                                    </h3>
-                                                </header>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4" ng-repeat="item in Posts">
-                                    <div class="blog-post blog-media wow fadeInRight animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 100ms; animation-name: undefined;">
-                                        <article class="media clearfix">
-                                            <div class="entry-thumbnail">
-                                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389" title="Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch">
-                                                    <div class="img-thumbnail-post" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/no-image.jpg); height: 120px;"></div>
-                                                </a><!---->
-                                                <!---->
-                                            </div>
-                                            <div class="media-body">
-                                                <header class="entry-header">
-                                                    <div class="entry-date">Ngày 23-11-2018 </div>
-                                                    <h3 class="entry-title entry-title-seo block-ellipsis-home-news-2line" style="height: 43px;">
-                                                        <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thong-bao/phe-duyet-chuong-trinh-dao-tao-lien-tuc-cho-co-so-dao-tao-benh-vien-pham-ngoc-thach/2389">Phê duyệt chương trình đào tạo liên tục cho cơ sở đào tạo Bệnh viện Phạm Ngọc Thạch</a><!---->
-                                                        <!---->
-                                                    </h3>
-                                                </header>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
+                                <?php endwhile;endif; wp_reset_postdata();?>
                             </div>
                         </div>
                     </article>
