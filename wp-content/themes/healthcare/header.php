@@ -40,6 +40,7 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/default.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/loading-screen.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.min.css" rel="stylesheet">
 </head>
 
 <body id="home" class="homepage" ng-controller="AppController" style="">
@@ -64,6 +65,11 @@
 
                     <div class="navbar-right">
                         <div class="nav-menu">
+                            <div class="text-right language">
+                                <a href="">Việt Nam</a>
+                                <span>/</span>
+                                <a href="">English</a>
+                            </div>
                             <div class="collapse navbar-collapse" id="top-nav">
 
 
