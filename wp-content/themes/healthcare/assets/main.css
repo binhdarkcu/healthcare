@@ -248,7 +248,9 @@ ul.nostyle {
             color: #45aed6;
         }
 
-        #main-menu.navbar-default .navbar-nav > li:hover > a {
+        #main-menu.navbar-default .navbar-nav > li:hover > a,
+        #main-menu.navbar-default .navbar-nav > li.current_page_item > a,
+        #main-menu.navbar-default .navbar-nav > li.current-page-parent > a {
             background: transparent;
             padding-top: 10px;
             border-top: 3px solid #45aed6;

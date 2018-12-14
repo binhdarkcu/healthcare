@@ -69,131 +69,22 @@
                                 <a href="">Việt Nam</a>
                                 <span>/</span>
                                 <a href="">English</a>
+                                <?php  qtranxf_generateLanguageSelectCode(array(
+                                    'type'   => 'text'
+                                ));
+?>
                             </div>
                             <div class="collapse navbar-collapse" id="top-nav">
 
-
-
-                                <ul class="nav navbar-nav uppercase" set-class-when-at-top="fix-to-top" id="nav">
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="" style="">
-                                        <a href="javascript:void(0)" ng-if="!item.IsParent" ng-click="hideMenu()">Trang chủ</a>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown" style="">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Giới thiệu</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Giới thiệu phòng khám</a>
-                                            </li><li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Phòng khám thông minh</a>
-                                            </li><li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Qui trình khám</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Dịch vụ y tế</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Khám định kỳ</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Khám tuyển dụng</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tiêm chuẩn</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Thẻ thành viên</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Gói khám toàn diện</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Dịch vụ bảo hiểm</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Giá dịch vụ</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Xét nghiệm lấy máu tại nhà</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Các chuyên khoa</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Chuyên khoa tổng quát</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Bác sĩ - Lịch làm việc</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tìm bác sĩ</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Lịch làm việc</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Đặt hẹn</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Chuyên khoa tổng quát</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="" style="">
-                                        <a href="javascript:void(0)" ng-if="!item.IsParent" ng-click="hideMenu()">Tư vấn</a>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Đối tác</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Triển khai sau</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="dropdown">
-                                        <a ng-if="item.IsParent" class="dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Thư viện y học</a>
-                                        <ul ng-if="cat_child != null &amp;&amp; item.IsParent" ng-class="{&#39;sub-menu&#39;:item.IsParent}" class="sub-menu" style="display: none;">
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Kiến thức y học</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tin tức y học</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tra cứu ICD</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tra cứu phác đồ BYT</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tra cứu ATC</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tra cứu Thuốc</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tính chỉ số cơ thể BMI</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">DM các cơ sở y tế nhận KCB BHYT ban đầu tại PK</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Tính dinh dưỡng</a>
-                                            </li>
-                                            <li ng-repeat="it in cat_child | filter : {ParentId: item.Id}:true" ng-class="{&#39;dropdown&#39;:it.IsParent}">
-                                                <a href="javascript:void(0)" ng-if="!it.IsParent" ng-class="{&#39;node&#39;:it.IsParent}" ng-click="hideMenu()">Văn bản - biểu mẫu sở y tế</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li ng-repeat="item in cat_parent" ng-class="{&#39;dropdown&#39;:item.IsParent}" class="" style="">
-                                        <a href="javascript:void(0)" ng-if="!item.IsParent" ng-click="hideMenu()">Liên hệ - góp ý</a>
-                                    </li>
-                                </ul>
+                                <?php
+                                    wp_nav_menu(
+                                               array(
+                                                   'theme_location' => 'primary_menus',
+                                                   'menu_class'     => 'nav navbar-nav uppercase',
+                                                   'menu_id'        => 'nav'
+                                               )
+                                           );
+                                ?>
                             </div>
                         </div>
                     </div>

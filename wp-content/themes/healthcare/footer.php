@@ -148,7 +148,7 @@
 
     <script>
         $(document).ready(function () {
-            $('.dropdown').hover(
+            $('#nav .menu-item-has-children').hover(
                 function () {
                     $(this).children('.sub-menu').slideDown(200);
                 },

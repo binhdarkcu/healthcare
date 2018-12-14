@@ -1,4 +1,7 @@
 <?php get_header()?>
+<?php
+    $queried_object = get_queried_object();
+?>
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px">
@@ -22,103 +25,13 @@
             </form>
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
 
-                <!----><div class="row wow fadeInDown" ng-repeat="item in Posts track by item.Id" style="">
-                    <div class="col-md-4 catItemImageBlock">
-                        <div class="news">
-                            <div class="article">
-                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thu-vien-hinh-anh/khu-dieu-tri-trong-ngay/2387">
-                                    <div class="thumb" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/dieu-tri-trong-ngay-1.jpg)"></div>
-                                </a><!---->
-                                <!---->
-                                <div class="catItemDateCreated">
-                                    <span class="day">Ngày 23</span>
-                                    <span class="month">Tháng 11</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 post-list-right">
-                        <h3>
-                            <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thu-vien-hinh-anh/khu-dieu-tri-trong-ngay/2387">Khu điều trị trong ngày</a><!---->
-                            <!---->
-                        </h3>
-                        <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
-                </div><!----><div class="row wow fadeInDown" ng-repeat="item in Posts track by item.Id">
-                    <div class="col-md-4 catItemImageBlock">
-                        <div class="news">
-                            <div class="article">
-                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thu-vien-hinh-anh/khoa-phu-c-ho-i-chu-c-nang-va-khu-ha-nh-chi-nh-khoa-ho-i-su-c-ca-p-cu-u/2307">
-                                    <div class="thumb" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Posts/20181029/phcn.jpeg)"></div>
-                                </a><!---->
-                                <!---->
-                                <div class="catItemDateCreated">
-                                    <span class="day">Ngày 29</span>
-                                    <span class="month">Tháng 10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 post-list-right">
-                        <h3>
-                            <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/thu-vien-hinh-anh/khoa-phu-c-ho-i-chu-c-nang-va-khu-ha-nh-chi-nh-khoa-ho-i-su-c-ca-p-cu-u/2307">Khoa Phục hồi chức năng và khu hành chính khoa Hồi sức cấp cứu</a><!---->
-                            <!---->
-                        </h3>
-                        <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
-                </div><!----><div class="row wow fadeInDown" ng-repeat="item in Posts track by item.Id">
-                    <div class="col-md-4 catItemImageBlock">
-                        <div class="news">
-                            <div class="article">
-                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/khoa-ho-tro-lam-sang/khoa-dinh-duo-ng-tie-t-che-/2274">
-                                    <div class="thumb" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/dinhduong1.jpg)"></div>
-                                </a><!---->
-                                <!---->
-                                <div class="catItemDateCreated">
-                                    <span class="day">Ngày 10</span>
-                                    <span class="month">Tháng 10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 post-list-right">
-                        <h3>
-                            <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/khoa-ho-tro-lam-sang/khoa-dinh-duo-ng-tie-t-che-/2274">Khoa Dinh Dưỡng - Tiết chế</a><!---->
-                            <!---->
-                        </h3>
-                        <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
-                </div><!----><div class="row wow fadeInDown" ng-repeat="item in Posts track by item.Id">
-                    <div class="col-md-4 catItemImageBlock">
-                        <div class="news">
-                            <div class="article">
-                                <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/phong-chuc-nang/phong-tai-chinh-ke-toan/2220">
-                                    <div class="thumb" style="background-image: url(http://cms.bvpnt.org.vn//Assets/images/Resources/no-image.jpg)"></div>
-                                </a><!---->
-                                <!---->
-                                <div class="catItemDateCreated">
-                                    <span class="day">Ngày 11</span>
-                                    <span class="month">Tháng 06</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 post-list-right">
-                        <h3>
-                            <!----><a ng-if="item.ReferenceUrl == null || item.ReferenceUrl.length == 0" href="http://bvpnt.org.vn/phong-chuc-nang/phong-tai-chinh-ke-toan/2220">Phòng Tài chính Kế toán</a><!---->
-                            <!---->
-                        </h3>
-                        <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
-                </div><!---->
+                <?php
+
+                if ( $page = get_page_by_path( $queried_object->post_name ) ){
+                    echo show_childpages_shortcode($page->ID);
+                }
+
+                ?>
                 <div class="row">
                     <div class="pages">
                         <div class="modulepager">
