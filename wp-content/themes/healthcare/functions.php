@@ -104,5 +104,32 @@
          ));
     }
 
-
+    function revcon_change_post_label() {
+        global $menu;
+        global $submenu;
+        $menu[5][0] = 'Bác sĩ';
+        $submenu['edit.php'][5][0] = 'Bác sĩ';
+        $submenu['edit.php'][15][0] = 'Các Khoa';
+        $submenu['edit.php'][10][0] = 'Thêm Bác sĩ';
+        $submenu['edit.php'][16][0] = 'Thêm Tags';
+    }
+    function revcon_change_post_object() {
+        global $wp_post_types;
+        $labels = &$wp_post_types['post']->labels;
+        $labels->name = 'Bác sĩ';
+        $labels->singular_name = 'Bác sĩ';
+        $labels->add_new = 'Thêm Bác sĩ';
+        $labels->add_new_item = 'Thêm Bác sĩ';
+        $labels->edit_item = 'Sửa Bác sĩ';
+        $labels->new_item = 'Bác sĩ';
+        $labels->view_item = 'Xem Bác sĩ';
+        $labels->search_items = 'Tìm Kiếm';
+        $labels->not_found = 'No News found';
+        $labels->not_found_in_trash = 'No News found in Trash';
+        $labels->all_items = 'Tất cả Bác sĩ';
+        // $labels->menu_name = 'Profiles';
+        $labels->name_admin_bar = 'Bác sĩ';
+    }
+    add_action( 'admin_menu', 'revcon_change_post_label' );
+    add_action( 'init', 'revcon_change_post_object' );
 ?>

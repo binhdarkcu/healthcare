@@ -57,8 +57,16 @@ body#home .chuyenkhoa {
     text-align: center;
 }
 
+.language-chooser li{
+    display: inline-block;
+}
+.language-chooser li.lang-vi:after {
+    content: "/";
+    padding-left: 5px;
+}
 body#home .chuyenkhoa .item {
     padding-bottom: 25px;
+    min-height: 195px;
 }
 body#home .chuyenkhoa .item a {
     color: #000;
