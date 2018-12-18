@@ -29,10 +29,21 @@
 
                 if ( $page = get_page_by_path( $queried_object->post_name ) ){
                     echo show_childpages_shortcode($page->ID);
+                } else {
+                    ?>
+                    <?php
+                        while ( have_posts() ) : the_post();
+                    ?>
+                    <h3 class="column-title"><?php echo the_title();?></h3>
+                    <div class="posts">
+                        <?php echo the_content() ;?>
+                    </div>
+                    <?php endwhile; ?>
+                    <?php
                 }
 
                 ?>
-                
+
             </div>
             <!----><div class="col-md-4 col-sm-12 col-xs-12" ng-include="'app/shared/template-include/quangcao-sidebar.template.html'" style="padding: 0px;"><div class="col-xs-12 cat-box sidebar">
         <div>
