@@ -25,7 +25,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-57-precomposed.png">
-
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.css" rel="stylesheet">
@@ -41,6 +40,7 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/loading-screen.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.css" rel="stylesheet">
 </head>
 
 <body id="home" class="homepage" ng-controller="AppController" style="">

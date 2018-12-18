@@ -133,7 +133,6 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/moment-with-locales.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.vi.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh8UJlBYPy-X1kjEMyQ8Q22qA_WLsPC6s&callback=initMap"></script>
 
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/mousescroll.js"></script>
@@ -145,7 +144,7 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/main.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/underscore-min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.js"></script>
     <script>
         $(document).ready(function () {
             $('#nav .menu-item-has-children').hover(

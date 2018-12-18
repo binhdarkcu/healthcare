@@ -16,12 +16,24 @@
               <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hình ảnh</h2>
           </div>
         <div class="slider_horizontal">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
-            <img src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG">
+            <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" />
+            </a>
+            <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" alt="" />
+            </a>
+            <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" alt="" />
+            </a>
+            <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" />
+            </a>
+            <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181207/DSC_1540.JPG" alt="" />
+            </a>
+            <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
+                <img class="example-image" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-6.jpg" alt="" />
+            </a>
         </div>
       </div>
     </section>
