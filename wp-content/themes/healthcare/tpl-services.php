@@ -24,11 +24,13 @@
                                     <div class="row">
                                         <div class="carousel-content">
                                             <div class="feature-col">
-                                              <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
-                                              <div class="content">
-                                                <h2><?php echo the_title() ?></h2>
-                                                <p><?php echo the_content() ?></p>
-                                              </div>
+                                              <a href="<?php the_permalink();?>">
+                                                  <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
+                                                  <div class="content">
+                                                    <h2><?php echo the_title() ?></h2>
+                                                    <p><?php echo the_content() ?></p>
+                                                  </div>
+                                              </a>
                                             </div>
                                         </div>
                                     </div>

@@ -32,21 +32,7 @@
                 }
 
                 ?>
-                <div class="row">
-                    <div class="pages">
-                        <div class="modulepager">
-                            <div class="pages">
-                                <div class="modulepager">
-                                    <!--<a class="ModulePager FirstPage" ng-class="{notActive : pager.currentPage === 1}" ng-click="setPage(1)" title="Trang đầu tiên">«</a>
-                                    <a class="ModulePager BackPage" ng-class="{notActive : pager.currentPage === 1}" ng-click="setPage(pager.currentPage - 1)" title="Trang trước">‹</a>-->
-                                    <!----><a class="ModulePager SelectedPage" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 1" style="">1</a><!----><a class="ModulePager" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 2" style="">2</a><!----><a class="ModulePager" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 3" style="">3</a><!----><a class="ModulePager" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 4" style="">4</a><!----><a class="ModulePager" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 5" style="">5</a><!----><a class="ModulePager" ng-class="{SelectedPage : activeValue === page}" ng-repeat="page in pager.pages" ng-click="setPage(page)" title="Đến trang 6" style="">6</a><!---->
-                                    <!--<a class='ModulePager NextPage' ng-class="{notActive : pager.currentPage === pager.totalPages}" ng-click="setPage(pager.currentPage + 1)" title="Trang tiếp">&rsaquo;</a>
-                                    <a class='ModulePager LastPage' ng-class="{notActive : pager.currentPage === pager.totalPages}" ng-click="setPage(pager.totalPages)" title="Trang cuối">&raquo;</a>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <!----><div class="col-md-4 col-sm-12 col-xs-12" ng-include="'app/shared/template-include/quangcao-sidebar.template.html'" style="padding: 0px;"><div class="col-xs-12 cat-box sidebar">
         <div>

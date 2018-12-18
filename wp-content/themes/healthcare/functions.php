@@ -51,8 +51,11 @@
                                     </a><!---->
                                     <!---->
                                     <div class="catItemDateCreated">
-                                        <span class="day">Ngày <?php echo get_the_date('d', $page_id); ?></span>
-                                        <span class="month">Tháng <?php echo get_the_date('m', $page_id); ?></span>
+                                        <?php
+                                            $currentLang = qtrans_getLanguage();
+                                        ?>
+                                        <span class="day"><?php echo $currentLang == 'en' ? 'Day': 'Ngày'; ?> <?php echo get_the_date('d', $page_id); ?></span>
+                                        <span class="month"><?php echo $currentLang == 'en' ? 'Month': 'Tháng'; ?> <?php echo get_the_date('m', $page_id); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +88,67 @@
     }
     add_shortcode( 'show_childpages', 'show_childpages_shortcode' );
 
+    function show_childpages_of_mainwork($page_id) {
+
+        // a shortcode should just return the content not echo html
+        // so we start to create an object, and on the end we return it
+        // if we dont do this the shortcode will be displayed in the top of the content
+        ob_start();
+        // only start if we are on a single page
+        if ( is_page() || is_home()) {
+            // get the ID of the current (parent) page
+            $current_page_id = get_the_ID();
+            // get all the children of the current page
+            $child_pages = get_pages( array(
+                'child_of' => $page_id,
+            ) );
+
+            // start only if we have some childpages
+            if ($child_pages) {
+
+                // if we have some children, display a list wrapper
+                echo '<div class="childpages">';
+
+                // loop trough each childpage
+                foreach ($child_pages as $child_page) {
+
+                    $page_id    = $child_page->ID; // get the ID of the childpage
+                    $page_link  = get_permalink( $page_id ); // returns the link to childpage
+                    $page_content = get_field('intro_description', $page_id);
+                    $page_img   = get_the_post_thumbnail_url( $page_id, 'medium' ); // returns the featured image <img> element
+                    $page_title = $child_page->post_title; // returns the title of the child page
+                    ?>
+                    <div class="col-md-2 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined;">
+                        <div class="service-box-pad">
+                            <div class="media service-box">
+                                <div class="pull-left">
+                                    <i class="fa" style="background: url(<?php echo $page_img;?>); background-size: cover;"></i>
+                                </div>
+                                <div class="media-body">
+                                    <a href="<?php echo $page_link; ?>">
+                                        <h4 class="media-heading block-ellipsis-home-news-2line" style="line-height:1.5 !important"><?php echo $page_title;?></h4>
+                                    </a>
+                                    <p class="media-description block-ellipsis-home-news-2line"><?php echo $child_page->post_content;?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class=""></div>
+                    <?php
+
+                }//END foreach ($child_pages as $child_page)
+
+                echo '</div>';
+
+            }//END if ($child_pages)
+
+        }//END if (is_page())
+
+        // return the object
+        return ob_get_clean();
+
+    }
+    add_shortcode( 'show_childpages_of', 'show_childpages_of_mainwork' );
 
     if( function_exists('acf_add_options_page') ) {
        acf_add_options_page(array(
