@@ -19,6 +19,20 @@
                         <div class="posts">
                             <?php echo the_content();?>
                         </div>
+                        <h3 class="column-title">Lịch làm việc</h3>
+                        <?php if( get_field('datetime_working', get_the_ID()) ): ?>
+                        	<ul>
+
+                        	<?php while(has_sub_field('datetime_working')): ?>
+
+                        		<li><?php the_sub_field('shedule_day'); ?>: <?php the_sub_field('shedule_time'); ?></li>
+
+                        	<?php endwhile; ?>
+
+                        	</ul>
+
+                        <?php endif; ?>
+                        <br/><br/>
                     </div><!---->
                     <!---->
                 </div>
