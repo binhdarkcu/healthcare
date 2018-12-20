@@ -245,7 +245,7 @@ ul.horizontal-list li {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis; /* 47px */
-  text-align: left;
+  text-align: center;
 }
 
 .block-ellipsis-home-news-1line {
