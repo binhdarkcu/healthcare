@@ -23,6 +23,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 #services .tab-content {
     border: none;
 }
+
+#services .owl-theme .owl-controls {
+    display: none!important;
+}
 #services #exTab1 .nav li.active a{
     color: #fff;
 }

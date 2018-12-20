@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,700,100italic,300italic,400italic,700italic);
 
 body {
-    padding-top: 10px;
+    padding-top: 0;
     background: #fff;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -45,6 +45,21 @@ hr {
     background-image: -ms-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
 }
 
+#droplinetabs1.fixed {
+    position: fixed;
+    z-index: 1000;
+    background: #fff;
+    width: 100%;
+    top: 0;
+        left: 0;
+}
+header .navbar-default{
+    background: #fff;
+}
+#droplinetabs1.fixed .menu-header-container {
+    display: table;
+margin: 0 auto;
+}
 .gradiant-horizontal {
     background-image: -moz-linear-gradient(4deg, #2caab3 0%, #2c8cb3 100%);
     background-image: -webkit-linear-gradient(4deg, #2caab3 0%, #2c8cb3 100%);
@@ -1189,7 +1204,7 @@ ul.nostyle {
     padding-top: 30px;
     /*padding-bottom: 30px;*/
     color: #fff;
-    background: #2C8CB3;
+    background: #f7931d;
 }
 
     #footer a {

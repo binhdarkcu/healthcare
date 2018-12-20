@@ -52,6 +52,18 @@
 
 	//Slider
 	$(document).ready(function() {
+		var menu = $('#droplinetabs1');
+		$(window).scroll(function () {
+
+		    if ($(window).scrollTop() > 173) {
+		        menu.addClass('fixed');
+		    } else {
+		        menu.removeClass('fixed');
+		    }
+		});
+
+
+
 		var time = 7; // time in seconds
 
 	 	var $progressBar,
