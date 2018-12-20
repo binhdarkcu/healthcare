@@ -18,7 +18,13 @@
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
                     <!----><div ng-if="!isRequiredLogin(post.PostInternal)">
-                        <h3 class="column-title">Các bác sĩ</h3>
+                        <h3 class="column-title">Tổng quan về <?php echo $queried_object-> name;?></h3>
+                        <div>
+                            <?php echo category_description( $queried_object -> ID ); ?>
+                        </div>
+                        <br/>
+                        <br/>
+                        <h3 class="column-title">Các bác sĩ thuộc <?php echo $queried_object-> name;?></h3>
                         <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->
                         <div class="posts">
                             <?php
@@ -28,23 +34,24 @@
                             ?>
                             <div class="col-md-4 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined;">
                                 <div class="service-box-pad">
-                                    <div class="media service-box">
-                                        <div class="pull-left">
-                                            <i class="fa" style="background: url(<?php echo $feature_image_meta[0] ?>); background-size: cover;"></i>
-                                        </div>
-                                        <div class="media-body">
+                                    <div class="media service-box" style="margin-top: 0; margin-bottom: 0;">
+                                        <div class="pull-left" style="text-align: center;padding-right: 0;width: 100%;">
                                             <a href="<?php echo get_the_permalink($doctor -> ID); ?>">
-                                                <h4 class="media-heading block-ellipsis-home-news-2line" style="line-height:1.5 !important"><?php echo $doctor->post_title;?></h4>
+                                                <i class="fa" style="background: url(<?php echo $feature_image_meta[0] ?>); background-size: cover;"></i>
+                                                <h4 class="media-heading block-ellipsis-home-news-2line" style="text-align: center; line-height:1.5 !important"><?php echo $doctor->post_title;?></h4>
                                             </a>
-                                            <p style="padding-left: 0;" class="media-description block-ellipsis-home-news-2line"><?php echo $queried_object-> name;?></p>
                                         </div>
                                     </div>
                                 </div>
                             </div><!--/.col-md-4-->
                             <?php } ?>
+                            <div style="clear: both"></div>
                         </div>
+
                     </div><!---->
                     <!---->
+                    <br/>
+                    <br/>
                 </div>
 
 
