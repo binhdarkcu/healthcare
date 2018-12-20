@@ -76,7 +76,7 @@
 	      transitionStyle : "fadeUp"
 	    });
 
-		$("#services-slider").find('.carousel-inner').owlCarousel({
+		$(".services-slider").find('.carousel-inner').owlCarousel({
 	      slideSpeed : 700,
 	      paginationSpeed : 500,
 		  autoplay: false,
@@ -89,6 +89,18 @@
 	      afterMove : moved,
 	      startDragging : pauseOnDragging
 	    });
+
+		$("#gallery-slider ").find('.carousel-inner').owlCarousel({
+	      slideSpeed : 700,
+	      paginationSpeed : 500,
+		  autoplay: true,
+	      navigation : false,
+		  dots: false,
+	      afterMove : moved,
+		  afterInit : progressBar,
+	      startDragging : pauseOnDragging
+	    });
+
 
 
 	    //Init progressBar where elem is $("#owl-demo")

@@ -10,6 +10,33 @@
     }
     add_action( 'init', 'register_menu' );
 
+
+    add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+
+    function my_wp_nav_menu_objects( $items, $args ) {
+
+    	// loop
+    	foreach( $items as &$item ) {
+
+    		// vars
+    		$icon = get_field('menu_header', $item);
+
+
+    		// append icon
+    		if( $icon ) {
+
+    			$item->title .= ' <i class="fa" data-src="'.$icon.'"></i>';
+
+    		}
+
+    	}
+
+
+    	// return
+    	return $items;
+
+    }
+
     function show_childpages_shortcode($page_id) {
 
         // a shortcode should just return the content not echo html
@@ -121,14 +148,11 @@
                     <div class="col-md-2 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined;">
                         <div class="service-box-pad">
                             <div class="media service-box">
-                                <div class="pull-left">
+                                <div class="pull-left" style="width: 100%;text-align: center;">
                                     <i class="fa" style="background: url(<?php echo $page_img;?>); background-size: cover;"></i>
-                                </div>
-                                <div class="media-body">
                                     <a href="<?php echo $page_link; ?>">
                                         <h4 class="media-heading block-ellipsis-home-news-2line" style="line-height:1.5 !important"><?php echo $page_title;?></h4>
                                     </a>
-                                    <p class="media-description block-ellipsis-home-news-2line"><?php echo $child_page->post_content;?></p>
                                 </div>
                             </div>
                         </div>

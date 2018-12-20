@@ -145,6 +145,7 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/underscore-min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.js"></script>
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/droplinemenu.js"></script>
     <script>
         $(document).ready(function () {
             $('#nav .menu-item-has-children').hover(
@@ -166,7 +167,12 @@
         //     var marker = new google.maps.Marker({position: uluru, map: map});
         // }
     </script>
+    <script type="text/javascript">
 
+    //build menu with DIV ID="myslidemenu" on page:
+    droplinemenu.buildmenu("droplinetabs1")
+
+    </script>
     <script>
         $("#text-search").bind('keydown', function (e) {
             if (e.which == 13) {

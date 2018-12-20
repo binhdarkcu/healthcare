@@ -41,6 +41,7 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/droplinetabs.css" rel="stylesheet">
 </head>
 
 <body id="home" class="homepage" ng-controller="AppController" style="">
@@ -49,7 +50,7 @@
     <!-------------------------------------------->
     <div class="view-container">
         <header id="header">
-            <nav id="main-menu" class="navbar navbar-default" role="banner">
+            <nav  class="navbar navbar-default" role="banner">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav" aria-expanded="false" ng-click="show()">
@@ -62,34 +63,56 @@
                             <?php
                                 $logoUrl = get_field('header_logo', 'option');
                             ?>
-                            <img src="<?php echo $logoUrl; ?>" alt="Bệnh viện Phạm Ngọc Thạch" style="width:386px;">
+                            <img src="<?php echo $logoUrl; ?>" alt="Bệnh viện Phạm Ngọc Thạch" style="width:300px;">
                         </a>
                     </div>
+                    <div style="float: left;margin-left: 5%;margin-top: 34px;font-size: 18px;">
+                        Email: abcd@gmail.com <br/>
+                        Hotline: 0972132132
+                    </div>
+                    <div class="text-right language">
+                        <?php  qtranxf_generateLanguageSelectCode(array(
+                            'type'   => 'text'
+                        ));
+            ?>
+                    </div>
+                    <div class="text-right" style="float: right; margin-right: 32px;">
+                        <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
+                            <div class="input-group" style="margin:auto;">
+                                <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" type="text" maxlength="100" placeholder="Tìm kiếm bài viết" ng-model="searchText" style="width:300px; border-radius: 10px;" aria-invalid="false">
 
+                                <div class="input-group-btn">
+                                    <div class="btn-group" role="group">
+
+                                        <div>
+                                            <!--<button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(255,255,255,.1);border-color: #cccccc;border-radius: 10px;" type="image" <img style=" width="30px"; height="30px;"" src="../../../assets/css/images/tim-kiem.png" ></button>"-->
+                                            <button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
+                                                <i class="fa fa-search" style="font-size: 15px;color:black;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="container">
                     <div class="navbar-right">
                         <div class="nav-menu">
-                            <div class="text-right language">
-                                <?php  qtranxf_generateLanguageSelectCode(array(
-                                    'type'   => 'text'
-                                ));
-?>
-                            </div>
-                            <div class="collapse navbar-collapse" id="top-nav">
-
-                                <?php
-                                    wp_nav_menu(
-                                               array(
-                                                   'theme_location' => 'primary_menus',
-                                                   'menu_class'     => 'nav navbar-nav uppercase',
-                                                   'menu_id'        => 'nav'
-                                               )
-                                           );
-                                ?>
-                            </div>
+                            <div id="droplinetabs1" class="droplinetabs">
+                            <?php
+                                wp_nav_menu(
+                                           array(
+                                               'theme_location' => 'primary_menus',
+                                               'menu_class'     => 'nav navbar-nav uppercase',
+                                               'menu_id'        => 'nav'
+                                           )
+                                       );
+                            ?>
+                        </div>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="mobile-banner-slide text-center">
                     <div class="col-md-4 col-xs-4">

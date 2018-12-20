@@ -5,24 +5,6 @@
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px">
-
-            <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
-                <div class="input-group" style="margin:auto;">
-                    <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" type="text" maxlength="100" placeholder="Tìm kiếm bài viết" ng-model="searchText" style="width:300px; border-radius: 10px;" aria-invalid="false">
-
-                    <div class="input-group-btn">
-                        <div class="btn-group" role="group">
-
-                            <div>
-                                <!--<button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(255,255,255,.1);border-color: #cccccc;border-radius: 10px;" type="image" <img style=" width="30px"; height="30px;"" src="../../../assets/css/images/tim-kiem.png" ></button>"-->
-                                <button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 770px">
-                                    <i class="fa fa-search" style="font-size: 15px;color:black;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
 
                 <?php

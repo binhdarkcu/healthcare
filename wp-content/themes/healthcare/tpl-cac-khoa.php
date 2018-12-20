@@ -10,6 +10,7 @@
         foreach( $categories as $category ) {
 
             $imgUrl = get_field('departments_image', $category);
+            if(!empty($imgUrl)) {
             ?>
             <div class="col-md-2 item">
                 <a href="<?php echo get_category_link( $category->term_id );?>">
@@ -17,7 +18,7 @@
                     <p><?php echo $category->name;?></p>
                 </a>
             </div>
-        <?php } ?>
+        <?php } } ?>
 
 
 

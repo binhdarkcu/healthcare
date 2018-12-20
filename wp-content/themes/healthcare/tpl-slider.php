@@ -20,7 +20,7 @@
                                     <div class="col-sm-6">
                                         <div class="carousel-content">
                                             <h2><?php echo get_the_title() ?></h2>
-                                            <p></p>
+                                            <p><?php echo get_the_content() ?></p>
                                             <?php if (get_field('button_text')): ?>
                                                 <a class="btn btn-primary btn-lg" href="<?php echo get_field('button') ?>"><?php echo get_field('button_text') ?></a>
                                             <?php endif;?>

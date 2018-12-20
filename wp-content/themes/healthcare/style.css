@@ -16,6 +16,20 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 /* customize */
+#services #exTab1 .nav li{
+    width: calc(25% - 2px);
+    background: #eee;
+}
+#services .tab-content {
+    border: none;
+}
+#services #exTab1 .nav li.active a{
+    color: #fff;
+}
+#services #exTab1 .nav li a{
+    color: #000;
+
+}
 body#home #services-slider {
     margin-bottom: 50px;
 }
@@ -92,13 +106,14 @@ body #info {
     display: table;
     margin-left: 15px;
 }
-#main-menu .navbar-right {
+.navbar-right {
     vertical-align: inherit;
     line-height: 1.2;
+    margin-right: 0;
+    width: 100%;
 }
 .language {
     padding-top: 15px;
-    padding-right: 30px;
     margin-bottom: 20px;
 }
 .footer-title strong {
