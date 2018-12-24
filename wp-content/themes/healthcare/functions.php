@@ -220,4 +220,12 @@
     }
     add_action( 'admin_menu', 'revcon_change_post_label' );
     add_action( 'init', 'revcon_change_post_object' );
+
+function slug($str){
+    $str = strtolower(trim($str));
+    $str = preg_replace('/[^a-z0-9-]/', '-', $str);
+    $str = preg_replace('/-+/', "-", $str);
+    return $str;
+}
+
 ?>

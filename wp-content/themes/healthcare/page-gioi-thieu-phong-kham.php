@@ -22,12 +22,12 @@
                     </div><!---->
                     <!---->
                 </div>
-
-                <?php get_sidebar();?>
+                <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
+                    <?php get_sidebar();?>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 <?php endwhile; ?>
 <?php get_footer();?>

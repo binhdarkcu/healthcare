@@ -53,12 +53,9 @@
                     <br/>
                     <br/>
                 </div>
-
-
-                <?php get_sidebar();?>
+                <?php get_sidebar('chuyen-khoa');?>
             </div>
         </div>
     </div>
-
 </div>
 <?php get_footer();?>

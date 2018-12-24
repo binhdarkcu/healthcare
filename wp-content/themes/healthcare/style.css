@@ -126,3 +126,14 @@ body #info {
     margin-bottom: 15px;
     display: block;
 }
+.sidebarKhoa li {
+    display: flex;
+    align-items: center;
+}
+.sidebarKhoa li img {
+    width: 50px;
+}
+
+ul.post-list.sidebarKhoa li a {
+    padding: 0;
+}
