@@ -44,10 +44,11 @@
                 <div class="blog-post blog-media wow fadeInRight animated" data-wow-duration="300ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 100ms; animation-name: undefined;">
                     <article class="media clearfix">
                         <div class="entry-thumbnail" style="margin-bottom: 22px;">
-                            <h4>Dịch vụ cung cấp</h4>
-                            <p>Giải pháp toàn diện</p>
-                                <p>Giải pháp quản lý bệnh viện toàn diện với <br/> các hệ thống liên thông, đảm nhận vai trò rõ ràng. <br/>Khả năng nâng cấp, mở rộng dễ dàng.</p>
-                                <p>Đội ngũ triển khai chuyên nghiệp, hỗ trợ sau triển khai 24/7, <br/>luôn lắng nghe và giải đáp mọi thắc mắc của khách hàng.</p>
+                            <?php
+                                $page = get_page_by_path( 'cac-dich-vu' );
+                                echo codession_qtranslatex_string($page->post_content)[qtrans_getLanguage()];
+                            ?>
+
                         </div>
                         <div class="media-body">
                             <div class="row">

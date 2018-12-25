@@ -1,28 +1,36 @@
 <div class="col-xs-12 cat-box">
-    <div ng-show="Categories.length != 0" aria-hidden="true" class="ng-hide" style="">
-        <h4 class="column-title">CHUYÊN MỤC</h4>
-        <!---->
-        <div style="height: 50px;"></div>
-    </div>
-    <h4 class="column-title">TIN TỨC MỚI NHẤT</h4>
+    <?php $queried_object = get_queried_object(); ?>
+    <?php
+        $sideBarTitle = codession_qtranslatex_string($queried_object->post_title)[qtrans_getLanguage()];
+        if(empty($sideBarTitle)) {
+            $sideBarTitle = $queried_object->post_title;
+        }
+    ?>
+    <h4 class="column-title" style="text-transform: uppercase;">CÁC BÀI VIẾT VỀ <?php echo $sideBarTitle;?></h4>
 
     <?php
-        $queried_object = get_queried_object();
         $post_data = get_post($queried_object->post_parent);
-        $parent_slug = $post_data->post_name;
-        echo $parent_slug;
-        $$args_lienquan = array(
+
+        $tax = get_the_terms($queried_object->ID, 'chuyen_muc_hoat_dong');
+        if(empty($tax)) {
+            $parent_slug = $post_data->post_name;
+        } else {
+            $parent_slug = $tax[0]->slug;
+        }
+
+        $args_lienquan = array(
             'posts_per_page' => 5,
             'post_type' => 'hoat_dong',
             'post_status' => 'publish',
             'tax_query' => array(
                 array(
-                    'taxonomy' => 'chuyen_muc_hoat_dong',
-                    'field' => 'slug'
+                  'taxonomy' => 'chuyen_muc_hoat_dong',
+                  'field' => 'slug',
+                  'terms' => array($parent_slug)
                 )
             )
         );
-    $posts_lienquan = get_posts($args_lienquan);
+        $posts_lienquan = get_posts($args_lienquan);
     ?>
 
     <ul class="post-list">
@@ -33,7 +41,7 @@
     </ul>
     <br/>
 
-    <h4 class="column-title">BÀI VIẾT LIÊN QUAN</h4>
+    <h4 class="column-title">CÁC BÀI VIẾT KHÁC</h4>
 
     <?php $args_lienquan = array(
         'posts_per_page' => 5,

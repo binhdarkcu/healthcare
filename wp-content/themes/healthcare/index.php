@@ -10,7 +10,7 @@
 
         <?php get_template_part('tpl', 'cac-khoa')?>
 
-    <section id="services">
+    <section id="services" class="galleries">
       <div class="container">
           <div class="section-header">
               <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hình ảnh</h2>

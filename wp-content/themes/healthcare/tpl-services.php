@@ -22,7 +22,7 @@
                     </li>
                     <?php } ?>
             </ul>
-            <div class="tab-content clearfix">
+            <div class="tab-content clearfix wow fadeInDown animated">
                 <?php
                     $term_slug = 'tab_services';
                     $terms = get_terms( array(

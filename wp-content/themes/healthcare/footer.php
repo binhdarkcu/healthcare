@@ -183,3 +183,18 @@
     </script>
 
 <div id="eJOY__extension_root" style="all: unset;"></div></body></html>
+<div style="bottom:0px; position:fixed; right:10px; width:350px; text-align:right; z-index:1000" id="footerchat">
+<!-- START IMsupporting.com Live support software, Live help software code -->
+<script type="text/javascript" src="https://support1.imsupporting.com/welcome2/popup.js"></script>
+<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT">
+<!-- Hide script from older browsers
+var docref = "noref";
+if (document.referrer != '') {
+docref = document.referrer;
+}
+document.write('<a href="javascript:openSupport(\'9220181225304\',\'Welcome\');"><img src="https://status.imsupporting.com/status.php?siteid=9220181225304&amp;style=128&amp;docref='+docref+'" border="0" alt="live chat software" title="Launch live chat"/></a>');
+//-- Stop hiding script -->
+</SCRIPT>
+<noscript><a href="http://www.imsupporting.com" title="Live chat software" target="_blank">Live Chat software</a></noscript>
+<!-- End IMsupporting Code -->
+</div>

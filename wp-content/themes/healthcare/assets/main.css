@@ -322,7 +322,12 @@ ul.nostyle {
 #main-slider {
     overflow: hidden;
 }
-
+#main-slider .slider-inner h2, #main-slider .slider-inner p {
+    color: #f7931d;
+}
+#main-slider .slider-inner p {
+    font-size: 16px;
+}
 @media screen and (min-width: 800px) {
     #main-slider .item {
         height: 558px;
@@ -339,7 +344,7 @@ ul.nostyle {
         font-size: 36px;
         line-height: 1;
         text-transform: uppercase;
-        color: #fff;
+        color: #f7931d;
     }
 }
 /*6s Plus*/
@@ -373,7 +378,6 @@ ul.nostyle {
         font-size: 3em;
         line-height: 1;
         text-transform: uppercase;
-        color: #fff;
     }
 
     #main-slider .slider-inner p {
@@ -1151,6 +1155,7 @@ ul.nostyle {
             font-weight: normal;
             font-size: 1.1em;
             line-height: 1.5;
+            text-align: left;
         }
 
         #blog .blog-post .entry-meta {

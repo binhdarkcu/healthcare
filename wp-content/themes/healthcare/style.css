@@ -24,7 +24,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
     border: none;
 }
 
-#services .owl-theme .owl-controls {
+#services.galleries .owl-theme .owl-controls {
     display: none!important;
 }
 #services #exTab1 .nav li.active a{
@@ -42,6 +42,38 @@ body#home #services-slider .owl-carousel {
 }
 body#home #services-slider .owl-carousel .owl-item {
     padding-bottom: 30px;
+}
+
+.cd-faq-trigger {
+    position: relative;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0;
+    padding: 24px 72px 24px 24px;
+}
+.cd-faq-group>li {
+    background: #fff;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    -webkit-transition: box-shadow .2s;
+    -moz-transition: box-shadow .2s;
+    transition: box-shadow .2s;
+}
+.cd-faq-content {
+    font-size: 16px;
+}
+.cd-faq-group {
+    list-style-type: none;
+    padding-left: 0;
+}
+.cd-faq-content {
+    display: none;
+    padding: 0 24px 30px;
+}
+.cd-faq-group > li a {
+    color: #f7931d;
+    font-size: 19px;
 }
 
 body#home #services-slider .owl-controls .owl-pagination {

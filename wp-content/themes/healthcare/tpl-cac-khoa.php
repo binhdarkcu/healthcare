@@ -12,7 +12,7 @@
             $imgUrl = get_field('departments_image', $category);
             if(!empty($imgUrl)) {
             ?>
-            <div class="col-md-2 item">
+            <div class="col-md-2 item wow fadeInDown animated">
                 <a href="<?php echo get_category_link( $category->term_id );?>">
                     <img class="img-responsive center-block" src="<?php echo $imgUrl; ?>"/>
                     <p><?php echo $category->name;?></p>
