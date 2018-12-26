@@ -17,36 +17,24 @@
           </div>
           <section id="gallery-slider" style="position:relative;">
               <div class="carousel-inner" role="listbox">
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" alt="" />
+                  <?php
+                      $args = array(
+                          'post_type'	 => 'hinh_anh',
+              	          'post_status'	 => 'publish',
+                          'posts_per_page' => -1
+                      );
+                      $query = new WP_Query( $args );
+                      if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
+                      $feature_image_id = get_post_thumbnail_id(get_the_ID());
+                      $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                      $img_lightbox = get_field('big_image_lightbox', get_the_ID());
+                  ?>
+                  <a class="example-image-link" href="<?php echo $img_lightbox;?>" data-lightbox="example-set" data-title="<?php echo get_the_title(get_the_ID());?>">
+                      <img class="example-image" style="height: 195px;" src="<?php echo $feature_image_meta[0] ?>" alt="" />
                   </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Posts/20181220/tuyen-dung.JPG" alt="" />
-                  </a>
-                  <a class="example-image-link" href="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close.">
-                      <img class="example-image" src="http://cms.bvpnt.org.vn//Assets/images/Resources/bo%20truong%20y%20te%20dap%20xe%20keu%20goi%20phong%20chong%20benh%20phoi.jpg" alt="" />
-                  </a>
+
+                  <?php endwhile;endif; wp_reset_postdata();?>
+
               </div>
           </section><!--/#main-slider-->
 

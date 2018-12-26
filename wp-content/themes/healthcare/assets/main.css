@@ -1298,6 +1298,9 @@ img {
     vertical-align: baseline;
     max-width: 100% !important;
 }
+#lightbox img {
+    max-width: inherit!important;
+}
 /*#footer {
     position: absolute;
     left: 0;

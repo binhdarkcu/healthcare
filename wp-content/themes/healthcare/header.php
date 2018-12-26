@@ -8,23 +8,35 @@
     <meta name="keywords" content="đặt lịch, lịch khám, appointment">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="">
-    <title>Bệnh viện Phạm Ngọc Thạch | Phát Triển - Nhân Văn - Thiện Nguyện</title>
-    <meta name="description" content="Bệnh viện Phạm Ngọc Thạch là bệnh viện hạng I trực thuộc Sở Y tế TP.HCM. Tiếp nhận khám, chẩn đoán, điều trị, theo dõi quản lý bệnh nhân mắc các bệnh ">
-    <meta name="keywords" content="phạm ngọc thạch, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I">
+    <title>PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</title>
+    <meta name="description" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
+    <meta name="keywords" content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I">
     <meta name="robots" content="">
     <link rel="canonical" ng-href="">
 
     <!--meta face-->
-    <meta property="og:title" content="Bệnh viện Phạm Ngọc Thạch">
-    <meta property="og:description" content="Bệnh viện Phạm Ngọc Thạch">
-    <meta property="og:url" content="http://bvpnt.org.vn/">
+    <meta property="og:title" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
+    <meta property="og:description" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
+    <meta property="og:url" content="https://goldenhealthcarevn.com/">
     <meta property="og:image:url" content="http://bvpnt.org.vn/favicon.ico">
     <meta property="og:type" content="website">
-    <link rel="shortcut icon" src="favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="http://bvpnt.org.vn/assets/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_stylesheet_directory_uri(); ?>/assets/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.css" rel="stylesheet">
@@ -67,8 +79,8 @@
                         </a>
                     </div>
                     <div style="float: left;margin-left: 5%;margin-top: 34px;font-size: 18px;">
-                        Email: abcd@gmail.com <br/>
-                        Hotline: 0972132132
+                        Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
+                        Hotline: <?php echo get_field('footer_phone', 'option'); ?>
                     </div>
                     <div class="text-right language">
                         <?php  qtranxf_generateLanguageSelectCode(array(
