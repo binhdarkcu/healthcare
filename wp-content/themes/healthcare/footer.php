@@ -86,7 +86,7 @@
                         <div>
                             <strong>Thông tin website</strong>
                             <p>Địa chỉ: <?php echo get_field('footer_address', 'option'); ?><br/>Số Điện Thoại: <?php echo get_field('footer_phone', 'option'); ?><br/>Email: <?php echo get_field('footer_email', 'option'); ?></p>
-                            <div id="map" style="width: 100%;"><div style="width: 100%"><iframe width="95%" height="300" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=10.7768128,106.6320116&amp;q=L%C5%A9y%20B%C3%A1n%20B%C3%ADch%2C%20T%C3%A2n%20Ph%C3%BA%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vietnam+(HealthCare)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Draw map route</a></iframe></div><br /></div>
+                            <div id="map" style="width: 100%;"><div style="width: 100%"><iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0317355923103!2d106.64532531513923!3d10.808881261548633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294151d1bd45%3A0xa9413fb2af4c4217!2zMzcvQzcgxJDGsOG7nW5nIEhvw6BuZyBIb2EgVGjDoW0sIFBoxrDhu51uZyAxNSwgVMOibiBCw6xuaCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1545809041326" width="400" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div><br /></div>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8">
-                        <div ng-bind-html="contact.GoogleMap | trusted"><iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=10.7768128,106.6320116&amp;q=L%C5%A9y%20B%C3%A1n%20B%C3%ADch%2C%20T%C3%A2n%20Ph%C3%BA%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vietnam+(HealthCare)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" style="border:0;  width:100%; height:564px; margin-top:50px; border:2px solid #ccc;" allowfullscreen=""></iframe></div>
+                        <div ng-bind-html="contact.GoogleMap | trusted"><iframe style="width: 100%; margin-top: 50px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0317355923103!2d106.64532531513923!3d10.808881261548633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294151d1bd45%3A0xa9413fb2af4c4217!2zMzcvQzcgxJDGsOG7nW5nIEhvw6BuZyBIb2EgVGjDoW0sIFBoxrDhu51uZyAxNSwgVMOibiBCw6xuaCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1545809041326" width="400" height="584" frameborder="0" style="border:0" allowfullscreen></iframe></div>
                         <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.7082773570987!2d106.6622853145632!3d10.756951392334763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752efa8f7ecc25%3A0xe68b14f82698f12e!2sPham+Ngoc+Thach+Hospital!5e0!3m2!1sen!2s!4v1507092081256" frameborder="0" style="border:0;  width:100%; height:564px; margin-top:50px; border:2px solid #ccc;" allowfullscreen></iframe>-->
                     </div>
                     <div class="col-sm-4">

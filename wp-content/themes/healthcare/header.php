@@ -75,10 +75,11 @@
                             <?php
                                 $logoUrl = get_field('header_logo', 'option');
                             ?>
-                            <img src="<?php echo $logoUrl; ?>" alt="Bệnh viện Phạm Ngọc Thạch" style="width:300px;">
+                            <img src="<?php echo $logoUrl; ?>" alt="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE" style="width:300px;">
                         </a>
                     </div>
-                    <div style="float: left;margin-left: 5%;margin-top: 34px;font-size: 18px;">
+                    <div style="float: left;margin-left: 5%;margin-top: 0;font-size: 18px; font-size: 18px; width: 40%;">
+                        <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</h3>
                         Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
                         Hotline: <?php echo get_field('footer_phone', 'option'); ?>
                     </div>
