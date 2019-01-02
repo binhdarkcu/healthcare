@@ -22,10 +22,9 @@
                     ?>
                         <article class="media clearfix">
                             <div class="entry-thumbnail">
-                                <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>" title="<?php echo get_the_title() ?>">
+                                <a href="<?php echo get_the_permalink(get_the_ID()) ?>" title="<?php echo get_the_title() ?>">
                                     <div class="img-thumbnail-post" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
-                                </a><!---->
-                                <!---->
+                                </a>
                             </div>
                             <div class="media-body">
                                 <header class="entry-header">
