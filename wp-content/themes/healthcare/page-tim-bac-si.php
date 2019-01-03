@@ -3,7 +3,7 @@
     <div class="content container">
         <div class="row">
             <div class="content-bg">
-                <div class="col-md-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <h1>Tìm bác sĩ</h1>
                     <div class="searchcontrols row col-lg-12">
                         <div class="col-md-3">
@@ -19,9 +19,57 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="doctors-grid col-md-12">
-                    <!---->
+                  <div class="find-doctors">
+                    <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
+                      <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <div class="col-md-4 catItemImageBlock">
+                              <div class="news">
+                                  <div class="article">
+                                      <a href="#">
+                                          <div class="thumb" style="background-image: url(<?php echo $page_img;?>)"></div>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-8 post-list-right">
+                              <h4>
+                                  <a href="#">Omala Ablack MD</a>
+                              </h4>
+                              <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;">
+                                  Internal Medicine Specialist
+                              </p>
+                              <a href="#" style="">View Profile</a>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <div class="col-md-4 catItemImageBlock">
+                              <div class="news">
+                                  <div class="article">
+                                      <a href="#">
+                                          <div class="thumb" style="background-image: url(<?php echo $page_img;?>)"></div>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-8 post-list-right">
+                              <h4>
+                                  <a href="#">Omala Ablack MD</a>
+                              </h4>
+                              <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;">
+                                  Internal Medicine Specialist
+                              </p>
+                              <a href="#" style="">View Profile</a>
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
+                        <?php get_sidebar('bac-si-lich-lam-viec');?>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
