@@ -6,9 +6,7 @@
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
-
                 <?php
-
                 if ( $page = get_page_by_path( $queried_object->post_name ) ){
                     echo show_childpages_shortcode($page->ID);
                 } else {
@@ -17,6 +15,7 @@
                         while ( have_posts() ) : the_post();
                     ?>
                     <h3 class="column-title"><?php echo the_title();?></h3>
+                    <?php echo get_template_part('tpl-social-share'); ?>
                     <div class="posts">
                         <?php echo the_content() ;?>
                     </div>

@@ -68,7 +68,7 @@
                     $page_img   = get_the_post_thumbnail_url( $page_id, 'medium' ); // returns the featured image <img> element
                     $page_title = $child_page->post_title; // returns the title of the child page
                     ?>
-                      <div class="col-md-4">
+                      <div class="col-md-4" style="margin-bottom: 20px;">
                         <div class="col-md-4 catItemImageBlock">
                             <div class="news">
                                 <div class="article">
