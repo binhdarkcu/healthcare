@@ -10,12 +10,16 @@
                       <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                           <?php
                               $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                              $s = get_search_query();
+
                               $args_doctors = array(
+                                'category_name'    => $_GET['khoa'],
                               	'orderby'          => 'date',
                               	'order'            => 'DESC',
                               	'post_type'        => 'post',
                                 'posts_per_page'   => 8,
-                                'paged' => $paged
+                                'paged' => $paged,
+                                's' => get_search_query()
                               );
                               $relatedPosts = new WP_Query( $args_doctors );
                               if ( $relatedPosts->have_posts() ) :
