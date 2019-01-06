@@ -192,3 +192,38 @@ body #info {
 ul.post-list.sidebarKhoa li a {
     padding: 0;
 }
+table.tb-shedule {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+table.tb-shedule td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.related_doctors {
+    display: table;
+    clear: both;
+    width: 100%;
+}
+.related_doctors img {
+    width: 40%;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+}
+.related_doctors .fRight {
+    width: 55%;
+    float: right;
+}
+.related_doctors .fRight p {
+    margin: 0;
+}
+.related_doctors .fRight span {
+    display: block;
+    margin: 0;
+}
+.title-small {
+    font-size: 16px;
+}
