@@ -10,7 +10,6 @@
     }
     add_action( 'init', 'register_menu' );
 
-
     add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
 
     function my_wp_nav_menu_objects( $items, $args ) {
@@ -69,7 +68,7 @@
                     $page_img   = get_the_post_thumbnail_url( $page_id, 'medium' ); // returns the featured image <img> element
                     $page_title = $child_page->post_title; // returns the title of the child page
                     ?>
-                      <div class="col-md-4">
+                      <div class="col-md-4" style="margin-bottom: 20px;">
                         <div class="col-md-4 catItemImageBlock">
                             <div class="news">
                                 <div class="article">
@@ -99,16 +98,19 @@
                     <?php
 
                 }//END foreach ($child_pages as $child_page)
-                $socials = '<div class="social col-md-4">
+                ?>
+                <div class="social col-md-5">
                 <h4><a href="">Kết nối trực tuyến</a></h4>
                 <div class="icon-social">
-                  <a href="" class="icon-fb" style="display: inline-block;"></a>
-                  <a href="" class="icon-in" style="display: inline-block;"></a>
-                  <a href="" class="icon-chat" style="display: inline-block;"></a>
-                  <a href="" class="icon-fb" style="display: inline-block;"></a>
+                    <?php if( get_field('footer_socials', 'option') ): ?>
+                        <?php while(has_sub_field('footer_socials', 'option')): ?>
+                            <a style="display: inline-block;" class="<?php echo get_sub_field('social_name'); ?> icon-footer" href="<?php echo get_sub_field('social_link'); ?>"><?php echo get_sub_field('social_name'); ?></a>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
-                </div>';
-                echo $socials.'</div>';
+                </div>
+                </div>
+                <?php
 
             }//END if ($child_pages)
 

@@ -14,6 +14,29 @@ Text Domain: twentyfifteen
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+/* Center the pagination */
+.wp-pagenavi { text-align:center; margin-top: 50px;}
+
+/* Add a border */
+.wp-pagenavi span, .wp-pagenavi a, .wp-pagenavi :last-child {
+    border: 1px solid #f7931d !important;
+    padding: 6px 12px;
+    margin: 0;
+}
+.wp-pagenavi span, .wp-pagenavi a { border-right: none !important; }
+
+/* Style the default text */
+.wp-pagenavi span, .wp-pagenavi a {
+    font-weight: bold !important;
+    color: #999 !important
+}
+
+/* Style the current / hovered page link */
+.wp-pagenavi span.current,
+.wp-pagenavi a:hover {
+    color: #fff !important;
+    background-color: #f7931d !important;
+}
 
 /* customize */
 #services #exTab1 .nav li{

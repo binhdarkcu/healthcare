@@ -1,6 +1,6 @@
 <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
     <div class="col-xs-12 cat-box">
-        
+
 
         <h4 class="column-title">CÁC CHUYÊN KHOA KHÁC</h4>
 

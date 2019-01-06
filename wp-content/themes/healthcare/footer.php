@@ -146,6 +146,7 @@
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/droplinemenu.js"></script>
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.da-share.js"></script>
     <script>
         $(document).ready(function () {
             $('#nav .menu-item-has-children').hover(

@@ -18,7 +18,7 @@
                     $time = get_field('departments_time', $category); ?>
                 <li>
                     <img src="<?php echo $imgUrl ?>" alt="">
-                    <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?> <?php echo '('.$time.')' ; ?></a>
+                    <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?> <?php if(!empty($time)) echo '('.$time.')' ; ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>
@@ -48,7 +48,7 @@
                     <div class="col-md-4 catItemImageBlock">
                         <div class="news">
                             <div class="article" style="height: 70px;">
-                                <a href="<?php the_permalink(); ?>">
+                                <a href="<?php echo  get_the_permalink($post->ID); ?>">
                                   <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0] ?>); height: 60px;"></div>
                                 </a>
                                 <div class="catItemDateCreated">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-8 post-list-right">
                         <h5>
-                            <a href="<?php echo $page_link; ?>"><?php echo the_title();?></a>
+                            <a href="<?php echo get_the_permalink($post->ID); ?>"><?php echo the_title();?></a>
                         </h5>
                     </div>
                     <div class="clearfix"></div>

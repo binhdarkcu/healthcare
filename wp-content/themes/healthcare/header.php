@@ -4,22 +4,24 @@
 
     <!--<base href="/">--><base href=".">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="đặt lịch, lịch khám, appointment">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="">
+    <?php $queried_object = get_queried_object();
+    $feature_image_id = get_post_thumbnail_id($queried_object -> ID);
+    $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+    ?>
     <title>PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</title>
-    <meta name="description" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
+
+    <!--meta face-->
+    <meta property="og:type" content="website">
+    <meta property="og:url"            content="<?php the_permalink();?>" />
+    <meta property="og:title"          content="<?php the_title();?>" />
+    <meta property="og:description"    content="<?php echo wp_trim_words( $queried_object->post_content, 20, '...' );?>" />
+    <meta property="og:image"          content="<?php echo $feature_image_meta[0];?>" />
     <meta name="keywords" content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I">
     <meta name="robots" content="">
     <link rel="canonical" ng-href="">
 
-    <!--meta face-->
-    <meta property="og:title" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
-    <meta property="og:description" content="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE">
-    <meta property="og:url" content="https://goldenhealthcarevn.com/">
-    <meta property="og:image:url" content="http://bvpnt.org.vn/favicon.ico">
-    <meta property="og:type" content="website">
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-72x72.png">
