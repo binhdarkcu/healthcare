@@ -72,10 +72,18 @@
 	      isPause,
 	      tick,
 	      percentTime;
+
+		  var $progressBarGallery,
+			$barGallery,
+			$elemGallery,
+			isPauseGallery,
+			tickGallery,
+			percentTimeGallery;
 	    //Init the carousel
 	 	$("#main-slider").find('.carousel-inner').owlCarousel({
 	      slideSpeed : 500,
 	      paginationSpeed : 500,
+		   autoplay: true,
 	      singleItem : true,
 	      navigation : true,
 			navigationText: [
@@ -108,10 +116,68 @@
 		  autoplay: true,
 	      navigation : false,
 		  dots: false,
-	      afterMove : moved,
-		  afterInit : progressBar,
-	      startDragging : pauseOnDragging
+	      afterMove : movedGallery,
+		  afterInit : progressBarGallery,
+	      startDragging : pauseOnDraggingGallery
 	    });
+
+
+
+	    //Init progressBar where elem is $("#owl-demo")
+	    function progressBarGallery(elemGallery){
+	      $elemGallery = elemGallery;
+	      //build progress bar elements
+	      buildProgressBarGallery();
+	      //start counting
+	      startGallery();
+	    }
+
+	    //create div#progressBar and div#bar then append to $(".owl-carousel")
+	    function buildProgressBarGallery(){
+	      $progressBarGallery = $("<div>",{
+	        id:"progressBarGallery"
+	      });
+	      $barGallery = $("<div>",{
+	        id:"barGallery"
+	      });
+	      $progressBar.append($barGallery).appendTo($elem);
+	    }
+
+	    function startGallery() {
+	      //reset timer
+	      percentTimeGallery = 0;
+	      isPauseGallery = false;
+	      //run interval every 0.01 second
+	      tickGallery = setInterval(intervalGallery, 10);
+	    };
+
+	    function intervalGallery() {
+	      if(isPauseGallery === false){
+	        percentTimeGallery += 1 / time;
+	        $barGallery.css({
+	           width: percentTimeGallery+"%"
+	         });
+	        //if percentTime is equal or greater than 100
+	        if(percentTimeGallery >= 100){
+	          //slide to next item
+	          $elemGallery.trigger('owl.next')
+	        }
+	      }
+	    }
+
+	    //pause while dragging
+	    function pauseOnDraggingGallery(){
+	      isPauseGallery = true;
+	    }
+
+	    //moved callback
+	    function movedGallery(){
+	      //clear interval
+	      clearTimeout(tickGallery);
+	      //start again
+	      startGallery();
+	    }
+
 
 
 
