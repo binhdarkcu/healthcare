@@ -58,7 +58,7 @@
                                 <p style="margin-bottom: 30px;"><?php echo get_field('kinh_nghiem') ?></p>
                                 <h5 class="title-small">Lịch khám</h5>
                                 <div class="table-responsive">
-                                    <?php echo the_content() ?>
+                                    <?php echo the_field('lich_kham') ?>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                     <img src="<?php echo $bigImg ?>" alt="">
                                     <div class="fRight">
                                         <p><h5><?php the_title(); ?></h5></p>
-                                        <span><strong>Chuyên khoa: </strong><?php echo implode( ', ', $relchuyenkhoa ) ?></span>
+                                        <span class="trim_text"><?php echo the_content() ?></span>
                                         <a href="<?php echo the_permalink() ?>">View Profile</a>
                                     </div>
                                 </div>
