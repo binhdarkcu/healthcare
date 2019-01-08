@@ -6,7 +6,7 @@
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px">
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:0">
-                <h3>Các câu hỏi thường gặp</h3>
+                <h3>Các bác sĩ theo khoa</h3>
                 <ul id="basics" class="cd-faq-group">
                     <?php
                       $categories = get_categories();
