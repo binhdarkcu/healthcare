@@ -272,3 +272,12 @@ table.tb-shedule th {
     font-size: 14px;
     color: #767676;
 }
+.column-title:after {
+    border-bottom: 3px solid #f7931d;
+}
+#blog .blog-post.blog-media .entry-date {
+    color: #f7931d;
+}
+.carousel-content a {
+    color: #767676;
+}

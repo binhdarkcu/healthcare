@@ -36,7 +36,7 @@
     <ul class="post-list">
         <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
             <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
-                        href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                        href="<?php the_permalink(); ?>" class="text-white"><?php the_title(); ?></a></li>
         <?php endforeach; ?>
     </ul>
     <br/>
@@ -56,7 +56,7 @@
     <ul class="post-list">
         <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
             <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
-                        href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                        href="<?php the_permalink(); ?>" class="text-white"><?php the_title(); ?></a></li>
         <?php endforeach; ?>
     </ul>
 </div>
