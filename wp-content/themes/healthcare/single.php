@@ -161,7 +161,7 @@ while (have_posts()) : the_post();
                                         setup_postdata($post);
                                         ?>
                                         <div class="col-md-6 col-xs-12" style="margin-bottom: 15px;">
-                                            <img src="<?php echo $bigImg ?>" alt="">
+                                            <a href="<?php echo the_permalink() ?>"><img src="<?php echo $bigImg ?>" alt=""></a>
                                             <div class="fRight">
                                                 <p><h5><?php the_title(); ?></h5></p>
                                                 <span class="trim_text"><?php echo the_content() ?></span>

@@ -203,9 +203,13 @@ table.tb-shedule td, th {
     padding: 8px;
 }
 .related_doctors {
+    position: relative;
+    width: 100%;
+}
+.related_doctors:after {
     display: table;
     clear: both;
-    width: 100%;
+    content: '';
 }
 .related_doctors img {
     width: 40%;
@@ -231,15 +235,28 @@ table.tb-shedule td, th {
 .title-small {
     font-size: 16px;
 }
-table.tb-shedule td:not(:nth-child(1)), table.tb-shedule th {
+table.tb-shedule td, table.tb-shedule th {
     text-align: center;
+}
+table.tb-shedule {
+    margin-top: 20px;
 }
 table.tb-shedule th {
     font-size: 16px;
+    color: #fff;
+    background: #f7931d;
+}
+.show_doctors {
+    text-align: center;
+}
+.show_doctors a:last-of-type {
+    border-bottom: 0;
 }
 .show_doctors a {
-    display: table;
-    margin: 0 auto 10px;
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #767676;
+    margin: 10px auto 0;
     text-align: center;
     color: #767676;
     font-size: 12px;
@@ -247,4 +264,11 @@ table.tb-shedule th {
 }
 .show_doctors a:hover {
     color: #ccc;
+}
+.cd-faq-group .fRight a, .cd-faq-group .fRight .trim_text a, .cd-faq-group .fRight .trim_text {
+    font-size: 14px;
+}
+.cd-faq-content .tb-shedule a {
+    font-size: 14px;
+    color: #767676;
 }

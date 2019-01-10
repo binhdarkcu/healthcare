@@ -26,26 +26,119 @@
                         <br/>
                         <h3 class="column-title">Các bác sĩ thuộc <?php echo $queried_object-> name;?></h3>
                         <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->
-                        <div class="posts">
+                        <div class="posts related_doctors row">
                             <?php
                             foreach ( $posts_doctors_array as $doctor ) {
                                 $feature_image_id = get_post_thumbnail_id($doctor -> ID);
                                 $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
                             ?>
-                            <div class="col-md-4 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined;">
-                                <div class="service-box-pad">
-                                    <div class="media service-box" style="margin-top: 0; margin-bottom: 0;">
-                                        <div class="pull-left" style="text-align: center;padding-right: 0;width: 100%;">
-                                            <a href="<?php echo get_the_permalink($doctor -> ID); ?>">
-                                                <i class="fa" style="background: url(<?php echo $feature_image_meta[0] ?>); background-size: cover;"></i>
-                                                <h4 class="media-heading block-ellipsis-home-news-2line" style="text-align: center; line-height:1.5 !important"><?php echo $doctor->post_title;?></h4>
-                                            </a>
-                                        </div>
+                                <div class="col-md-6 col-xs-12 wow fadeInUp animated" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined; margin-bottom: 15px">
+                                    <a href="<?php echo the_permalink($doctor -> ID) ?>"><img src="<?php echo $feature_image_meta[0] ?>" alt=""></a>
+                                    <div class="fRight">
+                                        <p><h5><?php echo $doctor->post_title;?></h5></p>
+                                        <span class="trim_text"><?php echo $doctor->post_content;?></span>
+                                        <a href="<?php echo the_permalink($doctor -> ID) ?>">View Profile</a>
                                     </div>
                                 </div>
-                            </div><!--/.col-md-4-->
                             <?php } ?>
                             <div style="clear: both"></div>
+                        </div>
+                        <br/>
+                        <h3 class="column-title">Lịch làm việc <?php echo $queried_object-> name;?></h3>
+                        <div class="table-responsive">
+                            <?php
+                            $args = array(
+                                'post_type' => 'lich_kham_benh',
+                                'post_status' => 'publish',
+                                'posts_per_page' => 1
+                            );
+                            $query = new WP_Query($args);
+                            if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+                                ?>
+                                <table class="table-bordered table-hover tb-shedule" style="width: 100%;">
+                                    <tbody>
+                                    <tr>
+                                        <th>Thứ 2</th>
+                                        <th>Thứ 3</th>
+                                        <th>Thứ 4</th>
+                                        <th>Thứ 5</th>
+                                        <th>Thứ 6</th>
+                                        <th>Thứ 7</th>
+                                        <th>Chủ nhật</th>
+                                    </tr>
+                                    <tr class="thead-light">
+                                        <th colspan="7">Sáng (7h30 - 11h30)</th>
+                                    </tr>
+                                    <tr>
+                                        <?php
+                                        if (have_rows('schdule_week_time_morning')):
+                                            while (have_rows('schdule_week_time_morning')): the_row();
+                                                $dayItems = get_sub_field('schedule_day_week_morning');
+                                                foreach ($dayItems as $dayItem) {
+                                                    $names = $dayItem["week_doctor_morning"];
+                                                    ?>
+                                                    <td class="show_doctors"><?php
+                                                        foreach ($names as $name) {
+                                                            $listCats = get_the_category($name->ID);
+                                                            foreach ($listCats as $listCat) {
+                                                                if($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                }
+                                                            }
+                                                        }
+                                                        ?></td>
+                                                <?php } endwhile; endif; ?>
+                                    </tr>
+                                    <tr class="thead-light">
+                                        <th colspan="7">Chiều (13h00 - 17h00)</th>
+                                    </tr>
+                                    <tr>
+                                        <?php
+                                        if (have_rows('schdule_week_time_afternoon')):
+                                            while (have_rows('schdule_week_time_afternoon')): the_row();
+                                                $dayItems = get_sub_field('schedule_day_week_afternoon');
+                                                foreach ($dayItems as $dayItem) {
+                                                    $names = $dayItem["week_doctor_afternoon"];
+                                                    ?>
+                                                    <td class="show_doctors"><?php
+                                                        foreach ($names as $name) {
+                                                            $listCats = get_the_category($name->ID);
+                                                            foreach ($listCats as $listCat) {
+                                                                if($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                }
+                                                            }
+                                                        }
+                                                        ?></td>
+                                                <?php } endwhile; endif; ?>
+                                    </tr>
+                                    <tr class="thead-light">
+                                        <th colspan="7">Tối (18h00 - 19h30)</th>
+                                    </tr>
+                                    <tr>
+                                        <?php
+                                        if (have_rows('schdule_week_time_night')):
+                                            while (have_rows('schdule_week_time_night')): the_row();
+                                                $dayItems = get_sub_field('schedule_day_week_night');
+                                                foreach ($dayItems as $dayItem) {
+                                                    $names = $dayItem["week_doctor_night"];
+                                                    ?>
+                                                    <td class="show_doctors"><?php
+                                                        foreach ($names as $name) {
+                                                            $listCats = get_the_category($name->ID);
+                                                            foreach ($listCats as $listCat) {
+                                                                if($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                }
+                                                            }
+                                                        }
+                                                        ?></td>
+                                                <?php } endwhile; endif; ?>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            <?php endwhile;endif;
+                            wp_reset_postdata(); ?>
                         </div>
                         <br/>
 
