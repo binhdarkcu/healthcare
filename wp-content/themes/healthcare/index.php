@@ -1,4 +1,4 @@
-HÌNH ẢNH<?php get_header() ?>
+<?php get_header() ?>
 <div>
         <?php get_template_part('tpl', 'slider') ?>
 
