@@ -1,15 +1,15 @@
 <?php /* Template Name: Giới thiệu Template */ ?>
-<?php get_header()?>
+<?php get_header() ?>
 <?php
-    $queried_object = get_queried_object();
-    $args_doctors = array(
-    	'category'         => $queried_object->term_id,
-    	'category_name'    => '',
-    	'orderby'          => 'date',
-    	'order'            => 'DESC',
-    	'post_type'        => 'post'
-    );
-    $posts_doctors_array = get_posts( $args_doctors );
+$queried_object = get_queried_object();
+$args_doctors = array(
+    'category' => $queried_object->term_id,
+    'category_name' => '',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'post_type' => 'post'
+);
+$posts_doctors_array = get_posts($args_doctors);
 ?>
 <div ng-init="loadData()">
     <div ng-show="isShow" ng-init="queryView()" aria-hidden="false" class="" style="">
@@ -17,34 +17,37 @@
             <!---->
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
-                    <!----><div ng-if="!isRequiredLogin(post.PostInternal)">
-                        <h3 class="column-title">Tổng quan về <?php echo $queried_object-> name;?></h3>
+                    <!---->
+                    <div ng-if="!isRequiredLogin(post.PostInternal)">
+                        <h3 class="column-title">Tổng quan về <?php echo $queried_object->name; ?></h3>
                         <div>
-                            <?php echo category_description( $queried_object -> ID ); ?>
+                            <?php echo category_description($queried_object->ID); ?>
                         </div>
                         <br/>
                         <br/>
-                        <h3 class="column-title">Các bác sĩ thuộc <?php echo $queried_object-> name;?></h3>
+                        <h3 class="column-title">Các bác sĩ thuộc <?php echo $queried_object->name; ?></h3>
                         <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->
                         <div class="posts related_doctors row">
                             <?php
-                            foreach ( $posts_doctors_array as $doctor ) {
-                                $feature_image_id = get_post_thumbnail_id($doctor -> ID);
+                            foreach ($posts_doctors_array as $doctor) {
+                                $feature_image_id = get_post_thumbnail_id($doctor->ID);
                                 $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
-                            ?>
-                                <div class="col-md-6 col-xs-12 wow fadeInUp animated" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined; margin-bottom: 15px">
-                                    <a href="<?php echo the_permalink($doctor -> ID) ?>"><img src="<?php echo $feature_image_meta[0] ?>" alt=""></a>
+                                ?>
+                                <div class="col-md-6 col-xs-12 wow fadeInUp animated" data-wow-delay="0ms"
+                                     style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined; margin-bottom: 15px">
+                                    <a href="<?php echo the_permalink($doctor->ID) ?>"><img
+                                                src="<?php echo $feature_image_meta[0] ?>" alt=""></a>
                                     <div class="fRight">
-                                        <p><h5><?php echo $doctor->post_title;?></h5></p>
-                                        <span class="trim_text"><?php echo $doctor->post_content;?></span>
-                                        <a href="<?php echo the_permalink($doctor -> ID) ?>">View Profile</a>
+                                        <p><h5><?php echo $doctor->post_title; ?></h5></p>
+                                        <span class="trim_text"><?php echo $doctor->post_content; ?></span>
+                                        <a href="<?php echo the_permalink($doctor->ID) ?>">View Profile</a>
                                     </div>
                                 </div>
                             <?php } ?>
                             <div style="clear: both"></div>
                         </div>
                         <br/>
-                        <h3 class="column-title">Lịch làm việc <?php echo $queried_object-> name;?></h3>
+                        <h3 class="column-title">Lịch làm việc <?php echo $queried_object->name; ?></h3>
                         <div class="table-responsive">
                             <?php
                             $args = array(
@@ -81,8 +84,8 @@
                                                         foreach ($names as $name) {
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
-                                                                if($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                if ($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
                                                                 }
                                                             }
                                                         }
@@ -104,8 +107,8 @@
                                                         foreach ($names as $name) {
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
-                                                                if($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                if ($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
                                                                 }
                                                             }
                                                         }
@@ -127,8 +130,8 @@
                                                         foreach ($names as $name) {
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
-                                                                if($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                if ($listCat->name == $queried_object->name) {
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
                                                                 }
                                                             }
                                                         }
@@ -141,41 +144,66 @@
                             wp_reset_postdata(); ?>
                         </div>
                         <br/>
+                        <h3 class="column-title">Hình ảnh về <?php echo $queried_object->name; ?></h3>
+                        <section class="galleries">
+                            <section id="gallery-slider" style="position:relative;">
+                                <div class="carousel-inner" role="listbox">
+                                    <?php
+                                    $categories = get_categories();
+                                    foreach ($categories as $category) : setup_postdata($category);
+                                        $imgUrls = get_field('departments_gallery', $category);
+                                        if ($queried_object->term_id == $category->term_id) {
+                                            foreach ($imgUrls as $imgUrl) {
+                                                echo '<a class="example-image-link" href="'. $imgUrl['url'] .'"
+                                           data-lightbox="example-set"
+                                           data-title="Hình ảnh '. $category->name .'">
+                                            <img class="example-image" style="height: 195px;"
+                                                 src="'. $imgUrl['url'] .'" alt=""/>
+                                        </a>';
+                                            }
+                                        }
+                                        ?>
 
+
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </section><!--/#main-slider-->
+                        </section>
                         <?php
 
-                            $args_lienquan = array(
-                                'posts_per_page' => 5,
-                                'post_type' => 'hoat_dong',
-                                'post_status' => 'publish',
-                                'tax_query' => array(
-                                    array(
-                                      'taxonomy' => 'chuyen_muc_hoat_dong',
-                                      'field' => 'slug',
-                                      'terms' => array('cac-chuyen-khoa')
-                                    )
+                        $args_lienquan = array(
+                            'posts_per_page' => 5,
+                            'post_type' => 'hoat_dong',
+                            'post_status' => 'publish',
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'chuyen_muc_hoat_dong',
+                                    'field' => 'slug',
+                                    'terms' => array('cac-chuyen-khoa')
                                 )
-                            );
-                            $posts_lienquan = get_posts($args_lienquan);
-                            if(count($posts_lienquan) > 0) {
-                        ?>
-                        <h3 class="column-title">Các bài viết về khoa</h3>
-                        <ul class="post-list">
-                            <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
-                                <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
-                                            href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php } ?>
+                            )
+                        );
+                        $posts_lienquan = get_posts($args_lienquan);
+                        if (count($posts_lienquan) > 0) {
+                            ?>
+                            <h3 class="column-title">Các bài viết về khoa</h3>
+                            <ul class="post-list">
+                                <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
+                                    <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
+                                                href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php } ?>
                         <br/>
                     </div><!---->
                     <!---->
                     <br/>
                     <br/>
                 </div>
-                <?php get_sidebar('chuyen-khoa');?>
+                <?php get_sidebar('chuyen-khoa'); ?>
             </div>
         </div>
     </div>
 </div>
-<?php get_footer();?>
+<?php get_footer(); ?>

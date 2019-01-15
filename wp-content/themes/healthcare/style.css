@@ -47,7 +47,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
     border: none;
 }
 
-#services.galleries .owl-theme .owl-controls {
+.galleries .owl-theme .owl-controls {
     display: none!important;
 }
 #services #exTab1 .nav li.active a{
