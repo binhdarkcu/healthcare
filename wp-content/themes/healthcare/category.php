@@ -19,6 +19,19 @@ $posts_doctors_array = get_posts($args_doctors);
                 <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
                     <!---->
                     <div ng-if="!isRequiredLogin(post.PostInternal)">
+
+                        <?php
+                        $categories = get_categories();
+                        foreach ($categories as $category) : setup_postdata($category);
+                            $notification = get_field('notification', $category);
+                            if ($queried_object->term_id == $category->term_id && $notification) {
+                                echo '<h3 class="column-title">Thông báo</h3>
+                                    <p style="margin-bottom: 30px;">'.$notification.'</p>';
+                            }
+                            ?>
+
+
+                        <?php endforeach; ?>
                         <h3 class="column-title">Tổng quan về <?php echo $queried_object->name; ?></h3>
                         <div>
                             <?php echo category_description($queried_object->ID); ?>
@@ -154,11 +167,11 @@ $posts_doctors_array = get_posts($args_doctors);
                                         $imgUrls = get_field('departments_gallery', $category);
                                         if ($queried_object->term_id == $category->term_id) {
                                             foreach ($imgUrls as $imgUrl) {
-                                                echo '<a class="example-image-link" href="'. $imgUrl['url'] .'"
+                                                echo '<a class="example-image-link" href="' . $imgUrl['url'] . '"
                                            data-lightbox="example-set"
-                                           data-title="Hình ảnh '. $category->name .'">
+                                           data-title="Hình ảnh ' . $category->name . '">
                                             <img class="example-image" style="height: 195px;"
-                                                 src="'. $imgUrl['url'] .'" alt=""/>
+                                                 src="' . $imgUrl['url'] . '" alt=""/>
                                         </a>';
                                             }
                                         }
