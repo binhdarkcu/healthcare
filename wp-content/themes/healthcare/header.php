@@ -56,6 +56,15 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/droplinetabs.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/select2.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        var onloadCallback = function() {
+            grecaptcha.render('example1', {
+                'sitekey' : '6LdaBI8UAAAAAC_IYbbefBkIQ33GRb8K5Xb4GbUL'
+            });
+        };
+    </script>
+    <?php wp_head() ?>
 </head>
 
 <body id="home" class="homepage" ng-controller="AppController" style="">

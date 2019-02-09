@@ -335,12 +335,76 @@
     add_action( 'admin_menu', 'revcon_change_post_label' );
     add_action( 'init', 'revcon_change_post_object' );
 
-function slug($str){
-    $str = strtolower(trim($str));
-    $str = preg_replace('/[^a-z0-9-]/', '-', $str);
-    $str = preg_replace('/-+/', "-", $str);
-    return $str;
-}
+    function customize_acf() {
+        echo '<style>
+            .d-none {
+                display: none !important;
+            } 
+      </style>';
+    }
+    add_action('admin_head', 'customize_acf');
 
+    /*
+    * The AJAX handler function
+    */
+    function localize_my_scripts() {
+        wp_enqueue_script( 'moment-script', get_template_directory_uri() . '/assets/moment.js', array('jquery'));
+        wp_enqueue_script( 'moment-locales-script', get_template_directory_uri() . '/assets/moment-with-locales.js', array('jquery'));
+        wp_enqueue_script( 'bootstrap-datepicker', get_template_directory_uri() . '/assets/bootstrap-datepicker.js', array('jquery'));
+        wp_enqueue_script( 'bootstrap-datepicker-vi', get_template_directory_uri() . '/assets/bootstrap-datepicker.vi.js', array('jquery'));
+        wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/assets/ajaxCall.js', array('jquery'));
+        wp_localize_script('ajax-script', 'my_ajax_insert_db', [ 'ajax_url' => admin_url( 'admin-ajax.php' ) ] );
+    }
+    add_action( 'wp_enqueue_scripts', 'localize_my_scripts' );
 
+    function insert_db() {
+        // Do your processing here (save to database etc.)
+        // All WP API functions are available for you here
+        global $wpdb;
+        $id_doctor = ( isset( $_POST['id_doctor'] ) ) ? $_POST['id_doctor'] : '';
+        $day_booked = ( isset( $_POST['day_booked'] ) ) ? $_POST["day_booked"] : '';
+        $time_booked = ( isset( $_POST['time_booked'] ) ) ? $_POST['time_booked'] : '';
+        $symptom = ( isset( $_POST['symptom'] ) ) ? $_POST['symptom'] : '';
+        $full_name = ( isset( $_POST['full_name'] ) ) ? $_POST['full_name'] : '';
+        $birthday = ( isset( $_POST['birthday'] ) ) ? $_POST['birthday']: '';
+        $gender = ( isset( $_POST['gender'] ) ) ? $_POST['gender'] : '';
+        $email = ( isset( $_POST['email'] ) ) ? $_POST['email'] : '';
+        $phone = ( isset( $_POST['phone'] ) ) ? $_POST['phone'] : '';
+        $wpdb->insert('wp_dathen', array(
+            'id_doctor' => $id_doctor,
+            'dayChecked' => $day_booked,
+            'time' => $time_booked,
+            'symptom' => $symptom,
+            'full_name' => $full_name,
+            'birthday' => $birthday,
+            'gender' => $gender,
+            'email' => $email,
+            'phone' => $phone,
+        ));
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action( 'wp_ajax_nopriv_action_insert_db', 'insert_db' );
+    // This will allow only logged in users to use the functionality
+    add_action( 'wp_ajax_action_insert_db', 'insert_db' );
+
+    //check time
+    function checkTimeBoooked() {
+        global $wpdb;
+        $id_doctor = ( isset( $_GET['id_doctor'] ) ) ? $_GET['id_doctor'] : '';
+        $day_booked = ( isset( $_GET['day_booked'] ) ) ? $_GET['day_booked'] : '';
+        $result = "SELECT * 
+                  FROM wp_dathen 
+                  WHERE id_doctor = $id_doctor AND dayChecked = '$day_booked'"
+        ;
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action( 'wp_ajax_nopriv_action_check_time_booked', 'checkTimeBoooked' );
+    // This will allow only logged in users to use the functionality
+    add_action( 'wp_ajax_action_check_time_booked', 'checkTimeBoooked' );
 ?>
