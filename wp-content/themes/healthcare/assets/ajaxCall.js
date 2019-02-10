@@ -85,23 +85,14 @@ jQuery(document).ready(function(){
                 data: {
                     action: 'action_check_time_booked',
                     id_doctor: selectDoctor,
-                    day_booked: dateAppointment.toString()
+                    day_booked: dateAppointment,
+                    time: timeAppointment
                 },
                 url: my_ajax_insert_db.ajax_url,
                 success: function (response) {
                     if(response.length > 0) {
-                        var timeChecked = response.filter(function (e) {
-                            return e.time == timeAppointment
-                        });
-                        if(timeChecked.length > 0) {
-                            $('#timeAppointment').addClass(clsName);
-                            $('#duplicateTime').removeClass('hidden');
-                        } else {
-                            switchTab.tab('show');
-                            $('#duplicateTime').addClass('hidden');
-                            switchTab.removeClass('disableTab');
-                            $('#timeAppointment').removeClass(clsName);
-                        }
+                        $('#timeAppointment').addClass(clsName);
+                        $('#duplicateTime').removeClass('hidden');
                     } else {
                         $('#timeAppointment').removeClass(clsName);
                         $('#duplicateTime').addClass('hidden');

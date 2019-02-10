@@ -55,7 +55,7 @@ $queried_object = get_queried_object();
                                                      data-date-today-highlight="true">
                                                     <input type="text"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
-                                                           id="dateAppointment" placeholder="Chọn ngày"
+                                                           id="dateAppointment" placeholder="Chọn ngày" autocomplete="off"
                                                            aria-invalid="false">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
@@ -182,12 +182,12 @@ $queried_object = get_queried_object();
                                         <div class="col-md-6 col-sm-9 col-xs-8">
                                             <label class="radio-inline">
                                                 <input type="radio" name="genderOptRadio" id="male"
-                                                       class="ng-pristine ng-untouched ng-valid ng-empty" value="0"
+                                                       class="ng-pristine ng-untouched ng-valid ng-empty" value="Nam"
                                                        aria-invalid="false">Nam
                                             </label>
                                             <label class="radio-inline">
                                                 <input type="radio" name="genderOptRadio" id="female"
-                                                       class="ng-pristine ng-untouched ng-valid ng-empty" value="1"
+                                                       class="ng-pristine ng-untouched ng-valid ng-empty" value="Nữ"
                                                        aria-invalid="false">Nữ
                                             </label>
                                             <input type="hidden" id="valueGender" value="0">
