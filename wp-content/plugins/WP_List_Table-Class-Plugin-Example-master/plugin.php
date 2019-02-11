@@ -163,7 +163,6 @@ class Customers_List extends WP_List_Table {
 	function get_columns() {
 		$columns = [
 			'cb'      => '<input type="checkbox" />',
-			'id_doctor'      => __('Bác sĩ', 'sp'),
 			'name'    => __( 'Tên bệnh nhân', 'sp' ),
 			'birthday'    => __( 'Năm sinh', 'sp' ),
             'symptom' => __( 'Triệu chứng', 'sp' ),
@@ -239,13 +238,7 @@ class Customers_List extends WP_List_Table {
 			}
 			else {
 				self::delete_customer( absint( $_GET['customer'] ) );
-
-		                // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-		                // add_query_arg() return the current url
-		                wp_redirect( esc_url_raw(add_query_arg()) );
-				exit;
-			}
-
+            }
 		}
 
 		// If the delete bulk action is triggered
@@ -260,11 +253,6 @@ class Customers_List extends WP_List_Table {
 				self::delete_customer( $id );
 
 			}
-
-			// esc_url_raw() is used to prevent converting ampersand in url to "#038;"
-		        // add_query_arg() return the current url
-                wp_redirect( esc_url(add_query_arg()) );
-			exit;
 		}
 	}
 
