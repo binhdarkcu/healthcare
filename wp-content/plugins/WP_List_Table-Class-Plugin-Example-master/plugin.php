@@ -54,6 +54,22 @@ class Customers_List extends WP_List_Table {
 		return $result;
 	}
 
+	public  static function get_search($per_page = -1, $page_number = 1) {
+	    global $wpdb;
+	    $key = $_GET['s'];
+        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%'";
+        if ( ! empty( $_REQUEST['orderby'] ) ) {
+            $sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
+            $sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';
+        }
+
+        $sql .= " LIMIT $per_page";
+        $sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+
+        return $result;
+    }
+
 
 	/**
 	 * Delete a customer record.
@@ -62,14 +78,12 @@ class Customers_List extends WP_List_Table {
 	 */
 	public static function delete_customer( $id ) {
 		global $wpdb;
-
 		$wpdb->delete(
 			"{$wpdb->prefix}dathen",
 			[ 'ID' => $id ],
 			[ '%d' ]
 		);
 	}
-
 
 	/**
 	 * Returns the count of records in the database.
@@ -154,6 +168,18 @@ class Customers_List extends WP_List_Table {
 		return $title . $this->row_actions( $actions );
 	}
 
+	function column_status($item) {
+        $status2 = $item['status'] == 'Đã khám' ? 'Chưa khám' : 'Đã khám';
+	    $title = '<select>
+            <option value="'.$item["status"].'">'.$item["status"].'</option>
+            <option value="'.$status2.'">'.$status2.'</option>
+        </select>';
+        $actions = [
+            'edit' => sprintf( '<a id="update_status%s" style="color: #000; cursor: pointer" href="?page=%s&action=%s&id=%s&status=%s">Cập nhật</a>', $item['ID'], esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['ID'] ), $status2 )
+        ];
+        return $title . $this->row_actions( $actions );
+    }
+
 
 	/**
 	 *  Associative array of columns
@@ -196,7 +222,7 @@ class Customers_List extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = [
-			'bulk-delete' => 'Delete'
+			'bulk-delete' => 'Delete',
 		];
 
 		return $actions;
@@ -221,8 +247,11 @@ class Customers_List extends WP_List_Table {
 			'total_items' => $total_items, //WE have to calculate the total number of items
 			'per_page'    => $per_page //WE have to determine how many items to show on a page
 		] );
-
-		$this->items = self::get_customers( $per_page, $current_page );
+        if(isset($_GET['s']))  {
+            $this->items = self::get_search($per_page, $current_page);
+        } else {
+            $this->items = self::get_customers( $per_page, $current_page );
+        }
 	}
 
 	public function process_bulk_action() {
@@ -238,21 +267,48 @@ class Customers_List extends WP_List_Table {
 			}
 			else {
 				self::delete_customer( absint( $_GET['customer'] ) );
+                wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
+                $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+                echo '<script type="text/javascript">
+                    location.replace("http://'.$url.'")
+                </script>';
             }
 		}
 
+		if('edit' === $this->current_action()) {
+            global $wpdb;
+            $id = $_GET['id'];
+            $status = $_GET['status'];
+            $wpdb->update(
+                $wpdb->prefix .'dathen',
+                array(
+                    'status' => $status
+                ),
+                array(
+                    "ID" => $id
+                )
+            );
+            wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
+            $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+            echo '<script type="text/javascript">
+                    location.replace("http://'.$url.'")
+                </script>';
+        }
+
 		// If the delete bulk action is triggered
-		if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' )
-		     || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
-		) {
+		if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
 
 			$delete_ids = esc_sql( $_POST['bulk-delete'] );
 
 			// loop over the array of record IDs and delete them
 			foreach ( $delete_ids as $id ) {
 				self::delete_customer( $id );
-
 			}
+            wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
+            $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+            echo '<script type="text/javascript">
+                    location.replace("http://'.$url.'")
+                </script>';
 		}
 	}
 
@@ -305,7 +361,8 @@ class SP_Plugin {
 				<div id="post-body" class="metabox-holder">
 					<div id="post-body-content">
 						<div class="meta-box-sortables ui-sortable">
-							<form method="post">
+							<form method="get">
+                                <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
 								<?php
 								$this->customers_obj->prepare_items();
                                 $this->customers_obj->search_box('Search', 'search');
