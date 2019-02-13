@@ -39,7 +39,7 @@ class Customers_List extends WP_List_Table {
 
 		global $wpdb;
 
-		$sql = "SELECT * FROM {$wpdb->prefix}dathen";
+		$sql = "SELECT * FROM {$wpdb->prefix}dathen ORDER BY full_name DESC";
 
 		if ( ! empty( $_REQUEST['orderby'] ) ) {
 			$sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
@@ -57,7 +57,7 @@ class Customers_List extends WP_List_Table {
 	public  static function get_search($per_page = -1, $page_number = 1) {
 	    global $wpdb;
 	    $key = $_GET['s'];
-        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%'";
+        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%' ORDER BY full_name DESC";
         if ( ! empty( $_REQUEST['orderby'] ) ) {
             $sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
             $sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';
@@ -270,7 +270,7 @@ class Customers_List extends WP_List_Table {
                 wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
                 $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
                 echo '<script type="text/javascript">
-                    location.replace("http://'.$url.'")
+                    location.replace("https://'.$url.'")
                 </script>';
             }
 		}
@@ -291,7 +291,7 @@ class Customers_List extends WP_List_Table {
             wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
             $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
             echo '<script type="text/javascript">
-                    location.replace("http://'.$url.'")
+                    location.replace("https://'.$url.'")
                 </script>';
         }
 
@@ -307,7 +307,7 @@ class Customers_List extends WP_List_Table {
             wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
             $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
             echo '<script type="text/javascript">
-                    location.replace("http://'.$url.'")
+                    location.replace("https://'.$url.'")
                 </script>';
 		}
 	}

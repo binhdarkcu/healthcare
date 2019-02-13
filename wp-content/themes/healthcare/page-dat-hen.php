@@ -14,7 +14,7 @@ $queried_object = get_queried_object();
                             <li class="active"><a showtab="" data-toggle="tab" href="#appointment" aria-expanded="true"><i
                                             class="fa fa-calendar" aria-hidden="true"></i> Thông tin cuộc hẹn</a></li>
                             <li class=""><a showtab="" data-toggle="tab" href="#infoOrderer" aria-expanded="false"
-                                            class=""><i
+                                            class="disableTab"><i
                                             class="fa fa-id-card-o" aria-hidden="true"></i> Thông tin cá nhân</a></li>
                             <!--<li class=""><a ng-show="mailActiveId!=undefined" showtab="" data-toggle="tab" href="#checkandConfirm"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Kiểm tra và xác nhận</a></li>-->
                         </ul>
