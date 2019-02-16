@@ -22,7 +22,7 @@
                                             <h2><?php echo get_the_title() ?></h2>
                                             <p><?php echo get_the_content() ?></p>
                                             <?php if (get_field('button_text')): ?>
-                                                <a class="btn btn-primary btn-lg" href="<?php echo get_field('button') ?>"><?php echo get_field('button_text') ?></a>
+                                                <a class="btn btn-primary btn-lg" style="color: #fff;" href="<?php echo get_field('button') ?>"><?php echo get_field('button_text') ?></a>
                                             <?php endif;?>
                                         </div>
                                     </div>

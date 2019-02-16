@@ -1,4 +1,14 @@
 jQuery(document).ready(function(){
+    var date = new Date();
+    date.setDate(date.getDate()+1);
+    $('#dateTimePicker input').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: date,
+        todayHighlight: true,
+        autoclose: true,
+        language: 'vi',
+        daysOfWeekHighlighted: '0.6'
+    })
     var clsName = 'has-error';
     var selectDoctor, dateAppointment,
         timeAppointment,
@@ -67,9 +77,10 @@ jQuery(document).ready(function(){
     });
     $('#nextStep').click(function () {
         selectDoctor = $('#selectDoctor').val();
-        dateAppointment = $('#dateAppointment').datepicker().val();
+        dateAppointment = $('#dateTimePicker input').datepicker().val();
         symptom = $('#symptom').val();
         timeAppointment = $('#timeAppointment').val();
+        console.log(dateAppointment)
         if (selectDoctor !== 0 && dateAppointment !== '' && symptom !== '') {
             if (symptom) {
                 $('#symptom').removeClass(clsName)
@@ -78,7 +89,7 @@ jQuery(document).ready(function(){
                 $('.select2-selection--single').removeClass(clsName)
             }
             if (dateAppointment) {
-                $('#dateAppointment').removeClass(clsName)
+                $('#dateTimePicker input').removeClass(clsName)
             }
             $.ajax({
                 type: 'GET',
@@ -108,8 +119,8 @@ jQuery(document).ready(function(){
             if (selectDoctor == 0) {
                 $('.select2-selection--single').addClass(clsName)
             }
-            if (!dateAppointment) {
-                $('#dateAppointment').addClass(clsName)
+            if (dateAppointment == '') {
+                $('#dateTimePicker input').addClass(clsName)
             }
         }
         return false

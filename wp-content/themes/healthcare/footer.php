@@ -136,9 +136,6 @@
 <!-------------------------------------------->
 <!-----------------SCRIPT--------------------->
 <!-------------------------------------------->
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
 </script>

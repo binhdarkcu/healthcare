@@ -1,4 +1,4 @@
-<?php /* Template Name: Giới thiệu Template */ ?>
+<?php /* Template Name: Giới thiệu Template 2 */ ?>
 <?php get_header()?>
 <?php
 while ( have_posts() ) : the_post();

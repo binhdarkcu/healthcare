@@ -15,14 +15,6 @@ while (have_posts()) : the_post();
                     <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
                         <!---->
                         <div ng-if="!isRequiredLogin(post.PostInternal)">
-                            <!--                        --><?php //echo get_template_part('tpl-social-share'); ?>
-
-                            <!--                        <span style="font-size: 12px; display: block;margin-bottom: 5px; text-transform: uppercase; color: #45aed6;">-->
-                            <?php //echo the_date('d-m-Y'); ?><!--</span>-->
-                            <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->
-                            <!--                        <div class="posts">-->
-                            <!--                            --><?php //echo the_content();?>
-                            <!--                        </div>-->
                             <div class="row" style="margin-bottom: 30px;">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <img style="width: 100%" src="<?php echo $bigImg ?>" class="img-responsive" alt="">

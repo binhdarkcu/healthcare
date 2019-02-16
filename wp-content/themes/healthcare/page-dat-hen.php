@@ -48,14 +48,10 @@ $queried_object = get_queried_object();
                                             <label for="dateOrder" class="col-md-4 col-sm-4 col-xs-4"
                                                    style="padding-right:0;">Thời gian đặt hẹn: </label>
                                             <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <div id="dateTimePicker" class="input-group date"
-                                                     data-provide="datepicker" data-date-autoclose="true"
-                                                     data-date-format="dd/mm/yyyy"
-                                                     data-date-days-of-week-highlighted="0,6" data-date-language="vi"
-                                                     data-date-today-highlight="true">
+                                                <div id="dateTimePicker" class="input-group date">
                                                     <input type="text"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
-                                                           id="dateAppointment" placeholder="Chọn ngày" autocomplete="off"
+                                                           placeholder="Chọn ngày" autocomplete="off"
                                                            aria-invalid="false">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
