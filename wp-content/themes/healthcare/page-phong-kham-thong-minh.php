@@ -16,7 +16,7 @@
                         <h3 class="column-title"><?php echo the_title();?></h3>
 
 <?php echo get_template_part('tpl-social-share'); ?>
-                        <span style="font-size: 12px; display: block;margin-bottom: 5px; text-transform: uppercase; color: #45aed6;"><?php echo the_date('d-m-Y'); ?></span>
+                        <span style="font-size: 12px; display: block;margin-bottom: 5px; text-transform: uppercase; color: #f7931d;"><?php echo the_date('d-m-Y'); ?></span>
                         <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->
                         <div class="posts">
                             <?php echo the_content();?>

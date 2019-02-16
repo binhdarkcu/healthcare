@@ -298,3 +298,9 @@ table.tb-shedule th {
     display: block;
     margin-bottom: 15px;
 }
+body a {
+    color: #f7931d;
+}
+#nextStep, #registerUser {
+    background: #f7931d !important;
+}

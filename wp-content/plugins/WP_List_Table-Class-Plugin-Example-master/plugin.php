@@ -39,7 +39,7 @@ class Customers_List extends WP_List_Table {
 
 		global $wpdb;
 
-		$sql = "SELECT * FROM {$wpdb->prefix}dathen ORDER BY full_name DESC";
+		$sql = "SELECT * FROM {$wpdb->prefix}dathen ORDER BY ID DESC";
 
 		if ( ! empty( $_REQUEST['orderby'] ) ) {
 			$sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
@@ -57,7 +57,7 @@ class Customers_List extends WP_List_Table {
 	public  static function get_search($per_page = -1, $page_number = 1) {
 	    global $wpdb;
 	    $key = $_GET['s'];
-        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%' ORDER BY full_name DESC";
+        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%' ORDER BY ID DESC";
         if ( ! empty( $_REQUEST['orderby'] ) ) {
             $sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
             $sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';
@@ -269,8 +269,9 @@ class Customers_List extends WP_List_Table {
 				self::delete_customer( absint( $_GET['customer'] ) );
                 wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
                 $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+                $protocol = $_SERVER['HTTP_HOST'] == 'localhost' ? 'http' : 'https';
                 echo '<script type="text/javascript">
-                    location.replace("https://'.$url.'")
+                    location.replace("'.$protocol.'://'.$url.'")
                 </script>';
             }
 		}
@@ -290,8 +291,9 @@ class Customers_List extends WP_List_Table {
             );
             wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
             $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+            $protocol = $_SERVER['HTTP_HOST'] == 'localhost' ? 'http' : 'https';
             echo '<script type="text/javascript">
-                    location.replace("https://'.$url.'")
+                    location.replace("'.$protocol.'://'.$url.'")
                 </script>';
         }
 
@@ -306,8 +308,9 @@ class Customers_List extends WP_List_Table {
 			}
             wp_redirect(get_permalink($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class'));
             $url = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=wp_list_table_class';
+            $protocol = $_SERVER['HTTP_HOST'] == 'localhost' ? 'http' : 'https';
             echo '<script type="text/javascript">
-                    location.replace("https://'.$url.'")
+                    location.replace("'.$protocol.'://'.$url.'")
                 </script>';
 		}
 	}
@@ -341,7 +344,7 @@ class SP_Plugin {
 			'Đặt hẹn',
 			'manage_options',
 			'wp_list_table_class',
-			[ $this, 'plugin_settings_page' ]
+			[ $this, 'plugin_settings_page' ], '', 6
 		);
 
 		add_action( "load-$hook", [ $this, 'screen_option' ] );

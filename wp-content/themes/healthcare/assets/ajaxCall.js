@@ -52,6 +52,7 @@ jQuery(document).ready(function(){
                 },
                 url: my_ajax_insert_db.ajax_url
             });
+            alert('Đăng ký thành công');
             return true
         } else {
             if (name.val() == '') {
