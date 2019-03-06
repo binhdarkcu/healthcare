@@ -113,7 +113,7 @@ if ( $action ) {
 				$screen = get_current_screen()->id;
 
 				/**
-				 * Fires when a custom bulk action should be handled.
+				 * Fires when a custom.php bulk action should be handled.
 				 *
 				 * The redirect link should be modified with success or failure feedback
 				 * from the action to be used to display feedback to the user.

@@ -45,7 +45,7 @@
 			/**
 			 * Custom error handler.
 			 *
-			 * Sets up a custom error handler in case a video render fails, and provides a download
+			 * Sets up a custom.php error handler in case a video render fails, and provides a download
 			 * link as the fallback.
 			 *
 			 * @since 4.9.3

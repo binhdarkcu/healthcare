@@ -623,7 +623,7 @@ msgstr "Regler"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr "Reglera var denna fältgrupp ska visas"
 
 #: includes/admin/views/field-group-options.php:23
@@ -903,7 +903,7 @@ msgstr ""
 "tidigare. Vi hoppas att du gillar det."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "En smidigare fältupplevelse"
 
 #: includes/admin/views/settings-info.php:22
@@ -1371,7 +1371,7 @@ msgid "Allow Custom"
 msgstr "Tillåt annat val"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr "Tillåter 'annat val' att väljas"
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1379,7 +1379,7 @@ msgid "Save Custom"
 msgstr "Spara annat val"
 
 #: includes/fields/class-acf-field-checkbox.php:271
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr "Spara 'annat val' värdet till fältets val"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2144,7 +2144,7 @@ msgid "Other"
 msgstr "Annat"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Lägg till värdet 'annat' för att tillåta egna värden"
 
 #: includes/fields/class-acf-field-radio.php:280

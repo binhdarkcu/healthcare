@@ -25,7 +25,7 @@ class EDD_SL_Plugin_Updater {
 	 * @uses plugin_basename()
 	 * @uses hook()
 	 *
-	 * @param string  $_api_url     The URL pointing to the custom API endpoint.
+	 * @param string  $_api_url     The URL pointing to the custom.php API endpoint.
 	 * @param string  $_plugin_file Path to the plugin file.
 	 * @param array   $_api_data    Optional data to send with API calls.
 	 */
@@ -61,14 +61,14 @@ class EDD_SL_Plugin_Updater {
 	 * Check for Updates at the defined API endpoint and modify the update array.
 	 *
 	 * This function dives into the update API just when WordPress creates its update array,
-	 * then adds a custom API call and injects the custom plugin data retrieved from the API.
+	 * then adds a custom.php API call and injects the custom.php plugin data retrieved from the API.
 	 * It is reassembled from parts of the native WordPress plugin update code.
 	 * See wp-includes/update.php line 121 for the original wp_update_plugins() function.
 	 *
 	 * @uses api_request()
 	 *
 	 * @param array   $_transient_data Update array build by WordPress.
-	 * @return array Modified update array with custom plugin data.
+	 * @return array Modified update array with custom.php plugin data.
 	 */
 	function check_update( $_transient_data ) {
 
@@ -128,7 +128,7 @@ class EDD_SL_Plugin_Updater {
 		remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ), 10 );
 
 		$update_cache = get_site_transient( 'update_plugins' );
-		
+
 		$update_cache = is_object( $update_cache ) ? $update_cache : new stdClass();
 
 		if ( empty( $update_cache->response ) || empty( $update_cache->response[ $this->name ] ) ) {
@@ -199,7 +199,7 @@ class EDD_SL_Plugin_Updater {
 
 
 	/**
-	 * Updates information on the "View version x.x details" page with custom data.
+	 * Updates information on the "View version x.x details" page with custom.php data.
 	 *
 	 * @uses api_request()
 	 *

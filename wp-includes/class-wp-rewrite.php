@@ -1036,7 +1036,7 @@ class WP_Rewrite {
 				}
 
 				if ( ! $post ) {
-					// For custom post types, we need to add on endpoints as well.
+					// For custom.php post types, we need to add on endpoints as well.
 					foreach ( get_post_types( array('_builtin' => false ) ) as $ptype ) {
 						if ( strpos($struct, "%$ptype%") !== false ) {
 							$post = true;

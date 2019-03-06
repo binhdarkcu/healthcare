@@ -955,7 +955,7 @@ function wp_print_media_templates() {
 											</option>
 										<# } #>
 									<?php endforeach; ?>
-									<option value="<?php echo esc_attr( 'custom' ); ?>">
+									<option value="<?php echo esc_attr( 'custom.php' ); ?>">
 										<?php _e( 'Custom Size' ); ?>
 									</option>
 								</select>
@@ -1264,7 +1264,7 @@ function wp_print_media_templates() {
 	<?php
 
 	/**
-	 * Fires when the custom Backbone media templates are printed.
+	 * Fires when the custom.php Backbone media templates are printed.
 	 *
 	 * @since 3.5.0
 	 */

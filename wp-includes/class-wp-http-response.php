@@ -141,7 +141,7 @@ class WP_HTTP_Response {
 	 * Retrieves the response data for JSON serialization.
 	 *
 	 * It is expected that in most implementations, this will return the same as get_data(),
-	 * however this may be different if you want to do custom JSON data handling.
+	 * however this may be different if you want to do custom.php JSON data handling.
 	 *
 	 * @since 4.4.0
 	 *

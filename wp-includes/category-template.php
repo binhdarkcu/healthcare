@@ -64,7 +64,7 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
  * This tag may be used outside The Loop by passing a post id as the parameter.
  *
  * Note: This function only returns results from the default "category" taxonomy.
- * For custom taxonomies use get_the_terms().
+ * For custom.php taxonomies use get_the_terms().
  *
  * @since 0.71
  *
@@ -113,7 +113,7 @@ function get_the_category_by_ID( $cat_ID ) {
 }
 
 /**
- * Retrieve category list for a post in either HTML list or custom format.
+ * Retrieve category list for a post in either HTML list or custom.php format.
  *
  * @since 1.5.1
  *
@@ -237,7 +237,7 @@ function in_category( $category, $post = null ) {
 }
 
 /**
- * Display category list for a post in either HTML list or custom format.
+ * Display category list for a post in either HTML list or custom.php format.
  *
  * @since 0.71
  *
@@ -570,7 +570,7 @@ function wp_list_categories( $args = '' ) {
 
 			$posts_page = '';
 
-			// For taxonomies that belong only to custom post types, point to a valid archive.
+			// For taxonomies that belong only to custom.php post types, point to a valid archive.
 			$taxonomy_object = get_taxonomy( $r['taxonomy'] );
 			if ( ! in_array( 'post', $taxonomy_object->object_type ) && ! in_array( 'page', $taxonomy_object->object_type ) ) {
 				foreach ( $taxonomy_object->object_type as $object_type ) {

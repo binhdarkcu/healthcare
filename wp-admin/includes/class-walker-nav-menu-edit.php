@@ -151,7 +151,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 			</div>
 
 			<div class="menu-item-settings wp-clearfix" id="menu-item-settings-<?php echo $item_id; ?>">
-				<?php if ( 'custom' == $item->type ) : ?>
+				<?php if ( 'custom.php' == $item->type ) : ?>
 					<p class="field-url description description-wide">
 						<label for="edit-menu-item-url-<?php echo $item_id; ?>">
 							<?php _e( 'URL' ); ?><br />
@@ -207,7 +207,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				</fieldset>
 
 				<div class="menu-item-actions description-wide submitbox">
-					<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
+					<?php if ( 'custom.php' != $item->type && $original_title !== false ) : ?>
 						<p class="link-to-original">
 							<?php printf( __('Original: %s'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 						</p>

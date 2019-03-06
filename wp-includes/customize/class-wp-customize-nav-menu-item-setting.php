@@ -47,7 +47,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		'object'           => '', // Taxonomy name.
 		'menu_item_parent' => 0, // A.K.A. menu-item-parent-id; note that post_parent is different, and not included.
 		'position'         => 0, // A.K.A. menu_order.
-		'type'             => 'custom', // Note that type_label is not included here.
+		'type'             => 'custom.php', // Note that type_label is not included here.
 		'title'            => '',
 		'url'              => '',
 		'target'           => '',
@@ -660,7 +660,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			'object'           => '',
 			'menu_item_parent' => 0,
 			'position'         => 0,
-			'type'             => 'custom',
+			'type'             => 'custom.php',
 			'title'            => '',
 			'url'              => '',
 			'target'           => '',

@@ -3,7 +3,7 @@
 
 	// Variables and DOM Caching.
 	var $body = $( 'body' ),
-		$customHeader = $body.find( '.custom-header' ),
+		$customHeader = $body.find( '.custom.php-header' ),
 		$branding = $customHeader.find( '.site-branding' ),
 		$navigation = $body.find( '.navigation-top' ),
 		$navWrap = $navigation.find( '.wrap' ),
@@ -63,14 +63,14 @@
 			// Make sure the nav isn't taller than two rows.
 			if ( navIsNotTooTall ) {
 
-				// When there's a custom header image or video, the header offset includes the height of the navigation.
+				// When there's a custom.php header image or video, the header offset includes the height of the navigation.
 				if ( isFrontPage && ( $body.hasClass( 'has-header-image' ) || $body.hasClass( 'has-header-video' ) ) ) {
 					headerOffset = $customHeader.innerHeight() - navigationOuterHeight;
 				} else {
 					headerOffset = $customHeader.innerHeight();
 				}
 
-				// If the scroll is more than the custom header, set the fixed class.
+				// If the scroll is more than the custom.php header, set the fixed class.
 				if ( $( window ).scrollTop() >= headerOffset ) {
 					$navigation.addClass( navigationFixedClass );
 				} else {
@@ -242,7 +242,7 @@
 	});
 
 	// Add header video class after the video is loaded.
-	$( document ).on( 'wp-custom-header-video-loaded', function() {
+	$( document ).on( 'wp-custom.php-header-video-loaded', function() {
 		$body.addClass( 'has-header-video' );
 	});
 

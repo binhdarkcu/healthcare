@@ -31,16 +31,16 @@ function cptui_edit_plugin_list_links( $links ) {
 		unset( $links['edit'] );
 	}
 
-	// Add our custom links to the returned array value.
+	// Add our custom.php links to the returned array value.
 	return array_merge( array(
-		'<a href="' . admin_url( 'admin.php?page=cptui_main_menu' ) . '">' . __( 'About', 'custom-post-type-ui' ) . '</a>',
-		'<a href="' . admin_url( 'admin.php?page=cptui_support' ) . '">' . __( 'Help', 'custom-post-type-ui' ) . '</a>',
+		'<a href="' . admin_url( 'admin.php?page=cptui_main_menu' ) . '">' . __( 'About', 'custom.php-post-type-ui' ) . '</a>',
+		'<a href="' . admin_url( 'admin.php?page=cptui_support' ) . '">' . __( 'Help', 'custom.php-post-type-ui' ) . '</a>',
 	), $links );
 }
-add_filter( 'plugin_action_links_' . plugin_basename( dirname( dirname( __FILE__ ) ) ) . '/custom-post-type-ui.php', 'cptui_edit_plugin_list_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( dirname( dirname( __FILE__ ) ) ) . '/custom.php-post-type-ui.php', 'cptui_edit_plugin_list_links' );
 
 /**
- * Returns SVG icon for custom menu icon
+ * Returns SVG icon for custom.php menu icon
  *
  * @since 1.2.0
  *
@@ -103,28 +103,28 @@ function cptui_footer( $original = '' ) {
 	}
 
 	return sprintf(
-		__( '%s version %s by %s', 'custom-post-type-ui' ),
-		__( 'Custom Post Type UI', 'custom-post-type-ui' ),
+		__( '%s version %s by %s', 'custom.php-post-type-ui' ),
+		__( 'Custom Post Type UI', 'custom.php-post-type-ui' ),
 		CPTUI_VERSION,
 		'<a href="https://webdevstudios.com" target="_blank">WebDevStudios</a>'
 	) . ' - ' .
 	sprintf(
-		'<a href="http://wordpress.org/support/plugin/custom-post-type-ui" target="_blank">%s</a>',
-		__( 'Support forums', 'custom-post-type-ui' )
+		'<a href="http://wordpress.org/support/plugin/custom.php-post-type-ui" target="_blank">%s</a>',
+		__( 'Support forums', 'custom.php-post-type-ui' )
 	) . ' - ' .
 	sprintf(
-		'<a href="https://wordpress.org/plugins/custom-post-type-ui/reviews/" target="_blank">%s</a>',
+		'<a href="https://wordpress.org/plugins/custom.php-post-type-ui/reviews/" target="_blank">%s</a>',
 		sprintf(
 			// translators: Placeholder will hold `<abbr>` tag for CPTUI.
-			__( 'Review %s', 'custom-post-type-ui' ),
+			__( 'Review %s', 'custom.php-post-type-ui' ),
 			sprintf(
 				'<abbr title="%s">%s</abbr>',
-				esc_attr__( 'Custom Post Type UI', 'custom-post-type-ui' ),
+				esc_attr__( 'Custom Post Type UI', 'custom.php-post-type-ui' ),
 				'CPTUI'
 			)
 		)
 	) . ' - ' .
-	__( 'Follow on Twitter:', 'custom-post-type-ui' ) .
+	__( 'Follow on Twitter:', 'custom.php-post-type-ui' ) .
 	sprintf(
 		' %s',
 		'<a href="https://twitter.com/webdevstudios" target="_blank">WebDevStudios</a>'
@@ -349,8 +349,8 @@ function cptui_products_sidebar() {
 		}
 		printf(
 			'<p><a href="%s">%s</a></p>',
-			'https://pluginize.com/plugins/custom-post-type-ui-extended/ref/pluginizeaff/?campaign=cptui-sidebar-remove',
-			esc_html__( 'Remove these ads?', 'custom-post-type-ui' )
+			'https://pluginize.com/plugins/custom.php-post-type-ui-extended/ref/pluginizeaff/?campaign=cptui-sidebar-remove',
+			esc_html__( 'Remove these ads?', 'custom.php-post-type-ui' )
 		);
 	}
 	echo '</div>';
@@ -371,9 +371,9 @@ function cptui_newsletter_form() {
 <div id="mc_embed_signup">
 	<form action="//webdevstudios.us1.list-manage.com/subscribe/post?u=67169b098c99de702c897d63e&amp;id=9cb1c7472e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 		<div id="mc_embed_signup_scroll">
-			<p><strong><?php esc_html_e( 'Get email updates from pluginize.com about Custom Post Type UI', 'custom-post-type-ui' ); ?></strong></p>
+			<p><strong><?php esc_html_e( 'Get email updates from pluginize.com about Custom Post Type UI', 'custom.php-post-type-ui' ); ?></strong></p>
 			<div class="mc-field-group">
-				<label for="mce-EMAIL"><?php esc_html_e( 'Email Address', 'custom-post-type-ui' ); ?></label>
+				<label for="mce-EMAIL"><?php esc_html_e( 'Email Address', 'custom.php-post-type-ui' ); ?></label>
 				<input tabindex="-1" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 			</div>
 			<div id="mce-responses" class="clear">
@@ -383,7 +383,7 @@ function cptui_newsletter_form() {
 			<div style="position: absolute; left: -5000px;" aria-hidden="true">
 				<input type="text" name="b_67169b098c99de702c897d63e_9cb1c7472e" tabindex="-1" value=""></div>
 			<div class="clear">
-				<input type="submit" value="<?php esc_attr_e( 'Subscribe', 'custom-post-type-ui' ); ?>" name="subscribe" id="mc-embedded-subscribe" class="button" tabindex="-1">
+				<input type="submit" value="<?php esc_attr_e( 'Subscribe', 'custom.php-post-type-ui' ); ?>" name="subscribe" id="mc-embedded-subscribe" class="button" tabindex="-1">
 			</div>
 		</div>
 	</form>
@@ -456,7 +456,7 @@ function cptui_get_ads() {
  */
 function cptui_default_ads( $ads = array() ) {
 	$ads[] = array(
-		'url'   => 'https://pluginize.com/plugins/custom-post-type-ui-extended/?utm_source=cptui-sidebar&utm_medium=text&utm_campaign=cptui',
+		'url'   => 'https://pluginize.com/plugins/custom.php-post-type-ui-extended/?utm_source=cptui-sidebar&utm_medium=text&utm_campaign=cptui',
 		'image' => plugin_dir_url( dirname( __FILE__ ) ) . 'images/wds_ads/cptui-extended.png',
 		'text'  => 'Custom Post Type UI Extended product ad',
 	);
@@ -495,7 +495,7 @@ add_filter( 'cptui_ads', 'cptui_default_ads' );
 function cptui_randomize_ads( $ads = array() ) {
 	$new_order = array();
 	foreach ( $ads as $key => $ad ) {
-		if ( false !== strpos( $ad['url'], 'custom-post-type-ui-extended' ) ) {
+		if ( false !== strpos( $ad['url'], 'custom.php-post-type-ui-extended' ) ) {
 			$new_order[] = $ad;
 			unset( $ads[ $key ] );
 		}
@@ -530,7 +530,7 @@ function cptui_admin_notices_helper( $message = '', $success = true ) {
 	$action = '';
 
 	/**
-	 * Filters the custom admin notice for CPTUI.
+	 * Filters the custom.php admin notice for CPTUI.
 	 *
 	 * @since 1.0.0
 	 *
@@ -561,7 +561,7 @@ function cptui_get_object_from_post_global() {
 		return sanitize_text_field( $_POST['cpt_custom_tax']['name'] );
 	}
 
-	return esc_html__( 'Object', 'custom-post-type-ui' );
+	return esc_html__( 'Object', 'custom.php-post-type-ui' );
 }
 
 /**
@@ -572,7 +572,7 @@ function cptui_get_object_from_post_global() {
 function cptui_add_success_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has been successfully added', 'custom-post-type-ui' ),
+			esc_html__( '%s has been successfully added', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		true
@@ -587,7 +587,7 @@ function cptui_add_success_admin_notice() {
 function cptui_add_fail_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has failed to be added', 'custom-post-type-ui' ),
+			esc_html__( '%s has failed to be added', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		false
@@ -602,7 +602,7 @@ function cptui_add_fail_admin_notice() {
 function cptui_update_success_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has been successfully updated', 'custom-post-type-ui' ),
+			esc_html__( '%s has been successfully updated', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		true
@@ -617,7 +617,7 @@ function cptui_update_success_admin_notice() {
 function cptui_update_fail_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has failed to be updated', 'custom-post-type-ui' ),
+			esc_html__( '%s has failed to be updated', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		false
@@ -632,7 +632,7 @@ function cptui_update_fail_admin_notice() {
 function cptui_delete_success_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has been successfully deleted', 'custom-post-type-ui' ),
+			esc_html__( '%s has been successfully deleted', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		true
@@ -647,7 +647,7 @@ function cptui_delete_success_admin_notice() {
 function cptui_delete_fail_admin_notice() {
 	echo cptui_admin_notices_helper(
 		sprintf(
-			esc_html__( '%s has failed to be deleted', 'custom-post-type-ui' ),
+			esc_html__( '%s has failed to be deleted', 'custom.php-post-type-ui' ),
 			cptui_get_object_from_post_global()
 		),
 		false
@@ -661,7 +661,7 @@ function cptui_delete_fail_admin_notice() {
  */
 function cptui_import_success_admin_notice() {
 	echo cptui_admin_notices_helper(
-		esc_html__( 'Successfully imported data.', 'custom-post-type-ui' )
+		esc_html__( 'Successfully imported data.', 'custom.php-post-type-ui' )
 	);
 }
 
@@ -672,7 +672,7 @@ function cptui_import_success_admin_notice() {
  */
 function cptui_import_fail_admin_notice() {
 	echo cptui_admin_notices_helper(
-		esc_html__( 'Invalid data provided', 'custom-post-type-ui' ),
+		esc_html__( 'Invalid data provided', 'custom.php-post-type-ui' ),
 		false
 	);
 }
@@ -686,7 +686,7 @@ function cptui_import_fail_admin_notice() {
  */
 function cptui_slug_matches_post_type() {
 	return sprintf(
-		esc_html__( 'Please choose a different post type name. %s is already registered.', 'custom-post-type-ui' ),
+		esc_html__( 'Please choose a different post type name. %s is already registered.', 'custom.php-post-type-ui' ),
 		cptui_get_object_from_post_global()
 	);
 }
@@ -700,7 +700,7 @@ function cptui_slug_matches_post_type() {
  */
 function cptui_slug_matches_taxonomy() {
 	return sprintf(
-		esc_html__( 'Please choose a different taxonomy name. %s is already registered.', 'custom-post-type-ui' ),
+		esc_html__( 'Please choose a different taxonomy name. %s is already registered.', 'custom.php-post-type-ui' ),
 		cptui_get_object_from_post_global()
 	);
 }
@@ -713,7 +713,7 @@ function cptui_slug_matches_taxonomy() {
  * @return string
  */
 function cptui_empty_cpt_on_taxonomy() {
-	return esc_html__( 'Please provide a post type to attach to.', 'custom-post-type-ui' );
+	return esc_html__( 'Please provide a post type to attach to.', 'custom.php-post-type-ui' );
 }
 
 /**
@@ -725,7 +725,7 @@ function cptui_empty_cpt_on_taxonomy() {
  */
 function cptui_slug_matches_page() {
 	return sprintf(
-		esc_html__( 'Please choose a different post type name. %s matches an existing page slug, which can cause conflicts.', 'custom-post-type-ui' ),
+		esc_html__( 'Please choose a different post type name. %s matches an existing page slug, which can cause conflicts.', 'custom.php-post-type-ui' ),
 		cptui_get_object_from_post_global()
 	);
 }
@@ -739,7 +739,7 @@ function cptui_slug_matches_page() {
  */
 function cptui_slug_has_quotes() {
 	return sprintf(
-		esc_html__( 'Please do not use quotes in post type/taxonomy names or rewrite slugs', 'custom-post-type-ui' ),
+		esc_html__( 'Please do not use quotes in post type/taxonomy names or rewrite slugs', 'custom.php-post-type-ui' ),
 		cptui_get_object_from_post_global()
 	);
 }
@@ -775,7 +775,7 @@ function cptui_not_new_install( $wp_upgrader, $extras ) {
 	}
 
 	// Was CPTUI updated?
-	if ( ! in_array( 'custom-post-type-ui/custom-post-type-ui.php', $extras['plugins'], true ) ) {
+	if ( ! in_array( 'custom.php-post-type-ui/custom.php-post-type-ui.php', $extras['plugins'], true ) ) {
 		return;
 	}
 
@@ -860,7 +860,7 @@ function cptui_get_cptui_taxonomy_object( $taxonomy = '' ) {
 }
 
 /**
- * Checks if a requested post type has a custom CPTUI feature supported.
+ * Checks if a requested post type has a custom.php CPTUI feature supported.
  *
  * @since 1.5.0
  *

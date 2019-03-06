@@ -118,7 +118,7 @@ class WP_Customize_Control {
 	public $choices = array();
 
 	/**
-	 * List of custom input attributes for control output, where attribute names are the keys and values are the values.
+	 * List of custom.php input attributes for control output, where attribute names are the keys and values are the values.
 	 *
 	 * Not used for 'checkbox', 'radio', 'select', 'textarea', or 'dropdown-pages' control types.
 	 *
@@ -193,7 +193,7 @@ class WP_Customize_Control {
 	 *     @type array                $choices         List of choices for 'radio' or 'select' type controls, where
 	 *                                                 values are the keys, and labels are the values.
 	 *                                                 Default empty array.
-	 *     @type array                $input_attrs     List of custom input attributes for control output, where
+	 *     @type array                $input_attrs     List of custom.php input attributes for control output, where
 	 *                                                 attribute names are the keys and values are the values. Not
 	 *                                                 used for 'checkbox', 'radio', 'select', 'textarea', or
 	 *                                                 'dropdown-pages' control types. Default empty array.
@@ -457,7 +457,7 @@ class WP_Customize_Control {
 	}
 
 	/**
-	 * Render the custom attributes for the control's input element.
+	 * Render the custom.php attributes for the control's input element.
 	 *
 	 * @since 4.0.0
 	 */
@@ -682,7 +682,7 @@ class WP_Customize_Control {
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
-	 * export custom variables by overriding WP_Customize_Control::to_json().
+	 * export custom.php variables by overriding WP_Customize_Control::to_json().
 	 *
 	 * @see WP_Customize_Control::print_template()
 	 *

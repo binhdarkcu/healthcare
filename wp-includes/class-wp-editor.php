@@ -743,7 +743,7 @@ final class _WP_Editors {
 	/**
 	 *
 	 * @static
-	 * 
+	 *
 	 * @param bool $default_scripts Optional. Whether default scripts should be enqueued. Default false.
 	 */
 	public static function enqueue_scripts( $default_scripts = false ) {
@@ -1139,7 +1139,7 @@ final class _WP_Editors {
 
 			'Color' => __( 'Color' ),
 			'Custom color' => __( 'Custom color' ),
-			'Custom...' => _x( 'Custom...', 'label for custom color' ), // no ellipsis
+			'Custom...' => _x( 'Custom...', 'label for custom.php color' ), // no ellipsis
 			'No color' => __( 'No color' ),
 			'R' => _x( 'R', 'Short for red in RGB' ),
 			'G' => _x( 'G', 'Short for green in RGB' ),

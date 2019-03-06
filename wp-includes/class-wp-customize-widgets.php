@@ -623,7 +623,7 @@ final class WP_Customize_Widgets {
 
 	/**
 	 * Calls admin_print_styles-widgets.php and admin_print_styles hooks to
-	 * allow custom styles from plugins.
+	 * allow custom.php styles from plugins.
 	 *
 	 * @since 3.9.0
 	 */
@@ -637,7 +637,7 @@ final class WP_Customize_Widgets {
 
 	/**
 	 * Calls admin_print_scripts-widgets.php and admin_print_scripts hooks to
-	 * allow custom scripts from plugins.
+	 * allow custom.php scripts from plugins.
 	 *
 	 * @since 3.9.0
 	 */
@@ -826,7 +826,7 @@ final class WP_Customize_Widgets {
 
 	/**
 	 * Calls admin_print_footer_scripts and admin_print_scripts hooks to
-	 * allow custom scripts from plugins.
+	 * allow custom.php scripts from plugins.
 	 *
 	 * @since 3.9.0
 	 */

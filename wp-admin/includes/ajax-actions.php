@@ -1211,13 +1211,13 @@ function wp_ajax_add_menu_item() {
 	require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
 
 	// For performance reasons, we omit some object properties from the checklist.
-	// The following is a hacky way to restore them when adding non-custom items.
+	// The following is a hacky way to restore them when adding non-custom.php items.
 
 	$menu_items_data = array();
 	foreach ( (array) $_POST['menu-item'] as $menu_item_data ) {
 		if (
 			! empty( $menu_item_data['menu-item-type'] ) &&
-			'custom' != $menu_item_data['menu-item-type'] &&
+			'custom.php' != $menu_item_data['menu-item-type'] &&
 			! empty( $menu_item_data['menu-item-object-id'] )
 		) {
 			switch( $menu_item_data['menu-item-type'] ) {
@@ -1317,12 +1317,12 @@ function wp_ajax_add_meta() {
 				}
 
 				if ( !$mid = add_meta( $pid ) )
-					wp_die( __( 'Please provide a custom field value.' ) );
+					wp_die( __( 'Please provide a custom.php field value.' ) );
 			} else {
 				wp_die( 0 );
 			}
 		} elseif ( ! $mid = add_meta( $pid ) ) {
-			wp_die( __( 'Please provide a custom field value.' ) );
+			wp_die( __( 'Please provide a custom.php field value.' ) );
 		}
 
 		$meta = get_metadata_by_mid( 'post', $mid );
@@ -1340,9 +1340,9 @@ function wp_ajax_add_meta() {
 		$key = wp_unslash( $_POST['meta'][$mid]['key'] );
 		$value = wp_unslash( $_POST['meta'][$mid]['value'] );
 		if ( '' == trim($key) )
-			wp_die( __( 'Please provide a custom field name.' ) );
+			wp_die( __( 'Please provide a custom.php field name.' ) );
 		if ( '' == trim($value) )
-			wp_die( __( 'Please provide a custom field value.' ) );
+			wp_die( __( 'Please provide a custom.php field value.' ) );
 		if ( ! $meta = get_metadata_by_mid( 'post', $mid ) )
 			wp_die( 0 ); // if meta doesn't exist
 		if ( is_protected_meta( $meta->meta_key, 'post' ) || is_protected_meta( $key, 'post' ) ||
@@ -2107,8 +2107,8 @@ function wp_ajax_upload_attachment() {
 
 	$post_data = isset( $_REQUEST['post_data'] ) ? $_REQUEST['post_data'] : array();
 
-	// If the context is custom header or background, make sure the uploaded file is an image.
-	if ( isset( $post_data['context'] ) && in_array( $post_data['context'], array( 'custom-header', 'custom-background' ) ) ) {
+	// If the context is custom.php header or background, make sure the uploaded file is an image.
+	if ( isset( $post_data['context'] ) && in_array( $post_data['context'], array( 'custom.php-header', 'custom.php-background' ) ) ) {
 		$wp_filetype = wp_check_filetype_and_ext( $_FILES['async-upload']['tmp_name'], $_FILES['async-upload']['name'] );
 		if ( ! wp_match_mime_types( 'image', $wp_filetype['type'] ) ) {
 			echo wp_json_encode( array(
@@ -2138,10 +2138,10 @@ function wp_ajax_upload_attachment() {
 	}
 
 	if ( isset( $post_data['context'] ) && isset( $post_data['theme'] ) ) {
-		if ( 'custom-background' === $post_data['context'] )
+		if ( 'custom.php-background' === $post_data['context'] )
 			update_post_meta( $attachment_id, '_wp_attachment_is_custom_background', $post_data['theme'] );
 
-		if ( 'custom-header' === $post_data['context'] )
+		if ( 'custom.php-header' === $post_data['context'] )
 			update_post_meta( $attachment_id, '_wp_attachment_is_custom_header', $post_data['theme'] );
 	}
 
@@ -3266,7 +3266,7 @@ function wp_ajax_crop_image() {
 				break;
 			}
 
-			/** This filter is documented in wp-admin/custom-header.php */
+			/** This filter is documented in wp-admin/custom.php-header.php */
 			$cropped = apply_filters( 'wp_create_file_in_uploads', $cropped, $attachment_id ); // For replication.
 			$object  = $wp_site_icon->create_attachment_object( $cropped, $attachment_id );
 			unset( $object['ID'] );
@@ -3295,7 +3295,7 @@ function wp_ajax_crop_image() {
 			 */
 			do_action( 'wp_ajax_crop_image_pre_save', $context, $attachment_id, $cropped );
 
-			/** This filter is documented in wp-admin/custom-header.php */
+			/** This filter is documented in wp-admin/custom.php-header.php */
 			$cropped = apply_filters( 'wp_create_file_in_uploads', $cropped, $attachment_id ); // For replication.
 
 			$parent_url = wp_get_attachment_url( $attachment_id );

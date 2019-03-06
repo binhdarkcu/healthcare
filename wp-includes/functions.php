@@ -1061,7 +1061,7 @@ function get_status_header_desc( $code ) {
  * @see get_status_header_desc()
  *
  * @param int    $code        HTTP status code.
- * @param string $description Optional. A custom description for the HTTP status.
+ * @param string $description Optional. A custom.php description for the HTTP status.
  */
 function status_header( $code, $description = '' ) {
 	if ( ! $description ) {
@@ -1394,7 +1394,7 @@ function is_blog_installed() {
 	 */
 	$wp_tables = $wpdb->tables();
 	foreach ( $wp_tables as $table ) {
-		// The existence of custom user tables shouldn't suggest an insane state or prevent a clean installation.
+		// The existence of custom.php user tables shouldn't suggest an insane state or prevent a clean installation.
 		if ( defined( 'CUSTOM_USER_TABLE' ) && CUSTOM_USER_TABLE == $table )
 			continue;
 		if ( defined( 'CUSTOM_USER_META_TABLE' ) && CUSTOM_USER_META_TABLE == $table )
@@ -2709,7 +2709,7 @@ function wp_die( $message = '', $title = '', $args = array() ) {
 /**
  * Kills WordPress execution and display HTML message with error message.
  *
- * This is the default handler for wp_die if you want a custom one for your
+ * This is the default handler for wp_die if you want a custom.php one for your
  * site then you can overload using the {@see 'wp_die_handler'} filter in wp_die().
  *
  * @since 3.0.0
@@ -3744,7 +3744,7 @@ function wp_ob_end_flush_all() {
 }
 
 /**
- * Load custom DB error or display WordPress DB error.
+ * Load custom.php DB error or display WordPress DB error.
  *
  * If a file exists in the wp-content directory named db-error.php, then it will
  * be loaded instead of displaying the WordPress DB error. If it is not found,
@@ -3766,7 +3766,7 @@ function dead_db() {
 
 	wp_load_translations_early();
 
-	// Load custom DB error template, if present.
+	// Load custom.php DB error template, if present.
 	if ( file_exists( WP_CONTENT_DIR . '/db-error.php' ) ) {
 		require_once( WP_CONTENT_DIR . '/db-error.php' );
 		die();

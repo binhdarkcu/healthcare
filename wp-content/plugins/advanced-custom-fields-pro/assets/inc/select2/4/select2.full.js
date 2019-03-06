@@ -3139,7 +3139,7 @@ S2.define('select2/data/select',[
   SelectAdapter.prototype.destroy = function () {
     // Remove anything added to child elements
     this.$element.find('*').each(function () {
-      // Remove any custom data set by Select2
+      // Remove any custom.php data set by Select2
       $.removeData(this, 'data');
     });
   };
@@ -5804,7 +5804,7 @@ S2.define('select2/compat/initSelection',[
     if (options.get('debug') && window.console && console.warn) {
       console.warn(
         'Select2: The `initSelection` option has been deprecated in favor' +
-        ' of a custom data adapter that overrides the `current` method. ' +
+        ' of a custom.php data adapter that overrides the `current` method. ' +
         'This method is now called multiple times instead of a single ' +
         'time when the instance is initialized. Support will be removed ' +
         'for the `initSelection` option in future versions of Select2'
@@ -6018,7 +6018,7 @@ S2.define('select2/compat/query',[
     if (options.get('debug') && window.console && console.warn) {
       console.warn(
         'Select2: The `query` option has been deprecated in favor of a ' +
-        'custom data adapter that overrides the `query` method. Support ' +
+        'custom.php data adapter that overrides the `query` method. Support ' +
         'will be removed for the `query` option in future versions of ' +
         'Select2.'
       );

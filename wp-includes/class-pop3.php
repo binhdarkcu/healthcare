@@ -444,7 +444,7 @@ class POP3 {
     {
         //  Sends a user defined command string to the
         //  POP server and returns the results. Useful for
-        //  non-compliant or custom POP servers.
+        //  non-compliant or custom.php POP servers.
         //  Do NOT includ the \r\n as part of your command
         //  string - it will be appended automatically.
 

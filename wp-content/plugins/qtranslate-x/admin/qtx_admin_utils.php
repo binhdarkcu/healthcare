@@ -212,9 +212,9 @@ function qtranxf_convert_database($action){
 	qtranxf_convert_database_postmeta($action);
 	switch($action){
 		case 'b_only':
-			return __('Database has been converted to square bracket format.', 'qtranslate').'<br/>'.__('Note: custom entries are not touched.', 'qtranslate');
+			return __('Database has been converted to square bracket format.', 'qtranslate').'<br/>'.__('Note: custom.php entries are not touched.', 'qtranslate');
 		case 'c_dual':
-			return __('Database has been converted to legacy dual-tag format.', 'qtranslate').'<br/>'.__('Note: custom entries are not touched.', 'qtranslate');
+			return __('Database has been converted to legacy dual-tag format.', 'qtranslate').'<br/>'.__('Note: custom.php entries are not touched.', 'qtranslate');
 		default: return '';
 	}
 }

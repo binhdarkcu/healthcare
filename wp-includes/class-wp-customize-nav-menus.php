@@ -131,7 +131,7 @@ final class WP_Customize_Nav_Menus {
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $type   Optional. Accepts any custom object type and has built-in support for
+	 * @param string $type   Optional. Accepts any custom.php object type and has built-in support for
 	 *                         'post_type' and 'taxonomy'. Default is 'post_type'.
 	 * @param string $object Optional. Accepts any registered taxonomy or post type name. Default is 'page'.
 	 * @param int    $page   Optional. The page number used to generate the query offset. Default is '0'.
@@ -147,11 +147,11 @@ final class WP_Customize_Nav_Menus {
 			}
 
 			if ( 0 === $page && 'page' === $object ) {
-				// Add "Home" link. Treat as a page, but switch to custom on add.
+				// Add "Home" link. Treat as a page, but switch to custom.php on add.
 				$items[] = array(
 					'id'         => 'home',
 					'title'      => _x( 'Home', 'nav menu home label' ),
-					'type'       => 'custom',
+					'type'       => 'custom.php',
 					'type_label' => __( 'Custom Link' ),
 					'object'     => '',
 					'url'        => home_url(),
@@ -370,7 +370,7 @@ final class WP_Customize_Nav_Menus {
 			}
 		}
 
-		// Add "Home" link if search term matches. Treat as a page, but switch to custom on add.
+		// Add "Home" link if search term matches. Treat as a page, but switch to custom.php on add.
 		if ( isset( $args['s'] ) ) {
 			$title = _x( 'Home', 'nav menu home label' );
 			$matches = function_exists( 'mb_stripos' ) ? false !== mb_stripos( $title, $args['s'] ) : false !== stripos( $title, $args['s'] );
@@ -378,7 +378,7 @@ final class WP_Customize_Nav_Menus {
 				$items[] = array(
 					'id'         => 'home',
 					'title'      => $title,
-					'type'       => 'custom',
+					'type'       => 'custom.php',
 					'type_label' => __( 'Custom Link' ),
 					'object'     => '',
 					'url'        => home_url(),
@@ -519,7 +519,7 @@ final class WP_Customize_Nav_Menus {
 	}
 
 	/**
-	 * Allow non-statically created settings to be constructed with custom WP_Customize_Setting subclass.
+	 * Allow non-statically created settings to be constructed with custom.php WP_Customize_Setting subclass.
 	 *
 	 * @since 4.3.0
 	 *
@@ -570,7 +570,7 @@ final class WP_Customize_Nav_Menus {
 		$this->manager->register_control_type( 'WP_Customize_Nav_Menu_Item_Control' );
 
 		// Create a panel for Menus.
-		$description = '<p>' . __( 'This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links.' ) . '</p>';
+		$description = '<p>' . __( 'This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom.php links.' ) . '</p>';
 		if ( current_theme_supports( 'widgets' ) ) {
 			/* translators: URL to the widgets panel of the customizer */
 			$description .= '<p>' . sprintf( __( 'Menus can be displayed in locations defined by your theme or in <a href="%s">widget areas</a> by adding a &#8220;Navigation Menu&#8221; widget.' ), "javascript:wp.customize.panel( 'widgets' ).focus();" ) . '</p>';
@@ -1089,7 +1089,7 @@ final class WP_Customize_Nav_Menus {
 	}
 
 	/**
-	 * Print the markup for available menu item custom links.
+	 * Print the markup for available menu item custom.php links.
 	 *
 	 * @since 4.7.0
 	 *

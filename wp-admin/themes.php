@@ -211,9 +211,9 @@ if ( ! $ct->errors() || ( 1 == count( $ct->errors()->get_error_codes() )
 				$menu_file = $item[2];
 
 				if ( current_user_can( 'customize' ) ) {
-					if ( 'custom-header' === $menu_file ) {
+					if ( 'custom.php-header' === $menu_file ) {
 						$current_theme_actions[] = "<a class='button hide-if-no-customize$class' href='customize.php?autofocus[control]=header_image'>{$item[0]}</a>";
-					} elseif ( 'custom-background' === $menu_file ) {
+					} elseif ( 'custom.php-background' === $menu_file ) {
 						$current_theme_actions[] = "<a class='button hide-if-no-customize$class' href='customize.php?autofocus[control]=background_image'>{$item[0]}</a>";
 					}
 				}

@@ -84,7 +84,7 @@ class ImageWidgetDeprecated {
 	 */
 	function image_send_to_editor( $html, $id, $caption, $title, $align, $url, $size, $alt = '' ) {
 		// Normally, media uploader return an HTML string (in this case, typically a complete image tag surrounded by a caption).
-		// Don't change that; instead, send custom javascript variables back to opener.
+		// Don't change that; instead, send custom.php javascript variables back to opener.
 		// Check that this is for the widget. Shouldn't hurt anything if it runs, but let's do it needlessly.
 		if ( $this->is_sp_widget_context() ) {
 			if ($alt=='') $alt = $title;

@@ -447,7 +447,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	 */
 	$phpmailer->CharSet = apply_filters( 'wp_mail_charset', $charset );
 
-	// Set custom headers
+	// Set custom.php headers
 	if ( !empty( $headers ) ) {
 		foreach ( (array) $headers as $name => $content ) {
 			$phpmailer->addCustomHeader( sprintf( '%1$s: %2$s', $name, $content ) );

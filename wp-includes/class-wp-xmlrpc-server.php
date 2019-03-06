@@ -247,7 +247,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		 * enabled, rather, it only controls whether XML-RPC methods requiring authentication - such
 		 * as for publishing purposes - are enabled.
 		 *
-		 * Further, the filter does not control whether pingbacks or other custom endpoints that don't
+		 * Further, the filter does not control whether pingbacks or other custom.php endpoints that don't
 		 * require authentication are enabled. This behavior is expected, and due to how parity was matched
 		 * with the `enable_xmlrpc` UI option the filter replaced when it was introduced in 3.5.
 		 *
@@ -334,7 +334,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	}
 
 	/**
-	 * Retrieve custom fields for post.
+	 * Retrieve custom.php fields for post.
 	 *
 	 * @since 2.5.0
 	 *
@@ -362,7 +362,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	}
 
 	/**
-	 * Set custom fields for post.
+	 * Set custom.php fields for post.
 	 *
 	 * @since 2.5.0
 	 *
@@ -398,12 +398,12 @@ class wp_xmlrpc_server extends IXR_Server {
 	}
 
 	/**
-	 * Retrieve custom fields for a term.
+	 * Retrieve custom.php fields for a term.
 	 *
 	 * @since 4.9.0
 	 *
 	 * @param int $term_id Term ID.
-	 * @return array Array of custom fields, if they exist.
+	 * @return array Array of custom.php fields, if they exist.
 	 */
 	public function get_term_custom_fields( $term_id ) {
 		$term_id = (int) $term_id;
@@ -427,7 +427,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	}
 
 	/**
-	 * Set custom fields for a term.
+	 * Set custom.php fields for a term.
 	 *
 	 * @since 4.9.0
 	 *

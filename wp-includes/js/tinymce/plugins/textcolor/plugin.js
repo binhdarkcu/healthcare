@@ -214,7 +214,7 @@ var textcolor = (function () {
       html += '</tr>';
     }
     if (hasColorPicker) {
-      html += '<tr>' + '<td colspan="' + cols + '" class="mce-custom-color-btn">' + '<div id="' + id + '-c" class="mce-widget mce-btn mce-btn-small mce-btn-flat" ' + 'role="button" tabindex="-1" aria-labelledby="' + id + '-c" style="width: 100%">' + '<button type="button" role="presentation" tabindex="-1">' + global$3.translate('Custom...') + '</button>' + '</div>' + '</td>' + '</tr>';
+      html += '<tr>' + '<td colspan="' + cols + '" class="mce-custom.php-color-btn">' + '<div id="' + id + '-c" class="mce-widget mce-btn mce-btn-small mce-btn-flat" ' + 'role="button" tabindex="-1" aria-labelledby="' + id + '-c" style="width: 100%">' + '<button type="button" role="presentation" tabindex="-1">' + global$3.translate('Custom...') + '</button>' + '</div>' + '</td>' + '</tr>';
       html += '<tr>';
       for (x = 0; x < cols; x++) {
         html += getColorCellHtml('', 'Custom color');
@@ -255,7 +255,7 @@ var textcolor = (function () {
         buttonCtrl.hidePanel();
         buttonCtrl.resetColor();
       };
-      if (global$1.DOM.getParent(e.target, '.mce-custom-color-btn')) {
+      if (global$1.DOM.getParent(e.target, '.mce-custom.php-color-btn')) {
         buttonCtrl.hidePanel();
         var colorPickerCallback = $_2rfqb7rmjjgwefd9.getColorPickerCallback(editor);
         colorPickerCallback.call(editor, function (value) {

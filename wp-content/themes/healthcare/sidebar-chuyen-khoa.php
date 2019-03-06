@@ -1,18 +1,16 @@
 <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
     <div class="col-xs-12 cat-box">
-
-
         <h4 class="column-title">CÁC CHUYÊN KHOA KHÁC</h4>
-
-
         <?php
             $queried_object = get_queried_object();
             $categories =  get_categories(
                 array('exclude' => array($queried_object->term_id, 1))
             );
         ?>
-
         <ul class="post-list sidebarKhoa">
+            <?php foreach (my_get_page_children() as $child):?>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i><a style="padding-left: 15px;" href="<?php echo the_permalink($child->ID); ?>"><?php echo $child->post_title?></a></li>
+            <?php endforeach; ?>
             <?php foreach ( $categories as $category ) : setup_postdata( $category );
                     $imgUrl = get_field('departments_image', $category); ?>
                 <li>

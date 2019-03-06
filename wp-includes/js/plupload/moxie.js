@@ -135,7 +135,7 @@ define('moxie/core/utils/Basic', [], function() {
 		// the snippet below is awesome, however it fails to detect null, undefined and arguments types in IE lte 8
 		return ({}).toString.call(o).match(/\s([a-z|A-Z]+)/)[1].toLowerCase();
 	};
-		
+	
 	/**
 	Extends the specified object with another object.
 
@@ -163,7 +163,7 @@ define('moxie/core/utils/Basic', [], function() {
 		});
 		return target;
 	};
-		
+	
 	/**
 	Executes the callback function for each item in array/object. If you return false in the
 	callback it will break the loop.
@@ -256,7 +256,7 @@ define('moxie/core/utils/Basic', [], function() {
 
 	/**
 	Recieve an array of functions (usually async) to call in parallel, each  function
-	receives a callback as first argument that it should call, when it completes. After 
+	receives a callback as first argument that it should call, when it completes. After
 	everything is complete, main callback is called. Passing truthy value to the
 	callback as a first argument will interrupt the process and invoke main callback
 	immediately.
@@ -284,7 +284,7 @@ define('moxie/core/utils/Basic', [], function() {
 				if (count === num) {
 					cbArgs.unshift(null);
 					cb.apply(this, cbArgs);
-				} 
+				}
 			});
 		});
 	};
@@ -338,7 +338,7 @@ define('moxie/core/utils/Basic', [], function() {
 		for (var i in needles) {
 			if (inArray(needles[i], array) === -1) {
 				diff.push(needles[i]);
-			}	
+			}
 		}
 		return diff.length ? diff : false;
 	};
@@ -382,11 +382,11 @@ define('moxie/core/utils/Basic', [], function() {
 		return arr;
 	};
 	
-			
+	
 	/**
 	Generates an unique ID. The only way a user would be able to get the same ID is if the two persons
-	at the same exact millisecond manage to get the same 5 random numbers between 0-65535; it also uses 
-	a counter so each ID is guaranteed to be unique for the given page. It is more probable for the earth 
+	at the same exact millisecond manage to get the same 5 random numbers between 0-65535; it also uses
+	a counter so each ID is guaranteed to be unique for the given page. It is more probable for the earth
 	to be hit with an asteroid.
 	
 	@method guid
@@ -1330,7 +1330,7 @@ define("moxie/core/utils/Mime", [
 		"video/3gpp,3gpp 3gp," +
 		"video/3gpp2,3g2," +
 		"video/vnd.rn-realvideo,rv," +
-		"video/ogg,ogv," + 
+		"video/ogg,ogv," +
 		"video/x-matroska,mkv," +
 		"application/vnd.oasis.opendocument.formula-template,otf," +
 		"application/octet-stream,exe";
@@ -1403,7 +1403,7 @@ define("moxie/core/utils/Mime", [
 				// check if this thing looks like mime type
 				var m = mime.match(/^(\w+)\/(\*|\w+)$/);
 				if (m) {
-					if (m[2] === '*') { 
+					if (m[2] === '*') {
 						// wildcard mime type detected
 						Basic.each(self.extensions, function(arr, mime) {
 							if ((new RegExp('^' + m[1] + '/')).test(mime)) {
@@ -1826,7 +1826,7 @@ define('moxie/core/EventTarget', [
 	function EventTarget() {
 		// hash of event listeners by object uid
 		var eventpool = {};
-				
+		
 		Basic.extend(this, {
 			
 			/**
@@ -1985,7 +1985,7 @@ define('moxie/core/EventTarget', [
 				}
 				
 				type = type.toLowerCase();
-								
+				
 				list = eventpool[uid] && eventpool[uid][type];
 
 				if (list) {
@@ -2000,7 +2000,7 @@ define('moxie/core/EventTarget', [
 					args.unshift(evt);
 
 					if (MXI_DEBUG && Env.debug.events) {
-						Env.log("Event '%s' fired on %u", evt.type, uid);	
+						Env.log("Event '%s' fired on %u", evt.type, uid);
 					}
 
 					// Dispatch event to all listeners
@@ -2091,7 +2091,7 @@ define('moxie/core/EventTarget', [
 				Basic.each(dispatches, function(prop) {
 					prop = 'on' + prop.toLowerCase(prop);
 					if (Basic.typeOf(self[prop]) === 'undefined') {
-						self[prop] = null; 
+						self[prop] = null;
 					}
 				});
 			}
@@ -2099,7 +2099,7 @@ define('moxie/core/EventTarget', [
 		});
 	}
 
-	EventTarget.instance = new EventTarget(); 
+	EventTarget.instance = new EventTarget();
 
 	return EventTarget;
 });
@@ -2169,10 +2169,10 @@ define('moxie/runtime/Runtime', [
 		@type Object
 		*/
 		caps = Basic.extend({
-			// Runtime can: 
+			// Runtime can:
 			// provide access to raw binary data of the file
 			access_binary: false,
-			// provide access to raw binary data of the image (image extension is optional) 
+			// provide access to raw binary data of the image (image extension is optional)
 			access_image_binary: false,
 			// display binary data as thumbs for example
 			display_media: false,
@@ -2186,14 +2186,14 @@ define('moxie/runtime/Runtime', [
 			resize_image: false,
 			// periodically report how many bytes of total in the file were uploaded (loaded)
 			report_upload_progress: false,
-			// provide access to the headers of http response 
+			// provide access to the headers of http response
 			return_response_headers: false,
 			// support response of specific type, which should be passed as an argument
 			// e.g. runtime.can('return_response_type', 'blob')
 			return_response_type: false,
 			// return http status code of the response
 			return_status_code: true,
-			// send custom http header with the request
+			// send custom.php http header with the request
 			send_custom_headers: false,
 			// pick up the files from a dialog
 			select_file: false,
@@ -2220,7 +2220,7 @@ define('moxie/runtime/Runtime', [
 			// e.g. runtime.can('use_http_method', 'put')
 			use_http_method: true
 		}, caps);
-			
+		
 	
 		// default to the mode that is compatible with preferred caps
 		if (options.preferred_caps) {
@@ -2228,7 +2228,7 @@ define('moxie/runtime/Runtime', [
 		}
 
 		if (MXI_DEBUG && Env.debug.runtime) {
-			Env.log("\tdefault mode: %s", defaultMode);	
+			Env.log("\tdefault mode: %s", defaultMode);
 		}
 		
 		// small extension factory here (is meant to be extended with actual extensions constructors)
@@ -2464,7 +2464,7 @@ define('moxie/runtime/Runtime', [
 		// once we got the mode, test against all caps
 		if (this.mode && options.required_caps && !this.can(options.required_caps)) {
 			this.mode = false;
-		}	
+		}
 	}
 
 
@@ -2619,7 +2619,7 @@ define('moxie/runtime/Runtime', [
 	@static
 	@param {Object} modeCaps Set of capabilities that depend on particular runtime mode
 	@param {Object} [requiredCaps] Supplied set of capabilities to find operational mode for
-	@param {String|Boolean} [defaultMode='browser'] Default mode to use 
+	@param {String|Boolean} [defaultMode='browser'] Default mode to use
 	@return {String|Boolean} Compatible operational mode
 	*/
 	Runtime.getMode = function(modeCaps, requiredCaps, defaultMode) {
@@ -2641,20 +2641,20 @@ define('moxie/runtime/Runtime', [
 					}
 					
 					if (!mode) {
-						mode = capMode;						
+						mode = capMode;
 					} else if (!(mode = Basic.arrayIntersect(mode, capMode))) {
 						// if cap requires conflicting mode - runtime cannot fulfill required caps
 
 						if (MXI_DEBUG && Env.debug.runtime) {
-							Env.log("\t\t%c: %v (conflicting mode requested: %s)", cap, value, capMode);	
+							Env.log("\t\t%c: %v (conflicting mode requested: %s)", cap, value, capMode);
 						}
 
 						return (mode = false);
-					}					
+					}
 				}
 
 				if (MXI_DEBUG && Env.debug.runtime) {
-					Env.log("\t\t%c: %v (compatible modes: %s)", cap, value, mode);	
+					Env.log("\t\t%c: %v (compatible modes: %s)", cap, value, mode);
 				}
 			});
 
@@ -2664,7 +2664,7 @@ define('moxie/runtime/Runtime', [
 				return false;
 			}
 		}
-		return defaultMode; 
+		return defaultMode;
 	};
 
 
@@ -2798,7 +2798,7 @@ define('moxie/runtime/RuntimeClient', [
 					/*runtime.bind('Exception', function() { });*/
 
 					if (MXI_DEBUG && Env.debug.runtime) {
-						Env.log("\tselected mode: %s", runtime.mode);	
+						Env.log("\tselected mode: %s", runtime.mode);
 					}
 
 					// check if runtime managed to pick-up operational mode
@@ -2921,7 +2921,7 @@ define('moxie/file/FileInput', [
 		@param {String} [options.file='file'] Name of the file field (not the filename).
 		@param {Boolean} [options.multiple=false] Enable selection of multiple files.
 		@param {Boolean} [options.directory=false] Turn file input into the folder input (cannot be both at the same time).
-		@param {String|DOMElement} [options.container] DOM Element to use as a container for file-picker. Defaults to parentNode 
+		@param {String|DOMElement} [options.container] DOM Element to use as a container for file-picker. Defaults to parentNode
 		for _browse\_button_.
 		@param {Object|String} [options.required_caps] Set of required capabilities, that chosen runtime must support.
 
@@ -2958,7 +2958,7 @@ define('moxie/file/FileInput', [
 		'ready',
 
 		/**
-		Dispatched right after [ready](#event_ready) event, and whenever [refresh()](#method_refresh) is invoked. 
+		Dispatched right after [ready](#event_ready) event, and whenever [refresh()](#method_refresh) is invoked.
 		Check [corresponding documentation entry](#method_refresh) for more info.
 
 		@event refresh
@@ -3012,7 +3012,7 @@ define('moxie/file/FileInput', [
 
 	function FileInput(options) {
 		if (MXI_DEBUG) {
-			Env.log("Instantiating FileInput...");	
+			Env.log("Instantiating FileInput...");
 		}
 
 		var self = this,
@@ -3048,7 +3048,7 @@ define('moxie/file/FileInput', [
 		if (typeof(options.required_caps) === 'string') {
 			options.required_caps = Runtime.parseCaps(options.required_caps);
 		}
-					
+		
 		// normalize accept option (could be list of mime types or array of title/extensions pairs)
 		if (typeof(options.accept) === 'string') {
 			options.accept = Mime.mimes2extList(options.accept);
@@ -3066,7 +3066,7 @@ define('moxie/file/FileInput', [
 		}
 
 		container = browseButton = null; // IE
-						
+		
 		RuntimeClient.call(self);
 		
 		Basic.extend(self, {
@@ -3197,7 +3197,7 @@ define('moxie/file/FileInput', [
 					Basic.each(this.files, function(file) {
 						file.destroy();
 					});
-				} 
+				}
 				this.files = null;
 
 				this.unbindAll();
@@ -3438,7 +3438,7 @@ define('moxie/file/Blob', [
 
 		RuntimeClient.call(this);
 
-		if (ruid) {	
+		if (ruid) {
 			this.connectRuntime(ruid);
 		}
 
@@ -3459,7 +3459,7 @@ define('moxie/file/Blob', [
 			uid: blob.uid || Basic.guid('uid_'),
 			
 			/**
-			Unique id of the connected runtime, if falsy, then runtime will have to be initialized 
+			Unique id of the connected runtime, if falsy, then runtime will have to be initialized
 			before this Blob can be used, modified or sent
 
 			@property ruid
@@ -3489,7 +3489,7 @@ define('moxie/file/Blob', [
 			@method slice
 			@param {Number} [start=0]
 			*/
-			slice: function(start, end, type) {		
+			slice: function(start, end, type) {
 				if (this.isDetached()) {
 					return _sliceDetached.apply(this, arguments);
 				}
@@ -3504,12 +3504,12 @@ define('moxie/file/Blob', [
 			*/
 			getSource: function() {
 				if (!blobpool[this.uid]) {
-					return null;	
+					return null;
 				}
 				return blobpool[this.uid];
 			},
 
-			/** 
+			/**
 			Detaches blob from any runtime that it depends on and initialize with standalone value
 
 			@method detach
@@ -3548,7 +3548,7 @@ define('moxie/file/Blob', [
 				return !this.ruid && Basic.typeOf(blobpool[this.uid]) === 'string';
 			},
 			
-			/** 
+			/**
 			Destroy Blob and free any resources it was using
 
 			@method destroy
@@ -3563,7 +3563,7 @@ define('moxie/file/Blob', [
 		if (blob.data) {
 			this.detach(blob.data); // auto-detach if payload has been passed
 		} else {
-			blobpool[this.uid] = blob;	
+			blobpool[this.uid] = blob;
 		}
 	}
 	
@@ -3679,8 +3679,8 @@ define('moxie/file/FileDrop', [
 	'moxie/core/utils/Mime'
 ], function(I18n, Dom, x, Basic, Env, File, RuntimeClient, EventTarget, Mime) {
 	/**
-	Turn arbitrary DOM element to a drop zone accepting files. Converts selected files to _File_ objects, to be used 
-	in conjunction with _Image_, preloaded in memory with _FileReader_ or uploaded to a server through 
+	Turn arbitrary DOM element to a drop zone accepting files. Converts selected files to _File_ objects, to be used
+	in conjunction with _Image_, preloaded in memory with _FileReader_ or uploaded to a server through
 	_XMLHttpRequest_.
 
 	@example
@@ -3718,7 +3718,7 @@ define('moxie/file/FileDrop', [
 		@event ready
 		@param {Object} event
 		*/
-		'ready', 
+		'ready',
 
 		/**
 		Dispatched when dragging cursor enters the drop zone.
@@ -3734,7 +3734,7 @@ define('moxie/file/FileDrop', [
 		@event dragleave
 		@param {Object} event
 		*/
-		'dragleave', 
+		'dragleave',
 
 		/**
 		Dispatched when file is dropped onto the drop zone.
@@ -3742,7 +3742,7 @@ define('moxie/file/FileDrop', [
 		@event drop
 		@param {Object} event
 		*/
-		'drop', 
+		'drop',
 
 		/**
 		Dispatched if error occurs.
@@ -3755,7 +3755,7 @@ define('moxie/file/FileDrop', [
 
 	function FileDrop(options) {
 		if (MXI_DEBUG) {
-			Env.log("Instantiating FileDrop...");	
+			Env.log("Instantiating FileDrop...");
 		}
 
 		var self = this, defaults;
@@ -3785,7 +3785,7 @@ define('moxie/file/FileDrop', [
 		if (Dom.getStyle(options.container, 'position') === 'static') {
 			options.container.style.position = 'relative';
 		}
-					
+		
 		// normalize accept option (could be list of mime types or array of title/extensions pairs)
 		if (typeof(options.accept) === 'string') {
 			options.accept = Mime.mimes2extList(options.accept);
@@ -3800,13 +3800,13 @@ define('moxie/file/FileDrop', [
 
 			files: null,
 
-			init: function() {		
+			init: function() {
 				self.bind('RuntimeInit', function(e, runtime) {
 					self.ruid = runtime.uid;
 					runtime.exec.call(self, 'FileDrop', 'init', options);
 					self.dispatchEvent('ready');
 				});
-							
+				
 				// runtime needs: options.required_features, options.runtime_order and options.container
 				self.connectRuntime(options); // throws RuntimeError
 			},
@@ -3862,47 +3862,47 @@ define('moxie/file/FileReader', [
 	*/
 	var dispatches = [
 
-		/** 
+		/**
 		Dispatched when the read starts.
 
 		@event loadstart
 		@param {Object} event
 		*/
-		'loadstart', 
+		'loadstart',
 
-		/** 
+		/**
 		Dispatched while reading (and decoding) blob, and reporting partial Blob data (progess.loaded/progress.total).
 
 		@event progress
 		@param {Object} event
 		*/
-		'progress', 
+		'progress',
 
-		/** 
+		/**
 		Dispatched when the read has successfully completed.
 
 		@event load
 		@param {Object} event
 		*/
-		'load', 
+		'load',
 
-		/** 
+		/**
 		Dispatched when the read has been aborted. For instance, by invoking the abort() method.
 
 		@event abort
 		@param {Object} event
 		*/
-		'abort', 
+		'abort',
 
-		/** 
+		/**
 		Dispatched when the read has failed.
 
 		@event error
 		@param {Object} event
 		*/
-		'error', 
+		'error',
 
-		/** 
+		/**
 		Dispatched when the request has completed (either in success or failure).
 
 		@event loadend
@@ -4027,7 +4027,7 @@ define('moxie/file/FileReader', [
 
 		
 		function _read(op, blob) {
-			var self = this;			
+			var self = this;
 
 			this.trigger('loadstart');
 
@@ -4140,7 +4140,7 @@ define('moxie/core/utils/Url', [], function() {
 		, regex = /^(?:([^:\/?#]+):)?(?:\/\/()(?:(?:()(?:([^:@\/]*):?([^:@\/]*))?@)?([^:\/?#]*)(?::(\d*))?))?()(?:(()(?:(?:[^?#\/]*\/)*)()(?:[^?#]*))(?:\\?([^#]*))?(?:#(.*))?)/
 		, m = regex.exec(url || '')
 		;
-					
+		
 		while (i--) {
 			if (m[i]) {
 				uri[key[i]] = m[i];
@@ -4175,7 +4175,7 @@ define('moxie/core/utils/Url', [], function() {
 
 		if (!uri.port) {
 			uri.port = ports[uri.scheme] || 80;
-		} 
+		}
 		
 		uri.port = parseInt(uri.port, 10);
 
@@ -4218,10 +4218,10 @@ define('moxie/core/utils/Url', [], function() {
 		function origin(url) {
 			return [url.scheme, url.host, url.port].join('/');
 		}
-			
+		
 		if (typeof url === 'string') {
 			url = parseUrl(url);
-		}	
+		}
 		
 		return origin(parseUrl()) === origin(url);
 	};
@@ -4582,10 +4582,10 @@ define("moxie/xhr/XMLHttpRequest", [
 		'loadend'
 
 		// readystatechange (for historical reasons)
-	]; 
+	];
 	
 	var NATIVE = 1, RUNTIME = 2;
-					
+	
 	function XMLHttpRequest() {
 		var self = this,
 			// this (together with _p() @see below) is here to gracefully upgrade to setter/getter syntax where possible
@@ -4791,7 +4791,7 @@ define("moxie/xhr/XMLHttpRequest", [
 				urlp = Url.parseUrl(url);
 
 				_same_origin_flag = Url.hasSameOrigin(urlp);
-																
+				
 				// 7 - manually build up absolute url
 				_url = Url.resolveUrl(url);
 		
@@ -4888,7 +4888,7 @@ define("moxie/xhr/XMLHttpRequest", [
 				}
 
 				// camelize
-				// browsers lowercase header names (at least for custom ones)
+				// browsers lowercase header names (at least for custom.php ones)
 				// header = header.replace(/\b\w/g, function($1) { return $1.toUpperCase(); });
 				
 				if (!_headers[header]) {
@@ -4911,7 +4911,7 @@ define("moxie/xhr/XMLHttpRequest", [
 			},
 
 			/**
-			Returns the header field value from the response of which the field name matches header, 
+			Returns the header field value from the response of which the field name matches header,
 			unless the field name is Set-Cookie or Set-Cookie2.
 
 			@method getResponseHeader
@@ -4992,7 +4992,7 @@ define("moxie/xhr/XMLHttpRequest", [
 			@param {Blob|Document|String|FormData} [data] Request entity body
 			@param {Object} [options] Set of requirements and pre-requisities for runtime initialization
 			*/
-			send: function(data, options) {					
+			send: function(data, options) {
 				if (Basic.typeOf(options) === 'string') {
 					_options = { ruid: options };
 				} else if (!options) {
@@ -5000,13 +5000,13 @@ define("moxie/xhr/XMLHttpRequest", [
 				} else {
 					_options = options;
 				}
-															
+				
 				// 1-2
 				if (this.readyState !== XMLHttpRequest.OPENED || _send_flag) {
 					throw new x.DOMException(x.DOMException.INVALID_STATE_ERR);
 				}
 				
-				// 3					
+				// 3
 				// sending Blob
 				if (data instanceof Blob) {
 					_options.ruid = data.ruid;
@@ -5727,8 +5727,8 @@ define("moxie/image/Image", [
 			},
 
 			/**
-			Loads image from various sources. Currently the source for new image can be: mOxie.Image, mOxie.Blob/mOxie.File, 
-			native Blob/File, dataUrl or URL. Depending on the type of the source, arguments - differ. When source is URL, 
+			Loads image from various sources. Currently the source for new image can be: mOxie.Image, mOxie.Blob/mOxie.File,
+			native Blob/File, dataUrl or URL. Depending on the type of the source, arguments - differ. When source is URL,
 			Image will be downloaded from remote destination and loaded in memory.
 
 			@example
@@ -5876,8 +5876,8 @@ define("moxie/image/Image", [
 			},
 
 			/**
-			Embeds a visual representation of the image into the specified node. Depending on the runtime, 
-			it might be a canvas, an img node or a thrid party shim object (Flash or SilverLight - very rare, 
+			Embeds a visual representation of the image into the specified node. Depending on the runtime,
+			it might be a canvas, an img node or a thrid party shim object (Flash or SilverLight - very rare,
 			can be used in legacy browsers that do not have canvas or proper dataURI support).
 
 			@method embed
@@ -6167,7 +6167,7 @@ define("moxie/image/Image", [
 
 	// virtual world will crash on you if image has a resolution higher than this:
 	Image.MAX_RESIZE_WIDTH = 8192;
-	Image.MAX_RESIZE_HEIGHT = 8192; 
+	Image.MAX_RESIZE_HEIGHT = 8192;
 
 	Image.prototype = EventTarget.instance;
 
@@ -6220,19 +6220,19 @@ define("moxie/runtime/html5/Runtime", [
 					// this comes directly from Modernizr: http://www.modernizr.com/
 					var div = document.createElement('div');
 					// IE has support for drag and drop since version 5, but doesn't support dropping files from desktop
-					return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 
+					return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) &&
 						(Env.browser !== 'IE' || Env.verComp(Env.version, 9, '>'));
 				}()),
 				filter_by_extension: Test(function() { // if you know how to feature-detect this, please suggest
-					return (Env.browser === 'Chrome' && Env.verComp(Env.version, 28, '>=')) || 
-						(Env.browser === 'IE' && Env.verComp(Env.version, 10, '>=')) || 
+					return (Env.browser === 'Chrome' && Env.verComp(Env.version, 28, '>=')) ||
+						(Env.browser === 'IE' && Env.verComp(Env.version, 10, '>=')) ||
 						(Env.browser === 'Safari' && Env.verComp(Env.version, 7, '>='));
 				}()),
 				return_response_headers: True,
 				return_response_type: function(responseType) {
 					if (responseType === 'json' && !!window.JSON) { // we can fake this one even if it's not supported
 						return true;
-					} 
+					}
 					return Env.can('return_response_type', responseType);
 				},
 				return_status_code: True,
@@ -6270,7 +6270,7 @@ define("moxie/runtime/html5/Runtime", [
 					);
 				},
 				upload_filesize: True
-			}, 
+			},
 			arguments[2]
 		);
 
@@ -6339,7 +6339,7 @@ define('moxie/core/utils/Events', [
 	*/
 	var addEvent = function(obj, name, callback, key) {
 		var func, events;
-					
+		
 		name = name.toLowerCase();
 
 		// Add event listener
@@ -6378,7 +6378,7 @@ define('moxie/core/utils/Events', [
 		if (!events.hasOwnProperty(name)) {
 			events[name] = [];
 		}
-				
+		
 		events[name].push({
 			func: func,
 			orig: callback, // store original callback for IE
@@ -6407,7 +6407,7 @@ define('moxie/core/utils/Events', [
 		} else {
 			return;
 		}
-			
+		
 		for (var i = type.length - 1; i >= 0; i--) {
 			// undefined or not, key should match
 			if (type[i].orig === callback || type[i].key === callback) {
@@ -6455,7 +6455,7 @@ define('moxie/core/utils/Events', [
 	@param {Object} obj DOM element to remove event listeners from.
 	@param {String} [key] unique key to match, when removing events.
 	*/
-	var removeAllEvents = function(obj, key) {		
+	var removeAllEvents = function(obj, key) {
 		if (!obj || !obj[uid]) {
 			return;
 		}
@@ -6513,7 +6513,7 @@ define("moxie/runtime/html5/file/FileInput", [
 				shimContainer = I.getShimContainer();
 
 				shimContainer.innerHTML = '<input id="' + I.uid +'" type="file" style="font-size:999px;opacity:0;"' +
-					(_options.multiple && I.can('select_multiple') ? 'multiple' : '') + 
+					(_options.multiple && I.can('select_multiple') ? 'multiple' : '') +
 					(_options.directory && I.can('select_folder') ? 'webkitdirectory directory' : '') + // Chrome 11+
 					(mimes ? ' accept="' + mimes.join(',') + '"' : '') + ' />';
 
@@ -6898,7 +6898,7 @@ define("moxie/runtime/html5/file/FileDrop", [
 			// ...and you thought FileReader was crazy...
 			getEntries(function() {
 				_readEntries(entries, cb);
-			}); 
+			});
 		}
 	}
 
@@ -7053,7 +7053,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 							// Android browsers (default one and Dolphin) seem to have the same issue, see: #613
 							_preloadAndSend.call(target, meta, data);
 							return; // _preloadAndSend will reinvoke send() with transmutated FormData =%D
-						}	
+						}
 					}
 
 					// transfer fields to real FormData
@@ -7112,7 +7112,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 							case 2: // XMLHttpRequest.HEADERS_RECEIVED
 								break;
 								
-							case 3: // XMLHttpRequest.LOADING 
+							case 3: // XMLHttpRequest.LOADING
 								// try to fire progress event for not XHR L2
 								var total, loaded;
 								
@@ -7145,7 +7145,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 									target.trigger('error');
 								} else {
 									target.trigger('load');
-								}							
+								}
 								break;
 						}
 					};
@@ -7207,7 +7207,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 						case 'blob':
 							var file = new File(I.uid, _xhr.response);
 							
-							// try to extract file name from content-disposition if possible (might be - not, if CORS for example)	
+							// try to extract file name from content-disposition if possible (might be - not, if CORS for example)
 							var disposition = _xhr.getResponseHeader('Content-Disposition');
 							if (disposition) {
 								// extract filename from response header if available
@@ -7238,7 +7238,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 					}
 				} catch(ex) {
 					return null;
-				}				
+				}
 			},
 
 			getAllResponseHeaders: function() {
@@ -7263,7 +7263,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 		// here we go... ugly fix for ugly bug
 		function _preloadAndSend(meta, data) {
 			var target = this, blob, fr;
-				
+			
 			// get original blob
 			blob = data.getBlob().getSource();
 			
@@ -7336,7 +7336,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 
 			// append multipart parameters
 			fd.each(function(value, name) {
-				// Firefox 3.6 failed to convert multibyte characters to UTF-8 in sendAsBinary(), 
+				// Firefox 3.6 failed to convert multibyte characters to UTF-8 in sendAsBinary(),
 				// so we try it here ourselves with: unescape(encodeURIComponent(value))
 				if (value instanceof Blob) {
 					// Build RFC2388 blob
@@ -7402,8 +7402,8 @@ define("moxie/runtime/html5/utils/BinaryReader", [
 				throw new Error("You are trying to read outside the source boundaries.");
 			}
 			
-			mv = this.littleEndian 
-				? 0 
+			mv = this.littleEndian
+				? 0
 				: -8 * (size - 1)
 			;
 
@@ -7421,8 +7421,8 @@ define("moxie/runtime/html5/utils/BinaryReader", [
 				throw new Error("You are trying to write outside the source boundaries.");
 			}
 
-			mv = this.littleEndian 
-				? 0 
+			mv = this.littleEndian
+				? 0
 				: -8 * (size - 1)
 			;
 
@@ -7502,7 +7502,7 @@ define("moxie/runtime/html5/utils/BinaryReader", [
 							value = new ArrayBuffer();
 						}
 
-						if (value instanceof ArrayBuffer) {					
+						if (value instanceof ArrayBuffer) {
 							var arr = new Uint8Array(this.length() - size + value.byteLength);
 							if (idx > 0) {
 								arr.set(new Uint8Array(data.slice(0, idx)), 0);
@@ -7562,7 +7562,7 @@ define("moxie/runtime/html5/utils/BinaryReader", [
 
 			length: function() {
 				return data ? data.length : 0;
-			}, 
+			},
 
 			clear: function() {
 				data = null;
@@ -8147,7 +8147,7 @@ define("moxie/runtime/html5/image/ExifParser", [
 				// in case we left the boundaries of data throw an early exception
 				if (offset + size * count >= this.length()) {
 					throw new x.ImageError(x.ImageError.INVALID_META_ERR);
-				} 
+				}
 
 				// special care for the string
 				if (type === 'ASCII') {
@@ -8360,7 +8360,7 @@ define("moxie/runtime/html5/image/JPEG", [
 
 
 		function _purge() {
-			if (!_ep || !_hm || !_br) { 
+			if (!_ep || !_hm || !_br) {
 				return; // ignore any repeating purge requests
 			}
 			_ep.clear();
@@ -9057,7 +9057,7 @@ define("moxie/runtime/html5/image/Image", [
 			}
 
 			// calculate dimensions of proportionally resized image
-			destWidth = Math.round(img.width * scale);	
+			destWidth = Math.round(img.width * scale);
 			destHeight = Math.round(img.height * scale);
 
 			// scale image and canvas
@@ -9094,7 +9094,7 @@ define("moxie/runtime/html5/image/Image", [
 
 
 		function _drawToCanvas(img, canvas, x, y, w, h) {
-			if (Env.OS === 'iOS') { 
+			if (Env.OS === 'iOS') {
 				// avoid squish bug in iOS6
 				MegaPixel.renderTo(img, canvas, { width: w, height: h, x: x, y: y });
 			} else {
@@ -9249,8 +9249,8 @@ define("moxie/runtime/html4/Runtime", [
 			do_cors: false,
 			drag_and_drop: false,
 			filter_by_extension: Test(function() { // if you know how to feature-detect this, please suggest
-				return (Env.browser === 'Chrome' && Env.verComp(Env.version, 28, '>=')) || 
-					(Env.browser === 'IE' && Env.verComp(Env.version, 10, '>=')) || 
+				return (Env.browser === 'Chrome' && Env.verComp(Env.version, 28, '>=')) ||
+					(Env.browser === 'IE' && Env.verComp(Env.version, 10, '>=')) ||
 					(Env.browser === 'Safari' && Env.verComp(Env.version, 7, '>='));
 			}()),
 			resize_image: function() {
@@ -9261,7 +9261,7 @@ define("moxie/runtime/html4/Runtime", [
 			return_response_type: function(responseType) {
 				if (responseType === 'json' && !!window.JSON) {
 					return true;
-				} 
+				}
 				return !!~Basic.inArray(responseType, ['text', 'document', '']);
 			},
 			return_status_code: function(code) {
@@ -9426,8 +9426,8 @@ define("moxie/runtime/html4/file/FileInput", [
 				file = new File(I.uid, file);
 
 				// clear event handler
-				this.onchange = function() {}; 
-				addInput.call(comp); 
+				this.onchange = function() {};
+				addInput.call(comp);
 
 				comp.files = [file];
 
@@ -9715,7 +9715,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 								});
 								return;
 							}
-						}	
+						}
 					
 						cleanup.call(target, function() {
 							target.trigger('load');
@@ -9793,7 +9793,7 @@ define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 						} catch (ex) {
 							return null;
 						}
-					} 
+					}
 				} else if ('document' === responseType) {
 
 				}
@@ -9874,7 +9874,7 @@ Globally exposed namespace with the most frequently used public classes and hand
 	var o = {}, inArray = exports.moxie.core.utils.Basic.inArray;
 
 	// directly add some public classes
-	// (we do it dynamically here, since for custom builds we cannot know beforehand what modules were included)
+	// (we do it dynamically here, since for custom.php builds we cannot know beforehand what modules were included)
 	(function addAlias(ns) {
 		var name, itemType;
 		for (name in ns) {

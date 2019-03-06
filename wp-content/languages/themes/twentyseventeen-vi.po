@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Themes - Twenty Seventeen\n"
 
 #. Description of the plugin/theme
-msgid "Twenty Seventeen brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device."
+msgid "Twenty Seventeen brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom.php color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device."
 msgstr "Twenty Seventeen mang đến video trên header và ảnh nổi bật. Với định hướng dành cho các site kinh doanh, giao diện này mang đến nhiều mục trên trang chủ cũng như widget, menu chính và menu mạng xã hội, logo, và nhiều hơn nữa. Cá nhân hoá dễ dàng với màu tự chọn, và hiển thị nội dung đa phương tiện với định dạng bài viết. Đây là giao diện mặc định cho năm 2017 với nhiều ngôn ngữ, nhiều sự tuỳ biến và hoạt động tốt trên các thiết bị khác nhau."
 
 #. Theme Name of the plugin/theme

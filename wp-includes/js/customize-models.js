@@ -55,7 +55,7 @@
 				api.HeaderTool.currentHeader.trigger('hide');
 			}
 
-			wp.ajax.post( 'custom-header-remove', {
+			wp.ajax.post( 'custom.php-header-remove', {
 				nonce: _wpCustomizeHeader.nonces.remove,
 				wp_customize: 'on',
 				theme: api.settings.theme.stylesheet,
@@ -88,7 +88,7 @@
 				return;
 			}
 
-			wp.ajax.post( 'custom-header-add', {
+			wp.ajax.post( 'custom.php-header-add', {
 				nonce: _wpCustomizeHeader.nonces.add,
 				wp_customize: 'on',
 				theme: api.settings.theme.stylesheet,

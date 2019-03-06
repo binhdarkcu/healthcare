@@ -16,7 +16,7 @@ msgid "Twenty Sixteen"
 msgstr "2016"
 
 #. Description of the plugin/theme
-msgid "Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere."
+msgid "Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom.php color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere."
 msgstr "Twenty Sixteen là một giao diện hiện đại dựa trên một cách bố cục trang web rất phổ biển của Wordpress - phần header ở đầu trang với tùy chọn sidebar bên phải rất phù hợp với các blog cá nhân và trang web. Giao diện này cho phép bạn tùy chỉnh màu sắc của trang web với những set màu được tùy chỉnh sẵn, nó cũng có một hệ thống grid hài hòa và linh hoạt được tối ưu cho các thiết bị di động, và được chăm chút hoàn hảo đến từng chi tiết. Twenty Sixteen sẽ giúp bạn có một website WordPress đẹp và chạy tốt trên mọi thiết bị."
 
 #. translators: %s: Name of current post

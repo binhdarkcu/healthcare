@@ -10,7 +10,7 @@
 (function($) {
 	$(document).ready(function() {
 		var frame,
-			bgImage = $( '#custom-background-image' );
+			bgImage = $( '#custom.php-background-image' );
 
 		/**
 		 * @summary Instantiates the WordPress color picker and binds the change and clear events.

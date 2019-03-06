@@ -623,7 +623,7 @@ msgstr "Regras"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Crie um conjunto de regras para determinar em que ecrãs de edição serão "
 "utilizados estes campos personalizados avançados"
@@ -910,7 +910,7 @@ msgstr ""
 "Esperamos que goste."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "Uma experiência mais fácil com campos personalizados"
 
 #: includes/admin/views/settings-info.php:22
@@ -1387,7 +1387,7 @@ msgid "Allow Custom"
 msgstr "Permitir personalização"
 
 #: includes/fields/class-acf-field-checkbox.php:358
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr "Permite adicionar valores personalizados"
 
 #: includes/fields/class-acf-field-checkbox.php:364
@@ -1395,7 +1395,7 @@ msgid "Save Custom"
 msgstr "Guardar personalização"
 
 #: includes/fields/class-acf-field-checkbox.php:369
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr "Guarda valores personalizados nas opções do campo"
 
 #: includes/fields/class-acf-field-checkbox.php:375
@@ -2157,7 +2157,7 @@ msgid "Other"
 msgstr "Outro"
 
 #: includes/fields/class-acf-field-radio.php:259
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr ""
 "Adicionar opção 'outros' para permitir a introdução de valores personalizados"
 

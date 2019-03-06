@@ -3,7 +3,7 @@
  * Twenty Sixteen functions and definitions
  *
  * Set up the theme and provides some helper functions, which are used in the
- * theme as custom template tags. Others are attached to action and filter
+ * theme as custom.php template tags. Others are attached to action and filter
  * hooks in WordPress to change core functionality.
  *
  * When using a child theme you can override certain functions (those wrapped
@@ -65,11 +65,11 @@ function twentysixteen_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*
-	 * Enable support for custom logo.
+	 * Enable support for custom.php logo.
 	 *
 	 *  @since Twenty Sixteen 1.2
 	 */
-	add_theme_support( 'custom-logo', array(
+	add_theme_support( 'custom.php-logo', array(
 		'height'      => 240,
 		'width'       => 240,
 		'flex-height' => true,
@@ -243,7 +243,7 @@ add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
  * @since Twenty Sixteen 1.0
  */
 function twentysixteen_scripts() {
-	// Add custom fonts, used in the main stylesheet.
+	// Add custom.php fonts, used in the main stylesheet.
 	wp_enqueue_style( 'twentysixteen-fonts', twentysixteen_fonts_url(), array(), null );
 
 	// Add Genericons, used in the main stylesheet.
@@ -288,7 +288,7 @@ function twentysixteen_scripts() {
 add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
 
 /**
- * Adds custom classes to the array of body classes.
+ * Adds custom.php classes to the array of body classes.
  *
  * @since Twenty Sixteen 1.0
  *
@@ -296,9 +296,9 @@ add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
  * @return array (Maybe) filtered body classes.
  */
 function twentysixteen_body_classes( $classes ) {
-	// Adds a class of custom-background-image to sites with a custom background image.
+	// Adds a class of custom.php-background-image to sites with a custom.php background image.
 	if ( get_background_image() ) {
-		$classes[] = 'custom-background-image';
+		$classes[] = 'custom.php-background-image';
 	}
 
 	// Adds a class of group-blog to sites with more than 1 published author.
@@ -358,7 +358,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Add custom image sizes attribute to enhance responsive image functionality
+ * Add custom.php image sizes attribute to enhance responsive image functionality
  * for content images
  *
  * @since Twenty Sixteen 1.0
@@ -392,7 +392,7 @@ function twentysixteen_content_image_sizes_attr( $sizes, $size ) {
 add_filter( 'wp_calculate_image_sizes', 'twentysixteen_content_image_sizes_attr', 10 , 2 );
 
 /**
- * Add custom image sizes attribute to enhance responsive image functionality
+ * Add custom.php image sizes attribute to enhance responsive image functionality
  * for post thumbnails
  *
  * @since Twenty Sixteen 1.0
@@ -427,7 +427,7 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	$args['largest']  = 1;
 	$args['smallest'] = 1;
 	$args['unit']     = 'em';
-	$args['format']   = 'list'; 
+	$args['format']   = 'list';
 
 	return $args;
 }

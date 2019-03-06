@@ -2385,7 +2385,7 @@ Cropper = wp.media.controller.State.extend(/** @lends wp.media.controller.Croppe
 	},
 
 	doCrop: function( attachment ) {
-		return wp.ajax.post( 'custom-header-crop', _.extend(
+		return wp.ajax.post( 'custom.php-header-crop', _.extend(
 			{},
 			this.defaults.doCropArgs,
 			{
@@ -8053,7 +8053,7 @@ AttachmentDisplay = Settings.extend(/** @lends wp.media.view.Settings.Attachment
 
 	updateLinkTo: function() {
 		var linkTo = this.model.get('link'),
-			$input = this.$('.link-to-custom'),
+			$input = this.$('.link-to-custom.php'),
 			attachment = this.options.attachment;
 
 		if ( 'none' === linkTo || 'embed' === linkTo || ( ! attachment && 'custom' !== linkTo ) ) {
@@ -8811,7 +8811,7 @@ ImageDetails = AttachmentDisplay.extend(/** @lends wp.media.view.ImageDetails.pr
 	},
 
 	resetFocus: function() {
-		this.$( '.link-to-custom' ).blur();
+		this.$( '.link-to-custom.php' ).blur();
 		this.$( '.embed-media-settings' ).scrollTop( 0 );
 	},
 
@@ -8830,9 +8830,9 @@ ImageDetails = AttachmentDisplay.extend(/** @lends wp.media.view.ImageDetails.pr
 
 	toggleCustomSize: function() {
 		if ( this.model.get( 'size' ) !== 'custom' ) {
-			this.$( '.custom-size' ).addClass('hidden');
+			this.$( '.custom.php-size' ).addClass('hidden');
 		} else {
-			this.$( '.custom-size' ).removeClass('hidden');
+			this.$( '.custom.php-size' ).removeClass('hidden');
 		}
 	},
 

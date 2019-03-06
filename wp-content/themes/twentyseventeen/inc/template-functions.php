@@ -8,7 +8,7 @@
  */
 
 /**
- * Adds custom classes to the array of body classes.
+ * Adds custom.php classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
  * @return array
@@ -34,7 +34,7 @@ function twentyseventeen_body_classes( $classes ) {
 		$classes[] = 'twentyseventeen-front-page';
 	}
 
-	// Add a class if there is a custom header.
+	// Add a class if there is a custom.php header.
 	if ( has_header_image() ) {
 		$classes[] = 'has-header-image';
 	}

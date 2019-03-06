@@ -138,7 +138,7 @@ function _wp_ajax_menu_quick_search( $request = array() ) {
 function wp_nav_menu_setup() {
 	// Register meta boxes
 	wp_nav_menu_post_type_meta_boxes();
-	add_meta_box( 'add-custom-links', __( 'Custom Links' ), 'wp_nav_menu_item_link_meta_box', 'nav-menus', 'side', 'default' );
+	add_meta_box( 'add-custom.php-links', __( 'Custom Links' ), 'wp_nav_menu_item_link_meta_box', 'nav-menus', 'side', 'default' );
 	wp_nav_menu_taxonomy_meta_boxes();
 
 	// Register advanced menu items (columns)
@@ -166,7 +166,7 @@ function wp_initial_nav_menu_meta_boxes() {
 	if ( get_user_option( 'metaboxhidden_nav-menus' ) !== false || ! is_array($wp_meta_boxes) )
 		return;
 
-	$initial_meta_boxes = array( 'add-post-type-page', 'add-post-type-post', 'add-custom-links', 'add-category' );
+	$initial_meta_boxes = array( 'add-post-type-page', 'add-post-type-post', 'add-custom.php-links', 'add-category' );
 	$hidden_meta_boxes = array();
 
 	foreach ( array_keys($wp_meta_boxes['nav-menus']) as $context ) {
@@ -260,7 +260,7 @@ function wp_nav_menu_disabled_check( $nav_menu_selected_id ) {
 }
 
 /**
- * Displays a meta box for the custom links menu item.
+ * Displays a meta box for the custom.php links menu item.
  *
  * @since 3.0.0
  *
@@ -506,7 +506,7 @@ function wp_nav_menu_item_post_type_meta_box( $object, $box ) {
 							'post_parent' => '',
 							'post_title' => _x('Home', 'nav menu home label'),
 							'post_type' => 'nav_menu_item',
-							'type' => 'custom',
+							'type' => 'custom.php',
 							'url' => home_url('/'),
 						) );
 					}
@@ -812,8 +812,8 @@ function wp_save_nav_menu_items( $menu_id = 0, $menu_data = array() ) {
 					! isset( $_item_object_data['menu-item-type'] ) ||
 					// Or URL is the default.
 					in_array( $_item_object_data['menu-item-url'], array( 'http://', '' ) ) ||
-					! ( 'custom' == $_item_object_data['menu-item-type'] && ! isset( $_item_object_data['menu-item-db-id'] ) ) || // or it's not a custom menu item (but not the custom home page)
-					// Or it *is* a custom menu item that already exists.
+					! ( 'custom.php' == $_item_object_data['menu-item-type'] && ! isset( $_item_object_data['menu-item-db-id'] ) ) || // or it's not a custom.php menu item (but not the custom.php home page)
+					// Or it *is* a custom.php menu item that already exists.
 					! empty( $_item_object_data['menu-item-db-id'] )
 				)
 			) {
@@ -856,7 +856,7 @@ function wp_save_nav_menu_items( $menu_id = 0, $menu_data = array() ) {
 }
 
 /**
- * Adds custom arguments to some of the meta box object types.
+ * Adds custom.php arguments to some of the meta box object types.
  *
  * @since 3.0.0
  *

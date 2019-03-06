@@ -1,14 +1,14 @@
 <tr data-id="<?php echo $rule['id']; ?>">
 	<td class="param">
-		<?php 
-		
+		<?php
+
 		// vars
 		$choices = acf_get_location_rule_types();
-		
-		
+
+
 		// array
 		if( is_array($choices) ) {
-			
+
 			acf_render_field(array(
 				'type'		=> 'select',
 				'name'		=> 'param',
@@ -17,21 +17,21 @@
 				'choices'	=> $choices,
 				'class'		=> 'refresh-location-rule'
 			));
-		
+
 		}
-		
+
 		?>
 	</td>
 	<td class="operator">
-		<?php 
-		
+		<?php
+
 		// vars
 		$choices = acf_get_location_rule_operators( $rule );
-		
-		
+
+
 		// array
 		if( is_array($choices) ) {
-			
+
 			acf_render_field(array(
 				'type'		=> 'select',
 				'name'		=> 'operator',
@@ -39,26 +39,26 @@
 				'value'		=> $rule['operator'],
 				'choices'	=> $choices
 			));
-		
-		// custom	
+
+		// custom.php
 		} else {
-			
+
 			echo $choices;
-			
+
 		}
-	
+
 		?>
 	</td>
 	<td class="value">
 		<?php
-		
+
 		// vars
 		$choices = acf_get_location_rule_values( $rule );
-		
-		
+
+
 		// array
 		if( is_array($choices) ) {
-			
+
 			acf_render_field(array(
 				'type'		=> 'select',
 				'name'		=> 'value',
@@ -66,14 +66,14 @@
 				'value'		=> $rule['value'],
 				'choices'	=> $choices
 			));
-		
-		// custom	
+
+		// custom.php
 		} else {
-			
+
 			echo $choices;
-			
+
 		}
-		
+
 		?>
 	</td>
 	<td class="add">

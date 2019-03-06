@@ -2977,18 +2977,18 @@ function clean_pre($matches) {
  * @see add_theme_support()
  *
  * @param callable $wp_head_callback Call on the {@see 'wp_head'} action.
- * @param callable $admin_head_callback Call on custom header administration screen.
- * @param callable $admin_preview_callback Output a custom header image div on the custom header administration screen. Optional.
+ * @param callable $admin_head_callback Call on custom.php header administration screen.
+ * @param callable $admin_preview_callback Output a custom.php header image div on the custom.php header administration screen. Optional.
  */
 function add_custom_image_header( $wp_head_callback, $admin_head_callback, $admin_preview_callback = '' ) {
-	_deprecated_function( __FUNCTION__, '3.4.0', 'add_theme_support( \'custom-header\', $args )' );
+	_deprecated_function( __FUNCTION__, '3.4.0', 'add_theme_support( \'custom.php-header\', $args )' );
 	$args = array(
 		'wp-head-callback'    => $wp_head_callback,
 		'admin-head-callback' => $admin_head_callback,
 	);
 	if ( $admin_preview_callback )
 		$args['admin-preview-callback'] = $admin_preview_callback;
-	return add_theme_support( 'custom-header', $args );
+	return add_theme_support( 'custom.php-header', $args );
 }
 
 /**
@@ -3001,8 +3001,8 @@ function add_custom_image_header( $wp_head_callback, $admin_head_callback, $admi
  * @return null|bool Whether support was removed.
  */
 function remove_custom_image_header() {
-	_deprecated_function( __FUNCTION__, '3.4.0', 'remove_theme_support( \'custom-header\' )' );
-	return remove_theme_support( 'custom-header' );
+	_deprecated_function( __FUNCTION__, '3.4.0', 'remove_theme_support( \'custom.php-header\' )' );
+	return remove_theme_support( 'custom.php-header' );
 }
 
 /**
@@ -3013,11 +3013,11 @@ function remove_custom_image_header() {
  * @see add_theme_support()
  *
  * @param callable $wp_head_callback Call on the {@see 'wp_head'} action.
- * @param callable $admin_head_callback Call on custom background administration screen.
- * @param callable $admin_preview_callback Output a custom background image div on the custom background administration screen. Optional.
+ * @param callable $admin_head_callback Call on custom.php background administration screen.
+ * @param callable $admin_preview_callback Output a custom.php background image div on the custom.php background administration screen. Optional.
  */
 function add_custom_background( $wp_head_callback = '', $admin_head_callback = '', $admin_preview_callback = '' ) {
-	_deprecated_function( __FUNCTION__, '3.4.0', 'add_theme_support( \'custom-background\', $args )' );
+	_deprecated_function( __FUNCTION__, '3.4.0', 'add_theme_support( \'custom.php-background\', $args )' );
 	$args = array();
 	if ( $wp_head_callback )
 		$args['wp-head-callback'] = $wp_head_callback;
@@ -3025,11 +3025,11 @@ function add_custom_background( $wp_head_callback = '', $admin_head_callback = '
 		$args['admin-head-callback'] = $admin_head_callback;
 	if ( $admin_preview_callback )
 		$args['admin-preview-callback'] = $admin_preview_callback;
-	return add_theme_support( 'custom-background', $args );
+	return add_theme_support( 'custom.php-background', $args );
 }
 
 /**
- * Remove custom background support.
+ * Remove custom.php background support.
  *
  * @since 3.1.0
  * @deprecated 3.4.0 Use add_custom_background()
@@ -3038,8 +3038,8 @@ function add_custom_background( $wp_head_callback = '', $admin_head_callback = '
  * @return null|bool Whether support was removed.
  */
 function remove_custom_background() {
-	_deprecated_function( __FUNCTION__, '3.4.0', 'remove_theme_support( \'custom-background\' )' );
-	return remove_theme_support( 'custom-background' );
+	_deprecated_function( __FUNCTION__, '3.4.0', 'remove_theme_support( \'custom.php-background\' )' );
+	return remove_theme_support( 'custom.php-background' );
 }
 
 /**

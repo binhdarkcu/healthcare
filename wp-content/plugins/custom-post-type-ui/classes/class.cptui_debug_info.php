@@ -21,7 +21,7 @@ class CPTUI_Debug_Info {
 	 */
 	public function tab_site_info() {
 		?>
-		<p><?php _e( 'If you have sought support for Custom Post Type UI on the forums, you may be requested to send the information below to the plugin developer. Simply insert the email they provided in the input field at the bottom and click the "Send debug info" button. Only the data below will be sent to them.', 'custom-post-type-ui' ); ?></p>
+		<p><?php _e( 'If you have sought support for Custom Post Type UI on the forums, you may be requested to send the information below to the plugin developer. Simply insert the email they provided in the input field at the bottom and click the "Send debug info" button. Only the data below will be sent to them.', 'custom.php-post-type-ui' ); ?></p>
 		<label for="cptui_audit_textarea">
 		<textarea readonly="readonly" aria-readonly="true" id="cptui-audit-textarea" name="cptui_audit_textarea" rows="20" cols="100">
 			<?php echo $this->system_status(); ?>
@@ -231,7 +231,7 @@ class CPTUI_Debug_Info {
 		 */
 		$subject = apply_filters( 'cptui_debug_email_subject', sprintf(
 			// translators: Placeholder will hold site home_url.
-			__( 'Custom Post Type UI debug information for %s', 'custom-post-type-ui' ),
+			__( 'Custom Post Type UI debug information for %s', 'custom.php-post-type-ui' ),
 			home_url( '/' )
 		) );
 

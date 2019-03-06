@@ -68,7 +68,7 @@ class WP_Widget_Custom_HTML extends WP_Widget {
 		}
 		$this->registered = true;
 
-		wp_add_inline_script( 'custom-html-widgets', sprintf( 'wp.customHtmlWidgets.idBases.push( %s );', wp_json_encode( $this->id_base ) ) );
+		wp_add_inline_script( 'custom.php-html-widgets', sprintf( 'wp.customHtmlWidgets.idBases.push( %s );', wp_json_encode( $this->id_base ) ) );
 
 		// Note that the widgets component in the customizer will also do the 'admin_print_scripts-widgets.php' action in WP_Customize_Widgets::print_scripts().
 		add_action( 'admin_print_scripts-widgets.php', array( $this, 'enqueue_admin_scripts' ) );
@@ -162,7 +162,7 @@ class WP_Widget_Custom_HTML extends WP_Widget {
 		if ( ! empty( $title ) ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-		echo '<div class="textwidget custom-html-widget">'; // The textwidget class is for theme styling compatibility.
+		echo '<div class="textwidget custom.php-html-widget">'; // The textwidget class is for theme styling compatibility.
 		echo $content;
 		echo '</div>';
 		echo $args['after_widget'];
@@ -203,13 +203,13 @@ class WP_Widget_Custom_HTML extends WP_Widget {
 			),
 		) );
 
-		wp_enqueue_script( 'custom-html-widgets' );
+		wp_enqueue_script( 'custom.php-html-widgets' );
 		if ( empty( $settings ) ) {
 			$settings = array(
 				'disabled' => true,
 			);
 		}
-		wp_add_inline_script( 'custom-html-widgets', sprintf( 'wp.customHtmlWidgets.init( %s );', wp_json_encode( $settings ) ), 'after' );
+		wp_add_inline_script( 'custom.php-html-widgets', sprintf( 'wp.customHtmlWidgets.init( %s );', wp_json_encode( $settings ) ), 'after' );
 
 		$l10n = array(
 			'errorNotice' => array(
@@ -219,7 +219,7 @@ class WP_Widget_Custom_HTML extends WP_Widget {
 				'plural' => _n( 'There is %d error which must be fixed before you can save.', 'There are %d errors which must be fixed before you can save.', 2 ), // @todo This is lacking, as some languages have a dedicated dual form. For proper handling of plurals in JS, see #20491.
 			),
 		);
-		wp_add_inline_script( 'custom-html-widgets', sprintf( 'jQuery.extend( wp.customHtmlWidgets.l10n, %s );', wp_json_encode( $l10n ) ), 'after' );
+		wp_add_inline_script( 'custom.php-html-widgets', sprintf( 'jQuery.extend( wp.customHtmlWidgets.l10n, %s );', wp_json_encode( $l10n ) ), 'after' );
 	}
 
 	/**

@@ -248,10 +248,10 @@ function get_theme_feature_list( $api = true ) {
 
 		__( 'Features' ) => array(
 			'accessibility-ready'   => __( 'Accessibility Ready' ),
-			'custom-background'     => __( 'Custom Background' ),
-			'custom-colors'         => __( 'Custom Colors' ),
-			'custom-header'         => __( 'Custom Header' ),
-			'custom-logo'           => __( 'Custom Logo' ),
+			'custom.php-background'     => __( 'Custom Background' ),
+			'custom.php-colors'         => __( 'Custom Colors' ),
+			'custom.php-header'         => __( 'Custom Header' ),
+			'custom.php-logo'           => __( 'Custom Logo' ),
 			'editor-style'          => __( 'Editor Style' ),
 			'featured-image-header' => __( 'Featured Image Header' ),
 			'featured-images'       => __( 'Featured Images' ),

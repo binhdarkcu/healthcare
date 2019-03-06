@@ -271,8 +271,8 @@ class WP {
 		 * Filters the query variables whitelist before processing.
 		 *
 		 * Allows (publicly allowed) query vars to be added, removed, or changed prior
-		 * to executing the query. Needed to allow custom rewrite rules using your own arguments
-		 * to work, or any other custom query variables you want to be publicly available.
+		 * to executing the query. Needed to allow custom.php rewrite rules using your own arguments
+		 * to work, or any other custom.php query variables you want to be publicly available.
 		 *
 		 * @since 1.5.0
 		 *
@@ -324,7 +324,7 @@ class WP {
 			foreach ( get_taxonomies( array( 'publicly_queryable' => false ), 'objects' ) as $taxonomy => $t ) {
 				/*
 				 * Disallow when set to the 'taxonomy' query var.
-				 * Non-publicly queryable taxonomies cannot register custom query vars. See register_taxonomy().
+				 * Non-publicly queryable taxonomies cannot register custom.php query vars. See register_taxonomy().
 				 */
 				if ( isset( $this->query_vars['taxonomy'] ) && $taxonomy === $this->query_vars['taxonomy'] ) {
 					unset( $this->query_vars['taxonomy'], $this->query_vars['term'] );

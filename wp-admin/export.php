@@ -45,7 +45,7 @@ add_action( 'admin_head', 'export_add_js' );
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __('Overview'),
-	'content' => '<p>' . __('You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status.') . '</p>' .
+	'content' => '<p>' . __('You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom.php fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status.') . '</p>' .
 		'<p>' . __('Once generated, your WXR file can be imported by another WordPress site or by another blogging platform able to access this format.') . '</p>',
 ) );
 
@@ -155,7 +155,7 @@ function export_date_options( $post_type = 'post' ) {
 <h1><?php echo esc_html( $title ); ?></h1>
 
 <p><?php _e('When you click the button below WordPress will create an XML file for you to save to your computer.'); ?></p>
-<p><?php _e('This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags.'); ?></p>
+<p><?php _e('This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom.php fields, categories, and tags.'); ?></p>
 <p><?php _e('Once you&#8217;ve saved the download file, you can use the Import function in another WordPress installation to import the content from this site.'); ?></p>
 
 <h2><?php _e( 'Choose what to export' ); ?></h2>
@@ -164,7 +164,7 @@ function export_date_options( $post_type = 'post' ) {
 <legend class="screen-reader-text"><?php _e( 'Content to export' ); ?></legend>
 <input type="hidden" name="download" value="true" />
 <p><label><input type="radio" name="content" value="all" checked="checked" aria-describedby="all-content-desc" /> <?php _e( 'All content' ); ?></label></p>
-<p class="description" id="all-content-desc"><?php _e( 'This will contain all of your posts, pages, comments, custom fields, terms, navigation menus, and custom posts.' ); ?></p>
+<p class="description" id="all-content-desc"><?php _e( 'This will contain all of your posts, pages, comments, custom.php fields, terms, navigation menus, and custom.php posts.' ); ?></p>
 
 <p><label><input type="radio" name="content" value="posts" /> <?php _e( 'Posts' ); ?></label></p>
 <ul id="post-filters" class="export-filters">

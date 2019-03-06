@@ -64,7 +64,7 @@
 
 				// Check if the text color has been removed and use default colors in theme stylesheet.
 				if ( ! to.length ) {
-					$( '#twentyseventeen-custom-header-styles' ).remove();
+					$( '#twentyseventeen-custom.php-header-styles' ).remove();
 				}
 				$( '.site-title, .site-description' ).css({
 					clip: 'auto',
@@ -94,8 +94,8 @@
 	wp.customize( 'colorscheme_hue', function( value ) {
 		value.bind( function( to ) {
 
-			// Update custom color CSS.
-			var style = $( '#custom-theme-colors' ),
+			// Update custom.php color CSS.
+			var style = $( '#custom.php-theme-colors' ),
 				hue = style.data( 'hue' ),
 				css = style.html();
 
@@ -130,7 +130,7 @@
 		return '' !== externalVideo || ( 0 !== video && '' !== video );
 	}
 
-	// Toggle a body class if a custom header exists.
+	// Toggle a body class if a custom.php header exists.
 	$.each( [ 'external_header_video', 'header_image', 'header_video' ], function( index, settingId ) {
 		wp.customize( settingId, function( setting ) {
 			setting.bind(function() {

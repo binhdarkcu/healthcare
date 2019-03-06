@@ -681,7 +681,7 @@ msgstr "Kurallar"
 #: admin/views/field-group-locations.php:6
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Bu gelişmiş özel alanları hangi düzenleme ekranlarında kullanılacağını "
 "belirlemek için kural oluşturun"
@@ -935,7 +935,7 @@ msgstr ""
 "Böyle umuyoruz."
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "Daha düzgün özel alan deneyimi"
 
 #: admin/views/settings-info.php:28
@@ -1930,7 +1930,7 @@ msgid "Other"
 msgstr "Diğer"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Özel değerler için izin vermek için 'diğer' seçeneği ekle"
 
 #: fields/radio.php:212

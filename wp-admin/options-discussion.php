@@ -229,7 +229,7 @@ endforeach;
 <th scope="row"><?php _e('Default Avatar'); ?></th>
 <td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
 
-<?php _e('For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their email address.'); ?><br />
+<?php _e('For users without a custom.php avatar of their own, you can either display a generic logo or a generated one based on their email address.'); ?><br />
 
 <?php
 $avatar_defaults = array(

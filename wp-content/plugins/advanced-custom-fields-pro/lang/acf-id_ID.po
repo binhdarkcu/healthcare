@@ -755,10 +755,10 @@ msgstr "Peraturan"
 #: admin/views/field-group-locations.php:42
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Buat pengaturan peraturan untuk menentukan layar edit yang akan menggunakan "
-"advanced custom fields ini"
+"advanced custom.php fields ini"
 
 #: admin/views/field-group-locations.php:59
 msgid "Show this field group if"
@@ -923,7 +923,7 @@ msgstr ""
 "sebelumnya. Kami harap Anda menyukainya."
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "Pengalaman bidang kustom yang halus"
 
 #: admin/views/settings-info.php:28
@@ -1938,7 +1938,7 @@ msgid "Other"
 msgstr "Lainnya"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Tambah pilihan 'lainnya' untuk mengizinkan nilai kustom"
 
 #: fields/radio.php:212

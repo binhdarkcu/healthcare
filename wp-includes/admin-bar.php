@@ -735,7 +735,7 @@ function wp_admin_bar_new_content_menu( $wp_admin_bar ) {
 
 	unset( $cpts['post'], $cpts['page'], $cpts['attachment'] );
 
-	// Add any additional custom post types.
+	// Add any additional custom.php post types.
 	foreach ( $cpts as $cpt ) {
 		if ( ! current_user_can( $cpt->cap->create_posts ) )
 			continue;
@@ -835,24 +835,24 @@ function wp_admin_bar_appearance_menu( $wp_admin_bar ) {
 	if ( current_theme_supports( 'menus' ) || current_theme_supports( 'widgets' ) )
 		$wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'menus', 'title' => __('Menus'), 'href' => admin_url('nav-menus.php') ) );
 
-	if ( current_theme_supports( 'custom-background' ) ) {
+	if ( current_theme_supports( 'custom.php-background' ) ) {
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'appearance',
 			'id'     => 'background',
 			'title'  => __( 'Background' ),
-			'href'   => admin_url( 'themes.php?page=custom-background' ),
+			'href'   => admin_url( 'themes.php?page=custom.php-background' ),
 			'meta'   => array(
 				'class' => 'hide-if-customize',
 			),
 		) );
 	}
 
-	if ( current_theme_supports( 'custom-header' ) ) {
+	if ( current_theme_supports( 'custom.php-header' ) ) {
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'appearance',
 			'id'     => 'header',
 			'title'  => __( 'Header' ),
-			'href'   => admin_url( 'themes.php?page=custom-header' ),
+			'href'   => admin_url( 'themes.php?page=custom.php-header' ),
 			'meta'   => array(
 				'class' => 'hide-if-customize',
 			),

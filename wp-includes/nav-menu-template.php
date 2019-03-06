@@ -36,7 +36,7 @@ require_once ABSPATH . WPINC . '/class-walker-nav-menu.php';
  *     @type string             $link_after      Text after the link text. Default empty.
  *     @type bool               $echo            Whether to echo the menu or return it. Default true.
  *     @type int                $depth           How many levels of the hierarchy are to be included. 0 means all. Default 0.
- *     @type object             $walker          Instance of a custom walker class. Default empty.
+ *     @type object             $walker          Instance of a custom.php walker class. Default empty.
  *     @type string             $theme_location  Theme location to be used. Must be registered with register_nav_menu()
  *                                               in order to be selectable by the user.
  *     @type string             $items_wrap      How the list items should be wrapped. Default is a ul with an id and class.
@@ -406,7 +406,7 @@ function _wp_menu_item_classes_by_context( &$menu_items ) {
 			$active_parent_item_ids[] = (int) $menu_item->menu_item_parent;
 
 		// if the menu item corresponds to the currently-requested URL
-		} elseif ( 'custom' == $menu_item->object && isset( $_SERVER['HTTP_HOST'] ) ) {
+		} elseif ( 'custom.php' == $menu_item->object && isset( $_SERVER['HTTP_HOST'] ) ) {
 			$_root_relative_current = untrailingslashit( $_SERVER['REQUEST_URI'] );
 
 			//if it is the customize page then it will strips the query var off the url before entering the comparison block.

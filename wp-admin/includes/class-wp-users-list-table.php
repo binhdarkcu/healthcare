@@ -514,7 +514,7 @@ class WP_Users_List_Table extends WP_List_Table {
 						break;
 					default:
 						/**
-						 * Filters the display output of custom columns in the Users list table.
+						 * Filters the display output of custom.php columns in the Users list table.
 						 *
 						 * @since 2.8.0
 						 *

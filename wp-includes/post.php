@@ -32,7 +32,7 @@ function create_initial_post_types() {
 		'rewrite' => false,
 		'query_var' => false,
 		'delete_with_user' => true,
-		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
+		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom.php-fields', 'comments', 'revisions', 'post-formats' ),
 		'show_in_rest' => true,
 		'rest_base' => 'posts',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
@@ -53,7 +53,7 @@ function create_initial_post_types() {
 		'rewrite' => false,
 		'query_var' => false,
 		'delete_with_user' => true,
-		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'custom-fields', 'comments', 'revisions' ),
+		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'custom.php-fields', 'comments', 'revisions' ),
 		'show_in_rest' => true,
 		'rest_base' => 'pages',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
@@ -526,12 +526,12 @@ function get_children( $args = '', $output = OBJECT ) {
  *
  * The returned array has 'main', 'extended', and 'more_text' keys. Main has the text before
  * the `<!--more-->`. The 'extended' key has the content after the
- * `<!--more-->` comment. The 'more_text' key has the custom "Read More" text.
+ * `<!--more-->` comment. The 'more_text' key has the custom.php "Read More" text.
  *
  * @since 1.0.0
  *
  * @param string $post Post content.
- * @return array Post before ('main'), after ('extended'), and custom read more ('more_text').
+ * @return array Post before ('main'), after ('extended'), and custom.php read more ('more_text').
  */
 function get_extended( $post ) {
 	//Match the new style more links.
@@ -1050,7 +1050,7 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  * are used.
  *
  * Post types can support any number of built-in core features such
- * as meta boxes, custom fields, post thumbnails, post statuses,
+ * as meta boxes, custom.php fields, post thumbnails, post statuses,
  * comments, and more. See the `$supports` argument for a complete
  * list of supported features.
  *
@@ -1128,7 +1128,7 @@ function get_post_types( $args = array(), $output = 'names', $operator = 'and' )
  *     @type array       $supports              Core feature(s) the post type supports. Serves as an alias for calling
  *                                              add_post_type_support() directly. Core features include 'title',
  *                                              'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt',
- *                                              'page-attributes', 'thumbnail', 'custom-fields', and 'post-formats'.
+ *                                              'page-attributes', 'thumbnail', 'custom.php-fields', and 'post-formats'.
  *                                              Additionally, the 'revisions' feature dictates whether the post type
  *                                              will store revisions, and the 'comments' feature dictates whether the
  *                                              comments count will show on the edit screen. Defaults is an array
@@ -1495,15 +1495,15 @@ function get_post_type_labels( $post_type_object ) {
 }
 
 /**
- * Build an object with custom-something object (post type, taxonomy) labels
- * out of a custom-something object
+ * Build an object with custom.php-something object (post type, taxonomy) labels
+ * out of a custom.php-something object
  *
  * @since 3.0.0
  * @access private
  *
- * @param object $object                  A custom-something object.
+ * @param object $object                  A custom.php-something object.
  * @param array  $nohier_vs_hier_defaults Hierarchical vs non-hierarchical default labels.
- * @return object Object containing labels for the given custom-something object.
+ * @return object Object containing labels for the given custom.php-something object.
  */
 function _get_custom_object_labels( $object, $nohier_vs_hier_defaults ) {
 	$object->labels = (array) $object->labels;
@@ -1559,7 +1559,7 @@ function _add_post_type_submenus() {
  * All core features are directly associated with a functional area of the edit
  * screen, such as the editor or a meta box. Features include: 'title', 'editor',
  * 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes',
- * 'thumbnail', 'custom-fields', and 'post-formats'.
+ * 'thumbnail', 'custom.php-fields', and 'post-formats'.
  *
  * Additionally, the 'revisions' feature dictates whether the post type will
  * store revisions, and the 'comments' feature dictates whether the comments
@@ -1956,7 +1956,7 @@ function get_post_custom_keys( $post_id = 0 ) {
 }
 
 /**
- * Retrieve values for a custom post field.
+ * Retrieve values for a custom.php post field.
  *
  * The parameters must not be considered optional. All of the post meta fields
  * will be retrieved and only the meta field key values returned.
@@ -3503,7 +3503,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		wp_set_post_tags( $post_ID, $postarr['tags_input'] );
 	}
 
-	// New-style support for all custom taxonomies.
+	// New-style support for all custom.php taxonomies.
 	if ( ! empty( $postarr['tax_input'] ) ) {
 		foreach ( $postarr['tax_input'] as $taxonomy => $tags ) {
 			$taxonomy_obj = get_taxonomy($taxonomy);
@@ -5716,7 +5716,7 @@ function get_posts_by_author_sql( $post_type, $full = true, $post_author = null,
 		}
 
 		/**
-		 * Filters the capability to read private posts for a custom post type
+		 * Filters the capability to read private posts for a custom.php post type
 		 * when generating SQL for getting posts by author.
 		 *
 		 * @since 2.2.0
@@ -6343,9 +6343,9 @@ function wp_queue_posts_for_term_meta_lazyload( $posts ) {
 }
 
 /**
- * Update the custom taxonomies' term counts when a post's status is changed.
+ * Update the custom.php taxonomies' term counts when a post's status is changed.
  *
- * For example, default posts term counts (for custom taxonomies) don't include
+ * For example, default posts term counts (for custom.php taxonomies) don't include
  * private / draft posts.
  *
  * @since 3.3.0

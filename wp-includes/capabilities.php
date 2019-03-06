@@ -548,7 +548,7 @@ function map_meta_cap( $cap, $user_id ) {
 		$caps[] = is_multisite() ? 'manage_network' : 'manage_options';
 		break;
 	default:
-		// Handle meta capabilities for custom post types.
+		// Handle meta capabilities for custom.php post types.
 		global $post_type_meta_caps;
 		if ( isset( $post_type_meta_caps[ $cap ] ) ) {
 			$args = array_merge( array( $post_type_meta_caps[ $cap ], $user_id ), $args );

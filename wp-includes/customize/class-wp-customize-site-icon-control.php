@@ -10,7 +10,7 @@
 /**
  * Customize Site Icon control class.
  *
- * Used only for custom functionality in JavaScript.
+ * Used only for custom.php functionality in JavaScript.
  *
  * @since 4.3.0
  *

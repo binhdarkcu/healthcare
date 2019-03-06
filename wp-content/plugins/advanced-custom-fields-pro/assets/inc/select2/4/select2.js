@@ -3139,7 +3139,7 @@ S2.define('select2/data/select',[
   SelectAdapter.prototype.destroy = function () {
     // Remove anything added to child elements
     this.$element.find('*').each(function () {
-      // Remove any custom data set by Select2
+      // Remove any custom.php data set by Select2
       $.removeData(this, 'data');
     });
   };

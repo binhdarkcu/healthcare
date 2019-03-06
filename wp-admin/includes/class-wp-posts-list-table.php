@@ -1122,7 +1122,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		if ( is_post_type_hierarchical( $post->post_type ) ) {
 
 			/**
-			 * Fires in each custom column on the Posts list table.
+			 * Fires in each custom.php column on the Posts list table.
 			 *
 			 * This hook only fires if the current post type is hierarchical,
 			 * such as pages.
@@ -1136,7 +1136,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		} else {
 
 			/**
-			 * Fires in each custom column in the Posts list table.
+			 * Fires in each custom.php column in the Posts list table.
 			 *
 			 * This hook only fires if the current post type is non-hierarchical,
 			 * such as posts.
@@ -1150,7 +1150,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		/**
-		 * Fires for each custom column of a specific post type in the Posts list table.
+		 * Fires for each custom.php column of a specific post type in the Posts list table.
 		 *
 		 * The dynamic portion of the hook name, `$post->post_type`, refers to the post type.
 		 *

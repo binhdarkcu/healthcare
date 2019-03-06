@@ -683,7 +683,7 @@ msgstr "Умови"
 #: admin/views/field-group-locations.php:6
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Створіть набір умов, щоб визначити де використовувати  ці додаткові поля"
 
@@ -934,7 +934,7 @@ msgid ""
 msgstr "Дякуємо за оновлення! ACF %s став ще кращим!"
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr ""
 
 #: admin/views/settings-info.php:28
@@ -1886,7 +1886,7 @@ msgid "Other"
 msgstr "Інше"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Додати вибір 'Інше', для користувацьких значень"
 
 #: fields/radio.php:212
@@ -2673,7 +2673,7 @@ msgstr ""
 #~ msgid "Run the updater"
 #~ msgstr "Запустити оновлення"
 
-#~ msgid "Return to custom fields"
+#~ msgid "Return to custom.php fields"
 #~ msgstr "Повернутися до додаткових полів"
 
 #~ msgid "Size"

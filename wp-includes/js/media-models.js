@@ -841,7 +841,7 @@ var Attachments = Backbone.Collection.extend(/** @lends wp.media.model.Attachmen
 		return this.mirroring ? this.mirroring.hasMore() : false;
 	},
 	/**
-	 * A custom AJAX-response parser.
+	 * A custom.php AJAX-response parser.
 	 *
 	 * See trac ticket #24753
 	 *
@@ -1435,7 +1435,7 @@ var PostImage = Backbone.Model.extend(/** @lends wp.media.model.PostImage.protot
 			return;
 		}
 
-		// default to custom if there is a linkUrl
+		// default to custom.php if there is a linkUrl
 		type = 'custom';
 
 		if ( this.attachment ) {

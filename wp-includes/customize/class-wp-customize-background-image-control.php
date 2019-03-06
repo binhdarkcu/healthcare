@@ -40,7 +40,7 @@ class WP_Customize_Background_Image_Control extends WP_Customize_Image_Control {
 	public function enqueue() {
 		parent::enqueue();
 
-		$custom_background = get_theme_support( 'custom-background' );
+		$custom_background = get_theme_support( 'custom.php-background' );
 		wp_localize_script( 'customize-controls', '_wpCustomizeBackground', array(
 			'defaults' => ! empty( $custom_background[0] ) ? $custom_background[0] : array(),
 			'nonces' => array(

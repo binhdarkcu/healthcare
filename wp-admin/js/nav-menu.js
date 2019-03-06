@@ -829,7 +829,7 @@ var wpNavMenu;
 					}
 				}
 			});
-			$('#add-custom-links input[type="text"]').keypress(function(e){
+			$('#add-custom.php-links input[type="text"]').keypress(function(e){
 				$('#customlinkdiv').removeClass('form-invalid');
 
 				if ( e.keyCode === 13 ) {
@@ -936,8 +936,8 @@ var wpNavMenu;
 		},
 
 		addCustomLink : function( processMethod ) {
-			var url = $('#custom-menu-item-url').val(),
-				label = $('#custom-menu-item-name').val();
+			var url = $('#custom.php-menu-item-url').val(),
+				label = $('#custom.php-menu-item-name').val();
 
 			processMethod = processMethod || api.addMenuItemToBottom;
 
@@ -951,9 +951,9 @@ var wpNavMenu;
 			this.addLinkToMenu( url, label, processMethod, function() {
 				// Remove the ajax spinner
 				$( '.customlinkdiv .spinner' ).removeClass( 'is-active' );
-				// Set custom link form back to defaults
-				$('#custom-menu-item-name').val('').blur();
-				$('#custom-menu-item-url').val('http://');
+				// Set custom.php link form back to defaults
+				$('#custom.php-menu-item-name').val('').blur();
+				$('#custom.php-menu-item-url').val('http://');
 			});
 		},
 

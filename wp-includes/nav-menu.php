@@ -419,7 +419,7 @@ function wp_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item
 		'menu-item-object' => '',
 		'menu-item-parent-id' => 0,
 		'menu-item-position' => 0,
-		'menu-item-type' => 'custom',
+		'menu-item-type' => 'custom.php',
 		'menu-item-title' => '',
 		'menu-item-url' => '',
 		'menu-item-description' => '',
@@ -442,8 +442,8 @@ function wp_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item
 
 	$original_parent = 0 < $menu_item_db_id ? get_post_field( 'post_parent', $menu_item_db_id ) : 0;
 
-	if ( 'custom' != $args['menu-item-type'] ) {
-		/* if non-custom menu item, then:
+	if ( 'custom.php' != $args['menu-item-type'] ) {
+		/* if non-custom.php menu item, then:
 			* use original object's URL
 			* blank default title to sync with original object's
 		*/
@@ -515,9 +515,9 @@ function wp_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item
 		wp_set_object_terms( $menu_item_db_id, array( $menu->term_id ), 'nav_menu' );
 	}
 
-	if ( 'custom' == $args['menu-item-type'] ) {
+	if ( 'custom.php' == $args['menu-item-type'] ) {
 		$args['menu-item-object-id'] = $menu_item_db_id;
-		$args['menu-item-object'] = 'custom';
+		$args['menu-item-object'] = 'custom.php';
 	}
 
 	$menu_item_db_id = (int) $menu_item_db_id;

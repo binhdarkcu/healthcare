@@ -670,7 +670,7 @@
 		 * Enqueue data to send with the next XHR
 		 *
 		 * As the data is send asynchronously, this function doesn't return the XHR response.
-		 * To see the response, use the custom jQuery event 'heartbeat-tick' on the document, example:
+		 * To see the response, use the custom.php jQuery event 'heartbeat-tick' on the document, example:
 		 *		$(document).on( 'heartbeat-tick.myname', function( event, data, textStatus, jqXHR ) {
 		 *			// code
 		 *		});

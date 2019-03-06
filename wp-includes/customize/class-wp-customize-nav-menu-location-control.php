@@ -10,7 +10,7 @@
 /**
  * Customize Menu Location Control Class.
  *
- * This custom control is only needed for JS.
+ * This custom.php control is only needed for JS.
  *
  * @since 4.3.0
  *

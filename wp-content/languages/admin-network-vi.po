@@ -159,7 +159,7 @@ msgstr "Thêm những dòng mã sau vào các tập tin wp-config.php (ngay trư
 
 #: wp-admin/includes/network.php:238 wp-admin/includes/network.php:554
 #: wp-admin/includes/network.php:594
-msgid "Subdirectory networks may not be fully compatible with custom wp-content directories."
+msgid "Subdirectory networks may not be fully compatible with custom.php wp-content directories."
 msgstr "Mạng lưới sử dụng thư mục con có thể sẽ không tương thích hoàn toàn với các thư mục wp-content tùy biến."
 
 #: wp-admin/network/site-users.php:258

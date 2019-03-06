@@ -1,6 +1,6 @@
-<?php  
+<?php
 if( !class_exists( 'EDD_SL_Plugin_Updater' ) ) {
-	// load our custom updater
+	// load our custom.php updater
 	include( DWQA_DIR . '/lib/easy-digital-downloads/EDD_SL_Plugin_Updater.php' );
 }
 
@@ -57,7 +57,7 @@ class DWQA_Updater {
 	* a license key is still valid
 	* the updater does this for you,
 	* so this is only needed if you
-	* want to do something custom
+	* want to do something custom.php
 	*************************************/
 
 	public function check_license() {
@@ -73,7 +73,7 @@ class DWQA_Updater {
 			'url'       => home_url()
 		);
 
-		// Call the custom API.
+		// Call the custom.php API.
 		$response = wp_remote_post( EDD_SAMPLE_STORE_URL, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
 
 		if ( is_wp_error( $response ) )
@@ -159,7 +159,7 @@ class DWQA_Updater {
 			'url'       => home_url()
 		);
 
-		// Call the custom API.
+		// Call the custom.php API.
 		$response = wp_remote_post( $this->store, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
@@ -197,7 +197,7 @@ class DWQA_Updater {
 				'url'       => home_url()
 			);
 
-			// Call the custom API.
+			// Call the custom.php API.
 			$response = wp_remote_post( $this->store, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
 
 			// make sure the response came back okay

@@ -13,7 +13,7 @@
 /**
  * Objects representing the current network and current site.
  *
- * These may be populated through a custom `sunrise.php`. If not, then this
+ * These may be populated through a custom.php `sunrise.php`. If not, then this
  * file will attempt to populate them based on the current request.
  *
  * @global WP_Network $current_site The current network.

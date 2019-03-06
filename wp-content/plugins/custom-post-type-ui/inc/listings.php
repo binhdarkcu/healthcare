@@ -53,16 +53,16 @@ function cptui_listings() {
 			do_action( 'cptui_inside_listings_wrap' );
 			?>
 
-			<h1><?php esc_html_e( 'Post Types and Taxonomies registered by Custom Post Type UI.', 'custom-post-type-ui' ); ?></h1>
+			<h1><?php esc_html_e( 'Post Types and Taxonomies registered by Custom Post Type UI.', 'custom.php-post-type-ui' ); ?></h1>
 			<?php
 			$post_types = cptui_get_post_type_data();
-			echo '<h2 id="post-types">' . esc_html__( 'Post Types', 'custom-post-type-ui' ) . '</h2>';
+			echo '<h2 id="post-types">' . esc_html__( 'Post Types', 'custom.php-post-type-ui' ) . '</h2>';
 			if ( ! empty( $post_types ) ) {
 			?>
 			<p><?php
 			printf(
 				/* translators: %s: Total count of registered CPTUI post types */
-				esc_html__( 'Custom Post Type UI registered post types count total: %d', 'custom-post-type-ui' ),
+				esc_html__( 'Custom Post Type UI registered post types count total: %d', 'custom.php-post-type-ui' ),
 				count( $post_types )
 			);
 			?>
@@ -71,12 +71,12 @@ function cptui_listings() {
 			<?php
 
 			$post_type_table_heads = array(
-				__( 'Post Type', 'custom-post-type-ui' ),
-				__( 'Settings', 'custom-post-type-ui' ),
-				__( 'Supports', 'custom-post-type-ui' ),
-				__( 'Taxonomies', 'custom-post-type-ui' ),
-				__( 'Labels', 'custom-post-type-ui' ),
-				__( 'Template Hierarchy', 'custom-post-type-ui' ),
+				__( 'Post Type', 'custom.php-post-type-ui' ),
+				__( 'Settings', 'custom.php-post-type-ui' ),
+				__( 'Supports', 'custom.php-post-type-ui' ),
+				__( 'Taxonomies', 'custom.php-post-type-ui' ),
+				__( 'Labels', 'custom.php-post-type-ui' ),
+				__( 'Template Hierarchy', 'custom.php-post-type-ui' ),
 			);
 
 			/**
@@ -142,16 +142,16 @@ function cptui_listings() {
 									esc_attr( $post_type_link_url ),
 									sprintf(
 										/* translators: %s: Post type slug */
-										esc_html__( 'Edit %s', 'custom-post-type-ui' ),
+										esc_html__( 'Edit %s', 'custom.php-post-type-ui' ),
 										esc_html( $post_type )
 									),
 									esc_attr( admin_url( 'admin.php?page=cptui_tools&action=get_code#' . $post_type ) ),
-									esc_html__( 'Get code', 'custom-post-type-ui' )
+									esc_html__( 'Get code', 'custom.php-post-type-ui' )
 								);
 
 								if ( $archive ) {
 								?>
-								<a href="<?php echo esc_attr( get_post_type_archive_link( $post_type ) ); ?>"><?php esc_html_e( 'View frontend archive', 'custom-post-type-ui' ); ?></a>
+								<a href="<?php echo esc_attr( get_post_type_archive_link( $post_type ) ); ?>"><?php esc_html_e( 'View frontend archive', 'custom.php-post-type-ui' ); ?></a>
 								<?php } ?>
 							</td>
 							<td>
@@ -181,7 +181,7 @@ function cptui_listings() {
 								} else {
 									printf(
 										'<span aria-hidden="true">—</span><span class="screen-reader-text">%s</span>',
-										esc_html__( 'No associated taxonomies', 'custom-post-type-ui' )
+										esc_html__( 'No associated taxonomies', 'custom.php-post-type-ui' )
 									);
 								}
 								?>
@@ -203,19 +203,19 @@ function cptui_listings() {
 								} else {
 									printf(
 										'<span aria-hidden="true">—</span><span class="screen-reader-text">%s</span>',
-										esc_html__( 'No custom labels to display', 'custom-post-type-ui' )
+										esc_html__( 'No custom.php labels to display', 'custom.php-post-type-ui' )
 									);
 								}
 								?>
 							</td>
 							<td>
-								<p><strong><?php esc_html_e( 'Archives file name examples.', 'custom-post-type-ui' ); ?></strong><br/>
+								<p><strong><?php esc_html_e( 'Archives file name examples.', 'custom.php-post-type-ui' ); ?></strong><br/>
 								archive-<?php echo esc_html( $post_type ); ?>.php<br/>
 								archive.php<br/>
 								index.php
 								</p>
 
-								<p><strong><?php esc_html_e( 'Single Posts file name examples.', 'custom-post-type-ui' ); ?></strong><br/>
+								<p><strong><?php esc_html_e( 'Single Posts file name examples.', 'custom.php-post-type-ui' ); ?></strong><br/>
 								single-<?php echo esc_html( $post_type ); ?>-post_slug.php *<br/>
 								single-<?php echo esc_html( $post_type ); ?>.php<br/>
 								single.php<br/>
@@ -224,13 +224,13 @@ function cptui_listings() {
 								</p>
 
 								<p>
-									<?php esc_html_e( '*Replace "post_slug" with the slug of the actual post slug.', 'custom-post-type-ui' ); ?>
+									<?php esc_html_e( '*Replace "post_slug" with the slug of the actual post slug.', 'custom.php-post-type-ui' ); ?>
 								</p>
 
 								<p><?php
 									printf(
 										'<a href="https://developer.wordpress.org/themes/basics/template-hierarchy/">%s</a>',
-										esc_html__( 'Template hierarchy Theme Handbook', 'custom-post-type-ui' )
+										esc_html__( 'Template hierarchy Theme Handbook', 'custom.php-post-type-ui' )
 									); ?>
 								</p>
 							</td>
@@ -268,14 +268,14 @@ function cptui_listings() {
 			}
 
 			$taxonomies = cptui_get_taxonomy_data();
-			echo '<h2 id="taxonomies">' . esc_html__( 'Taxonomies', 'custom-post-type-ui' ) . '</h2>';
+			echo '<h2 id="taxonomies">' . esc_html__( 'Taxonomies', 'custom.php-post-type-ui' ) . '</h2>';
 			if ( ! empty( $taxonomies ) ) {
 				?>
 				<p>
 				<?php
 				printf(
 					/* translators: %s: Total count of CPTUI registered taxonomies */
-					esc_html__( 'Custom Post Type UI registered taxonomies count total: %d', 'custom-post-type-ui' ),
+					esc_html__( 'Custom Post Type UI registered taxonomies count total: %d', 'custom.php-post-type-ui' ),
 					count( $taxonomies )
 				);
 				?>
@@ -284,11 +284,11 @@ function cptui_listings() {
 				<?php
 
 				$taxonomy_table_heads = array(
-					__( 'Taxonomy', 'custom-post-type-ui' ),
-					__( 'Settings', 'custom-post-type-ui' ),
-					__( 'Post Types', 'custom-post-type-ui' ),
-					__( 'Labels', 'custom-post-type-ui' ),
-					__( 'Template Hierarchy', 'custom-post-type-ui' ),
+					__( 'Taxonomy', 'custom.php-post-type-ui' ),
+					__( 'Settings', 'custom.php-post-type-ui' ),
+					__( 'Post Types', 'custom.php-post-type-ui' ),
+					__( 'Labels', 'custom.php-post-type-ui' ),
+					__( 'Template Hierarchy', 'custom.php-post-type-ui' ),
 				);
 
 				/**
@@ -347,11 +347,11 @@ function cptui_listings() {
 										esc_attr( $taxonomy_link_url ),
 										sprintf(
 											/* translators: %s: Taxonomy slug */
-											esc_html__( 'Edit %s', 'custom-post-type-ui' ),
+											esc_html__( 'Edit %s', 'custom.php-post-type-ui' ),
 											esc_html( $taxonomy )
 										),
 										esc_attr( admin_url( 'admin.php?page=cptui_tools&action=get_code#' . $taxonomy ) ),
-										esc_html__( 'Get code', 'custom-post-type-ui' )
+										esc_html__( 'Get code', 'custom.php-post-type-ui' )
 									); ?>
 								</td>
 								<td>
@@ -388,13 +388,13 @@ function cptui_listings() {
 									} else {
 										printf(
 											'<span aria-hidden="true">—</span><span class="screen-reader-text">%s</span>',
-											esc_html__( 'No custom labels to display', 'custom-post-type-ui' )
+											esc_html__( 'No custom.php labels to display', 'custom.php-post-type-ui' )
 										);
 									}
 									?>
 								</td>
 								<td>
-									<p><strong><?php esc_html_e( 'Archives file name examples.', 'custom-post-type-ui' ); ?></strong><br />
+									<p><strong><?php esc_html_e( 'Archives file name examples.', 'custom.php-post-type-ui' ); ?></strong><br />
 										taxonomy-<?php echo esc_html( $taxonomy ); ?>-term_slug.php *<br />
 										taxonomy-<?php echo esc_html( $taxonomy ); ?>.php<br />
 										taxonomy.php<br />
@@ -403,12 +403,12 @@ function cptui_listings() {
 									</p>
 
 									<p>
-										<?php esc_html_e( '*Replace "term_slug" with the slug of the actual taxonomy term.', 'custom-post-type-ui' ); ?>
+										<?php esc_html_e( '*Replace "term_slug" with the slug of the actual taxonomy term.', 'custom.php-post-type-ui' ); ?>
 									</p>
 									<p><?php
 										printf(
 											'<a href="https://developer.wordpress.org/themes/basics/template-hierarchy/">%s</a>',
-											esc_html__( 'Template hierarchy Theme Handbook', 'custom-post-type-ui' )
+											esc_html__( 'Template hierarchy Theme Handbook', 'custom.php-post-type-ui' )
 										); ?></p>
 								</td>
 							</tr>
@@ -462,10 +462,10 @@ function cptui_listings() {
 function cptui_no_post_types_to_list() {
 	echo '<p>' . sprintf(
 		/* translators: 1st %s: Link to manage post types section 2nd %s Link text */
-		esc_html__( 'No post types registered for display. Visit %s to get started.', 'custom-post-type-ui' ),
+		esc_html__( 'No post types registered for display. Visit %s to get started.', 'custom.php-post-type-ui' ),
 		sprintf( '<a href="%s">%s</a>',
 			esc_attr( admin_url( 'admin.php?page=cptui_manage_post_types' ) ),
-			esc_html__( 'Add/Edit Post Types', 'custom-post-type-ui' )
+			esc_html__( 'Add/Edit Post Types', 'custom.php-post-type-ui' )
 		)
 	) . '</p>';
 }
@@ -483,10 +483,10 @@ add_action( 'cptui_no_post_types_listing', 'cptui_no_post_types_to_list' );
 function cptui_no_taxonomies_to_list() {
 	echo '<p>' . sprintf(
 		/* translators: %s: Link to manage taxonomies section */
-		esc_html__( 'No taxonomies registered for display. Visit %s to get started.', 'custom-post-type-ui' ),
+		esc_html__( 'No taxonomies registered for display. Visit %s to get started.', 'custom.php-post-type-ui' ),
 		sprintf( '<a href="%s">%s</a>',
 			esc_attr( admin_url( 'admin.php?page=cptui_manage_taxonomies' ) ),
-			esc_html__( 'Add/Edit Taxonomies', 'custom-post-type-ui' )
+			esc_html__( 'Add/Edit Taxonomies', 'custom.php-post-type-ui' )
 		)
 	) . '</p>';
 }

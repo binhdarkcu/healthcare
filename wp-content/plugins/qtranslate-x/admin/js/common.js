@@ -21,7 +21,7 @@
  * Avoid accessing internal variables directly, as they are subject to be re-designed at any time.
  * Single global variable 'qTranslateConfig' is an entry point to the interface.
  * - qTranslateConfig.qtx - is a shorthand reference to the only global object of type 'qTranslateX'.
- * - qTranslateConfig.js - is a place where custom Java script functions are stored, if needed.
+ * - qTranslateConfig.js - is a place where custom.php Java script functions are stored, if needed.
  * Read Integration Guide, https://qtranslatexteam.wordpress.com/integration/, for more information.
 */
 /*
@@ -441,7 +441,7 @@ var qTranslateX=function(pg) {
 		addContentHooksByClassName(nm,container,sep);
 	}
 
-	/** 
+	/**
 	 * Designed as interface for other plugin integration. The documentation is available at
 	 * https://qtranslatexteam.wordpress.com/integration/
 	 *
@@ -491,7 +491,7 @@ var qTranslateX=function(pg) {
 	/**
 	 * Designed as interface for other plugin integration. The documentation is available at
 	 * https://qtranslatexteam.wordpress.com/integration/
-	 * Re-create a hook, after a piece of HTML is dynamically replaced with a custom Java script.
+	 * Re-create a hook, after a piece of HTML is dynamically replaced with a custom.php Java script.
 	 */
 	this.refreshContentHook=function(inpField) {
 		if( !inpField ) return false;
@@ -692,7 +692,7 @@ var qTranslateX=function(pg) {
 
 
 	/**
-	 * adds custom hooks from configuration
+	 * adds custom.php hooks from configuration
 	 * @since 3.1-b2 - renamed to addCustomContentHooks, since addContentHooks used in qTranslateConfig.js
 	 * @since 3.0 - addContentHooks
 	*/
@@ -942,7 +942,7 @@ var qTranslateX=function(pg) {
 	 * https://qtranslatexteam.wordpress.com/integration/
 	 * Delete handler previously added by function addLanguageSwitchBeforeListener.
 	 */
-	this.delLanguageSwitchBeforeListener=function(func){ 
+	this.delLanguageSwitchBeforeListener=function(func){
 		for(var i=0; i < qTranslateConfig.onTabSwitchFunctionsSave.length; ++i){
 			var f = qTranslateConfig.onTabSwitchFunctionsSave[i];
 			if(f != func) continue;
@@ -970,7 +970,7 @@ var qTranslateX=function(pg) {
 	 * https://qtranslatexteam.wordpress.com/integration/
 	 * Delete handler previously added by function addLanguageSwitchAfterListener.
 	 */
-	this.delLanguageSwitchAfterListener=function(func){ 
+	this.delLanguageSwitchAfterListener=function(func){
 		for(var i=0; i < qTranslateConfig.onTabSwitchFunctionsLoad.length; ++i){
 			var f = qTranslateConfig.onTabSwitchFunctionsLoad[i];
 			if(f != func) continue;
@@ -983,7 +983,7 @@ var qTranslateX=function(pg) {
 	 * @since 3.2.9.8.9
 	 * Designed as interface for other plugin integration. The documentation is available at
 	 * https://qtranslatexteam.wordpress.com/integration/
-	 * 
+	 *
 	 */
 	this.enableLanguageSwitchingButtons=function(on){
 		var display = on ? 'block' : 'none';

@@ -32,7 +32,7 @@
  * @global bool $is_IIS
  * @global WP_Query $wp_query
  * @global wpdb $wpdb WordPress database abstraction object.
- * @global WP $wp Current WordPress environment instance. 
+ * @global WP $wp Current WordPress environment instance.
  *
  * @param string $requested_url Optional. The URL that was requested, used to
  *		figure if redirect is needed.
@@ -226,7 +226,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 					} elseif ( is_tag() ) {
 						$qv_remove[] = 'tag';
 						$qv_remove[] = 'tag_id';
-					} else { // Custom taxonomies will have a custom query var, remove those too:
+					} else { // Custom taxonomies will have a custom.php query var, remove those too:
 						$tax_obj = get_taxonomy( $obj->taxonomy );
 						if ( false !== $tax_obj->query_var )
 							$qv_remove[] = $tax_obj->query_var;
@@ -239,7 +239,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 
 						// Create the destination url for this taxonomy
 						$tax_url = parse_url($tax_url);
-						if ( ! empty($tax_url['query']) ) { // Taxonomy accessible via ?taxonomy=..&term=.. or any custom qv..
+						if ( ! empty($tax_url['query']) ) { // Taxonomy accessible via ?taxonomy=..&term=.. or any custom.php qv..
 							parse_str($tax_url['query'], $query_vars);
 							$redirect['query'] = add_query_arg($query_vars, $redirect['query']);
 						} else { // Taxonomy is accessible via a "pretty-URL"

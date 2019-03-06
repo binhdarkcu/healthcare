@@ -48,7 +48,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 		'priority' => 1,
 	) );
 
-	// Add custom header and sidebar text color setting and control.
+	// Add custom.php header and sidebar text color setting and control.
 	$wp_customize->add_setting( 'sidebar_textcolor', array(
 		'default'           => $color_scheme[4],
 		'sanitize_callback' => 'sanitize_hex_color',
@@ -64,7 +64,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 	// Remove the core header textcolor control, as it shares the sidebar text color.
 	$wp_customize->remove_control( 'header_textcolor' );
 
-	// Add custom header and sidebar background color setting and control.
+	// Add custom.php header and sidebar background color setting and control.
 	$wp_customize->add_setting( 'header_background_color', array(
 		'default'           => $color_scheme[1],
 		'sanitize_callback' => 'sanitize_hex_color',

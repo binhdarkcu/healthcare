@@ -182,7 +182,7 @@ function register_sidebars( $number = 1, $args = array() ) {
 		// Automatically generated sidebar names need to be suffixed regardless starting at -0
 		if ( isset($args['id']) ) {
 			$_args['id'] = $args['id'];
-			$n = 2; // Start at -2 for conflicting custom ID's
+			$n = 2; // Start at -2 for conflicting custom.php ID's
 			while ( is_registered_sidebar( $_args['id'] ) ) {
 				$_args['id'] = $args['id'] . '-' . $n++;
 			}

@@ -277,9 +277,9 @@ case 'preview':
 
 default:
 	/**
-	 * Fires for a given custom post action request.
+	 * Fires for a given custom.php post action request.
 	 *
-	 * The dynamic portion of the hook name, `$action`, refers to the custom post action.
+	 * The dynamic portion of the hook name, `$action`, refers to the custom.php post action.
 	 *
 	 * @since 4.6.0
 	 *

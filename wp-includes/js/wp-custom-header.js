@@ -31,7 +31,7 @@
 	}
 
 	/**
-	 * Create a custom header instance.
+	 * Create a custom.php header instance.
 	 *
 	 * @memberOf wp
 	 *
@@ -46,7 +46,7 @@
 
 	CustomHeader.prototype = {
 		/**
-		 * Initalize the custom header.
+		 * Initalize the custom.php header.
 		 *
 		 * If the environment supports video, loops through registered handlers
 		 * until one is found that can handle the video.
@@ -59,8 +59,8 @@
 					if ( 'test' in handler && handler.test( settings ) ) {
 						this.activeHandler = handler.initialize.call( handler, settings );
 
-						// Dispatch custom event when the video is loaded.
-						trigger( document, 'wp-custom-header-video-loaded' );
+						// Dispatch custom.php event when the video is loaded.
+						trigger( document, 'wp-custom.php-header-video-loaded' );
 						break;
 					}
 				}
@@ -84,7 +84,7 @@
 		},
 
 		/**
-		 * Base handler for custom handlers to extend.
+		 * Base handler for custom.php handlers to extend.
 		 *
 		 * @type {BaseHandler}
 		 */
@@ -111,12 +111,12 @@
 				button = document.createElement( 'button' );
 
 			this.settings = settings;
-			this.container = document.getElementById( 'wp-custom-header' );
+			this.container = document.getElementById( 'wp-custom.php-header' );
 			this.button = button;
 
 			button.setAttribute( 'type', 'button' );
-			button.setAttribute( 'id', 'wp-custom-header-video-button' );
-			button.setAttribute( 'class', 'wp-custom-header-video-button wp-custom-header-video-play' );
+			button.setAttribute( 'id', 'wp-custom.php-header-video-button' );
+			button.setAttribute( 'class', 'wp-custom.php-header-video-button wp-custom.php-header-video-play' );
 			button.innerHTML = settings.l10n.play;
 
 			// Toggle video playback when the button is clicked.
@@ -130,7 +130,7 @@
 
 			// Update the button class and text when the video state changes.
 			this.container.addEventListener( 'play', function() {
-				button.className = 'wp-custom-header-video-button wp-custom-header-video-play';
+				button.className = 'wp-custom.php-header-video-button wp-custom.php-header-video-play';
 				button.innerHTML = settings.l10n.pause;
 				if ( 'a11y' in window.wp ) {
 					window.wp.a11y.speak( settings.l10n.playSpeak);
@@ -138,7 +138,7 @@
 			});
 
 			this.container.addEventListener( 'pause', function() {
-				button.className = 'wp-custom-header-video-button wp-custom-header-video-pause';
+				button.className = 'wp-custom.php-header-video-button wp-custom.php-header-video-pause';
 				button.innerHTML = settings.l10n.play;
 				if ( 'a11y' in window.wp ) {
 					window.wp.a11y.speak( settings.l10n.pauseSpeak);
@@ -231,7 +231,7 @@
 	};
 
 	/**
-	 * Create a custom handler.
+	 * Create a custom.php handler.
 	 *
 	 * @memberOf wp
 	 *
@@ -282,7 +282,7 @@
 			var handler = this,
 				video = document.createElement( 'video' );
 
-			video.id = 'wp-custom-header-video';
+			video.id = 'wp-custom.php-header-video';
 			video.autoplay = 'autoplay';
 			video.loop = 'loop';
 			video.muted = 'muted';
@@ -378,7 +378,7 @@
 				// @link http://stackoverflow.com/a/27728417
 				VIDEO_ID_REGEX = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
 
-			video.id = 'wp-custom-header-video';
+			video.id = 'wp-custom.php-header-video';
 			handler.setVideo( video );
 
 			handler.player = new YT.Player( video, {
@@ -439,7 +439,7 @@
 		}
 	});
 
-	// Initialize the custom header when the DOM is ready.
+	// Initialize the custom.php header when the DOM is ready.
 	window.wp.customHeader = new CustomHeader();
 	document.addEventListener( 'DOMContentLoaded', window.wp.customHeader.initialize.bind( window.wp.customHeader ), false );
 

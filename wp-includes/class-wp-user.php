@@ -249,7 +249,7 @@ class WP_User {
 	}
 
 	/**
-	 * Magic method for checking the existence of a certain custom field.
+	 * Magic method for checking the existence of a certain custom.php field.
 	 *
 	 * @since 3.3.0
 	 *
@@ -278,7 +278,7 @@ class WP_User {
 	}
 
 	/**
-	 * Magic method for accessing custom fields.
+	 * Magic method for accessing custom.php fields.
 	 *
 	 * @since 3.3.0
 	 *
@@ -313,9 +313,9 @@ class WP_User {
 	}
 
 	/**
-	 * Magic method for setting custom user fields.
+	 * Magic method for setting custom.php user fields.
 	 *
-	 * This method does not update custom fields in the database. It only stores
+	 * This method does not update custom.php fields in the database. It only stores
 	 * the value on the WP_User instance.
 	 *
 	 * @since 3.3.0
@@ -340,7 +340,7 @@ class WP_User {
 	}
 
 	/**
-	 * Magic method for unsetting a certain custom field.
+	 * Magic method for unsetting a certain custom.php field.
 	 *
 	 * @since 4.4.0
 	 *

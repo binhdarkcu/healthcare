@@ -621,9 +621,9 @@
 	api.settingPreviewHandlers = {
 
 		/**
-		 * Preview changes to custom logo.
+		 * Preview changes to custom.php logo.
 		 *
-		 * @param {number} attachmentId Attachment ID for custom logo.
+		 * @param {number} attachmentId Attachment ID for custom.php logo.
 		 * @returns {void}
 		 */
 		custom_logo: function( attachmentId ) {
@@ -631,13 +631,13 @@
 		},
 
 		/**
-		 * Preview changes to custom css.
+		 * Preview changes to custom.php css.
 		 *
 		 * @param {string} value Custom CSS..
 		 * @returns {void}
 		 */
 		custom_css: function( value ) {
-			$( '#wp-custom-css' ).text( value );
+			$( '#wp-custom.php-css' ).text( value );
 		},
 
 		/**
@@ -653,7 +653,7 @@
 			} );
 
 			/*
-			 * The body will support custom backgrounds if either the color or image are set.
+			 * The body will support custom.php backgrounds if either the color or image are set.
 			 *
 			 * See get_body_class() in /wp-includes/post-template.php
 			 */
@@ -671,7 +671,7 @@
 				css += 'background-attachment: ' + settings.attachment() + ';';
 			}
 
-			$( '#custom-background-css' ).text( 'body.custom-background { ' + css + ' }' );
+			$( '#custom.php-background-css' ).text( 'body.custom.php-background { ' + css + ' }' );
 		}
 	};
 
@@ -878,7 +878,7 @@
 		/**
 		 * Custom Logo
 		 *
-		 * Toggle the wp-custom-logo body class when a logo is added or removed.
+		 * Toggle the wp-custom.php-logo body class when a logo is added or removed.
 		 *
 		 * @since 4.5.0
 		 */

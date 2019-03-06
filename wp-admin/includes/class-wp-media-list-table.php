@@ -580,13 +580,13 @@ class WP_Media_List_Table extends WP_List_Table {
 		}
 
 		/**
-		 * Fires for each custom column in the Media list table.
+		 * Fires for each custom.php column in the Media list table.
 		 *
 		 * Custom columns are registered using the {@see 'manage_media_columns'} filter.
 		 *
 		 * @since 2.5.0
 		 *
-		 * @param string $column_name Name of the custom column.
+		 * @param string $column_name Name of the custom.php column.
 		 * @param int    $post_id     Attachment ID.
 		 */
 		do_action( 'manage_media_custom_column', $column_name, $post->ID );

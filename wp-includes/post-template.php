@@ -398,12 +398,12 @@ function get_the_excerpt( $post = null ) {
 }
 
 /**
- * Whether the post has a custom excerpt.
+ * Whether the post has a custom.php excerpt.
  *
  * @since 2.3.0
  *
  * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
- * @return bool True if the post has a custom excerpt, false otherwise.
+ * @return bool True if the post has a custom.php excerpt, false otherwise.
  */
 function has_excerpt( $post = 0 ) {
 	$post = get_post( $post );
@@ -715,11 +715,11 @@ function get_body_class( $class = '' ) {
 		$classes[] = 'no-customize-support';
 	}
 
-	if ( get_background_color() !== get_theme_support( 'custom-background', 'default-color' ) || get_background_image() )
-		$classes[] = 'custom-background';
+	if ( get_background_color() !== get_theme_support( 'custom.php-background', 'default-color' ) || get_background_image() )
+		$classes[] = 'custom.php-background';
 
 	if ( has_custom_logo() ) {
-		$classes[] = 'wp-custom-logo';
+		$classes[] = 'wp-custom.php-logo';
 	}
 
 	$page = $wp_query->get( 'page' );
@@ -899,7 +899,7 @@ function wp_link_pages( $args = '' ) {
 				 */
 				$link = apply_filters( 'wp_link_pages_link', $link, $i );
 
-				// Use the custom links separator beginning with the second link.
+				// Use the custom.php links separator beginning with the second link.
 				$output .= ( 1 === $i ) ? ' ' : $r['separator'];
 				$output .= $link;
 			}
@@ -988,7 +988,7 @@ function _wp_link_page( $i ) {
 //
 
 /**
- * Retrieve post custom meta data field.
+ * Retrieve post custom.php meta data field.
  *
  * @since 1.5.0
  *
@@ -1007,7 +1007,7 @@ function post_custom( $key = '' ) {
 }
 
 /**
- * Display list of post custom fields.
+ * Display list of post custom.php fields.
  *
  * @since 1.2.0
  *
@@ -1027,13 +1027,13 @@ function the_meta() {
 			$value = implode( $values, ', ' );
 
 			$html = sprintf( "<li><span class='post-meta-key'>%s</span> %s</li>\n",
-				/* translators: %s: Post custom field name */
-				sprintf( _x( '%s:', 'Post custom field name' ), $key ),
+				/* translators: %s: Post custom.php field name */
+				sprintf( _x( '%s:', 'Post custom.php field name' ), $key ),
 				$value
 			);
 
 			/**
-			 * Filters the HTML output of the li element in the post custom fields list.
+			 * Filters the HTML output of the li element in the post custom.php fields list.
 			 *
 			 * @since 2.2.0
 			 *

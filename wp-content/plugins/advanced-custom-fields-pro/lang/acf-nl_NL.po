@@ -622,7 +622,7 @@ msgstr "Regels"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Maak regels aan om te bepalen op welke edit screen jouw extra velden "
 "verschijnen"
@@ -905,7 +905,7 @@ msgstr ""
 "tevreden bent."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "Een verbeterde extra veld beleving"
 
 #: includes/admin/views/settings-info.php:22
@@ -1381,7 +1381,7 @@ msgid "Allow Custom"
 msgstr "Mag leeg zijn?"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1391,7 +1391,7 @@ msgstr "Verplaats extra veld"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr ""
 "Voeg de ingevulde \"anders namelijk\" waarde toe aan de keuzelijst na het "
 "opslaan van een post"
@@ -2166,7 +2166,7 @@ msgid "Other"
 msgstr "Anders namelijk"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Voeg de keuze \"anders namelijk\" toe voor eigen invulling"
 
 #: includes/fields/class-acf-field-radio.php:280
@@ -3678,7 +3678,7 @@ msgstr "http://www.elliotcondon.com/"
 #~ msgid "then click"
 #~ msgstr "vervolgens klikken op"
 
-#~ msgid "Moving user custom fields from wp_options to wp_usermeta'"
+#~ msgid "Moving user custom.php fields from wp_options to wp_usermeta'"
 #~ msgstr "Verplaats gebruikers eigen velden van wp_options naar wp_usermeta"
 
 #~ msgid "No choices to choose from"

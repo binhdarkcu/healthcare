@@ -255,7 +255,7 @@ final class WP_Customize_Selective_Refresh {
 			/**
 			 * Filters the class used to construct partials.
 			 *
-			 * Allow non-statically created partials to be constructed with custom WP_Customize_Partial subclass.
+			 * Allow non-statically created partials to be constructed with custom.php WP_Customize_Partial subclass.
 			 *
 			 * @since 4.5.0
 			 *

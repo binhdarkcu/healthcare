@@ -29,6 +29,7 @@ $queried_object = get_queried_object();
                                                 <select class="form-control" id="selectDoctor">
                                                     <option value="0">Chọn bác sĩ của bạn</option>
                                                     <?php
+                                                    $id_doctor = $_GET['id_doctor'];
                                                     $args = array(
                                                         'post_type' => 'post',
                                                         'post_status' => 'publish',
@@ -37,7 +38,7 @@ $queried_object = get_queried_object();
                                                     $query = new WP_Query($args);
                                                     while ($query->have_posts()) : $query->the_post();
                                                         ?>
-                                                        <option value="<?php echo get_the_ID() ?>"><?php echo the_title() ?></option>
+                                                        <option <?php echo $id_doctor == get_the_ID() ? 'selected' : null ?> value="<?php echo get_the_ID() ?>"><?php echo the_title() ?></option>
                                                     <?php
                                                     endwhile;
                                                     ?>
@@ -60,15 +61,8 @@ $queried_object = get_queried_object();
                                             </div>
                                             <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">giờ:</label>
                                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                                <select name="timeOrder"
-                                                        class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
-                                                        ng-init="appointment.Time = giohens[0]"
-                                                        ng-model="appointment.Time" id="timeAppointment"
-                                                        ng-options="gio for gio in giohens" required=""
-                                                        aria-invalid="false">
-                                                    <option label="08:15" value="08:15" selected="selected">
-                                                        08:15
-                                                    </option>
+                                                <select name="timeOrder" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required">
+                                                    <option label="08:15" value="08:15" selected>08:15</option>
                                                     <option label="08:30" value="08:30">08:30</option>
                                                     <option label="08:45" value="08:45">08:45</option>
                                                     <option label="09:00" value="09:00">09:00</option>
@@ -115,12 +109,27 @@ $queried_object = get_queried_object();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="symptom" class="col-md-4" required="">Lý do/ Triệu
-                                                chứng: </label>
+                                            <label for="symptom" class="col-md-4" required="">Triệu chứng lâm sàng: </label>
                                             <div class="col-md-8 col-sm-8">
                                                 <textarea id='symptom'
                                                           class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
                                                           aria-invalid="true"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4" required="">Tái khám hoặc khám mới: </label>
+                                            <div class="col-md-8 col-sm-8">
+                                                <select id="examination" class="form-control ng-pristine ng-untouched">
+                                                    <option value="" selected>Vui lòng chọn tái khám hoặc khám mới</option>
+                                                    <option value="Khám mới">Khám mới</option>
+                                                    <option value="Tái khám">Tái khám</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4">Mã khách hàng: </label>
+                                            <div class="col-md-8 col-sm-8">
+                                                <input id="client_code" class="form-control ng-pristine ng-untouched" placeholder="Mã khách hàng" />
                                             </div>
                                         </div>
                                         <div class="col-md-offset-4 col-md-8 text-center">
@@ -129,12 +138,8 @@ $queried_object = get_queried_object();
                                         <div class="form-group">
                                             <label class="col-md-4"></label>
                                             <div class="col-md-8">
-                                                <button type="submit" class="btn btn-success" id="nextStep">Bước tiếp
-                                                    theo
-                                                </button>
-                                                <!--<button class="btn btn-success" ng-click="transToInforOrderer()">Đặt lịch hẹn</button>-->
-                                                <a class="btn btn-default" href="<?php echo get_bloginfo('url') ?>">Trở
-                                                    về trang chủ</a>
+                                                <button type="submit" class="btn btn-success" id="nextStep">Bước tiếp theo</button>
+                                                <a class="btn btn-default" href="<?php echo get_bloginfo('url') ?>">Trở về trang chủ</a>
                                             </div>
                                         </div>
                                     </form>

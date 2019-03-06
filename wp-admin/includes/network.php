@@ -235,7 +235,7 @@ function network_step1( $errors = false ) {
 	endif;
 
 		if ( WP_CONTENT_DIR != ABSPATH . 'wp-content' && ( allow_subdirectory_install() || ! allow_subdomain_install() ) )
-			echo '<div class="error inline"><p><strong>' . __( 'Warning:' ) . '</strong> ' . __( 'Subdirectory networks may not be fully compatible with custom wp-content directories.' ) . '</p></div>';
+			echo '<div class="error inline"><p><strong>' . __( 'Warning:' ) . '</strong> ' . __( 'Subdirectory networks may not be fully compatible with custom.php wp-content directories.' ) . '</p></div>';
 
 		$is_www = ( 0 === strpos( $hostname, 'www.' ) );
 		if ( $is_www ) :
@@ -551,7 +551,7 @@ define('BLOG_ID_CURRENT_SITE', 1);
 		);
 		echo '</p>';
 		if ( ! $subdomain_install && WP_CONTENT_DIR != ABSPATH . 'wp-content' )
-			echo '<p><strong>' . __( 'Warning:' ) . ' ' . __( 'Subdirectory networks may not be fully compatible with custom wp-content directories.' ) . '</strong></p>';
+			echo '<p><strong>' . __( 'Warning:' ) . ' ' . __( 'Subdirectory networks may not be fully compatible with custom.php wp-content directories.' ) . '</strong></p>';
 		?>
 		<textarea class="code" readonly="readonly" cols="100" rows="20"><?php echo esc_textarea( $web_config_file ); ?>
 		</textarea></li>
@@ -591,7 +591,7 @@ EOF;
 		);
 		echo '</p>';
 		if ( ! $subdomain_install && WP_CONTENT_DIR != ABSPATH . 'wp-content' )
-			echo '<p><strong>' . __( 'Warning:' ) . ' ' . __( 'Subdirectory networks may not be fully compatible with custom wp-content directories.' ) . '</strong></p>';
+			echo '<p><strong>' . __( 'Warning:' ) . ' ' . __( 'Subdirectory networks may not be fully compatible with custom.php wp-content directories.' ) . '</strong></p>';
 		?>
 		<textarea class="code" readonly="readonly" cols="100" rows="<?php echo substr_count( $htaccess_file, "\n" ) + 1; ?>">
 <?php echo esc_textarea( $htaccess_file ); ?></textarea></li>

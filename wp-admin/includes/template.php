@@ -613,12 +613,12 @@ function meta_form( $post = null ) {
 
 	if ( null === $keys ) {
 		/**
-		 * Filters the number of custom fields to retrieve for the drop-down
+		 * Filters the number of custom.php fields to retrieve for the drop-down
 		 * in the Custom Fields meta box.
 		 *
 		 * @since 2.1.0
 		 *
-		 * @param int $limit Number of custom fields to retrieve. Default 30.
+		 * @param int $limit Number of custom.php fields to retrieve. Default 30.
 		 */
 		$limit = apply_filters( 'postmeta_form_limit', 30 );
 		$sql = "SELECT DISTINCT meta_key
@@ -1811,7 +1811,7 @@ function _media_states( $post ) {
 	$media_states = array();
 	$stylesheet = get_option('stylesheet');
 
-	if ( current_theme_supports( 'custom-header') ) {
+	if ( current_theme_supports( 'custom.php-header') ) {
 		$meta_header = get_post_meta($post->ID, '_wp_attachment_is_custom_header', true );
 
 		if ( is_random_header_image() ) {
@@ -1835,7 +1835,7 @@ function _media_states( $post ) {
 		}
 	}
 
-	if ( current_theme_supports( 'custom-background') ) {
+	if ( current_theme_supports( 'custom.php-background') ) {
 		$meta_background = get_post_meta($post->ID, '_wp_attachment_is_custom_background', true );
 
 		if ( ! empty( $meta_background ) && $meta_background == $stylesheet ) {

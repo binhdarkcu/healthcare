@@ -552,7 +552,7 @@ jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
 		// If this is an ajax load() the first arg should be the string URL;
 		// technically this could also be the "Anything" arg of the event .load()
 		// which just goes to show why this dumb signature has been deprecated!
-		// jQuery custom builds that exclude the Ajax module justifiably die here.
+		// jQuery custom.php builds that exclude the Ajax module justifiably die here.
 		if ( name === "load" && typeof args[ 0 ] === "string" ) {
 			return oldLoad.apply( this, args );
 		}

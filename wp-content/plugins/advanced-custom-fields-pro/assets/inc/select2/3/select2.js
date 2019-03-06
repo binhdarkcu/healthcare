@@ -1088,7 +1088,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 opts.createSearchChoicePosition = function(list, item) { list.push(item); };
             }
             else if (typeof(opts.createSearchChoicePosition) !== "function")  {
-                throw "invalid createSearchChoicePosition option must be 'top', 'bottom' or a custom function";
+                throw "invalid createSearchChoicePosition option must be 'top', 'bottom' or a custom.php function";
             }
 
             return opts;

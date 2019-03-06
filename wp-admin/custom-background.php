@@ -1,13 +1,13 @@
 <?php
 /**
- * The custom background script.
+ * The custom.php background script.
  *
  * @package WordPress
  * @subpackage Administration
  */
 
 /**
- * The custom background class.
+ * The custom.php background class.
  *
  * @since 3.0.0
  */
@@ -42,7 +42,7 @@ class Custom_Background {
 	 *
 	 * @since 3.0.0
 	 * @param callable $admin_header_callback
-	 * @param callable $admin_image_div_callback Optional custom image div output callback.
+	 * @param callable $admin_image_div_callback Optional custom.php image div output callback.
 	 */
 	public function __construct($admin_header_callback = '', $admin_image_div_callback = '') {
 		$this->admin_header_callback = $admin_header_callback;
@@ -62,7 +62,7 @@ class Custom_Background {
 	 * @since 3.0.0
 	 */
 	public function init() {
-		$page = add_theme_page( __( 'Background' ), __( 'Background' ), 'edit_theme_options', 'custom-background', array( $this, 'admin_page' ) );
+		$page = add_theme_page( __( 'Background' ), __( 'Background' ), 'edit_theme_options', 'custom.php-background', array( $this, 'admin_page' ) );
 		if ( ! $page ) {
 			return;
 		}
@@ -86,7 +86,7 @@ class Custom_Background {
 			'id'      => 'overview',
 			'title'   => __('Overview'),
 			'content' =>
-				'<p>' . __( 'You can customize the look of your site without touching any of your theme&#8217;s code by using a custom background. Your background can be an image or a color.' ) . '</p>' .
+				'<p>' . __( 'You can customize the look of your site without touching any of your theme&#8217;s code by using a custom.php background. Your background can be an image or a color.' ) . '</p>' .
 				'<p>' . __( 'To use a background image, simply upload it or choose an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button. You can display a single instance of your image, or tile it to fill the screen. You can have your background fixed in place, so your site content moves on top of it, or you can have it scroll with your site.' ) . '</p>' .
 				'<p>' . __( 'You can also choose a background color by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker.' ) . '</p>' .
 				'<p>' . __( 'Don&#8217;t forget to click on the Save Changes button when you are finished.' ) . '</p>'
@@ -99,12 +99,12 @@ class Custom_Background {
 		);
 
 		wp_enqueue_media();
-		wp_enqueue_script('custom-background');
+		wp_enqueue_script('custom.php-background');
 		wp_enqueue_style('wp-color-picker');
 	}
 
 	/**
-	 * Execute custom background modification.
+	 * Execute custom.php background modification.
 	 *
 	 * @since 3.0.0
 	 */
@@ -113,7 +113,7 @@ class Custom_Background {
 			return;
 
 		if ( isset($_POST['reset-background']) ) {
-			check_admin_referer('custom-background-reset', '_wpnonce-custom-background-reset');
+			check_admin_referer('custom.php-background-reset', '_wpnonce-custom.php-background-reset');
 			remove_theme_mod('background_image');
 			remove_theme_mod('background_image_thumb');
 			$this->updated = true;
@@ -122,7 +122,7 @@ class Custom_Background {
 
 		if ( isset($_POST['remove-background']) ) {
 			// @TODO: Uploaded files are not removed here.
-			check_admin_referer('custom-background-remove', '_wpnonce-custom-background-remove');
+			check_admin_referer('custom.php-background-remove', '_wpnonce-custom.php-background-remove');
 			set_theme_mod('background_image', '');
 			set_theme_mod('background_image_thumb', '');
 			$this->updated = true;
@@ -131,9 +131,9 @@ class Custom_Background {
 		}
 
 		if ( isset( $_POST['background-preset'] ) ) {
-			check_admin_referer( 'custom-background' );
+			check_admin_referer( 'custom.php-background' );
 
-			if ( in_array( $_POST['background-preset'], array( 'default', 'fill', 'fit', 'repeat', 'custom' ), true ) ) {
+			if ( in_array( $_POST['background-preset'], array( 'default', 'fill', 'fit', 'repeat', 'custom.php' ), true ) ) {
 				$preset = $_POST['background-preset'];
 			} else {
 				$preset = 'default';
@@ -143,7 +143,7 @@ class Custom_Background {
 		}
 
 		if ( isset( $_POST['background-position'] ) ) {
-			check_admin_referer( 'custom-background' );
+			check_admin_referer( 'custom.php-background' );
 
 			$position = explode( ' ', $_POST['background-position'] );
 
@@ -164,7 +164,7 @@ class Custom_Background {
 		}
 
 		if ( isset( $_POST['background-size'] ) ) {
-			check_admin_referer( 'custom-background' );
+			check_admin_referer( 'custom.php-background' );
 
 			if ( in_array( $_POST['background-size'], array( 'auto', 'contain', 'cover' ), true ) ) {
 				$size = $_POST['background-size'];
@@ -176,7 +176,7 @@ class Custom_Background {
 		}
 
 		if ( isset( $_POST['background-repeat'] ) ) {
-			check_admin_referer( 'custom-background' );
+			check_admin_referer( 'custom.php-background' );
 
 			$repeat = $_POST['background-repeat'];
 
@@ -188,7 +188,7 @@ class Custom_Background {
 		}
 
 		if ( isset( $_POST['background-attachment'] ) ) {
-			check_admin_referer( 'custom-background' );
+			check_admin_referer( 'custom.php-background' );
 
 			$attachment = $_POST['background-attachment'];
 
@@ -200,7 +200,7 @@ class Custom_Background {
 		}
 
 		if ( isset($_POST['background-color']) ) {
-			check_admin_referer('custom-background');
+			check_admin_referer('custom.php-background');
 			$color = preg_replace('/[^0-9a-fA-F]/', '', $_POST['background-color']);
 			if ( strlen($color) == 6 || strlen($color) == 3 )
 				set_theme_mod('background_color', $color);
@@ -212,7 +212,7 @@ class Custom_Background {
 	}
 
 	/**
-	 * Display the custom background page.
+	 * Display the custom.php background page.
 	 *
 	 * @since 3.0.0
 	 */
@@ -258,11 +258,11 @@ class Custom_Background {
 		$background_image_thumb = get_background_image();
 		if ( $background_image_thumb ) {
 			$background_image_thumb = esc_url( set_url_scheme( get_theme_mod( 'background_image_thumb', str_replace( '%', '%%', $background_image_thumb ) ) ) );
-			$background_position_x = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
-			$background_position_y = get_theme_mod( 'background_position_y', get_theme_support( 'custom-background', 'default-position-y' ) );
-			$background_size = get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) );
-			$background_repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
-			$background_attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
+			$background_position_x = get_theme_mod( 'background_position_x', get_theme_support( 'custom.php-background', 'default-position-x' ) );
+			$background_position_y = get_theme_mod( 'background_position_y', get_theme_support( 'custom.php-background', 'default-position-y' ) );
+			$background_size = get_theme_mod( 'background_size', get_theme_support( 'custom.php-background', 'default-size' ) );
+			$background_repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom.php-background', 'default-repeat' ) );
+			$background_attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom.php-background', 'default-attachment' ) );
 
 			// Background-image URL must be single quote, see below.
 			$background_styles .= " background-image: url('$background_image_thumb');"
@@ -287,7 +287,7 @@ class Custom_Background {
 <th scope="row"><?php _e('Remove Image'); ?></th>
 <td>
 <form method="post">
-<?php wp_nonce_field('custom-background-remove', '_wpnonce-custom-background-remove'); ?>
+<?php wp_nonce_field('custom.php-background-remove', '_wpnonce-custom.php-background-remove'); ?>
 <?php submit_button( __( 'Remove Background Image' ), '', 'remove-background', false ); ?><br/>
 <?php _e('This will remove the background image. You will not be able to restore any customizations.') ?>
 </form>
@@ -295,13 +295,13 @@ class Custom_Background {
 </tr>
 <?php endif; ?>
 
-<?php $default_image = get_theme_support( 'custom-background', 'default-image' ); ?>
+<?php $default_image = get_theme_support( 'custom.php-background', 'default-image' ); ?>
 <?php if ( $default_image && get_background_image() != $default_image ) : ?>
 <tr>
 <th scope="row"><?php _e('Restore Original Image'); ?></th>
 <td>
 <form method="post">
-<?php wp_nonce_field('custom-background-reset', '_wpnonce-custom-background-reset'); ?>
+<?php wp_nonce_field('custom.php-background-reset', '_wpnonce-custom.php-background-reset'); ?>
 <?php submit_button( __( 'Restore Original Image' ), '', 'reset-background', false ); ?><br/>
 <?php _e('This will restore the original background image. You will not be able to restore any customizations.') ?>
 </form>
@@ -317,7 +317,7 @@ class Custom_Background {
 		<label for="upload"><?php _e( 'Choose an image from your computer:' ); ?></label><br />
 		<input type="file" id="upload" name="import" />
 		<input type="hidden" name="action" value="save" />
-		<?php wp_nonce_field( 'custom-background-upload', '_wpnonce-custom-background-upload' ); ?>
+		<?php wp_nonce_field( 'custom.php-background-upload', '_wpnonce-custom.php-background-upload' ); ?>
 		<?php submit_button( __( 'Upload' ), '', 'submit', false ); ?>
 	</p>
 	<p>
@@ -343,8 +343,8 @@ class Custom_Background {
 <?php
 $background_position = sprintf(
 	'%s %s',
-	get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) ),
-	get_theme_mod( 'background_position_y', get_theme_support( 'custom-background', 'default-position-y' ) )
+	get_theme_mod( 'background_position_x', get_theme_support( 'custom.php-background', 'default-position-x' ) ),
+	get_theme_mod( 'background_position_y', get_theme_support( 'custom.php-background', 'default-position-y' ) )
 );
 
 $background_position_options = array(
@@ -388,9 +388,9 @@ $background_position_options = array(
 <th scope="row"><label for="background-size"><?php _e( 'Image Size' ); ?></label></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e( 'Image Size' ); ?></span></legend>
 <select id="background-size" name="background-size">
-<option value="auto"<?php selected( 'auto', get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) ) ); ?>><?php _ex( 'Original', 'Original Size' ); ?></option>
-<option value="contain"<?php selected( 'contain', get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) ) ); ?>><?php _e( 'Fit to Screen' ); ?></option>
-<option value="cover"<?php selected( 'cover', get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) ) ); ?>><?php _e( 'Fill Screen' ); ?></option>
+<option value="auto"<?php selected( 'auto', get_theme_mod( 'background_size', get_theme_support( 'custom.php-background', 'default-size' ) ) ); ?>><?php _ex( 'Original', 'Original Size' ); ?></option>
+<option value="contain"<?php selected( 'contain', get_theme_mod( 'background_size', get_theme_support( 'custom.php-background', 'default-size' ) ) ); ?>><?php _e( 'Fit to Screen' ); ?></option>
+<option value="cover"<?php selected( 'cover', get_theme_mod( 'background_size', get_theme_support( 'custom.php-background', 'default-size' ) ) ); ?>><?php _e( 'Fill Screen' ); ?></option>
 </select>
 </fieldset></td>
 </tr>
@@ -399,7 +399,7 @@ $background_position_options = array(
 <th scope="row"><?php _ex( 'Repeat', 'Background Repeat' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _ex( 'Repeat', 'Background Repeat' ); ?></span></legend>
 <input name="background-repeat" type="hidden" value="no-repeat">
-<label><input type="checkbox" name="background-repeat" value="repeat"<?php checked( 'repeat', get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) ) ); ?>> <?php _e( 'Repeat Background Image' ); ?></label>
+<label><input type="checkbox" name="background-repeat" value="repeat"<?php checked( 'repeat', get_theme_mod( 'background_repeat', get_theme_support( 'custom.php-background', 'default-repeat' ) ) ); ?>> <?php _e( 'Repeat Background Image' ); ?></label>
 </fieldset></td>
 </tr>
 
@@ -407,7 +407,7 @@ $background_position_options = array(
 <th scope="row"><?php _ex( 'Scroll', 'Background Scroll' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _ex( 'Scroll', 'Background Scroll' ); ?></span></legend>
 <input name="background-attachment" type="hidden" value="fixed">
-<label><input name="background-attachment" type="checkbox" value="scroll" <?php checked( 'scroll', get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) ) ); ?>> <?php _e( 'Scroll with Page' ); ?></label>
+<label><input name="background-attachment" type="checkbox" value="scroll" <?php checked( 'scroll', get_theme_mod( 'background_attachment', get_theme_support( 'custom.php-background', 'default-attachment' ) ) ); ?>> <?php _e( 'Scroll with Page' ); ?></label>
 </fieldset></td>
 </tr>
 <?php endif; // get_background_image() ?>
@@ -416,8 +416,8 @@ $background_position_options = array(
 <td><fieldset><legend class="screen-reader-text"><span><?php _e( 'Background Color' ); ?></span></legend>
 <?php
 $default_color = '';
-if ( current_theme_supports( 'custom-background', 'default-color' ) )
-	$default_color = ' data-default-color="#' . esc_attr( get_theme_support( 'custom-background', 'default-color' ) ) . '"';
+if ( current_theme_supports( 'custom.php-background', 'default-color' ) )
+	$default_color = ' data-default-color="#' . esc_attr( get_theme_support( 'custom.php-background', 'default-color' ) ) . '"';
 ?>
 <input type="text" name="background-color" id="background-color" value="#<?php echo esc_attr( get_background_color() ); ?>"<?php echo $default_color ?>>
 </fieldset></td>
@@ -425,7 +425,7 @@ if ( current_theme_supports( 'custom-background', 'default-color' ) )
 </tbody>
 </table>
 
-<?php wp_nonce_field('custom-background'); ?>
+<?php wp_nonce_field('custom.php-background'); ?>
 <?php submit_button( null, 'primary', 'save-background-options' ); ?>
 </form>
 
@@ -442,7 +442,7 @@ if ( current_theme_supports( 'custom-background', 'default-color' ) )
 		if ( empty($_FILES) )
 			return;
 
-		check_admin_referer('custom-background-upload', '_wpnonce-custom-background-upload');
+		check_admin_referer('custom.php-background-upload', '_wpnonce-custom.php-background-upload');
 		$overrides = array('test_form' => false);
 
 		$uploaded_file = $_FILES['import'];
@@ -466,7 +466,7 @@ if ( current_theme_supports( 'custom-background', 'default-color' ) )
 			'post_content' => $url,
 			'post_mime_type' => $type,
 			'guid' => $url,
-			'context' => 'custom-background'
+			'context' => 'custom.php-background'
 		);
 
 		// Save the data
@@ -481,13 +481,13 @@ if ( current_theme_supports( 'custom-background', 'default-color' ) )
 		$thumbnail = wp_get_attachment_image_src( $id, 'thumbnail' );
 		set_theme_mod('background_image_thumb', esc_url_raw( $thumbnail[0] ) );
 
-		/** This action is documented in wp-admin/custom-header.php */
+		/** This action is documented in wp-admin/custom.php-header.php */
 		do_action( 'wp_create_file_in_uploads', $file, $id ); // For replication
 		$this->updated = true;
 	}
 
 	/**
-	 * Ajax handler for adding custom background context to an attachment.
+	 * Ajax handler for adding custom.php background context to an attachment.
 	 *
 	 * Triggered when the user adds a new background image from the
 	 * Media Manager.

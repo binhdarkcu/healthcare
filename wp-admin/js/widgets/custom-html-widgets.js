@@ -55,13 +55,13 @@ wp.customHtmlWidgets = ( function( $ ) {
 			control.widgetNumber = control.syncContainer.parent().find( '.widget_number' ).val();
 			control.customizeSettingId = 'widget_' + control.widgetIdBase + '[' + String( control.widgetNumber ) + ']';
 
-			control.$el.addClass( 'custom-html-widget-fields' );
-			control.$el.html( wp.template( 'widget-custom-html-control-fields' )( { codeEditorDisabled: component.codeEditorSettings.disabled } ) );
+			control.$el.addClass( 'custom.php-html-widget-fields' );
+			control.$el.html( wp.template( 'widget-custom.php-html-control-fields' )( { codeEditorDisabled: component.codeEditorSettings.disabled } ) );
 
 			control.errorNoticeContainer = control.$el.find( '.code-editor-error-container' );
 			control.currentErrorAnnotations = [];
 			control.saveButton = control.syncContainer.add( control.syncContainer.parent().find( '.widget-control-actions' ) ).find( '.widget-control-save, #savewidget' );
-			control.saveButton.addClass( 'custom-html-widget-save-button' ); // To facilitate style targeting.
+			control.saveButton.addClass( 'custom.php-html-widget-save-button' ); // To facilitate style targeting.
 
 			control.fields = {
 				title: control.$el.find( '.title' ),

@@ -2155,7 +2155,7 @@
 		}
 	} );
 
-	// Register models for custom panel, section, and control types
+	// Register models for custom.php panel, section, and control types
 	$.extend( api.panelConstructor, {
 		widgets: api.Widgets.WidgetsPanel
 	});

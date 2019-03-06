@@ -8,7 +8,7 @@
  */
 
 /**
- * Sets up the WordPress core custom header and custom background features.
+ * Sets up the WordPress core custom.php header and custom.php background features.
  *
  * @since Twenty Sixteen 1.0
  *
@@ -20,37 +20,37 @@ function twentysixteen_custom_header_and_background() {
 	$default_text_color       = trim( $color_scheme[3], '#' );
 
 	/**
-	 * Filter the arguments used when adding 'custom-background' support in Twenty Sixteen.
+	 * Filter the arguments used when adding 'custom.php-background' support in Twenty Sixteen.
 	 *
 	 * @since Twenty Sixteen 1.0
 	 *
 	 * @param array $args {
-	 *     An array of custom-background support arguments.
+	 *     An array of custom.php-background support arguments.
 	 *
 	 *     @type string $default-color Default color of the background.
 	 * }
 	 */
-	add_theme_support( 'custom-background', apply_filters( 'twentysixteen_custom_background_args', array(
+	add_theme_support( 'custom.php-background', apply_filters( 'twentysixteen_custom_background_args', array(
 		'default-color' => $default_background_color,
 	) ) );
 
 	/**
-	 * Filter the arguments used when adding 'custom-header' support in Twenty Sixteen.
+	 * Filter the arguments used when adding 'custom.php-header' support in Twenty Sixteen.
 	 *
 	 * @since Twenty Sixteen 1.0
 	 *
 	 * @param array $args {
-	 *     An array of custom-header support arguments.
+	 *     An array of custom.php-header support arguments.
 	 *
 	 *     @type string $default-text-color Default color of the header text.
-	 *     @type int      $width            Width in pixels of the custom header image. Default 1200.
-	 *     @type int      $height           Height in pixels of the custom header image. Default 280.
+	 *     @type int      $width            Width in pixels of the custom.php header image. Default 1200.
+	 *     @type int      $height           Height in pixels of the custom.php header image. Default 280.
 	 *     @type bool     $flex-height      Whether to allow flexible-height header images. Default true.
 	 *     @type callable $wp-head-callback Callback function used to style the header image and text
 	 *                                      displayed on the blog.
 	 * }
 	 */
-	add_theme_support( 'custom-header', apply_filters( 'twentysixteen_custom_header_args', array(
+	add_theme_support( 'custom.php-header', apply_filters( 'twentysixteen_custom_header_args', array(
 		'default-text-color'     => $default_text_color,
 		'width'                  => 1200,
 		'height'                 => 280,
@@ -396,7 +396,7 @@ function twentysixteen_color_scheme_css() {
 		return;
 	}
 
-	// If we get this far, we have a custom color scheme.
+	// If we get this far, we have a custom.php color scheme.
 	$colors = array(
 		'background_color'      => $color_scheme[0],
 		'page_background_color' => $color_scheme[1],
@@ -989,7 +989,7 @@ function twentysixteen_main_text_color_css() {
 		return;
 	}
 
-	// If we get this far, we have a custom color scheme.
+	// If we get this far, we have a custom.php color scheme.
 	$border_color = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.2)', $main_text_color_rgb );
 
 	$css = '

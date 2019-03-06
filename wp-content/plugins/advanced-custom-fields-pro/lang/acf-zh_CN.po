@@ -673,7 +673,7 @@ msgid "Rules"
 msgstr "规则"
 
 #: admin/views/field-group-locations.php:6
-msgid "Create a set of rules to determine which edit screens will use these advanced custom fields"
+msgid "Create a set of rules to determine which edit screens will use these advanced custom.php fields"
 msgstr "创建一组规则以确定自定义字段在那个编辑界面显示。"
 
 #: admin/views/field-group-locations.php:21
@@ -927,7 +927,7 @@ msgid "Thank you for updating! ACF %s is bigger and better than ever before. We 
 msgstr "比任何时候都优雅有趣，希望你喜欢他。"
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr ""
 
 #: admin/views/settings-info.php:28
@@ -1874,7 +1874,7 @@ msgid "Other"
 msgstr "其他"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr ""
 
 #: fields/radio.php:212
@@ -3058,7 +3058,7 @@ msgstr ""
 #~ msgid "Modifying field option 'taxonomy'"
 #~ msgstr "修改字段选项'分类法'"
 
-#~ msgid "Moving user custom fields from wp_options to wp_usermeta'"
+#~ msgid "Moving user custom.php fields from wp_options to wp_usermeta'"
 #~ msgstr "从wp_options移动用户自定义字段到wp_usermeta"
 
 #~ msgid "blue : Blue"

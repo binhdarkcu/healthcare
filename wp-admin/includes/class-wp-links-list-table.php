@@ -273,11 +273,11 @@ class WP_Links_List_Table extends WP_List_Table {
 	 */
 	public function column_default( $link, $column_name ) {
 		/**
-		 * Fires for each registered custom link column.
+		 * Fires for each registered custom.php link column.
 		 *
 		 * @since 2.1.0
 		 *
-		 * @param string $column_name Name of the custom column.
+		 * @param string $column_name Name of the custom.php column.
 		 * @param int    $link_id     Link ID.
 		 */
 		do_action( 'manage_link_custom_column', $column_name, $link->link_id );

@@ -721,7 +721,7 @@ function get_tax_sql( $tax_query, $primary_table, $primary_id_column ) {
  * {@see 'get_$taxonomy'} hook - Takes two parameters the term Object and the taxonomy
  * name. Must return term object. $taxonomy will be the taxonomy name, so for
  * example, if 'category', it would be 'get_category' as the filter name. Useful
- * for custom taxonomies or plugging into default taxonomies.
+ * for custom.php taxonomies or plugging into default taxonomies.
  *
  * @todo Better formatting for DocBlock
  *
@@ -1453,7 +1453,7 @@ function sanitize_term($term, $taxonomy, $context = 'display') {
  * If no context or an unsupported context is given, then default filters will
  * be applied.
  *
- * There are enough filters for each context to support a custom filtering
+ * There are enough filters for each context to support a custom.php filtering
  * without creating your own filter function. Simply create a function that
  * hooks into the filter you need.
  *

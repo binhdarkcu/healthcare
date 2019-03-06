@@ -59,17 +59,17 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			array(
 				'size' => array(
 					'type' => 'string',
-					'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
+					'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom.php' ) ),
 					'default' => 'medium',
 					'description' => __( 'Size' ),
 				),
-				'width' => array( // Via 'customWidth', only when size=custom; otherwise via 'width'.
+				'width' => array( // Via 'customWidth', only when size=custom.php; otherwise via 'width'.
 					'type' => 'integer',
 					'minimum' => 0,
 					'default' => 0,
 					'description' => __( 'Width' ),
 				),
-				'height' => array( // Via 'customHeight', only when size=custom; otherwise via 'height'.
+				'height' => array( // Via 'customHeight', only when size=custom.php; otherwise via 'height'.
 					'type' => 'integer',
 					'minimum' => 0,
 					'default' => 0,
@@ -91,8 +91,8 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				),
 				'link_type' => array(
 					'type' => 'string',
-					'enum' => array( 'none', 'file', 'post', 'custom' ),
-					'default' => 'custom',
+					'enum' => array( 'none', 'file', 'post', 'custom.php' ),
+					'default' => 'custom.php',
 					'media_prop' => 'link',
 					'description' => __( 'Link To' ),
 					'should_preview_update' => true,
@@ -151,8 +151,8 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				 * values:
 				 * - originalUrl
 				 * - aspectRatio
-				 * - height (redundant when size is not custom)
-				 * - width (redundant when size is not custom)
+				 * - height (redundant when size is not custom.php)
+				 * - width (redundant when size is not custom.php)
 				 */
 			)
 		);
@@ -197,7 +197,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			}
 
 			$size = $instance['size'];
-			if ( 'custom' === $size || ! in_array( $size, array_merge( get_intermediate_image_sizes(), array( 'full' ) ), true ) ) {
+			if ( 'custom.php' === $size || ! in_array( $size, array_merge( get_intermediate_image_sizes(), array( 'full' ) ), true ) ) {
 				$size = array( $instance['width'], $instance['height'] );
 			}
 			$image_attributes['class'] .= sprintf( ' attachment-%1$s size-%1$s', is_array( $size ) ? join( 'x', $size ) : $size );
@@ -212,7 +212,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				return;
 			}
 
-			$instance['size'] = 'custom';
+			$instance['size'] = 'custom.php';
 			$caption = $instance['caption'];
 			$width   = $instance['width'];
 			$classes = 'image ' . $instance['image_classes'];
@@ -237,7 +237,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			$url = $attachment ? wp_get_attachment_url( $attachment->ID ) : $instance['url'];
 		} elseif ( $attachment && 'post' === $instance['link_type'] ) {
 			$url = get_attachment_link( $attachment->ID );
-		} elseif ( 'custom' === $instance['link_type'] && ! empty( $instance['link_url'] ) ) {
+		} elseif ( 'custom.php' === $instance['link_type'] && ! empty( $instance['link_url'] ) ) {
 			$url = $instance['link_url'];
 		}
 

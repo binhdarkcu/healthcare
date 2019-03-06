@@ -367,7 +367,7 @@ class WP_Query {
 
 	/**
 	 * Signifies whether the current query is for an existing single post of any post type
-	 * (post, attachment, page, custom post types).
+	 * (post, attachment, page, custom.php post types).
 	 *
 	 * @since 2.1.0
 	 * @var bool
@@ -3035,7 +3035,7 @@ class WP_Query {
 			if ( is_array( $this->posts ) ) {
 				$this->found_posts = count( $this->posts );
 			} else {
-				if ( null === $this->posts ) {  
+				if ( null === $this->posts ) {
 					$this->found_posts = 0;
 				} else {
 					$this->found_posts = 1;
@@ -3542,7 +3542,7 @@ class WP_Query {
 	}
 
 	/**
-	 * Is the query for an existing custom taxonomy archive page?
+	 * Is the query for an existing custom.php taxonomy archive page?
 	 *
 	 * If the $taxonomy parameter is specified, this function will additionally
 	 * check if the query is for that specific $taxonomy.
@@ -3557,7 +3557,7 @@ class WP_Query {
 	 *
 	 * @param mixed $taxonomy Optional. Taxonomy slug or slugs.
 	 * @param mixed $term     Optional. Term ID, name, slug or array of Term IDs, names, and slugs.
-	 * @return bool True for custom taxonomy archive pages, false for built-in taxonomies (category and tag archives).
+	 * @return bool True for custom.php taxonomy archive pages, false for built-in taxonomies (category and tag archives).
 	 */
 	public function is_tax( $taxonomy = '', $term = '' ) {
 		global $wp_taxonomies;
@@ -3849,7 +3849,7 @@ class WP_Query {
 
 	/**
 	 * Is the query for an existing single post of any post type (post, attachment, page,
-	 * custom post types)?
+	 * custom.php post types)?
 	 *
 	 * If the $post_types parameter is specified, this function will additionally
 	 * check if the query is for one of the Posts Types specified.

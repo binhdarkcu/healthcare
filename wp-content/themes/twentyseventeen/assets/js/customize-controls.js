@@ -8,7 +8,7 @@
 (function() {
 	wp.customize.bind( 'ready', function() {
 
-		// Only show the color hue control when there's a custom color scheme.
+		// Only show the color hue control when there's a custom.php color scheme.
 		wp.customize( 'colorscheme', function( setting ) {
 			wp.customize.control( 'colorscheme_hue', function( control ) {
 				var visibility = function() {

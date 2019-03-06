@@ -7,7 +7,7 @@
  * and there is no way to remove options via this page. It is not linked to from
  * anywhere else in the admin.
  *
- * This file is also the target of the forms in core and custom options pages
+ * This file is also the target of the forms in core and custom.php options pages
  * that use the Settings API. In this case it saves the new option values
  * and returns the user to their page of origin.
  *
@@ -223,7 +223,7 @@ if ( 'update' == $action ) {
 	}
 
 	if ( 'general' == $option_page ) {
-		// Handle custom date/time formats.
+		// Handle custom.php date/time formats.
 		if ( !empty($_POST['date_format']) && isset($_POST['date_format_custom']) && '\c\u\s\t\o\m' == wp_unslash( $_POST['date_format'] ) )
 			$_POST['date_format'] = $_POST['date_format_custom'];
 		if ( !empty($_POST['time_format']) && isset($_POST['time_format_custom']) && '\c\u\s\t\o\m' == wp_unslash( $_POST['time_format'] ) )

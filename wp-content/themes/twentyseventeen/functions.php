@@ -91,7 +91,7 @@ function twentyseventeen_setup() {
 	) );
 
 	// Add theme support for Custom Logo.
-	add_theme_support( 'custom-logo', array(
+	add_theme_support( 'custom.php-logo', array(
 		'width'       => 250,
 		'height'      => 250,
 		'flex-width'  => true,
@@ -128,7 +128,7 @@ function twentyseventeen_setup() {
 			),
 		),
 
-		// Specify the core-defined pages to create and add custom thumbnails to some of them.
+		// Specify the core-defined pages to create and add custom.php thumbnails to some of them.
 		'posts' => array(
 			'home',
 			'about' => array(
@@ -145,7 +145,7 @@ function twentyseventeen_setup() {
 			),
 		),
 
-		// Create the custom image attachments used as post thumbnails for pages.
+		// Create the custom.php image attachments used as post thumbnails for pages.
 		'attachments' => array(
 			'image-espresso' => array(
 				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
@@ -256,7 +256,7 @@ function twentyseventeen_content_width() {
 add_action( 'template_redirect', 'twentyseventeen_content_width', 0 );
 
 /**
- * Register custom fonts.
+ * Register custom.php fonts.
  */
 function twentyseventeen_fonts_url() {
 	$fonts_url = '';
@@ -389,10 +389,10 @@ function twentyseventeen_pingback_header() {
 add_action( 'wp_head', 'twentyseventeen_pingback_header' );
 
 /**
- * Display custom color CSS.
+ * Display custom.php color CSS.
  */
 function twentyseventeen_colors_css_wrap() {
-	if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
+	if ( 'custom.php' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
 		return;
 	}
 
@@ -409,7 +409,7 @@ add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
  * Enqueue scripts and styles.
  */
 function twentyseventeen_scripts() {
-	// Add custom fonts, used in the main stylesheet.
+	// Add custom.php fonts, used in the main stylesheet.
 	wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
 
 	// Theme stylesheet.
@@ -460,7 +460,7 @@ function twentyseventeen_scripts() {
 add_action( 'wp_enqueue_scripts', 'twentyseventeen_scripts' );
 
 /**
- * Add custom image sizes attribute to enhance responsive image functionality
+ * Add custom.php image sizes attribute to enhance responsive image functionality
  * for content images.
  *
  * @since Twenty Seventeen 1.0
@@ -493,7 +493,7 @@ add_filter( 'wp_calculate_image_sizes', 'twentyseventeen_content_image_sizes_att
  * @since Twenty Seventeen 1.0
  *
  * @param string $html   The HTML image tag markup being filtered.
- * @param object $header The custom header object returned by 'get_custom_header()'.
+ * @param object $header The custom.php header object returned by 'get_custom_header()'.
  * @param array  $attr   Array of the attributes for the image tag.
  * @return string The filtered header image HTML.
  */
@@ -506,7 +506,7 @@ function twentyseventeen_header_image_tag( $html, $header, $attr ) {
 add_filter( 'get_header_image_tag', 'twentyseventeen_header_image_tag', 10, 3 );
 
 /**
- * Add custom image sizes attribute to enhance responsive image functionality
+ * Add custom.php image sizes attribute to enhance responsive image functionality
  * for post thumbnails.
  *
  * @since Twenty Seventeen 1.0
@@ -563,7 +563,7 @@ add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
 /**
  * Implement the Custom Header feature.
  */
-require get_parent_theme_file_path( '/inc/custom-header.php' );
+require get_parent_theme_file_path( '/inc/custom.php-header.php' );
 
 /**
  * Custom template tags for this theme.

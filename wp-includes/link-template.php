@@ -241,7 +241,7 @@ function get_permalink( $post = 0, $leavename = false ) {
 }
 
 /**
- * Retrieves the permalink for a post of a custom post type.
+ * Retrieves the permalink for a post of a custom.php post type.
  *
  * @since 3.0.0
  *
@@ -286,7 +286,7 @@ function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
 	}
 
 	/**
-	 * Filters the permalink for a post of a custom post type.
+	 * Filters the permalink for a post of a custom.php post type.
 	 *
 	 * @since 3.0.0
 	 *
@@ -1314,7 +1314,7 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
  * @param string      $before Optional. Display before edit link. Default empty.
  * @param string      $after  Optional. Display after edit link. Default empty.
  * @param int|WP_Post $id     Optional. Post ID or post object. Default is the global `$post`.
- * @param string      $class  Optional. Add custom class to link. Default 'post-edit-link'.
+ * @param string      $class  Optional. Add custom.php class to link. Default 'post-edit-link'.
  */
 function edit_post_link( $text = null, $before = '', $after = '', $id = 0, $class = 'post-edit-link' ) {
 	if ( ! $post = get_post( $id ) ) {

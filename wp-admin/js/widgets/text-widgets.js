@@ -48,7 +48,7 @@ wp.textWidgets = ( function( $ ) {
 			control.$el.addClass( 'text-widget-fields' );
 			control.$el.html( wp.template( 'widget-text-control-fields' ) );
 
-			control.customHtmlWidgetPointer = control.$el.find( '.wp-pointer.custom-html-widget-pointer' );
+			control.customHtmlWidgetPointer = control.$el.find( '.wp-pointer.custom.php-html-widget-pointer' );
 			if ( control.customHtmlWidgetPointer.length ) {
 				control.customHtmlWidgetPointer.find( '.close' ).on( 'click', function( event ) {
 					event.preventDefault();

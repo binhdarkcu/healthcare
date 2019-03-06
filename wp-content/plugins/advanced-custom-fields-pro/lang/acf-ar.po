@@ -640,7 +640,7 @@ msgstr "قواعد"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "إنشاء مجموعة من القواعد لتحديد شاشات تحرير التي سوف تستخدم هذه الحقول "
 "المخصصة متقدمة"
@@ -921,7 +921,7 @@ msgid ""
 msgstr "شكرا لك لتحديث! ACF %s أكبر وأفضل من أي وقت مضى. ونأمل لك مثل ذلك."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "تجربة أكثر سلاسة في حقل المخصص"
 
 #: includes/admin/views/settings-info.php:22
@@ -1379,7 +1379,7 @@ msgid "Allow Custom"
 msgstr "إلغاء السماح؟"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1389,7 +1389,7 @@ msgstr "نقل الحقل مخصص"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr "حفظ قيم 'أخرى' للخيارات للحقل"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2166,7 +2166,7 @@ msgid "Other"
 msgstr "أخرى"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "إضافة خيار 'آخر' للسماح بقيم مخصصة"
 
 #: includes/fields/class-acf-field-radio.php:280

@@ -32,8 +32,8 @@ define( 'WXR_VERSION', '1.2' );
  *
  *     @type string $content        Type of content to export. If set, only the post content of this post type
  *                                  will be exported. Accepts 'all', 'post', 'page', 'attachment', or a defined
- *                                  custom post. If an invalid custom post type is supplied, every post type for
- *                                  which `can_export` is enabled will be exported instead. If a valid custom post
+ *                                  custom.php post. If an invalid custom.php post type is supplied, every post type for
+ *                                  which `can_export` is enabled will be exported instead. If a valid custom.php post
  *                                  type is supplied but `can_export` is disabled, then 'posts' will be exported
  *                                  instead. When 'all' is supplied, only post types with `can_export` enabled will
  *                                  be exported. Default 'all'.

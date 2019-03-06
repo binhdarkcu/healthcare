@@ -581,7 +581,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		$stylesheet = $theme->get_stylesheet();
 
 		/**
-		 * Fires inside each custom column of the Multisite themes list table.
+		 * Fires inside each custom.php column of the Multisite themes list table.
 		 *
 		 * @since 3.1.0
 		 *

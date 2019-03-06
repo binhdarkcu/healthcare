@@ -34,12 +34,12 @@ var delay = window.setTimeout
 ;
 
 // convert plupload features to caps acceptable by mOxie
-function normalizeCaps(settings) {		
+function normalizeCaps(settings) {
 	var features = settings.required_features, caps = {};
 
 	function resolve(feature, value, strict) {
 		// Feature notation is deprecated, use caps (this thing here is required for backward compatibility)
-		var map = { 
+		var map = {
 			chunks: 'slice_blob',
 			jpgresize: 'send_binary_string',
 			pngresize: 'send_binary_string',
@@ -89,8 +89,8 @@ function normalizeCaps(settings) {
 	return caps;
 }
 
-/** 
- * @module plupload	
+/**
+ * @module plupload
  * @static
  */
 var plupload = {
@@ -309,7 +309,7 @@ var plupload = {
 
 	/**
 	 * Get array of DOM Elements by their ids.
-	 * 
+	 *
 	 * @method get
 	 * @param {String} id Identifier of the DOM Element
 	 * @return {Array}
@@ -797,7 +797,7 @@ plupload.Uploader = function(options) {
 	@event Browse
 	@since 2.1.2
 	@param {plupload.Uploader} uploader Uploader instance sending the event.
-	 */	
+	 */
 
 	/**
 	Fires for every filtered file before it is added to the queue.
@@ -813,7 +813,7 @@ plupload.Uploader = function(options) {
 	
 	@event QueueChanged
 	@param {plupload.Uploader} uploader Uploader instance sending the event.
-	 */ 
+	 */
 
 	/**
 	Fires after files were filtered and added to the queue.
@@ -854,7 +854,7 @@ plupload.Uploader = function(options) {
 	@event UploadProgress
 	@param {plupload.Uploader} uploader Uploader instance sending the event.
 	@param {plupload.File} file File that is currently being uploaded.
-	 */	
+	 */
 
 	/**
 	Fires when file chunk is uploaded.
@@ -1293,7 +1293,7 @@ plupload.Uploader = function(options) {
 						value = 'container' === option
 							? plupload.get(value)
 							: plupload.getAll(value)
-							; 
+							;
 				
 				case 'runtimes':
 				case 'multi_selection':
@@ -1404,7 +1404,7 @@ plupload.Uploader = function(options) {
 				args.name = file.target_name || file.name;
 			}
 
-			if (chunkSize && features.chunks && blob.size > chunkSize) { // blob will be of type string if it was loaded in memory 
+			if (chunkSize && features.chunks && blob.size > chunkSize) { // blob will be of type string if it was loaded in memory
 				curChunkSize = Math.min(chunkSize, blob.size - offset);
 				chunkBlob = blob.slice(offset, offset + curChunkSize);
 			} else {
@@ -1462,7 +1462,7 @@ plupload.Uploader = function(options) {
 					if (o.Env.browser === 'Android Browser') {
 						// doesn't harm in general, but is not required anywhere else
 						up.trigger('UploadProgress', file);
-					} 
+					}
 				} else {
 					file.loaded = file.size;
 				}
@@ -1505,7 +1505,7 @@ plupload.Uploader = function(options) {
 			if (up.settings.multipart && features.multipart) {
 				xhr.open("post", url, true);
 
-				// Set custom headers
+				// Set custom.php headers
 				plupload.each(up.settings.headers, function(value, name) {
 					xhr.setRequestHeader(name, value);
 				});
@@ -1532,7 +1532,7 @@ plupload.Uploader = function(options) {
 
 				xhr.setRequestHeader('Content-Type', 'application/octet-stream'); // Binary stream header
 
-				// Set custom headers
+				// Set custom.php headers
 				plupload.each(up.settings.headers, function(value, name) {
 					xhr.setRequestHeader(name, value);
 				});
@@ -1593,7 +1593,7 @@ plupload.Uploader = function(options) {
 		calc();
 
 		// Upload next file but detach it from the error event
-		// since other custom listeners might want to stop the queue
+		// since other custom.php listeners might want to stop the queue
 		delay(function() {
 			uploadNext.call(up);
 		}, 1);
@@ -1610,7 +1610,7 @@ plupload.Uploader = function(options) {
 			calcFile(err.file);
 
 			// Upload next file but detach it from the error event
-			// since other custom listeners might want to stop the queue
+			// since other custom.php listeners might want to stop the queue
 			if (up.state == plupload.STARTED) { // upload in progress
 				up.trigger('CancelUpload');
 				delay(function() {
@@ -1677,7 +1677,7 @@ plupload.Uploader = function(options) {
 	setOption.call(this, options, null, true);
 
 	// Inital total state
-	total = new plupload.QueueProgress(); 
+	total = new plupload.QueueProgress();
 
 	// Add public methods
 	plupload.extend(this, {
@@ -1824,7 +1824,7 @@ plupload.Uploader = function(options) {
 
 		/**
 		 * Get the value for the specified option or the whole configuration, if not specified.
-		 * 
+		 *
 		 * @method getOption
 		 * @since 2.1
 		 * @param {String} [option] Name of the option to get
@@ -1916,7 +1916,7 @@ plupload.Uploader = function(options) {
 
 		/**
 		 * Adds file to the queue programmatically. Can be native file, instance of Plupload.File,
-		 * instance of mOxie.File, input[type="file"] element, or array of these. Fires FilesAdded, 
+		 * instance of mOxie.File, input[type="file"] element, or array of these. Fires FilesAdded,
 		 * if any files were added to the queue. Otherwise nothing happens.
 		 *
 		 * @method addFile
@@ -1926,7 +1926,7 @@ plupload.Uploader = function(options) {
 		 */
 		addFile : function(file, fileName) {
 			var self = this
-			, queue = [] 
+			, queue = []
 			, filesAdded = []
 			, ruid
 			;
@@ -1954,7 +1954,7 @@ plupload.Uploader = function(options) {
 				var type = o.typeOf(file);
 
 				// o.File
-				if (file instanceof o.File) { 
+				if (file instanceof o.File) {
 					if (!file.ruid && !file.isDetached()) {
 						if (!ruid) { // weird case
 							return false;
@@ -1964,11 +1964,11 @@ plupload.Uploader = function(options) {
 					}
 					resolveFile(new plupload.File(file));
 				}
-				// o.Blob 
+				// o.Blob
 				else if (file instanceof o.Blob) {
 					resolveFile(file.getSource());
 					file.destroy();
-				} 
+				}
 				// plupload.File - final step for other branches
 				else if (file instanceof plupload.File) {
 					if (fileName) {
@@ -1982,23 +1982,23 @@ plupload.Uploader = function(options) {
 								// make files available for the filters by updating the main queue directly
 								files.push(file);
 								// collect the files that will be passed to FilesAdded event
-								filesAdded.push(file); 
+								filesAdded.push(file);
 
 								self.trigger("FileFiltered", file);
 							}
 							delay(cb, 1); // do not build up recursions or eventually we might hit the limits
 						});
 					});
-				} 
+				}
 				// native File or blob
 				else if (o.inArray(type, ['file', 'blob']) !== -1) {
 					resolveFile(new o.File(null, file));
-				} 
+				}
 				// input[type="file"]
 				else if (type === 'node' && o.typeOf(file.files) === 'filelist') {
 					// if we are dealing with input[type="file"]
 					o.each(file.files, resolveFile);
-				} 
+				}
 				// mixed array of any supported types (see above)
 				else if (type === 'array') {
 					fileName = null; // should never happen, but unset anyway to avoid funny situations
@@ -2088,9 +2088,9 @@ plupload.Uploader = function(options) {
 		// override the parent method to match Plupload-like event logic
 		dispatchEvent: function(type) {
 			var list, args, result;
-						
+			
 			type = type.toLowerCase();
-							
+			
 			list = this.hasEventListener(type);
 
 			if (list) {
@@ -2169,7 +2169,7 @@ plupload.Uploader.prototype = o.EventTarget.instance;
  *
  * @class File
  * @constructor
- * 
+ *
  * @param {Object} file Object containing file properties
  * @param {String} file.name Name of the file.
  * @param {Number} file.size File size.

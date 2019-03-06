@@ -952,7 +952,7 @@ class wpdb {
 	 *
 	 * @param string $scope   Optional. Can be all, global, ms_global, blog, or old tables. Defaults to all.
 	 * @param bool   $prefix  Optional. Whether to include table prefixes. Default true. If blog
-	 *                        prefix is requested, then the custom users and usermeta tables will be mapped.
+	 *                        prefix is requested, then the custom.php users and usermeta tables will be mapped.
 	 * @param int    $blog_id Optional. The blog_id to prefix. Defaults to wpdb::$blogid. Used only when prefix is requested.
 	 * @return array Table names. When a prefix is requested, the key is the unprefixed table name.
 	 */
@@ -1252,7 +1252,7 @@ class wpdb {
 		 *
 		 * - Sign specifier. eg, $+d
 		 * - Numbered placeholders. eg, %1$s
-		 * - Padding specifier, including custom padding characters. eg, %05s, %'#5s
+		 * - Padding specifier, including custom.php padding characters. eg, %05s, %'#5s
 		 * - Alignment specifier. eg, %05-s
 		 * - Precision specifier. eg, %.2f
 		 */
@@ -1568,7 +1568,7 @@ class wpdb {
 		if ( ! $this->dbh && $allow_bail ) {
 			wp_load_translations_early();
 
-			// Load custom DB error template, if present.
+			// Load custom.php DB error template, if present.
 			if ( file_exists( WP_CONTENT_DIR . '/db-error.php' ) ) {
 				require_once( WP_CONTENT_DIR . '/db-error.php' );
 				die();

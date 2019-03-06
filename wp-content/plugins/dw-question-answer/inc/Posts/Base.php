@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 add_action( 'init', 'dwqa_anonymous_create_session' );
 function dwqa_anonymous_create_session() {
@@ -30,7 +30,7 @@ function dwqa_get_current_user_session() {
 
 function dwqa_action_vote( ) {
 	$result = array(
-		'error_code'    => 'authorization',  
+		'error_code'    => 'authorization',
 		'error_message' => __( 'Are you cheating, huh?', 'dw-question-answer' ),
 	);
 
@@ -71,11 +71,11 @@ function dwqa_action_vote( ) {
 			if ($data_votes !== false) {
 				$votes = $data_votes;
 			}
-			
+
 			if(!$votes || !is_array($votes)){
 				$votes = array();
 			}
-			
+
 			$votes[$dwqa_user_vote_id] = $point;
 			//update
 			do_action( 'dwqa_vote_'.$vote_for, $post_id, ( int ) $point );
@@ -92,7 +92,7 @@ function dwqa_action_vote( ) {
 			$result['error_code'] = 'voted';
 			$result['error_message'] = __( 'You voted for this ' . $vote_for, 'dw-question-answer' );
 			wp_send_json_error( $result );
-		}		
+		}
 	}else{
 		$result['error_code'] = 'anonymous';
 		$result['error_message'] = __( 'You aren\'t allowed voted for this ' . $vote_for, 'dw-question-answer' );
@@ -116,8 +116,8 @@ function dwqa_is_user_voted( $post_id, $point, $user = false ) {
 	}
 	$votes = get_post_meta( $post_id, '_dwqa_votes_log', true );
 
-	if ( empty( $votes ) ) { 
-		return false; 
+	if ( empty( $votes ) ) {
+		return false;
 	}
 
 	if ( array_key_exists( $user, $votes ) ) {
@@ -125,7 +125,7 @@ function dwqa_is_user_voted( $post_id, $point, $user = false ) {
 			return $votes[$user];
 		}
 	}
-	return false;   
+	return false;
 }
 
 function dwqa_get_user_vote( $post_id, $user = false ) {
@@ -143,7 +143,7 @@ function dwqa_get_user_vote( $post_id, $user = false ) {
 /**
  * Calculate number of votes for specify post
  * @param  int $post_id ID of post
- * @return void              
+ * @return void
  */
 function dwqa_update_vote_count( $post_id ) {
 	if ( ! $post_id ) {
@@ -151,7 +151,7 @@ function dwqa_update_vote_count( $post_id ) {
 		$post_id = $post->ID;
 	}
 	$votes = get_post_meta( $post_id, '_dwqa_votes_log', true );
-	
+
 	if ( empty( $votes ) ) {
 		return 0;
 	}
@@ -178,7 +178,7 @@ function dwqa_vote_count( $post_id = false, $echo = false ) {
 	$votes = get_post_meta( $post_id, '_dwqa_votes', true );
 	if ( empty( $votes ) ) {
 		return 0;
-	} 
+	}
 	if ( $echo ) {
 		echo $votes;
 	}
@@ -284,7 +284,7 @@ function dwqa_get_latest_action_date( $question = false, $before = '<span>', $af
 		$author_display,
 		$author_avatar
 	);
-	
+
 	if ( $last_activity_date && $post->last_activity_type == 'answer' ) {
 		$date = human_time_diff( strtotime( $last_activity_date ), current_time( 'timestamp' ) );
 		return sprintf( __( '%s answered <span class="dwqa-date">%s</span> ago', 'dw-question-answer' ), $author_link, $date );
@@ -369,7 +369,7 @@ class DWQA_Posts_Base {
 
 	public function register() {
 		$names = $this->get_name_labels();
-		
+
 		$this->register_taxonomy();
 
 		$args = array(
@@ -393,7 +393,7 @@ class DWQA_Posts_Base {
 			'capability_type'     => 'post',
 			'supports'            => array(
 				'title', 'editor', 'author', 'thumbnail',
-				'excerpt','custom-fields', 'trackbacks', 'comments',
+				'excerpt','custom.php-fields', 'trackbacks', 'comments',
 				'revisions', 'page-attributes', 'post-formats'
 			)
 		);
@@ -461,7 +461,7 @@ class DWQA_Posts_Base {
 		}
 
 		$string = str_replace( $matches[3],  htmlentities( $matches[3], ENT_COMPAT , 'UTF-8', false  ), $string );
-		
+
 		return '<pre>' . $string . '</pre>';
 	}
 
@@ -483,7 +483,7 @@ class DWQA_Posts_Base {
 	public function hook_on_update_anonymous_post( $data, $postarr ) {
 		if ( isset( $postarr['ID'] ) && get_post_meta( $postarr['ID'], '_dwqa_is_anonymous', true ) ) {
 			$data['post_author'] = 0;
-		} 
+		}
 		return $data;
 	}
 

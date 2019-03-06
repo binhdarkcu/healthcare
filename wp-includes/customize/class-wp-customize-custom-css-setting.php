@@ -168,7 +168,7 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 	}
 
 	/**
-	 * Store the CSS setting value in the custom_css custom post type for the stylesheet.
+	 * Store the CSS setting value in the custom_css custom.php post type for the stylesheet.
 	 *
 	 * @since 4.7.0
 	 *

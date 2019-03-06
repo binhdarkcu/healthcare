@@ -47,7 +47,7 @@ function twentyseventeen_customize_register( $wp_customize ) {
 		'choices'  => array(
 			'light'  => __( 'Light', 'twentyseventeen' ),
 			'dark'   => __( 'Dark', 'twentyseventeen' ),
-			'custom' => __( 'Custom', 'twentyseventeen' ),
+			'custom.php' => __( 'Custom', 'twentyseventeen' ),
 		),
 		'section'  => 'colors',
 		'priority' => 5,
@@ -145,7 +145,7 @@ function twentyseventeen_sanitize_page_layout( $input ) {
  * @param string $input Color scheme.
  */
 function twentyseventeen_sanitize_colorscheme( $input ) {
-	$valid = array( 'light', 'dark', 'custom' );
+	$valid = array( 'light', 'dark', 'custom.php' );
 
 	if ( in_array( $input, $valid, true ) ) {
 		return $input;

@@ -70,7 +70,7 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 			),
 			'size' => array(
 				'type' => 'string',
-				'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
+				'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom.php' ) ),
 				'default' => 'thumbnail',
 			),
 			'link_type' => array(

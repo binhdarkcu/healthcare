@@ -5725,7 +5725,7 @@ hooks.defineLocale('cs', {
     monthsParse : (function (months, monthsShort) {
         var i, _monthsParse = [];
         for (i = 0; i < 12; i++) {
-            // use custom parser to solve problem with July (červenec)
+            // use custom.php parser to solve problem with July (červenec)
             _monthsParse[i] = new RegExp('^' + months[i] + '$|^' + monthsShort[i] + '$', 'i');
         }
         return _monthsParse;

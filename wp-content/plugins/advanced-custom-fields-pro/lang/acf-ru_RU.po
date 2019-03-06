@@ -631,7 +631,7 @@ msgstr "Условия"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Создайте набор правил для указания страниц, где следует отображать группу "
 "полей"
@@ -919,7 +919,7 @@ msgstr ""
 "понравится."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr "Максимум удобства и возможностей"
 
 #: includes/admin/views/settings-info.php:22
@@ -1393,7 +1393,7 @@ msgstr ""
 "пользовательского местоположения"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1403,7 +1403,7 @@ msgstr "Переместить поле"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr "Сохранить настраиваемые значения для поля выбора"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2174,7 +2174,7 @@ msgid "Other"
 msgstr "Другое"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr "Выберите значение \"Другое\", чтобы разрешить настраиваемые значения"
 
 #: includes/fields/class-acf-field-radio.php:280
@@ -4008,7 +4008,7 @@ msgstr "http://www.elliotcondon.com/"
 #~ msgid "Modifying field option 'taxonomy'"
 #~ msgstr "Изменение опции \"таксономия\" поля"
 
-#~ msgid "Moving user custom fields from wp_options to wp_usermeta'"
+#~ msgid "Moving user custom.php fields from wp_options to wp_usermeta'"
 #~ msgstr ""
 #~ "Перенос пользовательских произвольных полей из \"wp_options\" в "
 #~ "\"wp_usermeta\""

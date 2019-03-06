@@ -229,7 +229,7 @@ final class WP_Comment {
 	 *     @type string $format        Return value format. 'tree' for a hierarchical tree, 'flat' for a flattened array.
 	 *                                 Default 'tree'.
 	 *     @type string $status        Comment status to limit results by. Accepts 'hold' (`comment_status=0`),
-	 *                                 'approve' (`comment_status=1`), 'all', or a custom comment status.
+	 *                                 'approve' (`comment_status=1`), 'all', or a custom.php comment status.
 	 *                                 Default 'all'.
 	 *     @type string $hierarchical  Whether to include comment descendants in the results.
 	 *                                 'threaded' returns a tree, with each comment's children

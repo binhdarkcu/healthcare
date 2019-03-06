@@ -949,18 +949,18 @@ function remove_theme_mods() {
 }
 
 /**
- * Retrieves the custom header text color in 3- or 6-digit hexadecimal form.
+ * Retrieves the custom.php header text color in 3- or 6-digit hexadecimal form.
  *
  * @since 2.1.0
  *
  * @return string Header text color in 3- or 6-digit hexadecimal form (minus the hash symbol).
  */
 function get_header_textcolor() {
-	return get_theme_mod('header_textcolor', get_theme_support( 'custom-header', 'default-text-color' ) );
+	return get_theme_mod('header_textcolor', get_theme_support( 'custom.php-header', 'default-text-color' ) );
 }
 
 /**
- * Displays the custom header text color in 3- or 6-digit hexadecimal form (minus the hash symbol).
+ * Displays the custom.php header text color in 3- or 6-digit hexadecimal form (minus the hash symbol).
  *
  * @since 2.1.0
  */
@@ -976,10 +976,10 @@ function header_textcolor() {
  * @return bool
  */
 function display_header_text() {
-	if ( ! current_theme_supports( 'custom-header', 'header-text' ) )
+	if ( ! current_theme_supports( 'custom.php-header', 'header-text' ) )
 		return false;
 
-	$text_color = get_theme_mod( 'header_textcolor', get_theme_support( 'custom-header', 'default-text-color' ) );
+	$text_color = get_theme_mod( 'header_textcolor', get_theme_support( 'custom.php-header', 'default-text-color' ) );
 	return 'blank' !== $text_color;
 }
 
@@ -997,14 +997,14 @@ function has_header_image() {
 }
 
 /**
- * Retrieve header image for custom header.
+ * Retrieve header image for custom.php header.
  *
  * @since 2.1.0
  *
  * @return string|false
  */
 function get_header_image() {
-	$url = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );
+	$url = get_theme_mod( 'header_image', get_theme_support( 'custom.php-header', 'default-image' ) );
 
 	if ( 'remove-header' == $url )
 		return false;
@@ -1016,7 +1016,7 @@ function get_header_image() {
 }
 
 /**
- * Create image tag markup for a custom header image.
+ * Create image tag markup for a custom.php header image.
  *
  * @since 4.4.0
  *
@@ -1076,14 +1076,14 @@ function get_header_image_tag( $attr = array() ) {
 	 * @since 4.4.0
 	 *
 	 * @param string $html   The HTML image tag markup being filtered.
-	 * @param object $header The custom header object returned by 'get_custom_header()'.
+	 * @param object $header The custom.php header object returned by 'get_custom_header()'.
 	 * @param array  $attr   Array of the attributes for the image tag.
 	 */
 	return apply_filters( 'get_header_image_tag', $html, $header, $attr );
 }
 
 /**
- * Display the image markup for a custom header image.
+ * Display the image markup for a custom.php header image.
  *
  * @since 4.4.0
  *
@@ -1119,7 +1119,7 @@ function _get_random_header_data() {
 			if ( 'random-default-image' == $header_image_mod ) {
 				$headers = $_wp_default_headers;
 			} else {
-				if ( current_theme_supports( 'custom-header', 'random-default' ) )
+				if ( current_theme_supports( 'custom.php-header', 'random-default' ) )
 					$headers = $_wp_default_headers;
 			}
 		}
@@ -1162,7 +1162,7 @@ function get_random_header_image() {
  * @return bool
  */
 function is_random_header_image( $type = 'any' ) {
-	$header_image_mod = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );
+	$header_image_mod = get_theme_mod( 'header_image', get_theme_support( 'custom.php-header', 'default-image' ) );
 
 	if ( 'any' == $type ) {
 		if ( 'random-default-image' == $header_image_mod || 'random-uploaded-image' == $header_image_mod || ( '' != get_random_header_image() && empty( $header_image_mod ) ) )
@@ -1242,10 +1242,10 @@ function get_custom_header() {
 		$data = _get_random_header_data();
 	} else {
 		$data = get_theme_mod( 'header_image_data' );
-		if ( ! $data && current_theme_supports( 'custom-header', 'default-image' ) ) {
+		if ( ! $data && current_theme_supports( 'custom.php-header', 'default-image' ) ) {
 			$directory_args = array( get_template_directory_uri(), get_stylesheet_directory_uri() );
 			$data = array();
-			$data['url'] = $data['thumbnail_url'] = vsprintf( get_theme_support( 'custom-header', 'default-image' ), $directory_args );
+			$data['url'] = $data['thumbnail_url'] = vsprintf( get_theme_support( 'custom.php-header', 'default-image' ), $directory_args );
 			if ( ! empty( $_wp_default_headers ) ) {
 				foreach ( (array) $_wp_default_headers as $default_header ) {
 					$url = vsprintf( $default_header['url'], $directory_args );
@@ -1263,15 +1263,15 @@ function get_custom_header() {
 	$default = array(
 		'url'           => '',
 		'thumbnail_url' => '',
-		'width'         => get_theme_support( 'custom-header', 'width' ),
-		'height'        => get_theme_support( 'custom-header', 'height' ),
-		'video'         => get_theme_support( 'custom-header', 'video' ),
+		'width'         => get_theme_support( 'custom.php-header', 'width' ),
+		'height'        => get_theme_support( 'custom.php-header', 'height' ),
+		'video'         => get_theme_support( 'custom.php-header', 'video' ),
 	);
 	return (object) wp_parse_args( $data, $default );
 }
 
 /**
- * Register a selection of default headers to be displayed by the custom header admin UI.
+ * Register a selection of default headers to be displayed by the custom.php header admin UI.
  *
  * @since 3.0.0
  *
@@ -1326,7 +1326,7 @@ function has_header_video() {
 }
 
 /**
- * Retrieve header video URL for custom header.
+ * Retrieve header video URL for custom.php header.
  *
  * Uses a local video if present, or falls back to an external video.
  *
@@ -1409,11 +1409,11 @@ function get_header_video_settings() {
 }
 
 /**
- * Check whether a custom header is set or not.
+ * Check whether a custom.php header is set or not.
  *
  * @since 4.7.0
  *
- * @return bool True if a custom header is set. False if not.
+ * @return bool True if a custom.php header is set. False if not.
  */
 function has_custom_header() {
 	if ( has_header_image() || ( has_header_video() && is_header_video_active() ) ) {
@@ -1424,18 +1424,18 @@ function has_custom_header() {
 }
 
 /**
- * Checks whether the custom header video is eligible to show on the current page.
+ * Checks whether the custom.php header video is eligible to show on the current page.
  *
  * @since 4.7.0
  *
- * @return bool True if the custom header video should be shown. False if not.
+ * @return bool True if the custom.php header video should be shown. False if not.
  */
 function is_header_video_active() {
-	if ( ! get_theme_support( 'custom-header', 'video' ) ) {
+	if ( ! get_theme_support( 'custom.php-header', 'video' ) ) {
 		return false;
 	}
 
-	$video_active_cb = get_theme_support( 'custom-header', 'video-active-callback' );
+	$video_active_cb = get_theme_support( 'custom.php-header', 'video-active-callback' );
 
 	if ( empty( $video_active_cb ) || ! is_callable( $video_active_cb ) ) {
 		$show_video = true;
@@ -1444,25 +1444,25 @@ function is_header_video_active() {
 	}
 
 	/**
-	 * Modify whether the custom header video is eligible to show on the current page.
+	 * Modify whether the custom.php header video is eligible to show on the current page.
 	 *
 	 * @since 4.7.0
 	 *
-	 * @param bool $show_video Whether the custom header video should be shown. Returns the value
-	 *                         of the theme setting for the `custom-header`'s `video-active-callback`.
+	 * @param bool $show_video Whether the custom.php header video should be shown. Returns the value
+	 *                         of the theme setting for the `custom.php-header`'s `video-active-callback`.
 	 *                         If no callback is set, the default value is that of `is_front_page()`.
 	 */
 	return apply_filters( 'is_header_video_active', $show_video );
 }
 
 /**
- * Retrieve the markup for a custom header.
+ * Retrieve the markup for a custom.php header.
  *
  * The container div will always be returned in the Customizer preview.
  *
  * @since 4.7.0
  *
- * @return string The markup for a custom header on success.
+ * @return string The markup for a custom.php header on success.
  */
 function get_custom_header_markup() {
 	if ( ! has_custom_header() && ! is_customize_preview() ) {
@@ -1470,13 +1470,13 @@ function get_custom_header_markup() {
 	}
 
 	return sprintf(
-		'<div id="wp-custom-header" class="wp-custom-header">%s</div>',
+		'<div id="wp-custom.php-header" class="wp-custom.php-header">%s</div>',
 		get_header_image_tag()
 	);
 }
 
 /**
- * Print the markup for a custom header.
+ * Print the markup for a custom.php header.
  *
  * A container div will always be printed in the Customizer preview.
  *
@@ -1491,20 +1491,20 @@ function the_custom_header_markup() {
 	echo $custom_header;
 
 	if ( is_header_video_active() && ( has_header_video() || is_customize_preview() ) ) {
-		wp_enqueue_script( 'wp-custom-header' );
-		wp_localize_script( 'wp-custom-header', '_wpCustomHeaderSettings', get_header_video_settings() );
+		wp_enqueue_script( 'wp-custom.php-header' );
+		wp_localize_script( 'wp-custom.php-header', '_wpCustomHeaderSettings', get_header_video_settings() );
 	}
 }
 
 /**
- * Retrieve background image for custom background.
+ * Retrieve background image for custom.php background.
  *
  * @since 3.0.0
  *
  * @return string
  */
 function get_background_image() {
-	return get_theme_mod('background_image', get_theme_support( 'custom-background', 'default-image' ) );
+	return get_theme_mod('background_image', get_theme_support( 'custom.php-background', 'default-image' ) );
 }
 
 /**
@@ -1517,14 +1517,14 @@ function background_image() {
 }
 
 /**
- * Retrieve value for custom background color.
+ * Retrieve value for custom.php background color.
  *
  * @since 3.0.0
  *
  * @return string
  */
 function get_background_color() {
-	return get_theme_mod('background_color', get_theme_support( 'custom-background', 'default-color' ) );
+	return get_theme_mod('background_color', get_theme_support( 'custom.php-background', 'default-color' ) );
 }
 
 /**
@@ -1537,25 +1537,25 @@ function background_color() {
 }
 
 /**
- * Default custom background callback.
+ * Default custom.php background callback.
  *
  * @since 3.0.0
  */
 function _custom_background_cb() {
-	// $background is the saved custom image, or the default image.
+	// $background is the saved custom.php image, or the default image.
 	$background = set_url_scheme( get_background_image() );
 
-	// $color is the saved custom color.
+	// $color is the saved custom.php color.
 	// A default has to be specified in style.css. It will not be printed here.
 	$color = get_background_color();
 
-	if ( $color === get_theme_support( 'custom-background', 'default-color' ) ) {
+	if ( $color === get_theme_support( 'custom.php-background', 'default-color' ) ) {
 		$color = false;
 	}
 
 	if ( ! $background && ! $color ) {
 		if ( is_customize_preview() ) {
-			echo '<style type="text/css" id="custom-background-css"></style>';
+			echo '<style type="text/css" id="custom.php-background-css"></style>';
 		}
 		return;
 	}
@@ -1566,8 +1566,8 @@ function _custom_background_cb() {
 		$image = ' background-image: url("' . esc_url_raw( $background ) . '");';
 
 		// Background Position.
-		$position_x = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
-		$position_y = get_theme_mod( 'background_position_y', get_theme_support( 'custom-background', 'default-position-y' ) );
+		$position_x = get_theme_mod( 'background_position_x', get_theme_support( 'custom.php-background', 'default-position-x' ) );
+		$position_y = get_theme_mod( 'background_position_y', get_theme_support( 'custom.php-background', 'default-position-y' ) );
 
 		if ( ! in_array( $position_x, array( 'left', 'center', 'right' ), true ) ) {
 			$position_x = 'left';
@@ -1580,7 +1580,7 @@ function _custom_background_cb() {
 		$position = " background-position: $position_x $position_y;";
 
 		// Background Size.
-		$size = get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) );
+		$size = get_theme_mod( 'background_size', get_theme_support( 'custom.php-background', 'default-size' ) );
 
 		if ( ! in_array( $size, array( 'auto', 'contain', 'cover' ), true ) ) {
 			$size = 'auto';
@@ -1589,7 +1589,7 @@ function _custom_background_cb() {
 		$size = " background-size: $size;";
 
 		// Background Repeat.
-		$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
+		$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom.php-background', 'default-repeat' ) );
 
 		if ( ! in_array( $repeat, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ), true ) ) {
 			$repeat = 'repeat';
@@ -1598,7 +1598,7 @@ function _custom_background_cb() {
 		$repeat = " background-repeat: $repeat;";
 
 		// Background Scroll.
-		$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
+		$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom.php-background', 'default-attachment' ) );
 
 		if ( 'fixed' !== $attachment ) {
 			$attachment = 'scroll';
@@ -1811,7 +1811,7 @@ function wp_update_custom_css_post( $css, $args = array() ) {
 }
 
 /**
- * Add callback for custom TinyMCE editor stylesheets.
+ * Add callback for custom.php TinyMCE editor stylesheets.
  *
  * The parameter $stylesheet is the name of the stylesheet, relative to
  * the theme root. It also accepts an array of stylesheets.
@@ -1981,7 +1981,7 @@ function get_theme_starter_content() {
 		),
 		'nav_menus' => array(
 			'link_home' => array(
-				'type' => 'custom',
+				'type' => 'custom.php',
 				'title' => _x( 'Home', 'Theme starter content' ),
 				'url' => home_url( '/' ),
 			),
@@ -2214,8 +2214,8 @@ function get_theme_starter_content() {
  * @global array $_wp_theme_features
  *
  * @param string $feature  The feature being added. Likely core values include 'post-formats',
- *                         'post-thumbnails', 'html5', 'custom-logo', 'custom-header-uploads',
- *                         'custom-header', 'custom-background', 'title-tag', 'starter-content', etc.
+ *                         'post-thumbnails', 'html5', 'custom.php-logo', 'custom.php-header-uploads',
+ *                         'custom.php-header', 'custom.php-background', 'title-tag', 'starter-content', etc.
  * @param mixed  $args,... Optional extra arguments to pass along with certain features.
  * @return void|bool False on failure, void otherwise.
  */
@@ -2268,7 +2268,7 @@ function add_theme_support( $feature ) {
 				$args[0] = array_merge( $_wp_theme_features['html5'][0], $args[0] );
 			break;
 
-		case 'custom-logo':
+		case 'custom.php-logo':
 			if ( ! is_array( $args ) ) {
 				$args = array( 0 => array() );
 			}
@@ -2288,10 +2288,10 @@ function add_theme_support( $feature ) {
 			}
 			break;
 
-		case 'custom-header-uploads' :
-			return add_theme_support( 'custom-header', array( 'uploads' => true ) );
+		case 'custom.php-header-uploads' :
+			return add_theme_support( 'custom.php-header', array( 'uploads' => true ) );
 
-		case 'custom-header' :
+		case 'custom.php-header' :
 			if ( ! is_array( $args ) )
 				$args = array( 0 => array() );
 
@@ -2317,8 +2317,8 @@ function add_theme_support( $feature ) {
 
 			// Merge in data from previous add_theme_support() calls.
 			// The first value registered wins. (A child theme is set up first.)
-			if ( isset( $_wp_theme_features['custom-header'] ) )
-				$args[0] = wp_parse_args( $_wp_theme_features['custom-header'][0], $args[0] );
+			if ( isset( $_wp_theme_features['custom.php-header'] ) )
+				$args[0] = wp_parse_args( $_wp_theme_features['custom.php-header'][0], $args[0] );
 
 			// Load in the defaults at the end, as we need to insure first one wins.
 			// This will cause all constants to be defined, as each arg will then be set to the default.
@@ -2370,7 +2370,7 @@ function add_theme_support( $feature ) {
 
 			break;
 
-		case 'custom-background' :
+		case 'custom.php-background' :
 			if ( ! is_array( $args ) )
 				$args = array( 0 => array() );
 
@@ -2392,8 +2392,8 @@ function add_theme_support( $feature ) {
 			unset( $args[0]['__jit'] );
 
 			// Merge in data from previous add_theme_support() calls. The first value registered wins.
-			if ( isset( $_wp_theme_features['custom-background'] ) )
-				$args[0] = wp_parse_args( $_wp_theme_features['custom-background'][0], $args[0] );
+			if ( isset( $_wp_theme_features['custom.php-background'] ) )
+				$args[0] = wp_parse_args( $_wp_theme_features['custom.php-background'][0], $args[0] );
 
 			if ( $jit )
 				$args[0] = wp_parse_args( $args[0], $defaults );
@@ -2426,7 +2426,7 @@ function add_theme_support( $feature ) {
 }
 
 /**
- * Registers the internal custom header and background routines.
+ * Registers the internal custom.php header and background routines.
  *
  * @since 3.4.0
  * @access private
@@ -2437,11 +2437,11 @@ function add_theme_support( $feature ) {
 function _custom_header_background_just_in_time() {
 	global $custom_image_header, $custom_background;
 
-	if ( current_theme_supports( 'custom-header' ) ) {
+	if ( current_theme_supports( 'custom.php-header' ) ) {
 		// In case any constants were defined after an add_custom_image_header() call, re-run.
-		add_theme_support( 'custom-header', array( '__jit' => true ) );
+		add_theme_support( 'custom.php-header', array( '__jit' => true ) );
 
-		$args = get_theme_support( 'custom-header' );
+		$args = get_theme_support( 'custom.php-header' );
 		if ( $args[0]['wp-head-callback'] )
 			add_action( 'wp_head', $args[0]['wp-head-callback'] );
 
@@ -2451,11 +2451,11 @@ function _custom_header_background_just_in_time() {
 		}
 	}
 
-	if ( current_theme_supports( 'custom-background' ) ) {
+	if ( current_theme_supports( 'custom.php-background' ) ) {
 		// In case any constants were defined after an add_custom_background() call, re-run.
-		add_theme_support( 'custom-background', array( '__jit' => true ) );
+		add_theme_support( 'custom.php-background', array( '__jit' => true ) );
 
-		$args = get_theme_support( 'custom-background' );
+		$args = get_theme_support( 'custom.php-background' );
 		add_action( 'wp_head', $args[0]['wp-head-callback'] );
 
 		if ( is_admin() ) {
@@ -2466,14 +2466,14 @@ function _custom_header_background_just_in_time() {
 }
 
 /**
- * Adds CSS to hide header text for custom logo, based on Customizer setting.
+ * Adds CSS to hide header text for custom.php logo, based on Customizer setting.
  *
  * @since 4.5.0
  * @access private
  */
 function _custom_logo_header_styles() {
-	if ( ! current_theme_supports( 'custom-header', 'header-text' ) && get_theme_support( 'custom-logo', 'header-text' ) && ! get_theme_mod( 'header_text', true ) ) {
-		$classes = (array) get_theme_support( 'custom-logo', 'header-text' );
+	if ( ! current_theme_supports( 'custom.php-header', 'header-text' ) && get_theme_support( 'custom.php-logo', 'header-text' ) && ! get_theme_mod( 'header_text', true ) ) {
+		$classes = (array) get_theme_support( 'custom.php-logo', 'header-text' );
 		$classes = array_map( 'sanitize_html_class', $classes );
 		$classes = '.' . implode( ', .', $classes );
 
@@ -2509,9 +2509,9 @@ function get_theme_support( $feature ) {
 
 	$args = array_slice( func_get_args(), 1 );
 	switch ( $feature ) {
-		case 'custom-logo' :
-		case 'custom-header' :
-		case 'custom-background' :
+		case 'custom.php-logo' :
+		case 'custom.php-header' :
+		case 'custom.php-background' :
 			if ( isset( $_wp_theme_features[ $feature ][0][ $args[0] ] ) )
 				return $_wp_theme_features[ $feature ][0][ $args[0] ];
 			return false;
@@ -2556,21 +2556,21 @@ function _remove_theme_support( $feature ) {
 	global $_wp_theme_features;
 
 	switch ( $feature ) {
-		case 'custom-header-uploads' :
-			if ( ! isset( $_wp_theme_features['custom-header'] ) )
+		case 'custom.php-header-uploads' :
+			if ( ! isset( $_wp_theme_features['custom.php-header'] ) )
 				return false;
-			add_theme_support( 'custom-header', array( 'uploads' => false ) );
-			return; // Do not continue - custom-header-uploads no longer exists.
+			add_theme_support( 'custom.php-header', array( 'uploads' => false ) );
+			return; // Do not continue - custom.php-header-uploads no longer exists.
 	}
 
 	if ( ! isset( $_wp_theme_features[ $feature ] ) )
 		return false;
 
 	switch ( $feature ) {
-		case 'custom-header' :
+		case 'custom.php-header' :
 			if ( ! did_action( 'wp_loaded' ) )
 				break;
-			$support = get_theme_support( 'custom-header' );
+			$support = get_theme_support( 'custom.php-header' );
 			if ( isset( $support[0]['wp-head-callback'] ) ) {
 				remove_action( 'wp_head', $support[0]['wp-head-callback'] );
 			}
@@ -2580,10 +2580,10 @@ function _remove_theme_support( $feature ) {
 			}
 			break;
 
-		case 'custom-background' :
+		case 'custom.php-background' :
 			if ( ! did_action( 'wp_loaded' ) )
 				break;
-			$support = get_theme_support( 'custom-background' );
+			$support = get_theme_support( 'custom.php-background' );
 			remove_action( 'wp_head', $support[0]['wp-head-callback'] );
 			remove_action( 'admin_menu', array( $GLOBALS['custom_background'], 'init' ) );
 			unset( $GLOBALS['custom_background'] );
@@ -2607,8 +2607,8 @@ function _remove_theme_support( $feature ) {
 function current_theme_supports( $feature ) {
 	global $_wp_theme_features;
 
-	if ( 'custom-header-uploads' == $feature )
-		return current_theme_supports( 'custom-header', 'uploads' );
+	if ( 'custom.php-header-uploads' == $feature )
+		return current_theme_supports( 'custom.php-header', 'uploads' );
 
 	if ( !isset( $_wp_theme_features[$feature] ) )
 		return false;
@@ -2639,9 +2639,9 @@ function current_theme_supports( $feature ) {
 			$type = $args[0];
 			return in_array( $type, $_wp_theme_features[$feature][0] );
 
-		case 'custom-logo':
-		case 'custom-header':
-		case 'custom-background':
+		case 'custom.php-logo':
+		case 'custom.php-header':
+		case 'custom.php-background':
 			// Specific capabilities can be registered by passing an array to add_theme_support().
 			return ( isset( $_wp_theme_features[ $feature ][0][ $args[0] ] ) && $_wp_theme_features[ $feature ][0][ $args[0] ] );
 	}
@@ -2650,8 +2650,8 @@ function current_theme_supports( $feature ) {
 	 * Filters whether the current theme supports a specific feature.
 	 *
 	 * The dynamic portion of the hook name, `$feature`, refers to the specific theme
-	 * feature. Possible values include 'post-formats', 'post-thumbnails', 'custom-background',
-	 * 'custom-header', 'menus', 'automatic-feed-links', 'html5',
+	 * feature. Possible values include 'post-formats', 'post-thumbnails', 'custom.php-background',
+	 * 'custom.php-header', 'menus', 'automatic-feed-links', 'html5',
 	 * 'starter-content', and 'customize-selective-refresh-widgets'.
 	 *
 	 * @since 3.4.0
@@ -2689,7 +2689,7 @@ function require_if_theme_supports( $feature, $include ) {
  * @access private
  * @since 3.0.0
  * @since 4.3.0 Also removes `header_image_data`.
- * @since 4.5.0 Also removes custom logo theme mods.
+ * @since 4.5.0 Also removes custom.php logo theme mods.
  *
  * @param int $id The attachment id.
  */

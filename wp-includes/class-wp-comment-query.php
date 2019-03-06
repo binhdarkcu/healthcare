@@ -224,7 +224,7 @@ class WP_Comment_Query {
 	 *                                                   Default empty.
 	 *     @type string       $status                    Comment status to limit results by. Accepts 'hold'
 	 *                                                   (`comment_status=0`), 'approve' (`comment_status=1`),
-	 *                                                   'all', or a custom comment status. Default 'all'.
+	 *                                                   'all', or a custom.php comment status. Default 'all'.
 	 *     @type string|array $type                      Include comments of a given type, or array of types.
 	 *                                                   Accepts 'comment', 'pings' (includes 'pingback' and
 	 *                                                   'trackback'), or anycustom type string. Default empty.

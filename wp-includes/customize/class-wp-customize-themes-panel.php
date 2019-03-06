@@ -27,7 +27,7 @@ class WP_Customize_Themes_Panel extends WP_Customize_Panel {
 	/**
 	 * An Underscore (JS) template for rendering this panel's container.
 	 *
-	 * The themes panel renders a custom panel heading with the current theme and a switch themes button.
+	 * The themes panel renders a custom.php panel heading with the current theme and a switch themes button.
 	 *
 	 * @see WP_Customize_Panel::print_template()
 	 *
@@ -58,7 +58,7 @@ class WP_Customize_Themes_Panel extends WP_Customize_Panel {
 	 * An Underscore (JS) template for this panel's content (but not its container).
 	 *
 	 * Class variables for this panel class are available in the `data` JS object;
-	 * export custom variables by overriding WP_Customize_Panel::json().
+	 * export custom.php variables by overriding WP_Customize_Panel::json().
 	 *
 	 * @since 4.9.0
 	 *

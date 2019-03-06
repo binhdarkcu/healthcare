@@ -1,4 +1,5 @@
 <?php
+    require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
 
     add_theme_support( 'post-thumbnails' );
 
@@ -374,6 +375,8 @@
         $gender = ( isset( $_POST['gender'] ) ) ? $_POST['gender'] : '';
         $email = ( isset( $_POST['email'] ) ) ? $_POST['email'] : '';
         $phone = ( isset( $_POST['phone'] ) ) ? $_POST['phone'] : '';
+        $examination = ( isset( $_POST['examination'] ) ) ? $_POST['examination'] : '';
+        $client_code = ( isset( $_POST['client_code'] ) ) ? $_POST['client_code'] : '';
         $wpdb->insert('wp_dathen', array(
             'id_doctor' => $id_doctor,
             'dayChecked' => $day_booked,
@@ -384,6 +387,8 @@
             'gender' => $gender,
             'email' => $email,
             'phone' => $phone,
+            'examination' => $examination,
+            'client_code' => $client_code
         ));
         wp_die(); // this is required to terminate immediately and return a proper response
     }
@@ -412,4 +417,39 @@
     add_action( 'wp_ajax_nopriv_action_check_time_booked', 'checkTimeBoooked' );
     // This will allow only logged in users to use the functionality
     add_action( 'wp_ajax_action_check_time_booked', 'checkTimeBoooked' );
+    //get page children
+    function my_get_page_children() {
+        $childArgs = array(
+            'sort_order' => 'ASC',
+            'sort_column' => 'menu_order',
+            'child_of' => 88
+        );
+        $childList = get_pages($childArgs);
+
+        return $childList;
+    }
+    //get popular post
+    function getPostViews($postID){
+        $count_key = 'post_views_count';
+        $count = get_post_meta($postID, $count_key, true);
+        if($count==''){
+            delete_post_meta($postID, $count_key);
+            add_post_meta($postID, $count_key, '0');
+            return "0 Lượt xem";
+        }
+        return $count.' Lượt xem';
+    }
+    function setPostViews($postID) {
+        $count_key = 'post_views_count';
+        $count = get_post_meta($postID, $count_key, true);
+        if($count==''){
+            $count = 0;
+            delete_post_meta($postID, $count_key);
+            add_post_meta($postID, $count_key, '0');
+        }
+        else{
+            $count++;
+            update_post_meta($postID, $count_key, $count);
+        }
+    }
 ?>

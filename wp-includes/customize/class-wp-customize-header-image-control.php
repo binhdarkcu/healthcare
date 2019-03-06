@@ -50,10 +50,10 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 
 		wp_localize_script( 'customize-views', '_wpCustomizeHeader', array(
 			'data' => array(
-				'width' => absint( get_theme_support( 'custom-header', 'width' ) ),
-				'height' => absint( get_theme_support( 'custom-header', 'height' ) ),
-				'flex-width' => absint( get_theme_support( 'custom-header', 'flex-width' ) ),
-				'flex-height' => absint( get_theme_support( 'custom-header', 'flex-height' ) ),
+				'width' => absint( get_theme_support( 'custom.php-header', 'width' ) ),
+				'height' => absint( get_theme_support( 'custom.php-header', 'height' ) ),
+				'flex-width' => absint( get_theme_support( 'custom.php-header', 'flex-width' ) ),
+				'flex-height' => absint( get_theme_support( 'custom.php-header', 'flex-height' ) ),
 				'currentImgSrc' => $this->get_current_image_src(),
 			),
 			'nonces' => array(
@@ -160,17 +160,17 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 	 */
 	public function render_content() {
 		$visibility = $this->get_current_image_src() ? '' : ' style="display:none" ';
-		$width = absint( get_theme_support( 'custom-header', 'width' ) );
-		$height = absint( get_theme_support( 'custom-header', 'height' ) );
+		$width = absint( get_theme_support( 'custom.php-header', 'width' ) );
+		$height = absint( get_theme_support( 'custom.php-header', 'height' ) );
 		?>
 		<div class="customize-control-content">
-			<?php if ( current_theme_supports( 'custom-header', 'video' ) ) {
+			<?php if ( current_theme_supports( 'custom.php-header', 'video' ) ) {
 				echo '<span class="customize-control-title">' . $this->label . '</span>';
 			} ?>
 			<div class="customize-control-notifications-container"></div>
 			<p class="customizer-section-intro customize-control-description">
 				<?php
-				if ( current_theme_supports( 'custom-header', 'video' ) ) {
+				if ( current_theme_supports( 'custom.php-header', 'video' ) ) {
 					_e( 'Click &#8220;Add new image&#8221; to upload an image file from your computer. Your theme works best with an image that matches the size of your video &#8212; you&#8217;ll be able to crop your image once you upload it for a perfect fit.' );
 				} elseif ( $width && $height ) {
 					/* translators: %s: header size in pixels */
@@ -207,14 +207,14 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 			</div>
 			<div class="choices">
 				<span class="customize-control-title header-previously-uploaded">
-					<?php _ex( 'Previously uploaded', 'custom headers' ); ?>
+					<?php _ex( 'Previously uploaded', 'custom.php headers' ); ?>
 				</span>
 				<div class="uploaded">
 					<div class="list">
 					</div>
 				</div>
 				<span class="customize-control-title header-default">
-					<?php _ex( 'Suggested', 'custom headers' ); ?>
+					<?php _ex( 'Suggested', 'custom.php headers' ); ?>
 				</span>
 				<div class="default">
 					<div class="list">

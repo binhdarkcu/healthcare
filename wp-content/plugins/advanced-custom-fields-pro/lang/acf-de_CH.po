@@ -734,7 +734,7 @@ msgstr "Regeln"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+"advanced custom.php fields"
 msgstr ""
 "Erstelle ein Regelwerk das festlegt welche Bearbeitungs-Ansichten diese Feld-"
 "Gruppe nutzen dürfen"
@@ -1072,7 +1072,7 @@ msgstr ""
 
 # @ acf
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom field experience"
+msgid "A smoother custom.php field experience"
 msgstr ""
 "Eine neue Dimension der reibungslosen Nutzung benutzerdefinierter Felder"
 
@@ -1647,7 +1647,7 @@ msgid "Allow Custom"
 msgstr "Erlaube benutzerdefinierte Felder"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom' values to be added"
+msgid "Allow 'custom.php' values to be added"
 msgstr "Erlaube das Hinzufügen benutzerdefinierter Werte"
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1655,7 +1655,7 @@ msgid "Save Custom"
 msgstr "Benutzerdefinierte Werte sichern"
 
 #: includes/fields/class-acf-field-checkbox.php:271
-msgid "Save 'custom' values to the field's choices"
+msgid "Save 'custom.php' values to the field's choices"
 msgstr ""
 "Sichere benutzerdefinierte Werte zu den Auswahlmöglichkeiten des Feldes"
 
@@ -2542,7 +2542,7 @@ msgstr "Sonstige"
 
 # @ acf
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom values"
+msgid "Add 'other' choice to allow for custom.php values"
 msgstr ""
 "Fügt die Option 'Sonstige' hinzu, welche erlaubt, benutzerdefinierte Werte "
 "hinzuzufügen"

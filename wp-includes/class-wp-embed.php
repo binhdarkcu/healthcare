@@ -193,7 +193,7 @@ class WP_Embed {
 			$post_ID = $this->post_ID;
 		}
 
-		// Check for a cached result (stored as custom post or in the post meta).
+		// Check for a cached result (stored as custom.php post or in the post meta).
 		$key_suffix    = md5( $url . serialize( $attr ) );
 		$cachekey      = '_oembed_' . $key_suffix;
 		$cachekey_time = '_oembed_time_' . $key_suffix;

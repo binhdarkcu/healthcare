@@ -540,7 +540,7 @@ class PHPMailer
     protected $attachment = array();
 
     /**
-     * The array of custom headers.
+     * The array of custom.php headers.
      * @var array
      * @access protected
      */
@@ -2072,7 +2072,7 @@ class PHPMailer
             $result .= $this->headerLine('Subject', $this->encodeHeader($this->secureHeader($this->Subject)));
         }
 
-        // Only allow a custom message ID if it conforms to RFC 5322 section 3.6.4
+        // Only allow a custom.php message ID if it conforms to RFC 5322 section 3.6.4
         // https://tools.ietf.org/html/rfc5322#section-3.6.4
         if ('' != $this->MessageID and preg_match('/^<.*@.*>$/', $this->MessageID)) {
             $this->lastMessageID = $this->MessageID;
@@ -2099,7 +2099,7 @@ class PHPMailer
             $result .= $this->headerLine('Disposition-Notification-To', '<' . $this->ConfirmReadingTo . '>');
         }
 
-        // Add custom headers
+        // Add custom.php headers
         foreach ($this->CustomHeader as $header) {
             $result .= $this->headerLine(
                 trim($header[0]),
@@ -2798,7 +2798,7 @@ class PHPMailer
             // More than a third of the content will need encoding, so B encoding will be most efficient
             $encoding = 'B';
             if (function_exists('mb_strlen') && $this->hasMultiBytes($str)) {
-                // Use a custom function which correctly encodes and wraps long
+                // Use a custom.php function which correctly encodes and wraps long
                 // multibyte strings without breaking lines within a character
                 $encoded = $this->base64EncodeWrapMB($str, "\n");
             } else {
@@ -3227,7 +3227,7 @@ class PHPMailer
     }
 
     /**
-     * Clear all custom headers.
+     * Clear all custom.php headers.
      * @return void
      */
     public function clearCustomHeaders()
@@ -3352,7 +3352,7 @@ class PHPMailer
     }
 
     /**
-     * Add a custom header.
+     * Add a custom.php header.
      * $name value can be overloaded to contain
      * both header name and value (name:value)
      * @access public
@@ -3371,7 +3371,7 @@ class PHPMailer
     }
 
     /**
-     * Returns all custom headers.
+     * Returns all custom.php headers.
      * @return array
      */
     public function getCustomHeaders()
@@ -3392,7 +3392,7 @@ class PHPMailer
      * @param string $message HTML message string
      * @param string $basedir Absolute path to a base directory to prepend to relative paths to images
      * @param boolean|callable $advanced Whether to use the internal HTML to text converter
-     *    or your own custom converter @see PHPMailer::html2text()
+     *    or your own custom.php converter @see PHPMailer::html2text()
      * @return string $message The transformed message Body
      */
     public function msgHTML($message, $basedir = '', $advanced = false)
@@ -3478,7 +3478,7 @@ class PHPMailer
      * <code>
      * // Use default conversion
      * $plain = $mail->html2text($html);
-     * // Use your own custom converter
+     * // Use your own custom.php converter
      * $plain = $mail->html2text($html, function($html) {
      *     $converter = new MyHtml2text($html);
      *     return $converter->get_text();
@@ -3486,7 +3486,7 @@ class PHPMailer
      * </code>
      * @param string $html The HTML text to convert
      * @param boolean|callable $advanced Any boolean value to use the internal converter,
-     *   or provide your own callable for custom conversion.
+     *   or provide your own callable for custom.php conversion.
      * @return string
      */
     public function html2text($html, $advanced = false)

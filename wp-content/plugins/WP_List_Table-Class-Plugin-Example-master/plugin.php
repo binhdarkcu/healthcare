@@ -121,6 +121,8 @@ class Customers_List extends WP_List_Table {
 			case 'full_name':
 			case 'symptom':
 			case 'birthday':
+			case 'examination':
+			case 'client_code':
 			case 'dayChecked':
 			case 'time':
 			case 'gender':
@@ -192,6 +194,8 @@ class Customers_List extends WP_List_Table {
 			'name'    => __( 'Tên bệnh nhân', 'sp' ),
 			'birthday'    => __( 'Năm sinh', 'sp' ),
             'symptom' => __( 'Triệu chứng', 'sp' ),
+            'examination' => __( 'Tình trạng', 'sp' ),
+            'client_code' => __( 'Mã Khách hàng', 'sp' ),
 			'dayChecked'    => __( 'Ngày Đăng ký', 'sp' ),
 			'time'    => __( 'Giờ', 'sp' ),
 			'phone'    => __( 'Phone', 'sp' ),

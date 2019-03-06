@@ -675,7 +675,7 @@ class WP_oEmbed {
 		/**
 		 * Filters the returned oEmbed HTML.
 		 *
-		 * Use this filter to add support for custom data types, or to filter the result.
+		 * Use this filter to add support for custom.php data types, or to filter the result.
 		 *
 		 * @since 2.9.0
 		 *

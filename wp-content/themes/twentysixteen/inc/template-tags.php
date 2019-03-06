@@ -240,9 +240,9 @@ add_action( 'save_post',     'twentysixteen_category_transient_flusher' );
 
 if ( ! function_exists( 'twentysixteen_the_custom_logo' ) ) :
 /**
- * Displays the optional custom logo.
+ * Displays the optional custom.php logo.
  *
- * Does nothing if the custom logo is not available.
+ * Does nothing if the custom.php logo is not available.
  *
  * @since Twenty Sixteen 1.2
  */

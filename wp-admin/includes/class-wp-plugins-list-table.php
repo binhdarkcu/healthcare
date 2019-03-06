@@ -813,7 +813,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					echo "<td class='$classes{$extra_classes}'>";
 
 					/**
-					 * Fires inside each custom column of the Plugins list table.
+					 * Fires inside each custom.php column of the Plugins list table.
 					 *
 					 * @since 3.1.0
 					 *

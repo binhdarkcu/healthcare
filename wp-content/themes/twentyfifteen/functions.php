@@ -3,7 +3,7 @@
  * Twenty Fifteen functions and definitions
  *
  * Set up the theme and provides some helper functions, which are used in the
- * theme as custom template tags. Others are attached to action and filter
+ * theme as custom.php template tags. Others are attached to action and filter
  * hooks in WordPress to change core functionality.
  *
  * When using a child theme you can override certain functions (those wrapped
@@ -104,11 +104,11 @@ function twentyfifteen_setup() {
 	) );
 
 	/*
-	 * Enable support for custom logo.
+	 * Enable support for custom.php logo.
 	 *
 	 * @since Twenty Fifteen 1.5
 	 */
-	add_theme_support( 'custom-logo', array(
+	add_theme_support( 'custom.php-logo', array(
 		'height'      => 248,
 		'width'       => 248,
 		'flex-height' => true,
@@ -117,21 +117,21 @@ function twentyfifteen_setup() {
 	$color_scheme  = twentyfifteen_get_color_scheme();
 	$default_color = trim( $color_scheme[0], '#' );
 
-	// Setup the WordPress core custom background feature.
+	// Setup the WordPress core custom.php background feature.
 
 	/**
-	 * Filter Twenty Fifteen custom-header support arguments.
+	 * Filter Twenty Fifteen custom.php-header support arguments.
 	 *
 	 * @since Twenty Fifteen 1.0
 	 *
 	 * @param array $args {
-	 *     An array of custom-header support arguments.
+	 *     An array of custom.php-header support arguments.
 	 *
 	 *     @type string $default-color     		Default color of the header.
 	 *     @type string $default-attachment     Default attachment of the header.
 	 * }
 	 */
-	add_theme_support( 'custom-background', apply_filters( 'twentyfifteen_custom_background_args', array(
+	add_theme_support( 'custom.php-background', apply_filters( 'twentyfifteen_custom_background_args', array(
 		'default-color'      => $default_color,
 		'default-attachment' => 'fixed',
 	) ) );
@@ -250,7 +250,7 @@ add_action( 'wp_head', 'twentyfifteen_javascript_detection', 0 );
  * @since Twenty Fifteen 1.0
  */
 function twentyfifteen_scripts() {
-	// Add custom fonts, used in the main stylesheet.
+	// Add custom.php fonts, used in the main stylesheet.
 	wp_enqueue_style( 'twentyfifteen-fonts', twentyfifteen_fonts_url(), array(), null );
 
 	// Add Genericons, used in the main stylesheet.
@@ -410,7 +410,7 @@ add_filter( 'widget_tag_cloud_args', 'twentyfifteen_widget_tag_cloud_args' );
  *
  * @since Twenty Fifteen 1.0
  */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom.php-header.php';
 
 /**
  * Custom template tags for this theme.

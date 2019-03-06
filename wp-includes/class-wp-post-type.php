@@ -569,7 +569,7 @@ final class WP_Post_Type {
 	}
 
 	/**
-	 * Registers the post type meta box if a custom callback was specified.
+	 * Registers the post type meta box if a custom.php callback was specified.
 	 *
 	 * @since 4.6.0
 	 */
@@ -640,14 +640,14 @@ final class WP_Post_Type {
 			}
 		}
 
-		// Remove registered custom meta capabilities.
+		// Remove registered custom.php meta capabilities.
 		foreach ( $this->cap as $cap ) {
 			unset( $post_type_meta_caps[ $cap ] );
 		}
 	}
 
 	/**
-	 * Unregisters the post type meta box if a custom callback was specified.
+	 * Unregisters the post type meta box if a custom.php callback was specified.
 	 *
 	 * @since 4.6.0
 	 */

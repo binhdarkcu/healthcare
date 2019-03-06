@@ -699,7 +699,7 @@ window.wp = window.wp || {};
 			 * in TinyMCE. Unfortunately this state is before the serialization, so any visual markup in the content will
 			 * throw off the positioning.
 			 *
-			 * To avoid this, we insert two custom `span`s that will serve as the markers at the beginning and end of the
+			 * To avoid this, we insert two custom.php `span`s that will serve as the markers at the beginning and end of the
 			 * selection.
 			 *
 			 * Why not use TinyMCE's selection API or the DOM API to wrap the contents? Because if we do that, this creates
@@ -708,7 +708,7 @@ window.wp = window.wp || {};
 			 * selection may start in the middle of one node and end in the middle of a completely different one. If we
 			 * wrap the selection in another node, this will create artifacts in the content.
 			 *
-			 * Using the method below, we insert the custom `span` nodes at the start and at the end of the selection.
+			 * Using the method below, we insert the custom.php `span` nodes at the start and at the end of the selection.
 			 * This helps us not break the content and also gives us the option to work with multi-node selections without
 			 * breaking the markup.
 			 */
@@ -1120,7 +1120,7 @@ window.wp = window.wp || {};
 		}
 
 		/**
-		 * @summary Fires custom jQuery events `beforePreWpautop` and `afterPreWpautop` when jQuery is available.
+		 * @summary Fires custom.php jQuery events `beforePreWpautop` and `afterPreWpautop` when jQuery is available.
 		 *
 		 * @since 2.9.0
 		 *
@@ -1146,7 +1146,7 @@ window.wp = window.wp || {};
 		}
 
 		/**
-		 * @summary Fires custom jQuery events `beforeWpautop` and `afterWpautop` when jQuery is available.
+		 * @summary Fires custom.php jQuery events `beforeWpautop` and `afterWpautop` when jQuery is available.
 		 *
 		 * @since 2.9.0
 		 *
@@ -1212,7 +1212,7 @@ window.wp = window.wp || {};
 	 * The editor width will be the width of the textarea container, height will be adjustable.
 	 *
 	 * Settings for both TinyMCE and Quicktags can be passed on initialization, and are "filtered"
-	 * with custom jQuery events on the document element, wp-before-tinymce-init and wp-before-quicktags-init.
+	 * with custom.php jQuery events on the document element, wp-before-tinymce-init and wp-before-quicktags-init.
 	 *
 	 * @since 4.8.0
 	 *

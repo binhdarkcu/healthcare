@@ -23,7 +23,7 @@ class Walker_Nav_Menu extends Walker {
 	 *
 	 * @see Walker::$tree_type
 	 */
-	public $tree_type = array( 'post_type', 'taxonomy', 'custom' );
+	public $tree_type = array( 'post_type', 'taxonomy', 'custom.php' );
 
 	/**
 	 * Database fields to use.

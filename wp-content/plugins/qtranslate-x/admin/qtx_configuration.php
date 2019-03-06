@@ -434,7 +434,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 					<label for="qtranxs_editor_mode_raw"><input type="radio" name="editor_mode" id="qtranxs_editor_mode_raw" value="<?php echo QTX_EDITOR_MODE_RAW; ?>"<?php checked($q_config['editor_mode'], QTX_EDITOR_MODE_RAW) ?>/>&nbsp;<?php _e('Editor Raw Mode', 'qtranslate') ?>. <?php _e('Do not use Language Switching Buttons to edit multi-language text entries.', 'qtranslate') ?></label>
 					<p class="qtranxs_notes"><?php _e('Some people prefer to edit the raw entries containing all languages together separated by language defining tags, as they are stored in database.', 'qtranslate') ?></p><br/>
 					<label for="qtranxs_editor_mode_single"><input type="radio" name="editor_mode" id="qtranxs_editor_mode_single" value="<?php echo QTX_EDITOR_MODE_SINGLGE; ?>"<?php checked($q_config['editor_mode'], QTX_EDITOR_MODE_SINGLGE) ?>/>&nbsp;<?php echo __('Single Language Mode.', 'qtranslate').' '.__('The language edited is the same as admin language.', 'qtranslate') ?></label>
-					<p class="qtranxs_notes"><?php echo __('Edit language cannot be switched without page re-loading. Try this mode, if some of the advanced translatable fields do not properly respond to the Language Switching Buttons due to incompatibility with a plugin, which severely alters the default WP behaviour. This mode is the most compatible with other themes and plugins.', 'qtranslate').' '.__('One may find convenient to use the default Editor Mode, while remembering not to switch edit languages on custom advanced translatable fields, where LSB do not work.', 'qtranslate') ?></p>
+					<p class="qtranxs_notes"><?php echo __('Edit language cannot be switched without page re-loading. Try this mode, if some of the advanced translatable fields do not properly respond to the Language Switching Buttons due to incompatibility with a plugin, which severely alters the default WP behaviour. This mode is the most compatible with other themes and plugins.', 'qtranslate').' '.__('One may find convenient to use the default Editor Mode, while remembering not to switch edit languages on custom.php advanced translatable fields, where LSB do not work.', 'qtranslate') ?></p>
 				</td>
 			</tr>
 			<?php
@@ -454,9 +454,9 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 							foreach($options as $nm => $val){
 								echo '<option value="'.$val.'"'.selected($val,$q_config['lsb_style']).'>'.$nm.'</option>';
 							}
-							echo '<option value="custom"'.selected('custom',$q_config['lsb_style']).'>'.__('Use custom CSS', 'qtranslate').'</option>';
+							echo '<option value="custom.php"'.selected('custom.php',$q_config['lsb_style']).'>'.__('Use custom.php CSS', 'qtranslate').'</option>';
 						?></select>
-						<p class="qtranxs_notes"><?php printf(__('Choice "%s" disables this option and allows one to use its own custom CSS provided by other means.', 'qtranslate'),__('Use custom CSS', 'qtranslate')) ?></p>
+						<p class="qtranxs_notes"><?php printf(__('Choice "%s" disables this option and allows one to use its own custom.php CSS provided by other means.', 'qtranslate'),__('Use custom.php CSS', 'qtranslate')) ?></p>
 					</fieldset>
 				</td>
 			</tr>
@@ -466,7 +466,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 			<tr valign="top" id="option_highlight_mode">
 				<?php
 				$highlight_mode = $q_config['highlight_mode'];
-				// reset default custom CSS when the field is empty, or when the "custom" option is not checked
+				// reset default custom.php CSS when the field is empty, or when the "custom.php" option is not checked
 				if(empty($q_config['highlight_mode_custom_css']) || $highlight_mode != QTX_HIGHLIGHT_MODE_CUSTOM_CSS) {
 					$highlight_mode_custom_css = qtranxf_get_admin_highlight_css($highlight_mode);
 				} else {
@@ -498,9 +498,9 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 							<input type="radio" name="highlight_mode" value="<?php echo QTX_HIGHLIGHT_MODE_OUTLINE; ?>" <?php checked($highlight_mode, QTX_HIGHLIGHT_MODE_OUTLINE) ?> />
 							<?php _e('Outline border around translatable fields.', 'qtranslate') ?>
 						</label><br/>
-						<label title="<?php _e('Use custom CSS', 'qtranslate') ?>">
+						<label title="<?php _e('Use custom.php CSS', 'qtranslate') ?>">
 							<input type="radio" name="highlight_mode" value="<?php echo QTX_HIGHLIGHT_MODE_CUSTOM_CSS; ?>" <?php checked($highlight_mode, QTX_HIGHLIGHT_MODE_CUSTOM_CSS) ?>/>
-							<?php echo __('Use custom CSS', 'qtranslate').':' ?>
+							<?php echo __('Use custom.php CSS', 'qtranslate').':' ?>
 						</label><br/>
 					</fieldset><br />
 					<textarea id="highlight_mode_custom_css" name="highlight_mode_custom_css" style="width:100%"><?php echo esc_textarea($highlight_mode_custom_css) ?></textarea>
@@ -537,7 +537,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 				<th scope="row"><?php _e('Configuration Files', 'qtranslate') ?></th>
 				<td><label for="qtranxs_config_files" class="qtranxs_explanation"><?php printf(__('List of configuration files. Unless prefixed with "%s", paths are relative to %s variable: %s. Absolute paths are also acceptable.', 'qtranslate'), './', 'WP_CONTENT_DIR', trailingslashit(WP_CONTENT_DIR)) ?></label>
 				<br/><textarea name="json_config_files" id="qtranxs_config_files" rows="4" style="width:100%"><?php if(isset($_POST['json_config_files'])) echo sanitize_text_field(stripslashes($_POST['json_config_files'])); else echo implode(PHP_EOL,$q_config['config_files']); ?></textarea>
-				<p class="qtranxs_notes"><?php printf(__('The list gets auto-updated on a 3rd-party integrated plugin activation/deactivation. You may also add your own custom files for your theme or plugins. File "%s" is the default configuration loaded from this plugin folder. It is not recommended to modify any configuration file from other authors, but you may alter any configuration item through your own custom file appended to the end of this list.', 'qtranslate'), './i18n-config.json');
+				<p class="qtranxs_notes"><?php printf(__('The list gets auto-updated on a 3rd-party integrated plugin activation/deactivation. You may also add your own custom.php files for your theme or plugins. File "%s" is the default configuration loaded from this plugin folder. It is not recommended to modify any configuration file from other authors, but you may alter any configuration item through your own custom.php file appended to the end of this list.', 'qtranslate'), './i18n-config.json');
 				echo ' '; printf(__('Use "%s" to review the resulting combined configuration from all "%s" and this option.', 'qtranslate'), '<a href="'.admin_url('options-general.php?page=qtranslate-x&config_inspector=show').'">'.__('Configuration Inspector', 'qtranslate').'</a>', __('Custom Configuration', 'qtranslate'));
 				echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 'qtranslate'), '<a href="https://qtranslatexteam.wordpress.com/integration/" target="_blank">', '</a>');
 				echo ' '.__('To reset to default, clear the text.', 'qtranslate') ?></p>
@@ -545,7 +545,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 			</tr>
 			<tr valign="top">
 				<th scope="row"><?php _e('Custom Configuration', 'qtranslate') ?></th>
-				<td><label for="qtranxs_json_custom_i18n_config" class="qtranxs_explanation"><?php printf(__('Additional custom JSON-encoded configuration of %s for all admin pages. It is processed after all files from option "%s" are loaded, providing opportunity to add or to override configuration tokens as necessary.', 'qtranslate'), 'qTranslate&#8209;X', __('Configuration Files', 'qtranslate')); ?></label>
+				<td><label for="qtranxs_json_custom_i18n_config" class="qtranxs_explanation"><?php printf(__('Additional custom.php JSON-encoded configuration of %s for all admin pages. It is processed after all files from option "%s" are loaded, providing opportunity to add or to override configuration tokens as necessary.', 'qtranslate'), 'qTranslate&#8209;X', __('Configuration Files', 'qtranslate')); ?></label>
 				<br/><textarea name="json_custom_i18n_config" id="qtranxs_json_custom_i18n_config" rows="4" style="width:100%"><?php if(isset($_POST['json_custom_i18n_config'])) echo sanitize_text_field(stripslashes($_POST['json_custom_i18n_config'])); else if(!empty($q_config['custom_i18n_config'])) echo qtranxf_json_encode($q_config['custom_i18n_config']) ?></textarea>
 				<p class="qtranxs_notes"><?php printf(__('It would make no difference, if the content of this field is stored in a file, which name is listed last in option "%s". Therefore, this field only provides flexibility for the sake of convenience.', 'qtranslate'), __('Configuration Files', 'qtranslate'));
 				echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 'qtranslate'), '<a href="https://qtranslatexteam.wordpress.com/integration/" target="_blank">', '</a>');
@@ -584,7 +584,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 			<tr valign="top">
 				<th scope="row"><?php _e('Custom Admin Pages', 'qtranslate') ?></th>
 				<td><label for="qtranxs_custom_pages" class="qtranxs_explanation"><input type="text" name="custom_pages" id="qtranxs_custom_pages" value="<?php echo implode(' ',$q_config['custom_pages']) ?>" style="width:100%"></label>
-					<p class="qtranxs_notes"><?php printf(__('List the custom admin page paths for which you wish Language Switching Buttons to show up. The Buttons will then control fields configured in "Custom Fields" section. You may only include part of the full URL after %s, including a distinctive query string if needed. As many as desired pages can be listed space/comma separated. For more information, read %sFAQ%s.', 'qtranslate'),'/wp-admin/','<a href="https://qtranslatexteam.wordpress.com/faq/">','</a>') ?></p>
+					<p class="qtranxs_notes"><?php printf(__('List the custom.php admin page paths for which you wish Language Switching Buttons to show up. The Buttons will then control fields configured in "Custom Fields" section. You may only include part of the full URL after %s, including a distinctive query string if needed. As many as desired pages can be listed space/comma separated. For more information, read %sFAQ%s.', 'qtranslate'),'/wp-admin/','<a href="https://qtranslatexteam.wordpress.com/faq/">','</a>') ?></p>
 				</td>
 			</tr>
 			<?php */ ?>

@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
     $('#dateTimePicker input').datepicker({
         format: 'dd/mm/yyyy',
         startDate: date,
-        todayHighlight: true,
+        todayHighlight: false,
         autoclose: true,
         language: 'vi',
         daysOfWeekHighlighted: '0.6'
@@ -20,6 +20,7 @@ jQuery(document).ready(function(){
         email,
         gender,
         phone,
+        examination,
         birthday,
         response;
     $('#selectDoctor').select2();
@@ -28,6 +29,7 @@ jQuery(document).ready(function(){
         gender = $('#valueGender').attr('value', val);
     })
     $('#registerUser').click(function () {
+        console.log(examination);
         response = grecaptcha.getResponse();
         male = $('#male').is(':checked');
         female = $('#female').is(':checked');
@@ -48,7 +50,9 @@ jQuery(document).ready(function(){
                     email: email.val(),
                     phone: phone.val(),
                     birthday: birthday,
-                    gender: gender.val()
+                    gender: gender.val(),
+                    examination: examination,
+                    client_code: $('#client_code').val()
                 },
                 url: my_ajax_insert_db.ajax_url
             });
@@ -81,7 +85,7 @@ jQuery(document).ready(function(){
         dateAppointment = $('#dateTimePicker input').datepicker().val();
         symptom = $('#symptom').val();
         timeAppointment = $('#timeAppointment').val();
-        console.log(dateAppointment)
+        examination = $('#examination').val();
         if (selectDoctor !== 0 && dateAppointment !== '' && symptom !== '') {
             if (symptom) {
                 $('#symptom').removeClass(clsName)
@@ -91,6 +95,9 @@ jQuery(document).ready(function(){
             }
             if (dateAppointment) {
                 $('#dateTimePicker input').removeClass(clsName)
+            }
+            if(examination) {
+                $('#examination').removeClass(clsName)
             }
             $.ajax({
                 type: 'GET',
@@ -114,6 +121,9 @@ jQuery(document).ready(function(){
                 }
             })
         } else {
+            if(examination == '') {
+                $('#examination').addClass(clsName)
+            }
             if (!symptom) {
                 $('#symptom').addClass(clsName)
             }
@@ -123,6 +133,7 @@ jQuery(document).ready(function(){
             if (dateAppointment == '') {
                 $('#dateTimePicker input').addClass(clsName)
             }
+            
         }
         return false
     });

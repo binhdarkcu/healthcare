@@ -438,7 +438,7 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 */
 	public function column_default( $blog, $column_name ) {
 		/**
-		 * Fires for each registered custom column in the Sites list table.
+		 * Fires for each registered custom.php column in the Sites list table.
 		 *
 		 * @since 3.1.0
 		 *

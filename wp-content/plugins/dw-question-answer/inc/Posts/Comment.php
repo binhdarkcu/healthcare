@@ -7,7 +7,7 @@ class DWQA_Posts_Comment {
 		// Comment form template for DW Question Answer
 		remove_action( 'comment_form', 'wp_comment_form_unfiltered_html_nonce' );
 		add_action( 'comment_form', array( $this, 'wp_comment_form_unfiltered_html_nonce' ) );
-		
+
 		add_filter( 'comment_id_fields', array( $this, 'comment_form_id_fields_filter' ), 10, 3 );
 		add_filter( 'get_comment_text', array( $this, 'sanitizie_comment' ), 10, 2 );
 
@@ -36,7 +36,7 @@ class DWQA_Posts_Comment {
 	}
 
 	/**
-	 * Displays form token for unfiltered comments. Override wp_comment_form_unfiltered_html_nonce custom for dwqa
+	 * Displays form token for unfiltered comments. Override wp_comment_form_unfiltered_html_nonce custom.php for dwqa
 	 *
 	 * Backported to 2.0.10.
 	 *
@@ -47,13 +47,13 @@ class DWQA_Posts_Comment {
 		$post = get_post();
 		$post_id = $post ? $post->ID : 0;
 
-		if ( current_user_can( 'unfiltered_html' ) 
+		if ( current_user_can( 'unfiltered_html' )
 				&& 'dwqa-answer' != get_post_type( $post_id )  ) {
 			wp_nonce_field( 'unfiltered-html-comment_' . $post_id, '_wp_unfiltered_html_comment_disabled', false );
 			echo "<script>( function() {if ( window===window.parent ) {document.getElementById( '_wp_unfiltered_html_comment_disabled' ).name='_wp_unfiltered_html_comment';}} )();</script>\n";
-		} elseif ( current_user_can( 'unfiltered_html' ) 
+		} elseif ( current_user_can( 'unfiltered_html' )
 						&& 'dwqa-answer' == get_post_type( $post_id ) ) {
-							
+
 			wp_nonce_field( 'unfiltered-html-comment_' . $post_id, '_wp_unfiltered_html_comment_answer_disabled', false );
 			echo "<script>( function() {if ( window===window.parent ) {document.getElementById( '_wp_unfiltered_html_comment_answer_disabled' ).name='_wp_unfiltered_html_comment';}} )();</script>\n";
 		}
@@ -68,7 +68,7 @@ class DWQA_Posts_Comment {
 		return $result;
 	}
 
-	
+
 
 	public function sanitizie_comment( $content, $comment ) {
 		$post_type = get_post_type( $comment->comment_post_ID );
@@ -87,11 +87,11 @@ class DWQA_Posts_Comment {
 				'post_id' => intval( $_GET['post'] ),
 				'status' => 'approve',
 			) );
-			
-			wp_list_comments( array( 
+
+			wp_list_comments( array(
 				'style' => 'ol',
 				'callback'  => 'dwqa_question_comment_callback',
-			), $comments ); 
+			), $comments );
 		}
 		exit( 0 );
 	}

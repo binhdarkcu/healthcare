@@ -356,7 +356,7 @@ function attachment_submit_meta_box( $post ) {
 	 * @since 3.5.0
 	 * @since 4.9.0 Added the `$post` parameter.
 	 *
-	 * @param WP_Post $post WP_Post object for the current attachment. 
+	 * @param WP_Post $post WP_Post object for the current attachment.
 	 */
 	do_action( 'attachment_submitbox_misc_actions', $post );
 	?>
@@ -665,7 +665,7 @@ if ( ! empty($pings) )
 }
 
 /**
- * Display custom fields form fields.
+ * Display custom.php fields form fields.
  *
  * @since 2.6.0
  *

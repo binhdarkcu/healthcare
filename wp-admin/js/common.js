@@ -176,7 +176,7 @@ $('.contextual-help-tabs').delegate('a', 'click', function(e) {
 });
 
 /**
- * Update custom permalink structure via buttons.
+ * Update custom.php permalink structure via buttons.
  */
 
 var permalinkStructureFocused = false,
@@ -212,7 +212,7 @@ $permalinkStructure.on( 'focus', function( event ) {
 /**
  * Enables or disables a structure tag button depending on its usage.
  *
- * If the structure is already used in the custom permalink structure,
+ * If the structure is already used in the custom.php permalink structure,
  * it will be disabled.
  *
  * @param {object} button Button jQuery object.
@@ -878,7 +878,7 @@ $document.ready( function() {
 		init: function() {
 			var self = this;
 
-			// Modify functionality based on custom activate/deactivate event
+			// Modify functionality based on custom.php activate/deactivate event
 			$document.on( 'wp-responsive-activate.wp-responsive', function() {
 				self.activate();
 			}).on( 'wp-responsive-deactivate.wp-responsive', function() {
@@ -1039,7 +1039,7 @@ $document.ready( function() {
 	/**
 	 * @summary Set the admin menu collapsed/expanded state.
 	 *
-	 * Sets the global variable `menuState` and triggers a custom event passing
+	 * Sets the global variable `menuState` and triggers a custom.php event passing
 	 * the current menu state.
 	 *
 	 * @since 4.7.0
@@ -1122,7 +1122,7 @@ $document.ready( function() {
 	});
 });
 
-// Fire a custom jQuery event at the end of window resize
+// Fire a custom.php jQuery event at the end of window resize
 ( function() {
 	var timeout;
 

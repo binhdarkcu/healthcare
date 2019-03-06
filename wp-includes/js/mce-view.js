@@ -33,9 +33,9 @@
 	/**
 	 * wp.mce.views
 	 *
-	 * A set of utilities that simplifies adding custom UI within a TinyMCE editor.
+	 * A set of utilities that simplifies adding custom.php UI within a TinyMCE editor.
 	 * At its core, it serves as a series of converters, transforming text to a
-	 * custom UI, and back again.
+	 * custom.php UI, and back again.
 	 */
 	wp.mce.views = {
 

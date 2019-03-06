@@ -283,7 +283,7 @@ if ( post_type_supports($post_type, 'excerpt') )
 if ( post_type_supports($post_type, 'trackbacks') )
 	add_meta_box('trackbacksdiv', __('Send Trackbacks'), 'post_trackback_meta_box', null, 'normal', 'core');
 
-if ( post_type_supports($post_type, 'custom-fields') )
+if ( post_type_supports($post_type, 'custom.php-fields') )
 	add_meta_box('postcustom', __('Custom Fields'), 'post_custom_meta_box', null, 'normal', 'core');
 
 /**
@@ -449,7 +449,7 @@ if ( 'post' == $post_type ) {
 
 	if ( current_theme_supports( 'post-thumbnails' ) && post_type_supports( 'post', 'thumbnail' ) ) {
 		/* translators: %s: Featured Image */
-		$publish_box .= '<li>' . sprintf( __( '<strong>%s</strong> &mdash; This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom header, etc.' ), esc_html( $post_type_object->labels->featured_image ) ) . '</li>';
+		$publish_box .= '<li>' . sprintf( __( '<strong>%s</strong> &mdash; This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom.php header, etc.' ), esc_html( $post_type_object->labels->featured_image ) ) . '</li>';
 	}
 
 	$publish_box .= '</ul>';
@@ -470,7 +470,7 @@ if ( 'post' == $post_type ) {
 	) );
 } elseif ( 'page' == $post_type ) {
 	$page_attributes = '<p>' . __('<strong>Parent</strong> &mdash; You can arrange your pages in hierarchies. For example, you could have an &#8220;About&#8221; page that has &#8220;Life Story&#8221; and &#8220;My Dog&#8221; pages under it. There are no limits to how many levels you can nest pages.') . '</p>' .
-		'<p>' . __('<strong>Template</strong> &mdash; Some themes have custom templates you can use for certain pages that might have additional features or custom layouts. If so, you&#8217;ll see them in this dropdown menu.') . '</p>' .
+		'<p>' . __('<strong>Template</strong> &mdash; Some themes have custom.php templates you can use for certain pages that might have additional features or custom.php layouts. If so, you&#8217;ll see them in this dropdown menu.') . '</p>' .
 		'<p>' . __('<strong>Order</strong> &mdash; Pages are usually ordered alphabetically, but you can choose your own order by entering a number (1 for first, etc.) in this field.') . '</p>';
 
 	get_current_screen()->add_help_tab( array(

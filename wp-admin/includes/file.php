@@ -1438,7 +1438,7 @@ function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_own
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants
  *
- * Plugins may define a custom transport handler, See WP_Filesystem().
+ * Plugins may define a custom.php transport handler, See WP_Filesystem().
  *
  * @since 2.5.0
  *

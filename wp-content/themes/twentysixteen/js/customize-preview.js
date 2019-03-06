@@ -25,7 +25,7 @@
 		} );
 	} );
 
-	// Add custom-background-image body class when background image is added.
+	// Add custom.php-background-image body class when background image is added.
 	api( 'background_image', function( value ) {
 		value.bind( function( to ) {
 			$( 'body' ).toggleClass( 'custom-background-image', '' !== to );

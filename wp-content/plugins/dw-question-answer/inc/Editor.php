@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 function dwqa_init_tinymce_editor( $args = array() ) {
 	global $dwqa;
@@ -19,7 +19,7 @@ class DWQA_Editor {
 		add_filter( 'dwqa_prepare_edit_answer_content', 'wpautop' );
 		add_filter( 'dwqa_prepare_edit_question_content', 'wpautop' );
 	}
-	
+
 	public function tinymce_addbuttons() {
 		if ( get_user_option( 'rich_editing' ) == 'true' && ! is_admin() ) {
 			add_filter( 'mce_external_plugins', array( $this, 'add_custom_tinymce_plugin' ) );
@@ -30,7 +30,7 @@ class DWQA_Editor {
 	public function register_custom_button( $buttons ) {
 		array_push( $buttons, '|', 'dwqaCodeEmbed' );
 		return $buttons;
-	} 
+	}
 
 	public function add_custom_tinymce_plugin( $plugin_array ) {
 		global $dwqa_options;
@@ -42,8 +42,8 @@ class DWQA_Editor {
 	public function display( $args ) {
 		extract( wp_parse_args( $args, array(
 				'content'       => '',
-				'id'            => 'dwqa-custom-content-editor',
-				'textarea_name' => 'custom-content',
+				'id'            => 'dwqa-custom.php-content-editor',
+				'textarea_name' => 'custom.php-content',
 				'rows'          => 5,
 				'wpautop'       => false,
 				'media_buttons' => false,

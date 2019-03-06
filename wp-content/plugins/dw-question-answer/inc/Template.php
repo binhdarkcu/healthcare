@@ -61,7 +61,7 @@ function dwqa_breadcrumb() {
 		}
 		echo apply_filters( 'dwqa_breadcrumb', $output );
 	endif;
-	
+
 }
 add_action( 'dwqa_before_questions_archive', 'dwqa_breadcrumb' );
 add_action( 'dwqa_before_single_question', 'dwqa_breadcrumb' );
@@ -124,8 +124,8 @@ function dwqa_question_paginate_link() {
 	$tag = get_query_var( 'dwqa-question_tag' ) ? get_query_var( 'dwqa-question_tag' ) : false;
 	$cat = get_query_var( 'dwqa-question_category' ) ? get_query_var( 'dwqa-question_category' ) : false;
 
-	$url = $cat 
-			? get_term_link( $cat, get_query_var( 'taxonomy' ) ) 
+	$url = $cat
+			? get_term_link( $cat, get_query_var( 'taxonomy' ) )
 			: ( $tag ? get_term_link( $tag, get_query_var( 'taxonomy' ) ) : $archive_question_url );
 
 	if(isset($dwqa_atts['category']) && isset($dwqa_atts['page_id']) && $dwqa_atts['page_id']){
@@ -681,7 +681,7 @@ function dwqa_get_ask_question_link( $echo = true, $label = false, $class = fals
 
 function dwqa_get_template( $template = false ) {
 	$templates = apply_filters( 'dwqa_get_template', array(
-		'single-dwqa-question.php',
+		'content-single-dwqa-question.php',
 		'page.php',
 		'single.php',
 		'index.php',

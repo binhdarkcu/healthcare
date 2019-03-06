@@ -8,7 +8,7 @@
  */
 
 /**
- * Set up the WordPress core custom header feature.
+ * Set up the WordPress core custom.php header feature.
  *
  * @uses twentyfifteen_header_style()
  */
@@ -17,21 +17,21 @@ function twentyfifteen_custom_header_setup() {
 	$default_text_color  = trim( $color_scheme[4], '#' );
 
 	/**
-	 * Filter Twenty Fifteen custom-header support arguments.
+	 * Filter Twenty Fifteen custom.php-header support arguments.
 	 *
 	 * @since Twenty Fifteen 1.0
 	 *
 	 * @param array $args {
-	 *     An array of custom-header support arguments.
+	 *     An array of custom.php-header support arguments.
 	 *
 	 *     @type string $default_text_color     Default color of the header text.
-	 *     @type int    $width                  Width in pixels of the custom header image. Default 954.
-	 *     @type int    $height                 Height in pixels of the custom header image. Default 1300.
+	 *     @type int    $width                  Width in pixels of the custom.php header image. Default 954.
+	 *     @type int    $height                 Height in pixels of the custom.php header image. Default 1300.
 	 *     @type string $wp-head-callback       Callback function used to styles the header image and text
 	 *                                          displayed on the blog.
 	 * }
 	 */
-	add_theme_support( 'custom-header', apply_filters( 'twentyfifteen_custom_header_args', array(
+	add_theme_support( 'custom.php-header', apply_filters( 'twentyfifteen_custom_header_args', array(
 		'default-text-color'     => $default_text_color,
 		'width'                  => 954,
 		'height'                 => 1300,
@@ -78,12 +78,12 @@ if ( ! function_exists( 'twentyfifteen_header_style' ) ) :
 function twentyfifteen_header_style() {
 	$header_image = get_header_image();
 
-	// If no custom options for text are set, let's bail.
+	// If no custom.php options for text are set, let's bail.
 	if ( empty( $header_image ) && display_header_text() ) {
 		return;
 	}
 
-	// If we get this far, we have custom styles. Let's do this.
+	// If we get this far, we have custom.php styles. Let's do this.
 	?>
 	<style type="text/css" id="twentyfifteen-header-css">
 	<?php
@@ -246,7 +246,7 @@ function twentyfifteen_sidebar_text_color_css() {
 		return;
 	}
 
-	// If we get this far, we have custom styles. Let's do this.
+	// If we get this far, we have custom.php styles. Let's do this.
 	$sidebar_link_color_rgb     = twentyfifteen_hex2rgb( $sidebar_link_color );
 	$sidebar_text_color         = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.7)', $sidebar_link_color_rgb );
 	$sidebar_border_color       = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.1)', $sidebar_link_color_rgb );

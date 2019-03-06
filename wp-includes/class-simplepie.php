@@ -936,7 +936,7 @@ class SimplePie
 	 *
 	 * @deprecated Use {@see get_registry()} instead
 	 * @link http://php.net/manual/en/language.oop5.basic.php#language.oop5.basic.extends PHP5 extends documentation
-	 * @param string $class Name of custom class
+	 * @param string $class Name of custom.php class
 	 * @return boolean True on success, false otherwise
 	 */
 	/**

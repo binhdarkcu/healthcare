@@ -18,7 +18,6 @@ while (have_posts()) : the_post();
                             <div class="row" style="margin-bottom: 30px;">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <img style="width: 100%" src="<?php echo $bigImg ?>" class="img-responsive" alt="">
-                                    <a href="#">Đặt hẹn</a>
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <?php
@@ -43,6 +42,7 @@ while (have_posts()) : the_post();
                                             Việt <?php echo get_field('ngoai_ngu') ? ', ' . $ngonngu : '' ?></li>
                                         <li><strong>Làm việc:</strong> <?php echo get_field('lam_viec') ?></li>
                                         <li><strong>Thời gian:</strong> <?php echo get_field('thoi_gian') ?></li>
+                                        <li><a href="<?php echo get_page_link(217); ?>?id_doctor=<?php echo get_the_ID() ?>" class="btn btn-dathen">Đặt hẹn</a></li>
                                     </ul>
                                 </div>
                             </div>

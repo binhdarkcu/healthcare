@@ -1,7 +1,7 @@
-<?php /* Template Name: Lịch làm việc */ ?>
-<?php get_header() ?>
 <?php
-$queried_object = get_queried_object();
+/* Template Name: Lịch làm việc */
+    get_header();
+    $queried_object = get_queried_object();
 ?>
 <div ng-init="loadData()">
     <section>
@@ -42,101 +42,22 @@ $queried_object = get_queried_object();
                         </div>
                         <div class="clearfix"></div>
                         <h3 class="column-title" style="margin-top: 20px;">Kết nối trực tuyến</h3>
-                        <div class="icon-social">
+                        <div class="icon-social" style="margin-bottom: 30px;">
                             <?php if( get_field('footer_socials', 'option') ): ?>
                                 <?php while(has_sub_field('footer_socials', 'option')): ?>
                                     <a style="display: inline-block;" class="<?php echo get_sub_field('social_name'); ?> icon-footer" href="<?php echo get_sub_field('social_link'); ?>"><?php echo get_sub_field('social_name'); ?></a>
                                 <?php endwhile; ?>
                             <?php endif; ?>
                         </div>
+                        <h3 class="column-title"><?php echo the_title(); ?></h3>
+                        <?php echo get_template_part('calendar') ?>
                     <?php } else {
                         ?>
                         <?php
                         while (have_posts()) : the_post();
                             ?>
                             <h3 class="column-title"><?php echo the_title(); ?></h3>
-                            <div class="posts">
-                                <div class="table-responsive">
-                                    <?php
-                                    $args = array(
-                                        'post_type' => 'lich_kham_benh',
-                                        'post_status' => 'publish',
-                                        'posts_per_page' => 1
-                                    );
-                                    $query = new WP_Query($args);
-                                    if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-                                        ?>
-                                        <table class="table-bordered table-hover tb-shedule" style="width: 100%;">
-                                            <tbody>
-                                            <tr>
-                                                <th>Thứ 2</th>
-                                                <th>Thứ 3</th>
-                                                <th>Thứ 4</th>
-                                                <th>Thứ 5</th>
-                                                <th>Thứ 6</th>
-                                                <th>Thứ 7</th>
-                                                <th>Chủ nhật</th>
-                                            </tr>
-                                            <tr class="thead-light">
-                                                <th colspan="7">Sáng (7h30 - 11h30)</th>
-                                            </tr>
-                                            <tr>
-                                                <?php
-                                                if (have_rows('schdule_week_time_morning')):
-                                                    while (have_rows('schdule_week_time_morning')): the_row();
-                                                        $dayItems = get_sub_field('schedule_day_week_morning');
-                                                        foreach ($dayItems as $dayItem) {
-                                                            $names = $dayItem["week_doctor_morning"];
-                                                            ?>
-                                                            <td class="show_doctors"><?php
-                                                                foreach ($names as $name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
-                                                                }
-                                                                ?></td>
-                                                        <?php } endwhile; endif; ?>
-                                            </tr>
-                                            <tr class="thead-light">
-                                                <th colspan="7">Chiều (13h00 - 17h00)</th>
-                                            </tr>
-                                            <tr>
-                                                <?php
-                                                if (have_rows('schdule_week_time_afternoon')):
-                                                    while (have_rows('schdule_week_time_afternoon')): the_row();
-                                                        $dayItems = get_sub_field('schedule_day_week_afternoon');
-                                                        foreach ($dayItems as $dayItem) {
-                                                            $names = $dayItem["week_doctor_afternoon"];
-                                                            ?>
-                                                            <td class="show_doctors"><?php
-                                                                foreach ($names as $name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
-                                                                }
-                                                                ?></td>
-                                                        <?php } endwhile; endif; ?>
-                                            </tr>
-                                            <tr class="thead-light">
-                                                <th colspan="7">Tối (18h00 - 19h30)</th>
-                                            </tr>
-                                            <tr>
-                                                <?php
-                                                if (have_rows('schdule_week_time_night')):
-                                                    while (have_rows('schdule_week_time_night')): the_row();
-                                                        $dayItems = get_sub_field('schedule_day_week_night');
-                                                        foreach ($dayItems as $dayItem) {
-                                                            $names = $dayItem["week_doctor_night"];
-                                                            ?>
-                                                            <td class="show_doctors"><?php
-                                                                foreach ($names as $name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
-                                                                }
-                                                                ?></td>
-                                                        <?php } endwhile; endif; ?>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    <?php endwhile;endif;
-                                    wp_reset_postdata(); ?>
-                                </div>
-                            </div>
+                            <?php echo get_template_part('calendar') ?>
                         <?php endwhile; ?>
                         <?php
                     }

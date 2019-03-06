@@ -990,7 +990,7 @@ msgstr "Jako výchozí se použije šablona single.php, pokud nezvolíte jinak"
 #: inc/Settings.php:607
 #, php-format
 msgid ""
-"If you like, you may enter custom structure for your single question, "
+"If you like, you may enter custom.php structure for your single question, "
 "question category and question tag URLs here. For example, using "
 "<code>topic</code> as your question base would make your question links like "
 "<code>%s</code>. If you leave these blank the default will be used."

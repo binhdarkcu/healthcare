@@ -334,7 +334,7 @@ class Requests {
 	 *    (string|Requests_Transport, default: {@see getTransport()})
 	 * - `hooks`: Hooks handler.
 	 *    (Requests_Hooker, default: new Requests_Hooks())
-	 * - `verify`: Should we verify SSL certificates? Allows passing in a custom
+	 * - `verify`: Should we verify SSL certificates? Allows passing in a custom.php
 	 *    certificate file as a string. (Using true uses the system-wide root
 	 *    certificate store instead, but this may have different behaviour
 	 *    across transports.)

@@ -1922,7 +1922,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 			'revisions',
 			'page-attributes',
 			'post-formats',
-			'custom-fields',
+			'custom.php-fields',
 		);
 		$fixed_schemas = array(
 			'post' => array(
@@ -1934,7 +1934,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				'comments',
 				'revisions',
 				'post-formats',
-				'custom-fields',
+				'custom.php-fields',
 			),
 			'page' => array(
 				'title',
@@ -1945,14 +1945,14 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				'comments',
 				'revisions',
 				'page-attributes',
-				'custom-fields',
+				'custom.php-fields',
 			),
 			'attachment' => array(
 				'title',
 				'author',
 				'comments',
 				'revisions',
-				'custom-fields',
+				'custom.php-fields',
 			),
 		);
 		foreach ( $post_type_attributes as $attribute ) {
@@ -2102,7 +2102,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 					);
 					break;
 
-				case 'custom-fields':
+				case 'custom.php-fields':
 					$schema['properties']['meta'] = $this->meta->get_field_schema();
 					break;
 

@@ -660,7 +660,7 @@ jQuery(document).ready( function($) {
 	if ( $('#postcustom').length ) {
 		$( '#the-list' ).wpList( {
 			/**
-			 * Add current post_ID to request to fetch custom fields
+			 * Add current post_ID to request to fetch custom.php fields
 			 *
 			 * @param {Object} s Request object.
 			 *
@@ -671,7 +671,7 @@ jQuery(document).ready( function($) {
 				return s;
 			},
 			/**
-			 * Show the listing of custom fields after fetching.
+			 * Show the listing of custom.php fields after fetching.
 			 */
 			addAfter: function() {
 				$('table#list-table').show();

@@ -929,7 +929,7 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 				Constructor = self.partialConstructor[ data.type ] || self.Partial;
 				partial = new Constructor(
 					id,
-					_.extend( { params: data }, data ) // Inclusion of params alias is for back-compat for custom partials that expect to augment this property.
+					_.extend( { params: data }, data ) // Inclusion of params alias is for back-compat for custom.php partials that expect to augment this property.
 				);
 				self.partial.add( partial );
 			} else {

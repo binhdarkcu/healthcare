@@ -276,7 +276,7 @@ function get_tag_template() {
 }
 
 /**
- * Retrieve path of custom taxonomy term template in current or parent template.
+ * Retrieve path of custom.php taxonomy term template in current or parent template.
  *
  * The hierarchy for this template looks like:
  *
@@ -299,7 +299,7 @@ function get_tag_template() {
  *
  * @see get_query_template()
  *
- * @return string Full path to custom taxonomy term template file.
+ * @return string Full path to custom.php taxonomy term template file.
  */
 function get_taxonomy_template() {
 	$term = get_queried_object();
@@ -449,7 +449,7 @@ function get_search_template() {
 
 /**
  * Retrieve path of single template in current or parent template. Applies to single Posts,
- * single Attachments, and single custom post types.
+ * single Attachments, and single custom.php post types.
  *
  * The hierarchy for this template looks like:
  *

@@ -214,7 +214,7 @@ class DWQA_Posts_Answer extends DWQA_Posts_Base {
 		add_action( 'post_row_actions', array( $this, 'unset_old_actions' ) );
 		add_action( 'add_meta_boxes', array( $this, 'question_metabox' ) );
 		add_filter( 'wp_insert_post_data', array( $this, 'save_metabox_post_data' ), 10, 2 );
-		
+
 		//Cache
 		add_action( 'dwqa_add_answer', array( $this, 'update_transient_when_add_answer' ), 10, 2 );
 		add_action( 'dwqa_delete_answer', array( $this, 'update_transient_when_remove_answer' ), 10, 2 );
@@ -237,7 +237,7 @@ class DWQA_Posts_Answer extends DWQA_Posts_Base {
 	public function set_supports() {
 		return array(
 			'title', 'editor', 'comments',
-			'custom-fields', 'author', 'page-attributes',
+			'custom.php-fields', 'author', 'page-attributes',
 		);
 	}
 
@@ -373,7 +373,7 @@ class DWQA_Posts_Answer extends DWQA_Posts_Base {
 		}
 
 		$data['post_parent'] = intval($_POST['_question']);
-		
+
 		return $data;
 	}
 }

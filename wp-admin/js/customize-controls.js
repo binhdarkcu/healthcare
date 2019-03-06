@@ -1342,7 +1342,7 @@
 		 * By default the element will be related it to the parent container with `aria-owns` and detached.
 		 * Custom panels and sections (such as the `NewMenuSection`) that do not have a sliding pane should
 		 * just return the content element without needing to add the `aria-owns` element or detach it from
-		 * the container. Such non-sliding pane custom sections also need to override the `onChangeExpanded`
+		 * the container. Such non-sliding pane custom.php sections also need to override the `onChangeExpanded`
 		 * method to handle animating the panel/section into and out of view.
 		 *
 		 * @since 4.7.0
@@ -2631,7 +2631,7 @@
 	 * Class wp.customize.OuterSection.
 	 *
 	 * Creates section outside of the sidebar, there is no ui to trigger collapse/expand so
-	 * it would require custom handling.
+	 * it would require custom.php handling.
 	 *
 	 * @since 4.9
 	 *
@@ -4465,7 +4465,7 @@
 		select: function() {
 			api.UploadControl.prototype.select.apply( this, arguments );
 
-			wp.ajax.post( 'custom-background-add', {
+			wp.ajax.post( 'custom.php-background-add', {
 				nonce: _wpCustomizeBackground.nonces.add,
 				wp_customize: 'on',
 				customize_theme: api.settings.theme.stylesheet,
@@ -4877,7 +4877,7 @@
 				api.HeaderTool.DefaultsList
 			]);
 
-			// Ensure custom-header-crop Ajax requests bootstrap the Customizer to activate the previewed theme.
+			// Ensure custom.php-header-crop Ajax requests bootstrap the Customizer to activate the previewed theme.
 			wp.media.controller.Cropper.prototype.defaults.doCropArgs.wp_customize = 'on';
 			wp.media.controller.Cropper.prototype.defaults.doCropArgs.customize_theme = api.settings.theme.stylesheet;
 		},
@@ -7843,21 +7843,21 @@
 		// Create Panels
 		$.each( api.settings.panels, function ( id, data ) {
 			var Constructor = api.panelConstructor[ data.type ] || api.Panel, options;
-			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom panels that expect to augment this property.
+			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom.php panels that expect to augment this property.
 			api.panel.add( new Constructor( id, options ) );
 		});
 
 		// Create Sections
 		$.each( api.settings.sections, function ( id, data ) {
 			var Constructor = api.sectionConstructor[ data.type ] || api.Section, options;
-			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom sections that expect to augment this property.
+			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom.php sections that expect to augment this property.
 			api.section.add( new Constructor( id, options ) );
 		});
 
 		// Create Controls
 		$.each( api.settings.controls, function( id, data ) {
 			var Constructor = api.controlConstructor[ data.type ] || api.Control, options;
-			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
+			options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom.php controls that expect to augment this property.
 			api.control.add( new Constructor( id, options ) );
 		});
 

@@ -209,7 +209,7 @@ function wp_get_popular_importers() {
 		),
 		'wordpress' => array(
 			'name' => 'WordPress',
-			'description' => __( 'Import posts, pages, comments, custom fields, categories, and tags from a WordPress export file.' ),
+			'description' => __( 'Import posts, pages, comments, custom.php fields, categories, and tags from a WordPress export file.' ),
 			'plugin-slug' => 'wordpress-importer',
 			'importer-id' => 'wordpress',
 		),

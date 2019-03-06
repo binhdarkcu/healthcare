@@ -67,7 +67,7 @@
     <?php wp_head() ?>
 </head>
 
-<body id="home" class="homepage" ng-controller="AppController" style="">
+<body <?php echo body_class('homepage') ?>>
     <!-------------------------------------------->
     <!-----------------CONTENT-------------------->
     <!-------------------------------------------->

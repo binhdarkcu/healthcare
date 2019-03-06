@@ -212,7 +212,7 @@
 				self.$search.val( '' ).focus().trigger( 'keyup' );
 			} );
 
-			this.$el.on( 'input', '#custom-menu-item-name.invalid, #custom-menu-item-url.invalid', function() {
+			this.$el.on( 'input', '#custom.php-menu-item-name.invalid, #custom.php-menu-item-url.invalid', function() {
 				$( this ).removeClass( 'invalid' );
 			});
 
@@ -522,7 +522,7 @@
 			$( menuitemTpl ).find( '.menu-item-handle' ).addClass( 'item-added' );
 		},
 
-		// Submit handler for keypress and click on custom menu item.
+		// Submit handler for keypress and click on custom.php menu item.
 		_submitLink: function( event ) {
 			// Only proceed with keypress if it is Enter.
 			if ( 'keypress' === event.type && 13 !== event.which ) {
@@ -532,11 +532,11 @@
 			this.submitLink();
 		},
 
-		// Adds the custom menu item to the menu.
+		// Adds the custom.php menu item to the menu.
 		submitLink: function() {
 			var menuItem,
-				itemName = $( '#custom-menu-item-name' ),
-				itemUrl = $( '#custom-menu-item-url' ),
+				itemName = $( '#custom.php-menu-item-name' ),
+				itemUrl = $( '#custom.php-menu-item-url' ),
 				urlRegex;
 
 			if ( ! this.currentMenuControl ) {
@@ -575,7 +575,7 @@
 
 			this.currentMenuControl.addItemToMenu( menuItem );
 
-			// Reset the custom link form.
+			// Reset the custom.php link form.
 			itemUrl.val( 'http://' );
 			itemName.val( '' );
 		},

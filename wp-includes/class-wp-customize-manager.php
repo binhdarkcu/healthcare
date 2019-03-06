@@ -679,7 +679,7 @@ final class WP_Customize_Manager {
 			add_filter( 'pre_option_stylesheet', array( $this, 'get_stylesheet' ) );
 			add_filter( 'pre_option_template', array( $this, 'get_template' ) );
 
-			// Handle custom theme roots.
+			// Handle custom.php theme roots.
 			add_filter( 'pre_option_stylesheet_root', array( $this, 'get_stylesheet_root' ) );
 			add_filter( 'pre_option_template_root', array( $this, 'get_template_root' ) );
 		}
@@ -717,7 +717,7 @@ final class WP_Customize_Manager {
 			remove_filter( 'pre_option_stylesheet', array( $this, 'get_stylesheet' ) );
 			remove_filter( 'pre_option_template', array( $this, 'get_template' ) );
 
-			// Handle custom theme roots.
+			// Handle custom.php theme roots.
 			remove_filter( 'pre_option_stylesheet_root', array( $this, 'get_stylesheet_root' ) );
 			remove_filter( 'pre_option_template_root', array( $this, 'get_template_root' ) );
 		}
@@ -3585,7 +3585,7 @@ final class WP_Customize_Manager {
 	 *  @type string       $default               Default value for the setting. Default is empty string.
 	 *  @type string       $transport             Options for rendering the live preview of changes in Theme Customizer.
 	 *                                            Using 'refresh' makes the change visible by reloading the whole preview.
-	 *                                            Using 'postMessage' allows a custom JavaScript to handle live changes.
+	 *                                            Using 'postMessage' allows a custom.php JavaScript to handle live changes.
 	 *                                            @link https://developer.wordpress.org/themes/customize-api
 	 *                                            Default is 'refresh'
 	 *  @type callable     $validate_callback     Server-side validation callback for the setting's value.
@@ -3658,7 +3658,7 @@ final class WP_Customize_Manager {
 			}
 
 			/**
-			 * Allow non-statically created settings to be constructed with custom WP_Customize_Setting subclass.
+			 * Allow non-statically created settings to be constructed with custom.php WP_Customize_Setting subclass.
 			 *
 			 * @since 4.2.0
 			 *
@@ -3776,7 +3776,7 @@ final class WP_Customize_Manager {
 	 *
 	 * @see WP_Customize_Panel
 	 *
-	 * @param string $panel Name of a custom panel which is a subclass of WP_Customize_Panel.
+	 * @param string $panel Name of a custom.php panel which is a subclass of WP_Customize_Panel.
 	 */
 	public function register_panel_type( $panel ) {
 		$this->registered_panel_types[] = $panel;
@@ -3860,7 +3860,7 @@ final class WP_Customize_Manager {
 	 *
 	 * @see WP_Customize_Section
 	 *
-	 * @param string $section Name of a custom section which is a subclass of WP_Customize_Section.
+	 * @param string $section Name of a custom.php section which is a subclass of WP_Customize_Section.
 	 */
 	public function register_section_type( $section ) {
 		$this->registered_section_types[] = $section;
@@ -3898,7 +3898,7 @@ final class WP_Customize_Manager {
 	 *  @type string       $description           Description for the control. Default empty.
 	 *  @type array        $choices               List of choices for 'radio' or 'select' type controls, where values
 	 *                                            are the keys, and labels are the values. Default empty array.
-	 *  @type array        $input_attrs           List of custom input attributes for control output, where attribute
+	 *  @type array        $input_attrs           List of custom.php input attributes for control output, where attribute
 	 *                                            names are the keys and values are the values. Default empty array.
 	 *  @type bool         $allow_addition        Show UI for adding new content, currently only used for the
 	 *                                            dropdown-pages control. Default false.
@@ -3949,7 +3949,7 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.1.0
 	 *
-	 * @param string $control Name of a custom control which is a subclass of
+	 * @param string $control Name of a custom.php control which is a subclass of
 	 *                        WP_Customize_Control.
 	 */
 	public function register_control_type( $control ) {
@@ -4884,10 +4884,10 @@ final class WP_Customize_Manager {
 			'section'    => 'title_tagline',
 		) );
 
-		// Add a setting to hide header text if the theme doesn't support custom headers.
-		if ( ! current_theme_supports( 'custom-header', 'header-text' ) ) {
+		// Add a setting to hide header text if the theme doesn't support custom.php headers.
+		if ( ! current_theme_supports( 'custom.php-header', 'header-text' ) ) {
 			$this->add_setting( 'header_text', array(
-				'theme_supports'    => array( 'custom-logo', 'header-text' ),
+				'theme_supports'    => array( 'custom.php-logo', 'header-text' ),
 				'default'           => 1,
 				'sanitize_callback' => 'absint',
 			) );
@@ -4921,11 +4921,11 @@ final class WP_Customize_Manager {
 		) ) );
 
 		$this->add_setting( 'custom_logo', array(
-			'theme_supports' => array( 'custom-logo' ),
+			'theme_supports' => array( 'custom.php-logo' ),
 			'transport'      => 'postMessage',
 		) );
 
-		$custom_logo_args = get_theme_support( 'custom-logo' );
+		$custom_logo_args = get_theme_support( 'custom.php-logo' );
 		$this->add_control( new WP_Customize_Cropped_Image_Control( $this, 'custom_logo', array(
 			'label'         => __( 'Logo' ),
 			'section'       => 'title_tagline',
@@ -4947,7 +4947,7 @@ final class WP_Customize_Manager {
 
 		$this->selective_refresh->add_partial( 'custom_logo', array(
 			'settings'            => array( 'custom_logo' ),
-			'selector'            => '.custom-logo-link',
+			'selector'            => '.custom.php-logo-link',
 			'render_callback'     => array( $this, '_render_custom_logo_partial' ),
 			'container_inclusive' => true,
 		) );
@@ -4960,15 +4960,15 @@ final class WP_Customize_Manager {
 		) );
 
 		$this->add_setting( 'header_textcolor', array(
-			'theme_supports' => array( 'custom-header', 'header-text' ),
-			'default'        => get_theme_support( 'custom-header', 'default-text-color' ),
+			'theme_supports' => array( 'custom.php-header', 'header-text' ),
+			'default'        => get_theme_support( 'custom.php-header', 'default-text-color' ),
 
 			'sanitize_callback'    => array( $this, '_sanitize_header_textcolor' ),
 			'sanitize_js_callback' => 'maybe_hash_hex_color',
 		) );
 
 		// Input type: checkbox
-		// With custom value
+		// With custom.php value
 		$this->add_control( 'display_header_text', array(
 			'settings' => 'header_textcolor',
 			'label'    => __( 'Display Site Title and Tagline' ),
@@ -4985,8 +4985,8 @@ final class WP_Customize_Manager {
 		// Input type: Color
 		// With sanitize_callback
 		$this->add_setting( 'background_color', array(
-			'default'        => get_theme_support( 'custom-background', 'default-color' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-color' ),
+			'theme_supports' => 'custom.php-background',
 
 			'sanitize_callback'    => 'sanitize_hex_color_no_hash',
 			'sanitize_js_callback' => 'maybe_hash_hex_color',
@@ -4999,12 +4999,12 @@ final class WP_Customize_Manager {
 
 		/* Custom Header */
 
-		if ( current_theme_supports( 'custom-header', 'video' ) ) {
+		if ( current_theme_supports( 'custom.php-header', 'video' ) ) {
 			$title = __( 'Header Media' );
 			$description = '<p>' . __( 'If you add a video, the image will be used as a fallback while the video loads.' ) . '</p>';
 
-			$width = absint( get_theme_support( 'custom-header', 'width' ) );
-			$height = absint( get_theme_support( 'custom-header', 'height' ) );
+			$width = absint( get_theme_support( 'custom.php-header', 'width' ) );
+			$height = absint( get_theme_support( 'custom.php-header', 'height' ) );
 			if ( $width && $height ) {
 				$control_description = sprintf(
 					/* translators: 1: .mp4, 2: header size in pixels */
@@ -5036,31 +5036,31 @@ final class WP_Customize_Manager {
 		$this->add_section( 'header_image', array(
 			'title'          => $title,
 			'description'    => $description,
-			'theme_supports' => 'custom-header',
+			'theme_supports' => 'custom.php-header',
 			'priority'       => 60,
 		) );
 
 		$this->add_setting( 'header_video', array(
-			'theme_supports'    => array( 'custom-header', 'video' ),
+			'theme_supports'    => array( 'custom.php-header', 'video' ),
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => array( $this, '_validate_header_video' ),
 		) );
 
 		$this->add_setting( 'external_header_video', array(
-			'theme_supports'    => array( 'custom-header', 'video' ),
+			'theme_supports'    => array( 'custom.php-header', 'video' ),
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, '_sanitize_external_header_video' ),
 			'validate_callback' => array( $this, '_validate_external_header_video' ),
 		) );
 
 		$this->add_setting( new WP_Customize_Filter_Setting( $this, 'header_image', array(
-			'default'        => sprintf( get_theme_support( 'custom-header', 'default-image' ), get_template_directory_uri(), get_stylesheet_directory_uri() ),
-			'theme_supports' => 'custom-header',
+			'default'        => sprintf( get_theme_support( 'custom.php-header', 'default-image' ), get_template_directory_uri(), get_stylesheet_directory_uri() ),
+			'theme_supports' => 'custom.php-header',
 		) ) );
 
 		$this->add_setting( new WP_Customize_Header_Image_Setting( $this, 'header_image_data', array(
-			'theme_supports' => 'custom-header',
+			'theme_supports' => 'custom.php-header',
 		) ) );
 
 		/*
@@ -5068,13 +5068,13 @@ final class WP_Customize_Manager {
 		 * it entails that the_custom_header_markup() will be used, and thus selective
 		 * refresh can be utilized.
 		 */
-		if ( current_theme_supports( 'custom-header', 'video' ) ) {
+		if ( current_theme_supports( 'custom.php-header', 'video' ) ) {
 			$this->get_setting( 'header_image' )->transport = 'postMessage';
 			$this->get_setting( 'header_image_data' )->transport = 'postMessage';
 		}
 
 		$this->add_control( new WP_Customize_Media_Control( $this, 'header_video', array(
-			'theme_supports' => array( 'custom-header', 'video' ),
+			'theme_supports' => array( 'custom.php-header', 'video' ),
 			'label'          => __( 'Header Video' ),
 			'description'    => $control_description,
 			'section'        => 'header_image',
@@ -5083,7 +5083,7 @@ final class WP_Customize_Manager {
 		) ) );
 
 		$this->add_control( 'external_header_video', array(
-			'theme_supports' => array( 'custom-header', 'video' ),
+			'theme_supports' => array( 'custom.php-header', 'video' ),
 			'type'           => 'url',
 			'description'    => __( 'Or, enter a YouTube URL:' ),
 			'section'        => 'header_image',
@@ -5093,7 +5093,7 @@ final class WP_Customize_Manager {
 		$this->add_control( new WP_Customize_Header_Image_Control( $this ) );
 
 		$this->selective_refresh->add_partial( 'custom_header', array(
-			'selector'            => '#wp-custom-header',
+			'selector'            => '#wp-custom.php-header',
 			'render_callback'     => 'the_custom_header_markup',
 			'settings'            => array( 'header_video', 'external_header_video', 'header_image' ), // The image is used as a video fallback here.
 			'container_inclusive' => true,
@@ -5103,26 +5103,26 @@ final class WP_Customize_Manager {
 
 		$this->add_section( 'background_image', array(
 			'title'          => __( 'Background Image' ),
-			'theme_supports' => 'custom-background',
+			'theme_supports' => 'custom.php-background',
 			'priority'       => 80,
 		) );
 
 		$this->add_setting( 'background_image', array(
-			'default'        => get_theme_support( 'custom-background', 'default-image' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-image' ),
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) );
 
 		$this->add_setting( new WP_Customize_Background_Image_Setting( $this, 'background_image_thumb', array(
-			'theme_supports' => 'custom-background',
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) ) );
 
 		$this->add_control( new WP_Customize_Background_Image_Control( $this ) );
 
 		$this->add_setting( 'background_preset', array(
-			'default'        => get_theme_support( 'custom-background', 'default-preset' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-preset' ),
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) );
 
@@ -5135,19 +5135,19 @@ final class WP_Customize_Manager {
 				'fill'    => __( 'Fill Screen' ),
 				'fit'     => __( 'Fit to Screen' ),
 				'repeat'  => _x( 'Repeat', 'Repeat Image' ),
-				'custom'  => _x( 'Custom', 'Custom Preset' ),
+				'custom.php'  => _x( 'Custom', 'Custom Preset' ),
 			),
 		) );
 
 		$this->add_setting( 'background_position_x', array(
-			'default'        => get_theme_support( 'custom-background', 'default-position-x' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-position-x' ),
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) );
 
 		$this->add_setting( 'background_position_y', array(
-			'default'        => get_theme_support( 'custom-background', 'default-position-y' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-position-y' ),
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) );
 
@@ -5161,8 +5161,8 @@ final class WP_Customize_Manager {
 		) ) );
 
 		$this->add_setting( 'background_size', array(
-			'default'        => get_theme_support( 'custom-background', 'default-size' ),
-			'theme_supports' => 'custom-background',
+			'default'        => get_theme_support( 'custom.php-background', 'default-size' ),
+			'theme_supports' => 'custom.php-background',
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
 		) );
 
@@ -5178,9 +5178,9 @@ final class WP_Customize_Manager {
 		) );
 
 		$this->add_setting( 'background_repeat', array(
-			'default'           => get_theme_support( 'custom-background', 'default-repeat' ),
+			'default'           => get_theme_support( 'custom.php-background', 'default-repeat' ),
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
-			'theme_supports'    => 'custom-background',
+			'theme_supports'    => 'custom.php-background',
 		) );
 
 		$this->add_control( 'background_repeat', array(
@@ -5190,9 +5190,9 @@ final class WP_Customize_Manager {
 		) );
 
 		$this->add_setting( 'background_attachment', array(
-			'default'           => get_theme_support( 'custom-background', 'default-attachment' ),
+			'default'           => get_theme_support( 'custom.php-background', 'default-attachment' ),
 			'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
-			'theme_supports'    => 'custom-background',
+			'theme_supports'    => 'custom.php-background',
 		) );
 
 		$this->add_control( 'background_attachment', array(
@@ -5204,7 +5204,7 @@ final class WP_Customize_Manager {
 
 		// If the theme is using the default background callback, we can update
 		// the background CSS using postMessage.
-		if ( get_theme_support( 'custom-background', 'wp-head-callback' ) === '_custom_background_cb' ) {
+		if ( get_theme_support( 'custom.php-background', 'wp-head-callback' ) === '_custom_background_cb' ) {
 			foreach ( array( 'color', 'image', 'preset', 'position_x', 'position_y', 'size', 'repeat', 'attachment' ) as $prop ) {
 				$this->get_setting( 'background_' . $prop )->transport = 'postMessage';
 			}
@@ -5550,7 +5550,7 @@ final class WP_Customize_Manager {
 
 		$color = sanitize_hex_color_no_hash( $color );
 		if ( empty( $color ) )
-			$color = get_theme_support( 'custom-header', 'default-text-color' );
+			$color = get_theme_support( 'custom.php-header', 'default-text-color' );
 
 		return $color;
 	}
@@ -5586,7 +5586,7 @@ final class WP_Customize_Manager {
 				return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
 			}
 		} elseif ( 'background_preset' === $setting->id ) {
-			if ( ! in_array( $value, array( 'default', 'fill', 'fit', 'repeat', 'custom' ), true ) ) {
+			if ( ! in_array( $value, array( 'default', 'fill', 'fit', 'repeat', 'custom.php' ), true ) ) {
 				return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
 			}
 		} elseif ( 'background_image' === $setting->id || 'background_image_thumb' === $setting->id ) {
@@ -5681,7 +5681,7 @@ final class WP_Customize_Manager {
 	}
 
 	/**
-	 * Callback for rendering the custom logo, used in the custom_logo partial.
+	 * Callback for rendering the custom.php logo, used in the custom_logo partial.
 	 *
 	 * This method exists because the partial object and context data are passed
 	 * into a partial's render_callback so we cannot use get_custom_logo() as

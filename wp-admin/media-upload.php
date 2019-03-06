@@ -103,7 +103,7 @@ if ( $tab == 'type' || $tab == 'type_url' || ! array_key_exists( $tab , media_up
 	 *
 	 * The dynamic portion of the hook name, `$tab`, refers to the specific
 	 * media upload tab. Possible values include 'library' (Media Library),
-	 * or any custom tab registered via the {@see 'media_upload_tabs'} filter.
+	 * or any custom.php tab registered via the {@see 'media_upload_tabs'} filter.
 	 *
 	 * @since 2.5.0
 	 */

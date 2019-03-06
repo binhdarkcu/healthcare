@@ -831,12 +831,12 @@ function has_site_icon( $blog_id = 0 ) {
 }
 
 /**
- * Determines whether the site has a custom logo.
+ * Determines whether the site has a custom.php logo.
  *
  * @since 4.5.0
  *
  * @param int $blog_id Optional. ID of the blog in question. Default is the ID of the current blog.
- * @return bool Whether the site has a custom logo or not.
+ * @return bool Whether the site has a custom.php logo or not.
  */
 function has_custom_logo( $blog_id = 0 ) {
 	$switched_blog = false;
@@ -856,7 +856,7 @@ function has_custom_logo( $blog_id = 0 ) {
 }
 
 /**
- * Returns a custom logo, linked to home.
+ * Returns a custom.php logo, linked to home.
  *
  * @since 4.5.0
  *
@@ -877,7 +877,7 @@ function get_custom_logo( $blog_id = 0 ) {
 	// We have a logo. Logo is go.
 	if ( $custom_logo_id ) {
 		$custom_logo_attr = array(
-			'class'    => 'custom-logo',
+			'class'    => 'custom.php-logo',
 			'itemprop' => 'logo',
 		);
 
@@ -894,7 +894,7 @@ function get_custom_logo( $blog_id = 0 ) {
 		 * If the alt attribute is not empty, there's no need to explicitly pass
 		 * it because wp_get_attachment_image() already adds the alt attribute.
 		 */
-		$html = sprintf( '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+		$html = sprintf( '<a href="%1$s" class="custom.php-logo-link" rel="home" itemprop="url">%2$s</a>',
 			esc_url( home_url( '/' ) ),
 			wp_get_attachment_image( $custom_logo_id, 'full', false, $custom_logo_attr )
 		);
@@ -902,7 +902,7 @@ function get_custom_logo( $blog_id = 0 ) {
 
 	// If no logo is set but we're in the Customizer, leave a placeholder (needed for the live preview).
 	elseif ( is_customize_preview() ) {
-		$html = sprintf( '<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',
+		$html = sprintf( '<a href="%1$s" class="custom.php-logo-link" style="display:none;"><img class="custom.php-logo"/></a>',
 			esc_url( home_url( '/' ) )
 		);
 	}
@@ -912,19 +912,19 @@ function get_custom_logo( $blog_id = 0 ) {
 	}
 
 	/**
-	 * Filters the custom logo output.
+	 * Filters the custom.php logo output.
 	 *
 	 * @since 4.5.0
 	 * @since 4.6.0 Added the `$blog_id` parameter.
 	 *
 	 * @param string $html    Custom logo HTML output.
-	 * @param int    $blog_id ID of the blog to get the custom logo for.
+	 * @param int    $blog_id ID of the blog to get the custom.php logo for.
 	 */
 	return apply_filters( 'get_custom_logo', $html, $blog_id );
 }
 
 /**
- * Displays a custom logo, linked to home.
+ * Displays a custom.php logo, linked to home.
  *
  * @since 4.5.0
  *
@@ -1376,7 +1376,7 @@ function single_term_title( $prefix = '', $display = true ) {
 		$term_name = apply_filters( 'single_tag_title', $term->name );
 	} elseif ( is_tax() ) {
 		/**
-		 * Filters the custom taxonomy archive page title.
+		 * Filters the custom.php taxonomy archive page title.
 		 *
 		 * @since 3.1.0
 		 *
@@ -1604,7 +1604,7 @@ function get_the_post_type_description() {
 }
 
 /**
- * Retrieve archive link content based on predefined or custom code.
+ * Retrieve archive link content based on predefined or custom.php code.
  *
  * The format can be one of four styles. The 'link' for head element, 'option'
  * for use in the select element, 'html' for use in list (either ol or ul HTML
@@ -1623,15 +1623,15 @@ function get_the_post_type_description() {
  * the list HTML elements. The before parameter is before the link and the after
  * parameter is after the closing link.
  *
- * The custom format uses the before parameter before the link ('a' HTML
+ * The custom.php format uses the before parameter before the link ('a' HTML
  * element) and the after parameter after the closing link tag. If the above
- * three values for the format are not used, then custom format is assumed.
+ * three values for the format are not used, then custom.php format is assumed.
  *
  * @since 1.0.0
  *
  * @param string $url    URL to archive.
  * @param string $text   Archive text description.
- * @param string $format Optional, default is 'html'. Can be 'link', 'option', 'html', or custom.
+ * @param string $format Optional, default is 'html'. Can be 'link', 'option', 'html', or custom.php.
  * @param string $before Optional. Content to prepend to the description. Default empty.
  * @param string $after  Optional. Content to append to the description. Default empty.
  * @return string HTML link content for archive.
@@ -1646,7 +1646,7 @@ function get_archives_link($url, $text, $format = 'html', $before = '', $after =
 		$link_html = "\t<option value='$url'>$before $text $after</option>\n";
 	elseif ('html' == $format)
 		$link_html = "\t<li>$before<a href='$url'>$text</a>$after</li>\n";
-	else // custom
+	else // custom.php
 		$link_html = "\t$before<a href='$url'>$text</a>$after\n";
 
 	/**
@@ -1658,7 +1658,7 @@ function get_archives_link($url, $text, $format = 'html', $before = '', $after =
 	 * @param string $link_html The archive HTML link content.
 	 * @param string $url       URL to archive.
 	 * @param string $text      Archive text description.
-	 * @param string $format    Link format. Can be 'link', 'option', 'html', or custom.
+	 * @param string $format    Link format. Can be 'link', 'option', 'html', or custom.php.
 	 * @param string $before    Content to prepend to the description.
 	 * @param string $after     Content to append to the description.
 	 */
@@ -1688,7 +1688,7 @@ function get_archives_link($url, $text, $format = 'html', $before = '', $after =
  *     @type string|int $limit           Number of links to limit the query to. Default empty (no limit).
  *     @type string     $format          Format each link should take using the $before and $after args.
  *                                       Accepts 'link' (`<link>` tag), 'option' (`<option>` tag), 'html'
- *                                       (`<li>` tag), or a custom format, which generates a link anchor
+ *                                       (`<li>` tag), or a custom.php format, which generates a link anchor
  *                                       with $before preceding and $after succeeding. Default 'html'.
  *     @type string     $before          Markup to prepend to the beginning of each link. Default empty.
  *     @type string     $after           Markup to append to the end of each link. Default empty.
@@ -3740,7 +3740,7 @@ function paginate_links( $args = '' ) {
 		// Find the query args of the requested URL.
 		wp_parse_str( $url_parts[1], $url_query_args );
 
-		// Remove the format argument from the array of query arguments, to avoid overwriting custom format.
+		// Remove the format argument from the array of query arguments, to avoid overwriting custom.php format.
 		foreach ( $format_args as $format_arg => $format_arg_value ) {
 			unset( $url_query_args[ $format_arg ] );
 		}

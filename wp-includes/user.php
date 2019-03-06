@@ -1812,7 +1812,7 @@ function wp_update_user($userdata) {
 
 	$user = $user_obj->to_array();
 
-	// Add additional custom fields
+	// Add additional custom.php fields
 	foreach ( _get_additional_user_keys( $user_obj ) as $key ) {
 		$user[ $key ] = get_user_meta( $ID, $key, true );
 	}

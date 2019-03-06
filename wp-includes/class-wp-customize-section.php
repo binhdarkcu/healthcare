@@ -330,7 +330,7 @@ class WP_Customize_Section {
 	 * An Underscore (JS) template for rendering this section.
 	 *
 	 * Class variables for this section class are available in the `data` JS object;
-	 * export custom variables by overriding WP_Customize_Section::json().
+	 * export custom.php variables by overriding WP_Customize_Section::json().
 	 *
 	 * @since 4.3.0
 	 *

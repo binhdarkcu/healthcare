@@ -1331,7 +1331,7 @@ Parser.prototype = function() {
                 if (tokenStream.match(Tokens.IDENT)) {
                     ident = tokenStream.token().value.toLowerCase();
 
-                    //since there's no custom tokens for these, need to manually check
+                    //since there's no custom.php tokens for these, need to manually check
                     if (ident !== "only" && ident !== "not") {
                         tokenStream.unget();
                         ident = null;
@@ -6076,9 +6076,9 @@ copy(ValidationTypes, {
             return part.type === "function" && /^[A-Z0-9]{4}$/i.test(part);
         },
 
-        // custom() isn't actually in the spec
+        // custom.php() isn't actually in the spec
         "<filter-function>":
-            "blur() | brightness() | contrast() | custom() | " +
+            "blur() | brightness() | contrast() | custom.php() | " +
             "drop-shadow() | grayscale() | hue-rotate() | invert() | " +
             "opacity() | saturate() | sepia()",
 
@@ -10684,7 +10684,7 @@ CSSLint.addFormatter({
                 if (!message.rollup) {
 
                     // build the test case separately, once joined
-                    // we'll add it to a custom array filtered by type
+                    // we'll add it to a custom.php array filtered by type
                     output.push("<testcase time=\"0\" name=\"" + generateSource(message.rule) + "\">");
                     output.push("<" + type + " message=\"" + escapeSpecialCharacters(message.message) + "\"><![CDATA[" + message.line + ":" + message.col + ":" + escapeSpecialCharacters(message.evidence) + "]]></" + type + ">");
                     output.push("</testcase>");
