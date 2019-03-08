@@ -167,8 +167,7 @@ $posts_doctors_array = get_posts($args_doctors);
                                                 echo '<a class="example-image-link" href="' . $imgUrl['url'] . '"
                                            data-lightbox="example-set"
                                            data-title="Hình ảnh ' . $category->name . '">
-                                            <img class="example-image" style="height: 195px;"
-                                                 src="' . $imgUrl['url'] . '" alt=""/>
+                                            <div style="background: url('.$imgUrl['url'].') center no-repeat; height: 195px; background-size: cover"></div>
                                         </a>';
                                             }
                                         }

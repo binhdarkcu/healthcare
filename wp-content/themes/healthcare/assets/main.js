@@ -53,6 +53,7 @@
             paginationSpeed: 500,
             autoplay: true,
             singleItem: true,
+            loop: true,
             navigation: true,
             navigationText: [
                 "<i class='fa fa-angle-left'></i>",
@@ -84,12 +85,12 @@
             autoplay: true,
             navigation: false,
             dots: false,
+            items: 5,
+            autoWidth:true,
             afterMove: movedGallery,
             afterInit: progressBarGallery,
             startDragging: pauseOnDraggingGallery
         });
-        
-        
         //Init progressBar where elem is $("#owl-demo")
         function progressBarGallery(elemGallery) {
             $elemGallery = elemGallery;

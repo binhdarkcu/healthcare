@@ -13,23 +13,19 @@
             $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
         ?>
                 <div class="owl-item" style="width: 1588px;">
-                    <div class="item" style="background-image: url('<?php echo $feature_image_meta[0] ?>');" data-content="<?php echo get_the_title() ?>">
-                        <div class="slider-inner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="carousel-content">
-                                            <h2><?php echo get_the_title() ?></h2>
-                                            <p><?php echo get_the_content() ?></p>
-                                            <?php if (get_field('button_text')): ?>
-                                                <a class="btn btn-primary btn-lg" style="color: #fff;" href="<?php echo get_field('button') ?>"><?php echo get_field('button_text') ?></a>
-                                            <?php endif;?>
+                    <a href="<?php echo the_permalink() ?>" style="width: 100%; height: 100%;">
+                        <div class="item" style="background-image: url('<?php echo $feature_image_meta[0] ?>');" data-content="<?php echo get_the_title() ?>">
+                            <div class="slider-inner">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="carousel-content"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
         <?php endwhile;endif; wp_reset_postdata();?>
     </div>

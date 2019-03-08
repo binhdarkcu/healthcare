@@ -67,7 +67,7 @@
     <?php wp_head() ?>
 </head>
 
-<body <?php echo body_class('homepage') ?>>
+<body <?php echo body_class('homepage') ?> id="home">
     <!-------------------------------------------->
     <!-----------------CONTENT-------------------->
     <!-------------------------------------------->

@@ -30,7 +30,7 @@
                       $img_lightbox = get_field('big_image_lightbox', get_the_ID());
                   ?>
                   <a class="example-image-link" href="<?php echo $img_lightbox;?>" data-lightbox="example-set" data-title="<?php echo get_the_title(get_the_ID());?>">
-                      <img class="example-image" style="height: 195px;" src="<?php echo $feature_image_meta[0] ?>" alt="" />
+                      <div style="background: url(<?php echo $feature_image_meta[0] ?>) center no-repeat; height: 195px; background-size: cover"></div>
                   </a>
 
                   <?php endwhile;endif; wp_reset_postdata();?>

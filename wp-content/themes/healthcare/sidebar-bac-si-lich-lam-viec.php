@@ -1,6 +1,6 @@
 <?php $queried_object = get_queried_object(); ?>
-<div class="col-md-12 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
-    <div class="col-xs-12 cat-box">
+<div style="position: sticky;top: 0;">
+    <div class="cat-box">
 
         <?php if ($queried_object->ID == 88) {
             $child_pages = get_pages(array(
@@ -12,7 +12,7 @@
                 <?php foreach ($child_pages as $child) : setup_postdata($child);
                     $feature_image_id = get_post_thumbnail_id($child->ID);
                     $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full') ?>
-                    <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                    <div class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                         <div class="col-md-4 catItemImageBlock">
                             <div class="news">
                                 <div class="article" style="height: 70px;">
@@ -83,7 +83,7 @@
                 $feature_image_id = get_post_thumbnail_id(get_the_ID());
                 $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
                 ?>
-                <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                <div class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                     <div class="col-md-4 catItemImageBlock">
                         <div class="news">
                             <div class="article" style="height: 70px;">

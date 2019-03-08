@@ -126,6 +126,17 @@
         </div>
     </div>
     <div class="text-center"><span style="font-style:italic">Copyright © 2017</span></div>
+    <!-- live support -->
+    <div class="live_support">
+        <a href="<?php echo get_permalink( 94 )?>" class="dathen_fixed">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>Đặt hẹn ngay</span>
+        </a>
+        <a href="tel: 0369.03.18.18" class="call_fixed">
+            <i class="fa fa-phone-square" aria-hidden="true"></i>
+            <span>0369.03.18.18</span>
+        </a>
+    </div>
     <?php wp_footer() ?>
 </footer><!----><!--/#footer-->
 

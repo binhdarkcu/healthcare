@@ -1,4 +1,4 @@
-<div class="col-xs-12 cat-box">
+<div class="col-xs-12 cat-box sidebar_post">
     <?php $queried_object = get_queried_object(); ?>
     <?php
         $sideBarTitle = codession_qtranslatex_string($queried_object->post_title)[qtrans_getLanguage()];
@@ -31,12 +31,16 @@
             )
         );
         $posts_lienquan = get_posts($args_lienquan);
+    $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
     ?>
 
     <ul class="post-list">
         <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
-            <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
-                        href="<?php the_permalink(); ?>" class="text-white"><?php the_title(); ?></a></li>
+            <li><a href="<?php the_permalink(); ?>" class="text-white">
+                    <img src="<?php echo $bigImg ?>" alt="">
+                    <p><?php echo the_title() ?></p>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
     <br/>
@@ -51,12 +55,16 @@
         'post_type' => 'hoat_dong',
         'post_status' => 'publish',
     );
-    $posts_lienquan = get_posts($args_lienquan); ?>
+    $posts_lienquan = get_posts($args_lienquan);
+    $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
 
     <ul class="post-list">
         <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
-            <li><i class="fa fa-angle-right" aria-hidden="true"></i><a
-                        href="<?php the_permalink(); ?>" class="text-white"><?php the_title(); ?></a></li>
+            <li><a href="<?php the_permalink(); ?>" class="text-white">
+                    <img src="<?php echo $bigImg ?>" alt="">
+                    <p><?php echo the_title() ?></p>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
 </div>
