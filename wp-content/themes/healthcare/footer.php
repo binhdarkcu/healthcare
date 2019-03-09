@@ -133,7 +133,7 @@
         </a>
         <a href="tel: 0369.03.18.18" class="call_fixed">
             <i class="fa fa-phone-square" aria-hidden="true"></i>
-            <span>0369.03.18.18</span>
+            <span><?php echo get_field('footer_phone', 'option'); ?></span>
         </a>
     </div>
     <?php wp_footer() ?>

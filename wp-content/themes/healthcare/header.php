@@ -93,7 +93,7 @@
                             </div>
                             <div class="text-right language">
                                 <?php  qtranxf_generateLanguageSelectCode(array(
-                                    'type'   => 'text'
+                                    'type'   => 'image'
                                 ));
                                 ?>
                             </div>

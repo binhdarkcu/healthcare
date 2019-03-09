@@ -20,15 +20,18 @@
         $args_lienquan = array(
             'posts_per_page' => 5,
             'post_type' => $queried_object->post_type,
+            'orderby' => 'rand',
             'post_status' => 'publish',
-            'post__not_in' => array($queried_object->ID)
+            'post__not_in' => array($queried_object->ID, 225, 221, 219, 223, 227, 217)
         );
         $posts_lienquan = get_posts($args_lienquan);
     ?>
 
     <ul class="post-list">
         <?php foreach ($posts_lienquan as $post) : setup_postdata($post);
-            $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
+            $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
+            $bigImg = $bigImg ? $bigImg : get_template_directory_uri().'/assets/no-image.jpg';
+            ?>
             <li><a href="<?php the_permalink(); ?>" class="text-white">
                     <img src="<?php echo $bigImg ?>" alt="">
                     <p><?php echo the_title() ?></p>

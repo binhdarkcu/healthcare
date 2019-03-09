@@ -19,22 +19,7 @@ $posts_doctors_array = get_posts($args_doctors);
                 <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
                     <!---->
                     <div ng-if="!isRequiredLogin(post.PostInternal)">
-                        <?php
-                        $categories = get_categories();
-                        foreach ($categories as $category) : setup_postdata($category);
-                            $notification = get_field('notification', $category);
-                            if ($queried_object->term_id == $category->term_id && $notification) {
-                                echo '<h3 class="column-title">Thông báo</h3>
-                                    <p style="margin-bottom: 30px;">' . $notification . '</p>';
-                            }
-                            ?>
-                        <?php endforeach; ?>
-                        <h3 class="column-title">Tổng quan về <?php echo $queried_object->name; ?></h3>
-                        <div>
-                            <?php echo category_description($queried_object->ID); ?>
-                        </div>
-                        <br/>
-                        <h3 class="column-title">Giới thiệu về <?php echo $queried_object->name; ?></h3>
+                        <h3 class="column-title" style="text-transform: inherit">Giới thiệu về <?php echo $queried_object->name; ?></h3>
                         <div class="childpages row">
                             <?php
                             $args = array(

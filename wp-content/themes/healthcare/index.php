@@ -4,11 +4,11 @@
 
         <?php get_template_part('tpl', 'main-work')?>
 
+    <?php get_template_part('tpl', 'cac-khoa')?>
+
         <?php get_template_part('tpl', 'blog')?>
 
         <?php get_template_part('tpl', 'services')?>
-
-        <?php get_template_part('tpl', 'cac-khoa')?>
 
     <section id="services" class="galleries">
       <div class="container">

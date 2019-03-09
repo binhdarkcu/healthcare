@@ -1621,7 +1621,7 @@ msgid "You can change your password, turn on keyboard shortcuts, change the colo
 msgstr "Bạn có thể thay đổi mật khẩu, bật phím tắt, thay đổi tông màu giao diện quản trị, tắt tính năng Soạn thảo trực quan, cũng như những cài đặt khác. Bạn có thể ẩn Thanh công cụ bên ngoài website, tuy nhiên nó không thể bị ẩn trong giao diện quản trị."
 
 #: wp-admin/plugin-install.php:82
-msgid "Plugins hook into WordPress to extend its functionality with custom.php features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\">WordPress Plugin Directory</a> are compatible with the license WordPress uses."
+msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\">WordPress Plugin Directory</a> are compatible with the license WordPress uses."
 msgstr "Gói mở rộng được cài đặt vào WordPress để mở rộng các tính năng tuỳ biến. Các gói mở rộng được phát triển để tương thích với WordPress bởi hàng nghìn lập trình viên từ khắp thế giới. Tất cả gói mở rộng tại <a href=\"%s\">Thư viện Plugin của WordPress</a> đều phù hợp với bản quyền dành cho người dùng WordPress."
 
 #: wp-admin/plugin-install.php:90
@@ -3344,7 +3344,7 @@ msgid "An avatar is an image that follows you from weblog to weblog appearing be
 msgstr "Hình ảnh đại diện sẽ theo bạn từ nhật ký trực tuyến này đến nhật ký khác, hiển thị bên cạnh tên của bạn khi bạn bình luận tại các trang mạng hỗ trợ hiển thị ảnh đại diện. Tại đây bạn có thể cho phép hiển thị ảnh đại diện của những người bình luận trên trang mạng của bạn."
 
 #: wp-admin/options-permalink.php:22
-msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom.php URL structures."
+msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Màn hình này cho phép bạn định nghĩa cấu trúc liên kết tĩnh mặc định. Bạn có thể chon từ các cài đặt thông dụng hoặc tạo một cấu trúc địa chỉ mạng tùy biến."
 
 #: wp-admin/includes/update-core.php:1302 wp-admin/update-core.php:512
@@ -3485,11 +3485,11 @@ msgid "Permalinks are the permanent URLs to your individual pages and blog posts
 msgstr "Liên Kết Tĩnh là những địa chỉ mạng cố định tới các trang tĩnh và bài viết cụ thể, cũng như tới nội dung lưu trữ tương ứng với nhóm phân loại và thẻ đánh dấu của bạn. Một liên kết tĩnh là một địa chỉ mạng được sử dụng để truy cập nội dung của bạn. Địa chỉ mạng tới mỗi bài viết nên cố định, và không bao giờ thay đổi &#8212; vì thế được gọi là liên kết tĩnh."
 
 #: wp-admin/options-permalink.php:31
-msgid "When you assign multiple categories or tags to a post, only one can show up in the permalink: the lowest numbered category. This applies if your custom.php structure includes <code>%category%</code> or <code>%tag%</code>."
+msgid "When you assign multiple categories or tags to a post, only one can show up in the permalink: the lowest numbered category. This applies if your custom structure includes <code>%category%</code> or <code>%tag%</code>."
 msgstr "Khi bạn chỉ định nhiều nhóm phân loại hoặc thẻ đánh dấu cho một bài viết cùng lúc, sẽ chỉ có một xuất hiện trong liên kết tĩnh: nhóm phân loại có số thứ tự thấp nhất. Quy luật này được áp dụng nếu cấu trúc tùy biến của bạn có chứa <code>%category%</code> hoặc <code>%tag%</code>."
 
 #: wp-admin/options-permalink.php:30
-msgid "If you pick an option other than Plain, your general URL path with structure tags (terms surrounded by <code>%</code>) will also appear in the custom.php structure field and your path can be further modified there."
+msgid "If you pick an option other than Plain, your general URL path with structure tags (terms surrounded by <code>%</code>) will also appear in the custom structure field and your path can be further modified there."
 msgstr "Nếu bạn sử dụng một tùy chọn không phải Mặc Định, địa chỉ mạng của bạn với cấu trúc thẻ đánh dấu, điều kiện nằm trong <code>%</code>, cũng sẽ xuất hiện trong trường cấu trúc tùy biến và đường dẫn của bạn có thể được chỉnh sửa lại ở đó."
 
 #: wp-admin/options-media.php:18
@@ -3703,7 +3703,7 @@ msgid "Custom date format:"
 msgstr "Định dạng ngày:"
 
 #: wp-admin/options-general.php:351
-msgid "enter a custom.php time format in the following field"
+msgid "enter a custom time format in the following field"
 msgstr "nhập định dạng thời gian cần hiển thị vào trường sau"
 
 #: wp-admin/includes/template.php:2197
@@ -3715,7 +3715,7 @@ msgid "Close details dialog"
 msgstr "Đóng bảng biểu chi tiết"
 
 #: wp-admin/options-general.php:314
-msgid "enter a custom.php date format in the following field"
+msgid "enter a custom date format in the following field"
 msgstr "nhập định dạng ngày tháng cần hiển thị vào trường sau"
 
 #: wp-admin/options-general.php:352
@@ -3912,7 +3912,7 @@ msgid "Visit"
 msgstr "Thăm"
 
 #: wp-admin/nav-menus.php:547
-msgid "To add a custom.php link, <strong>expand the Custom Links section, enter a URL and link text, and click Add to Menu</strong>"
+msgid "To add a custom link, <strong>expand the Custom Links section, enter a URL and link text, and click Add to Menu</strong>"
 msgstr "Để thêm một đường dẫn tùy chỉnh,  <strong>hãy mở rộng phần tùy chọn đường dẫn, điền URL và chữ hiển thị đường dẫn, và bấm thêm vào danh mục</strong>"
 
 #: wp-admin/index.php:50
@@ -4469,7 +4469,7 @@ msgid "Post via email"
 msgstr "Đăng bài qua email"
 
 #: wp-admin/options-discussion.php:232
-msgid "For users without a custom.php avatar of their own, you can either display a generic logo or a generated one based on their email address."
+msgid "For users without a custom avatar of their own, you can either display a generic logo or a generated one based on their email address."
 msgstr "Với người dùng không có ảnh đại diện, bạn có thể chọn hiển thị ảnh đại diện thay thế hoặc một ảnh đại diện được tạo ra tự động dựa trên địa chỉ email của người đó."
 
 #: wp-admin/options-writing.php:129
@@ -4581,7 +4581,7 @@ msgstr "Bạn còn có thể duyệt dựa trên những Tag được sử dụn
 
 #. translators: %s: placeholder that must come at the start of the URL
 #: wp-admin/options-permalink.php:283
-msgid "If you like, you may enter custom.php structures for your category and tag URLs here. For example, using <code>topics</code> as your category base would make your category links like <code>%s/topics/uncategorized/</code>. If you leave these blank the defaults will be used."
+msgid "If you like, you may enter custom structures for your category and tag URLs here. For example, using <code>topics</code> as your category base would make your category links like <code>%s/topics/uncategorized/</code>. If you leave these blank the defaults will be used."
 msgstr "Nếu bạn thích, bạn có thể nhập chuỗi địa chỉ tuỳ biến cho chuyên mục và thẻ tại đây. Ví dụ, sử dụng <code>chuyen-muc</code> sẽ thay đổi các liên kết tới từng chuyên mục thành <code>%s/chuyen-muc/tin-tuc/</code>. Bỏ trống sẽ sử dụng thiết lập mặc định."
 
 #: wp-admin/options-reading.php:103 wp-admin/options-reading.php:104
@@ -4927,7 +4927,7 @@ msgid "This screen is used for managing your navigation menus."
 msgstr "Trang này để quản lý các menu điều hướng."
 
 #: wp-admin/nav-menus.php:544
-msgid "Each navigation menu may contain a mix of links to pages, categories, custom.php URLs or other content types. Menu links are added by selecting items from the expanding boxes in the left-hand column below."
+msgid "Each navigation menu may contain a mix of links to pages, categories, custom URLs or other content types. Menu links are added by selecting items from the expanding boxes in the left-hand column below."
 msgstr "Mỗi menu có thể chứa các liên kết khác nhau tới trang tĩnh, chuyên mục, liên kết tùy chỉnh hoặc những nội dung khác. Các liên kết được thêm vào menu bằng cách chọn các chỉ mục từ các hộp mở rộng ở phía dưới, bên trái."
 
 #: wp-admin/options-writing.php:30
@@ -5020,7 +5020,7 @@ msgstr "Nếu file %1$s <a href=\"%2$s\">có thể ghi đè lên</a>, việc c�
 
 #. translators: %s: Codex URL
 #: wp-admin/options-permalink.php:162
-msgid "WordPress offers you the ability to create a custom.php URL structure for your permalinks and archives. Custom URL structures can improve the aesthetics, usability, and forward-compatibility of your links. A <a href=\"%s\">number of tags are available</a>, and here are some examples to get you started."
+msgid "WordPress offers you the ability to create a custom URL structure for your permalinks and archives. Custom URL structures can improve the aesthetics, usability, and forward-compatibility of your links. A <a href=\"%s\">number of tags are available</a>, and here are some examples to get you started."
 msgstr "WordPress mang đến cho bạn khả năng tùy chỉnh cấu trúc URL cho các đường dẫn và trang lưu trữ. Cấu trúc URL tùy chỉnh có thể được cải tiến vể mặt hiển thị, tính tiện dụng và tương thích với các liên kết. Đây là <a href=\"%s\">các khả năng tuỳ chọn</a> để làm ví dụ cho bạn."
 
 #. translators: %s: Codex URL
@@ -7754,7 +7754,7 @@ msgid "Import posts from an RSS feed."
 msgstr "Nhập bài viết từ một trình cấp RSS."
 
 #: wp-admin/includes/import.php:212
-msgid "Import posts, pages, comments, custom.php fields, categories, and tags from a WordPress export file."
+msgid "Import posts, pages, comments, custom fields, categories, and tags from a WordPress export file."
 msgstr "Nhập các bài viết, trang, bình luận, trường tùy chỉnh, danh mục và từ khóa từ một tập tin xuất ra của WordPress."
 
 #: wp-admin/includes/import.php:170
@@ -8768,7 +8768,7 @@ msgstr "Xin lỗi, bạn phải đăng nhập để viết phản hồi."
 #: wp-admin/includes/ajax-actions.php:1320
 #: wp-admin/includes/ajax-actions.php:1325
 #: wp-admin/includes/ajax-actions.php:1345
-msgid "Please provide a custom.php field value."
+msgid "Please provide a custom field value."
 msgstr "Hãy nhập giá trị cho trường tùy biến."
 
 #: wp-admin/includes/ajax-actions.php:1693
@@ -9021,7 +9021,7 @@ msgid "Export"
 msgstr "Xuất ra"
 
 #: wp-admin/export.php:158
-msgid "This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom.php fields, categories, and tags."
+msgid "This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags."
 msgstr "Định dạng này, được gọi là WordPress RSS mở rộng hay WXR, sẽ chứa tất cả các bài viết, phản hồi, trường tùy biến, chuyên mục và thẻ."
 
 #: wp-admin/export.php:290
@@ -9210,7 +9210,7 @@ msgid "Slug"
 msgstr "Chuỗi cho đường dẫn tĩnh"
 
 #: wp-admin/includes/ajax-actions.php:1343
-msgid "Please provide a custom.php field name."
+msgid "Please provide a custom field name."
 msgstr "Hãy nhập tên của trường tùy biến."
 
 #: wp-admin/custom-background.php:336
@@ -9863,7 +9863,7 @@ msgid "Main content"
 msgstr "Nội dung chính"
 
 #: wp-admin/custom-header.php:106
-msgid "You can set a custom.php image header for your site. Simply upload the image and crop it, and the new header will go live immediately. Alternatively, you can use an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button."
+msgid "You can set a custom image header for your site. Simply upload the image and crop it, and the new header will go live immediately. Alternatively, you can use an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button."
 msgstr "Bạn có thể chỉ định một ảnh tùy biến cho phần đầu trang mạng của bạn. Chỉ cần tải ảnh lên và cắt nhỏ nó, phần đầu trang sẽ hiển thị ảnh mới ngay lập tức. Ngoài ra, bạn có thể chỉ định ảnh đã có sẵn trong Thư Viện Nội Dung Đa Phương Tiện bằng cách bấm vào nút &#8220;Chọn Ảnh&#8221;."
 
 #: wp-admin/custom-header.php:822
@@ -9879,7 +9879,7 @@ msgid "If you don&#8217;t want a header image to be displayed on your site at al
 msgstr "Nếu bạn không muốn hiển thị ảnh tại phần đầu trang, bấm vào nút &#8220;Loại Bỏ Ảnh Đầu Trang&#8221; ở dưới cùng của phần tùy chọn Ảnh Đầu Trang. Nếu sau này, bạn muốn hiển thị lại ảnh cho phần đầu trang, bạn chỉ cần chọn một trong các tùy chọn ảnh và bấm vào &#8220;Lưu Lại Thay Đổi&#8221;."
 
 #: wp-admin/custom-header.php:108
-msgid "If your theme has more than one default header image, or you have uploaded more than one custom.php header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
+msgid "If your theme has more than one default header image, or you have uploaded more than one custom header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
 msgstr "Nếu chủ đề của bạn có nhiều hơn một ảnh đầu trang mặc định, hoặc bạn đã tải lên nhiều hơn một ảnh đầu trang tùy biến, bạn có thể để WordPress hiển thị một ảnh đầu trang ngẫu nhiên khác nhau cho mỗi trang nội dung trên trang mạng của bạn. Bấm vào nút chọn &#8220;Ngẫu Nhiên&#8221; bên cạnh phần Ảnh Đã Tải Lên hoặc Ảnh Mặc Định để bật tính năng này."
 
 #: wp-admin/includes/class-core-upgrader.php:36 wp-admin/includes/file.php:1147
@@ -10281,7 +10281,7 @@ msgid "Creating a Page is very similar to creating a Post, and the screens can b
 msgstr "Tạo một Trang Tĩnh rất giống với tạo một Bài Viết, màn hình cũng có thể được tùy biến bằng cách kéo và thả, với khung Tùy Biến Màn Hình, và mở rộng / thu gọn các hộp tùy chọn. Màn hình này cũng có vùng soạn thảo chống xao lãng, hỗ trợ cả chế độ Trực Quan và Văn Bản bằng cách bấm nút Toàn Màn Hình. Bộ soạn thảo Trang Tĩnh gần như giống với bộ soạn thảo Bài Viết, ngoài một vài tính năng chỉ riêng có ở Trang Tĩnh được hiển thị trong hộp Thuộc Tính Trang Tĩnh:"
 
 #: wp-admin/export.php:48
-msgid "You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom.php fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status."
+msgid "You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status."
 msgstr "Bạn có thể xuất một tập tin chứa nội dung trang mạng của bạn để nhập vào bản cài đặt WordPress hoặc nền tảng khác. Tập tin được xuất ra sẽ có định dạng XML được gọi là WXR. Bài viết, trang tĩnh, bình luận, trường dữ liệu tùy biến, nhóm phân loại, và thẻ đánh dấu đều có thể được xuất ra. Bạn có thể lựa chọn để tập tin WXR chỉ bao gồm những bài viết hoặc trang tĩnh nhất định bằng cách sử dụng bộ lọc xổ xuống để giới hạn việc xuất nội dung theo nhóm phân loại, tác giả, khoảng thời gian theo tháng, hoặc trạng thái đăng tải."
 
 #: wp-admin/edit.php:243
@@ -10493,7 +10493,7 @@ msgid "Update package not available."
 msgstr "Gói cập nhật không có sẵn."
 
 #: wp-admin/export.php:167
-msgid "This will contain all of your posts, pages, comments, custom.php fields, terms, navigation menus, and custom.php posts."
+msgid "This will contain all of your posts, pages, comments, custom fields, terms, navigation menus, and custom posts."
 msgstr "Tập tin này sẽ chứa tất cả các bài viết, các trang, các bình luận, các trường tùy biến, các điều kiện, các thực đơn điều hướng và các nội dung tùy biến của bạn."
 
 #: wp-admin/export.php:161
@@ -10799,7 +10799,7 @@ msgstr "1 trang chưa được cập nhật, ai đó đang biên soạn trang n�
 
 #. translators: %s: Featured Image
 #: wp-admin/edit-form-advanced.php:452
-msgid "<strong>%s</strong> &mdash; This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom.php header, etc."
+msgid "<strong>%s</strong> &mdash; This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom header, etc."
 msgstr "<strong>%s</strong> - Cho phép bạn kết hợp một hình ảnh với bài viết mà không cần chèn nó. Cách này chỉ hữu dụng nếu chủ đề của bạn hỗ trợ sử dụng ảnh nhấn mạnh như ảnh đại diện của bài viết trên trang chủ, phần đầu tùy biến, v.v."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:828
@@ -11051,8 +11051,8 @@ msgstr "Công cụ nhập %s không hợp lệ hoặc chưa được cài đặt
 msgid "Update progress"
 msgstr "Tiến trình cập nhật"
 
-#. translators: %d: custom.php header width
-#. translators: %d: custom.php header height
+#. translators: %d: custom header width
+#. translators: %d: custom header height
 #: wp-admin/custom-header.php:530 wp-admin/custom-header.php:541
 #: wp-admin/custom-header.php:553 wp-admin/custom-header.php:563
 msgid "%d pixels"
@@ -11388,7 +11388,7 @@ msgid "The theme is missing the %s file."
 msgstr "Giao diện thiếu file %s."
 
 #: wp-admin/custom-header.php:723 wp-admin/custom-header.php:881
-msgid "The current theme does not support uploading a custom.php header image."
+msgid "The current theme does not support uploading a custom header image."
 msgstr "Giao diện hiện tại không hỗ trợ ảnh trên cùng website."
 
 #: wp-admin/custom-header.php:98
@@ -11408,11 +11408,11 @@ msgid "For most themes, the header text is your Site Title and Tagline, as defin
 msgstr "Với phần lớn các giao diện, phần đầu trang sẽ hiển thị nội dung là Tên website và Khẩu hiệu của bạn, được định nghĩa tại phần <a href=\"%1$s\">Cài đặt Tổng quan</a>."
 
 #: wp-admin/custom-background.php:89
-msgid "You can customize the look of your site without touching any of your theme&#8217;s code by using a custom.php background. Your background can be an image or a color."
+msgid "You can customize the look of your site without touching any of your theme&#8217;s code by using a custom background. Your background can be an image or a color."
 msgstr "Bạn có thể tuỳ biến giao diện website mà không cần sửa dòng code nào bởi sử dụng Nền tuỳ biến. Nền có thể là ảnh hoặc một màu nào đó."
 
 #: wp-admin/edit-form-advanced.php:473
-msgid "<strong>Template</strong> &mdash; Some themes have custom.php templates you can use for certain pages that might have additional features or custom.php layouts. If so, you&#8217;ll see them in this dropdown menu."
+msgid "<strong>Template</strong> &mdash; Some themes have custom templates you can use for certain pages that might have additional features or custom layouts. If so, you&#8217;ll see them in this dropdown menu."
 msgstr "<strong>Giao diện mẫu</strong> - Một số giao diện có giao diện mẫu bạn có thể sử dụng cho các Trang nhất định với khung giao diện tuỳ biến hay các chức năng riêng biệt. Nếu có sẵn, bạn có thể nhìn thấy trong danh sách của mục này."
 
 #: wp-admin/edit-form-advanced.php:435

@@ -2444,11 +2444,11 @@ msgid "New Custom HTML Widget"
 msgstr "Widget HTML mới"
 
 #: wp-includes/widgets/class-wp-widget-text.php:516
-msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by pressing the &#8220;<a class=\"add-widget\" href=\"#\">Add a Widget</a>&#8221; button and searching for &#8220;HTML&#8221;. Check it out to add some custom.php code to your site!"
+msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by pressing the &#8220;<a class=\"add-widget\" href=\"#\">Add a Widget</a>&#8221; button and searching for &#8220;HTML&#8221;. Check it out to add some custom code to your site!"
 msgstr "Chúng ta có một widget mới tên là &#8220;HTML Tùy chỉnh&#8221. Bạn có thể tìm tới nó bằng cách nhấn vào nút &#8220;<a class=\"add-widget\" href=\"#\">Thêm Widget</a>&#8221; và tìm kiếm  &#8220;HTML&#8221;. Hãy dùng widget đó để thêm các đoạn mã tùy chỉnh vào trang web của bạn!"
 
 #: wp-includes/widgets/class-wp-widget-text.php:518
-msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by scanning the list of available widgets on this screen. Check it out to add some custom.php code to your site!"
+msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by scanning the list of available widgets on this screen. Check it out to add some custom code to your site!"
 msgstr "Chúng ta có một widget mới tên là &#8220;HTML Tùy chỉnh&#8221. Bạn có thể tìm tới nó bằng cách lướt qua các widget sẵn có ở trang này. Hãy dùng widget đó để thêm các đoạn mã tùy chỉnh vào trang web của bạn!"
 
 #: wp-includes/widgets/class-wp-widget-text.php:533
@@ -5683,11 +5683,11 @@ msgstr "Gán lại bài viết và các liên kết của người dùng bị x�
 msgid "Sorry, you are not allowed to assign the provided terms."
 msgstr "Xin lỗi, bạn không được phép để gán term."
 
-#. translators: %s: custom.php field key
+#. translators: %s: custom field key
 #: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:187
 #: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:222
 #: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:293
-msgid "Sorry, you are not allowed to edit the %s custom.php field."
+msgid "Sorry, you are not allowed to edit the %s custom field."
 msgstr "Xin lỗi, bạn không được phép chỉnh sửa trường tuỳ biến %s."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:354
@@ -6153,9 +6153,9 @@ msgstr "Website: %1$s (Địa chỉ IP: %2$s, %3$s)"
 msgid "Author: %1$s (IP address: %2$s, %3$s)"
 msgstr "Tác giả: %1$s (Địa chỉ IP: %2$s, %3$s)"
 
-#. translators: %s: Post custom.php field name
+#. translators: %s: Post custom field name
 #: wp-includes/post-template.php:1031
-msgctxt "Post custom.php field name"
+msgctxt "Post custom field name"
 msgid "%s:"
 msgstr "%s:"
 
@@ -8424,12 +8424,12 @@ msgid "Current header"
 msgstr "Tiêu đề hiện tại"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:210
-msgctxt "custom.php headers"
+msgctxt "custom headers"
 msgid "Previously uploaded"
 msgstr "Tệp tải lên trước đó"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:217
-msgctxt "custom.php headers"
+msgctxt "custom headers"
 msgid "Suggested"
 msgstr "Gợi ý"
 
@@ -9408,7 +9408,7 @@ msgstr "Xin lỗi, bạn không được phép thêm mục mới."
 
 #. translators: %s: Codex URL
 #: wp-includes/formatting.php:4272
-msgid "A structure tag is required when using custom.php permalinks. <a href=\"%s\">Learn more</a>"
+msgid "A structure tag is required when using custom permalinks. <a href=\"%s\">Learn more</a>"
 msgstr "Một thẻ cấu trúc là cần thiết khi sử dụng đường dẫn tùy chỉnh. <a href=\"%s\"> Tìm hiểu thêm </a>"
 
 #: wp-includes/class-wp-xmlrpc-server.php:2558
@@ -9841,7 +9841,7 @@ msgstr "Chọn ảnh"
 
 #. translators: %s: "Add Items" button text
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:44
-msgid "Time to add some links! Click &#8220;%s&#8221; to start putting pages, categories, and custom.php links in your menu. Add as many things as you&#8217;d like."
+msgid "Time to add some links! Click &#8220;%s&#8221; to start putting pages, categories, and custom links in your menu. Add as many things as you&#8217;d like."
 msgstr "Bạn có thể bắt đầu thêm liên kết! Nhấp chuột vào &#8220;%s&#8221; để bắt đầu thêm trang, danh mục hay liên kết riêng vào menu."
 
 #: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:713
@@ -11545,7 +11545,7 @@ msgid "No color"
 msgstr "Không màu"
 
 #: wp-includes/class-wp-editor.php:1142
-msgctxt "label for custom.php color"
+msgctxt "label for custom color"
 msgid "Custom..."
 msgstr "Tùy chỉnh..."
 
@@ -11699,7 +11699,7 @@ msgid "%1$s. Sub item number %2$d under %3$s."
 msgstr "%1$s. Chỉ mục con số %2$d dưới %3$s."
 
 #: wp-includes/class-wp-customize-nav-menus.php:573
-msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom.php links."
+msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links."
 msgstr "Bảng điều khiển này được sử dụng để quản lý các Menu cho nội dung mà bạn đã xuất bản trên website. Bạn có thể tạo các Menu và thêm các mục cho nội dung hiện có như các trang, bài viết, danh mục, tag, định dạng, hoặc liên kết riêng."
 
 #. translators: %s: number of menu locations
