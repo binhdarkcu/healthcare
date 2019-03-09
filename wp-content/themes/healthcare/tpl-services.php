@@ -1,4 +1,4 @@
-<section id="services">
+<section id="services" style="padding-top: 0">
   <div class="container">
     <div class="section-header">
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Dịch vụ</h2>
@@ -62,7 +62,7 @@
                                                     <div class="carousel-content">
                                                         <div class="feature-col">
                                                           <a href="<?php the_permalink();?>">
-                                                              <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
+                                                              <div class="ehr-title" style="height: 180px; background-size: cover; background: url(<?php echo $feature_image_meta[0] ?>) center no-repeat;"></div>
                                                               <div class="content">
                                                                 <h2><?php echo the_title() ?></h2>
                                                                 <p><?php echo the_content() ?></p>

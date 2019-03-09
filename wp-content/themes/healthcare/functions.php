@@ -6,7 +6,8 @@
     //register menu
     function register_menu() {
         register_nav_menus( array(
-        	'primary_menus' => 'Primary menus'
+        	'primary_menus' => 'Primary menus',
+            'top-nav' => 'Top Navigation'
         ) );
         register_nav_menu('primary_menus',__( 'primary_menus' ));
     }
@@ -37,8 +38,13 @@
     	return $items;
 
     }
+    function new_submenu_class($menu) {
+        $menu = preg_replace('/ class="sub-menu"/','/ class="submenu_changed" /',$menu);
+        return $menu;
+    }
 
-    function show_childpages_departments($page_id) {
+add_filter('wp_nav_menu','new_submenu_class');
+function show_childpages_departments($page_id) {
 
         // a shortcode should just return the content not echo html
         // so we start to create an object, and on the end we return it
@@ -306,6 +312,16 @@
         'menu_title' => 'Footer',
         'parent_slug' => 'theme-general-settings',
          ));
+        acf_add_options_sub_page(array(
+            'page_title'  => 'Dịch vụ',
+            'menu_title' => 'Dịch vụ',
+            'parent_slug' => 'theme-general-settings',
+        ));
+        acf_add_options_sub_page(array(
+            'page_title'  => 'Bài viết liên quan',
+            'menu_title' => 'Bài viết liên quan',
+            'parent_slug' => 'theme-general-settings',
+        ));
     }
 
     function revcon_change_post_label() {
@@ -452,6 +468,16 @@
         else{
             $count++;
             update_post_meta($postID, $count_key, $count);
+        }
+    }
+
+    add_filter('single_template', 'define_single_page', 11);
+    function define_single_page() {
+        global $post;
+        if($post->post_type == 'post') {
+            return dirname( __FILE__ ) . '/single-bac-si.php';
+        } else {
+            return dirname( __FILE__ ) . '/single.php';
         }
     }
 

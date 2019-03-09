@@ -35,6 +35,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&amp;subset=vietnamese" rel="stylesheet">
     <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-icon-144x144.png">
@@ -42,7 +43,7 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/animate.min.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/animate.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.theme.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.transitions.css" rel="stylesheet">
@@ -75,80 +76,94 @@
         <header id="header">
             <nav  class="navbar navbar-default" role="banner">
                 <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav" aria-expanded="false" ng-click="show()">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
-                            <?php
-                                $logoUrl = get_field('header_logo', 'option');
-                            ?>
-                            <img src="<?php echo $logoUrl; ?>" alt="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE" style="width:300px;">
-                        </a>
-                    </div>
-                    <div style="float: left;margin-left: 5%;margin-top: 0;font-size: 18px; font-size: 18px; width: 40%;">
-                        <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</h3>
-                        Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
-                        Hotline: <?php echo get_field('footer_phone', 'option'); ?>
-                    </div>
-                    <div class="text-right language">
-                        <?php  qtranxf_generateLanguageSelectCode(array(
-                            'type'   => 'text'
-                        ));
-            ?>
-                    </div>
-                    <div class="text-right" style="float: right; margin-right: 32px;">
-                        <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
-                            <div class="input-group" style="margin:auto;">
-                                <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" type="text" maxlength="100" placeholder="Tìm kiếm bài viết" ng-model="searchText" style="width:300px; border-radius: 10px;" aria-invalid="false">
-
-                                <div class="input-group-btn">
-                                    <div class="btn-group" role="group">
-
-                                        <div>
-                                            <!--<button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(255,255,255,.1);border-color: #cccccc;border-radius: 10px;" type="image" <img style=" width="30px"; height="30px;"" src="../../../assets/css/images/tim-kiem.png" ></button>"-->
-                                            <button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
-                                                <i class="fa fa-search" style="font-size: 15px;color:black;"></i>
-                                            </button>
+                    <div class="row" style="display: flex;align-items: center;">
+                        <div class="col-md-3 col-xs-6"><div class="navbar-header">
+                                <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
+                                    <?php
+                                    $logoUrl = get_field('header_logo', 'option');
+                                    ?>
+                                    <img src="<?php echo $logoUrl; ?>" alt="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE" style="width:300px;">
+                                </a>
+                            </div></div>
+                        <div class="col-md-9 col-xs-6">
+                            <div style="float: left;margin-top: 0;font-size: 18px; font-size: 18px; width: 40%;" class="hidden_md">
+                                <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</h3>
+                                Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
+                                Hotline: <?php echo get_field('footer_phone', 'option'); ?>
+                            </div>
+                            <div class="text-right language">
+                                <?php  qtranxf_generateLanguageSelectCode(array(
+                                    'type'   => 'text'
+                                ));
+                                ?>
+                            </div>
+                            <button type="button" class="navbar-toggle collapsed show_md">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="text-right hidden_md" style="float: right; margin-right: 32px;margin-bottom: 10px">
+                                <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
+                                    <div class="input-group" style="margin:auto;">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" type="text" maxlength="100" placeholder="Tìm kiếm bài viết" ng-model="searchText" style="width:300px; border-radius: 10px;" aria-invalid="false">
+                                        <div class="input-group-btn">
+                                            <div class="btn-group" role="group">
+                                                <div>
+                                                    <button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
+                                                        <i class="fa fa-search" style="font-size: 15px;color:black;"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container" id="navMain">
                     <div class="navbar-right">
+                        <div class="nav-mobile">
+                            <div class="title_nav">
+                                <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</h3>
+                                Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
+                                Hotline: <?php echo get_field('footer_phone', 'option'); ?>
+                            </div>
+                            <div class="text-right search_nav">
+                                <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" type="text" maxlength="100" placeholder="Tìm kiếm bài viết" ng-model="searchText" style="width:300px; border-radius: 10px;" aria-invalid="false">
+                                        <div class="input-group-btn">
+                                            <div class="btn-group" role="group">
+                                                <div>
+                                                    <button name="submit" class="btn btn-primary pull-right" style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
+                                                        <i class="fa fa-search" style="font-size: 15px;color:black;"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="nav-menu">
-                            <div id="droplinetabs1" class="droplinetabs">
-                            <?php
+                            <div id="menu_main">
+                                <ul class="list-unstyled list-inline hidden_md">
+                                    <li><a href="<?php echo get_site_url(); ?>"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <?php
                                 wp_nav_menu(
-                                           array(
-                                               'theme_location' => 'primary_menus',
-                                               'menu_class'     => 'nav navbar-nav uppercase',
-                                               'menu_id'        => 'nav'
-                                           )
-                                       );
-                            ?>
+                                    array(
+                                        'theme_location' => 'primary_menus',
+                                        'menu_class'     => 'list-unstyled list-inline',
+                                        'menu_id'        => 'nav'
+                                    )
+                                );
+                                ?>
+                            </div>
                         </div>
-                        </div>
                     </div>
-                </div>
-
-                <div class="mobile-banner-slide text-center">
-                    <div class="col-md-4 col-xs-4">
-                        <a href="http://bvpnt.org.vn/tim-bac-si"><i class="fa fa-user-md"></i> Bác sĩ</a>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <a href="http://bvpnt.org.vn/dat-lich-hen"><i class="fa fa-calendar"></i> Đặt lịch</a>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <a href="http://bvpnt.org.vn/hoi-dap"><i class="fa fa-question-circle-o"></i> Hỏi đáp</a>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </nav>
         </header>

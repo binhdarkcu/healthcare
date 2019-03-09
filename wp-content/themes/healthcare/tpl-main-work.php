@@ -1,7 +1,7 @@
 <section id="services">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">DỊCH VỤ CHẤT LƯỢNG CAO</h2>
+            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">TIỆN ÍCH NỔI BẬT</h2>
         </div>
 
         <div class="row">
@@ -11,7 +11,7 @@
                         echo show_childpages_of_mainwork($page->ID);
                     }
                 ?>
-                
+
             </div>
 
         </div><!--/.row-->

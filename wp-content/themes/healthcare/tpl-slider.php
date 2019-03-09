@@ -30,22 +30,3 @@
         <?php endwhile;endif; wp_reset_postdata();?>
     </div>
 </section><!--/#main-slider-->
-<!----><div class="banner-slide-overwrite" ng-if="isLoading == false" style="">
-    <div class="pick-item">
-        <a href="http://bvpnt.org.vn/dat-lich-hen">
-            <i class="fa fa-calendar fa-2x" style="padding: 0 15px;"></i>Đặt lịch
-        </a>
-    </div>
-    <hr style="border: none; background-color: white; width: 85%; height: 2px;">
-    <div class="pick-item">
-        <a href="http://bvpnt.org.vn/tim-bac-si">
-            <i class="fa fa-user-md fa-2x" style="padding: 0 15px;"></i>Tìm bác sĩ
-        </a>
-    </div>
-    <hr style="border: none; background-color: white; width: 85%; height: 2px;">
-    <div class="pick-item">
-        <a href="http://bvpnt.org.vn/hoi-dap">
-            <i class="fa fa-question-circle-o fa-2x" style="padding: 0 15px;"></i>Hỏi đáp
-        </a>
-    </div>
-</div><!---->

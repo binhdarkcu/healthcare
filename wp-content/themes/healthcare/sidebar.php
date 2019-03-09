@@ -6,12 +6,11 @@
             $sideBarTitle = $queried_object->post_title;
         }
     ?>
-    <h4 class="column-title" style="text-transform: uppercase;">CÁC BÀI VIẾT VỀ <?php echo $sideBarTitle;?></h4>
+    <h4 class="column-title" style="text-transform: uppercase;">CÁC BÀI VIẾT LIÊN QUAN</h4>
 
     <?php
         $post_data = get_post($queried_object->post_parent);
-
-        $tax = get_the_terms($queried_object->ID, 'chuyen_muc_hoat_dong');
+    $tax = get_the_terms($queried_object->ID, 'chuyen_muc_hoat_dong');
         if(empty($tax)) {
             $parent_slug = $post_data->post_name;
         } else {
@@ -20,22 +19,16 @@
 
         $args_lienquan = array(
             'posts_per_page' => 5,
-            'post_type' => 'hoat_dong',
+            'post_type' => $queried_object->post_type,
             'post_status' => 'publish',
-            'tax_query' => array(
-                array(
-                  'taxonomy' => 'chuyen_muc_hoat_dong',
-                  'field' => 'slug',
-                  'terms' => array($parent_slug)
-                )
-            )
+            'post__not_in' => array($queried_object->ID)
         );
         $posts_lienquan = get_posts($args_lienquan);
-    $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
     ?>
 
     <ul class="post-list">
-        <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
+        <?php foreach ($posts_lienquan as $post) : setup_postdata($post);
+            $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
             <li><a href="<?php the_permalink(); ?>" class="text-white">
                     <img src="<?php echo $bigImg ?>" alt="">
                     <p><?php echo the_title() ?></p>
@@ -52,14 +45,14 @@
         'offset' => 0,
         'orderby' => 'rand',
         'order' => 'ASC',
-        'post_type' => 'hoat_dong',
+        'post_type' => array('hoat_dong', 'dich_vu', 'gioi_thieu_khoa'),
         'post_status' => 'publish',
     );
-    $posts_lienquan = get_posts($args_lienquan);
-    $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
+    $posts_lienquan = get_posts($args_lienquan); ?>
 
     <ul class="post-list">
-        <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
+        <?php foreach ($posts_lienquan as $post) : setup_postdata($post);
+            $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
             <li><a href="<?php the_permalink(); ?>" class="text-white">
                     <img src="<?php echo $bigImg ?>" alt="">
                     <p><?php echo the_title() ?></p>

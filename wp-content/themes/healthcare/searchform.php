@@ -3,7 +3,7 @@
     <div class="searchcontrols row col-lg-12">
         <form role="search" method="get" class="form-horizontal searchForm" action="<?php echo esc_url( home_url( '/' ) ); ?>">
             <div class="col-md-3">
-                <input value="<?php echo get_search_query()?>" name="s" class="searchinputm ng-pristine ng-untouched ng-valid ng-empty" type="text" title="Nhập tên bác sỹ" placeholder="Nhập tên bác sỹ" ng-model="searchDoctor" aria-invalid="false">
+                <input value="<?php echo get_search_query()?>" name="s" class="searchinputm ng-pristine ng-untouched ng-valid ng-empty" type="text" title="Nhập tên bác sỹ" placeholder="Nhập tên bác sĩ" ng-model="searchDoctor" aria-invalid="false">
             </div>
             <div class="col-md-4" style="padding-left:0px;">
                 <div class="dropdown dropdown-lg col-md-10" style="padding:0px;">

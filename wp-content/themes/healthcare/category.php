@@ -34,6 +34,47 @@ $posts_doctors_array = get_posts($args_doctors);
                             <?php echo category_description($queried_object->ID); ?>
                         </div>
                         <br/>
+                        <h3 class="column-title">Giới thiệu về <?php echo $queried_object->name; ?></h3>
+                        <div class="childpages row">
+                            <?php
+                            $args = array(
+                                'post_type'	 => 'gioi_thieu_khoa',
+                                'post_status'	 => 'publish',
+                                'posts_per_page' => -1,
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'category',
+                                        'field'    => 'term_id',
+                                        'terms'    => $queried_object->term_id,
+                                    ),
+                                ),
+                            );
+                            $query = new WP_Query( $args );
+                            if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
+                                $feature_image_id = get_post_thumbnail_id(get_the_ID());
+                                $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                                ?>
+                                <div class="wow fadeInDown animated animated animated col-md-6 col-xs-12" style="visibility: visible;">
+                                    <div class="col-md-4 catItemImageBlock">
+                                        <div class="article">
+                                            <!----><a href="<?php echo get_permalink() ?>">
+                                                <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
+                                            </a><!---->
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 post-list-right">
+                                        <h3>
+                                            <!----><a href="<?php echo get_permalink() ?>"><?php echo the_title() ?></a><!---->
+                                            <!---->
+                                        </h3>
+                                        <?php echo get_field('intro_description') ?>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <hr>
+                                </div>
+                            <?php endwhile;endif; wp_reset_postdata();?>
+                        </div>
                         <br/>
                         <h3 class="column-title">Các bác sĩ thuộc <?php echo $queried_object->name; ?></h3>
                         <!--<p style="font-weight: bold">{{post.DescriptionTrans}}</p>-->

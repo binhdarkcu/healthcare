@@ -5,10 +5,12 @@
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
                 <div class="childpages">
                     <?php
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = array(
                         'post_type'	 => 'slide_introduction',
                         'post_status'	 => 'publish',
-                        'posts_per_page' => -1
+                        'posts_per_page' => 8,
+                        'paged' => $paged
                     );
                     $query = new WP_Query( $args );
                     if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
@@ -37,6 +39,15 @@
                         <hr>
                     </div>
                     <?php endwhile;endif; wp_reset_postdata();?>
+                    <div class="clearfix"></div>
+                    <div class="paging pagenavi">
+                        <div class="paging-normal">
+                            <?php if (function_exists('wp_pagenavi')) {
+                                wp_pagenavi(array('query' => $query));
+                            }
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!---->

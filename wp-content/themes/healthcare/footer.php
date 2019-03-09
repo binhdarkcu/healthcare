@@ -83,7 +83,6 @@
         <div class="row">
             <div class="col-md-4 footer-title footer-left">
                 <!--Thông tin công ty vị trí google map -->
-                <div class="row">
                     <div>
                         <strong>Thông tin website</strong>
                         <p>Địa chỉ: <?php echo get_field('footer_address', 'option'); ?><br/>Số Điện
@@ -92,13 +91,12 @@
                         <div id="map" style="width: 100%;">
                             <div style="width: 100%">
                                 <iframe style="width: 100%;"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0317355923103!2d106.64532531513923!3d10.808881261548633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294151d1bd45%3A0xa9413fb2af4c4217!2zMzcvQzcgxJDGsOG7nW5nIEhvw6BuZyBIb2EgVGjDoW0sIFBoxrDhu51uZyAxNSwgVMOibiBCw6xuaCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1545809041326"
-                                        width="400" height="450" frameborder="0" style="border:0"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d823.9013118313533!2d106.64648384710628!3d10.799268884097291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175299465a6aa4d%3A0x736056bf971601aa!2zUEjDkk5HIEtIw4FNIMSQQSBLSE9BIFFV4buQQyBU4bq-IEdPTERFTiBIRUFMVEhDQVJF!5e0!3m2!1sen!2s!4v1552061025538"
+                                        width="400" height="200" frameborder="0" style="border:0"
                                         allowfullscreen></iframe>
                             </div>
                             <br/></div>
                     </div>
-                </div>
             </div>
             <div class="col-md-4 footer-title footer-mid">
 
@@ -107,8 +105,9 @@
                     <ul>
 
                         <?php while (has_sub_field('footer_socials', 'option')): ?>
-                            <a href="<?php echo get_sub_field('social_link'); ?>"><?php echo get_sub_field('social_name'); ?></a>
-
+                            <li>
+                                <a href="<?php echo get_sub_field('social_link'); ?>"><i class="fa fa-<?php echo get_sub_field('social_name'); ?>" aria-hidden="true"></i></a>
+                            </li>
                         <?php endwhile; ?>
 
                     </ul>
@@ -158,7 +157,6 @@
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.isotope.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.inview.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/wow.min.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/main.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/underscore-min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.js"></script>

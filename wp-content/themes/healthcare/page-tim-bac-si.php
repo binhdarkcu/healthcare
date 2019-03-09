@@ -46,14 +46,13 @@
                           <?php endwhile;  endif;?>
                           <div class="clearfix"></div>
                           <div class="paging pagenavi">
-  							<div class="paging-normal">
-  								<?php if(function_exists('wp_pagenavi'))
-                            		{
-                            			wp_pagenavi( array( 'query' => $relatedPosts ) );
-                            		}
-                                ?>
-                            </div>
-                        </div>
+                              <div class="paging-normal">
+                                  <?php if (function_exists('wp_pagenavi')) {
+                                      wp_pagenavi(array('query' => $relatedPosts));
+                                  }
+                                  ?>
+                              </div>
+                          </div>
                         <div class="clearfix"></div>
                       </div>
                     </div>

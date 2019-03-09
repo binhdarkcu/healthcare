@@ -28,7 +28,7 @@
             'offset'           => 0,
             'orderby'          => 'rand',
             'order'            => 'ASC',
-            'post_type'        => 'hoat_dong',
+            'post_type'        => array('hoat_dong', 'dich_vu', 'gioi_thieu_khoa'),
             'post_status'      => 'publish',
             "hide_empty" => 0,
         );

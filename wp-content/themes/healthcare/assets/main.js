@@ -22,9 +22,25 @@
     
     //Slider
     $(document).ready(function () {
-        var menu = $('#droplinetabs1');
+        var has_children = $('#nav .menu-item-has-children');
+        has_children.click(function (e) {
+            has_children.find('.submenu_changed').removeClass('open');
+            if($(this).hasClass('opened')) {
+                $(this).removeClass('opened')
+                $(this).find('.submenu_changed').removeClass('open')
+                
+            } else {
+                $(this).addClass('opened');
+                $(this).find('.submenu_changed').addClass('open')
+            }
+            e.stopPropagation();
+        });
+        $('.navbar-toggle.collapsed').click(function () {
+            $('#navMain').slideToggle('fast')
+        })
+        
+        var menu = $('#header');
         $(window).scroll(function () {
-            
             if ($(window).scrollTop() > 173) {
                 menu.addClass('fixed');
             } else {
