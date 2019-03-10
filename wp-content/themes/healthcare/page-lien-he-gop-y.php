@@ -15,10 +15,10 @@
                         <div class="contact-form">
                             <h3>Liên hệ với chúng tôi</h3>
                             <address>
-                                <strong>Phòng khám đa khoa quốc tế Golden Healthcare</strong><br>
-                                Số 37 Hoàng Hoa Thám, Phường 13, Quận Tân Bình, Tp.HCM<br>
-                                <abbr title="Phone">Điện thoại:</abbr> 0369.03.18.18<br>
-                                <abbr title="Hotline">Email:</abbr> info@goldenhealthcarevn.com<br>
+                                <strong><?php echo get_field('name_of_clinic', 'option'); ?></strong><br>
+                                <?php echo get_field('footer_address', 'option'); ?><br>
+                                <abbr title="Phone">Điện thoại:</abbr> <?php echo get_field('footer_phone', 'option'); ?><br>
+                                <abbr title="Hotline">Email:</abbr> <?php echo get_field('footer_email', 'option'); ?><br>
                             </address>
 
                             <form id="main-contact-form" name="contactForm" ng-submit="makeOfferAdvise(OfferAdvise)" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">

@@ -82,20 +82,30 @@
                                     <?php
                                     $logoUrl = get_field('header_logo', 'option');
                                     ?>
-                                    <img src="<?php echo $logoUrl; ?>" alt="PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE" style="width:300px;">
+                                    <img src="<?php echo $logoUrl; ?>" alt="<?php echo get_field('name_of_clinic', 'option'); ?>" style="width:300px;">
                                 </a>
                             </div></div>
                         <div class="col-md-9 col-xs-6">
                             <div style="float: left;margin-top: 0;font-size: 18px; font-size: 18px; width: 40%;" class="hidden_md">
-                                <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</h3>
+                                <h3 style="margin-top: 17px; font-size: 18px; text-transform: uppercase"><?php echo get_field('name_of_clinic', 'option'); ?></h3>
                                 Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
                                 Hotline: <?php echo get_field('footer_phone', 'option'); ?>
                             </div>
-                            <div class="text-right language">
-                                <?php  qtranxf_generateLanguageSelectCode(array(
+                            <div class="text-right language" style="margin-bottom: 10px;">
+                                <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'top_nav',
+                                            'menu_class'     => 'nav_small list-inline'
+                                        )
+                                    );
+                                ?>
+                                <div class="hidden_md">
+                                    <?php  qtranxf_generateLanguageSelectCode(array(
                                     'type'   => 'image'
                                 ));
-                                ?>
+                                    ?>
+                                </div>
                             </div>
                             <button type="button" class="navbar-toggle collapsed show_md">
                                 <span class="sr-only">Toggle navigation</span>
@@ -162,6 +172,12 @@
                                 );
                                 ?>
                             </div>
+                        </div>
+                        <div class="show_md" style="padding-bottom: 15px;">
+                            <?php  qtranxf_generateLanguageSelectCode(array(
+                                'type'   => 'image'
+                            ));
+                            ?>
                         </div>
                     </div>
                 </div>

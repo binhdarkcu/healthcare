@@ -43,6 +43,7 @@
                                                         <div class="content">
                                                             <h2><?php echo $items->post_title ?></h2>
                                                             <p class="limit_row"><?php echo $items->post_content ?></p>
+                                                            <a style="color: #f7931d;" href="<?php the_permalink($items->ID);?>"><?php echo get_field('read_more', 'option'); ?></a>
                                                         </div>
                                                     </a>
                                                 </div>

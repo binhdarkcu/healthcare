@@ -79,52 +79,85 @@
 <!-------------------------------------------->
 <!---->
 <footer id="footer" ng-if="!isLoading" class="" style="">
-    <div class="container">
+    <div class="container" style="padding-bottom: 20px; border-bottom: 1px solid #fff">
         <div class="row">
-            <div class="col-md-4 footer-title footer-left">
-                <!--Thông tin công ty vị trí google map -->
-                    <div>
-                        <strong>Thông tin website</strong>
-                        <p>Địa chỉ: <?php echo get_field('footer_address', 'option'); ?><br/>Số Điện
-                            Thoại: <?php echo get_field('footer_phone', 'option'); ?>
-                            <br/>Email: <?php echo get_field('footer_email', 'option'); ?></p>
-                        <div id="map" style="width: 100%;">
-                            <div style="width: 100%">
-                                <iframe style="width: 100%;"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d823.9013118313533!2d106.64648384710628!3d10.799268884097291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175299465a6aa4d%3A0x736056bf971601aa!2zUEjDkk5HIEtIw4FNIMSQQSBLSE9BIFFV4buQQyBU4bq-IEdPTERFTiBIRUFMVEhDQVJF!5e0!3m2!1sen!2s!4v1552061025538"
-                                        width="400" height="200" frameborder="0" style="border:0"
-                                        allowfullscreen></iframe>
-                            </div>
-                            <br/></div>
+            <div class="col-md-12">
+                <h5 class="footer_title"><?php echo get_field('name_of_clinic', 'option'); ?></h5>
+                <div class="row">
+                    <div class="col-md-3 column_info" style="margin-bottom: 20px">
+                        <h5>head office</h5>
+                        <span> <i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo get_field('footer_address', 'option'); ?></span><br/>
+                        <span><i class="fa fa-phone" aria-hidden="true"></i> <?php echo get_field('footer_phone', 'option'); ?></span><br/>
+                        <span><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo get_field('footer_email', 'option'); ?></span><br/>
+                        <?php if (get_field('footer_socials', 'option')): ?>
+                            <ul class="social_icons">
+                                <?php while (has_sub_field('footer_socials', 'option')): ?>
+                                    <li>
+                                        <a href="<?php echo get_sub_field('social_link'); ?>"><i class="fa fa-<?php echo get_sub_field('social_name'); ?>" aria-hidden="true"></i></a>
+                                    </li>
+                                <?php endwhile; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
-            </div>
-            <div class="col-md-4 footer-title footer-mid">
-
-                <p><strong>Mạng xã hội</strong></p>
-                <?php if (get_field('footer_socials', 'option')): ?>
-                    <ul>
-
-                        <?php while (has_sub_field('footer_socials', 'option')): ?>
-                            <li>
-                                <a href="<?php echo get_sub_field('social_link'); ?>"><i class="fa fa-<?php echo get_sub_field('social_name'); ?>" aria-hidden="true"></i></a>
-                            </li>
-                        <?php endwhile; ?>
-
-                    </ul>
-
-                <?php endif; ?>
-
-            </div>
-            <div class="col-md-4 footer-title footer-right">
-                <!--Thời gian làm việc các chuyên khoa-->
-                <div>
-                    <strong>Thời gian làm việc các chuyên khoa</strong>
-                    <?php echo get_field('footer_working_time', 'option'); ?>
+                    <div class="col-md-3" style="margin-bottom: 20px">
+                        <iframe style="width: 100%;"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d823.9013118313533!2d106.64648384710628!3d10.799268884097291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175299465a6aa4d%3A0x736056bf971601aa!2zUEjDkk5HIEtIw4FNIMSQQSBLSE9BIFFV4buQQyBU4bq-IEdPTERFTiBIRUFMVEhDQVJF!5e0!3m2!1sen!2s!4v1552061025538"
+                                width="100%" height="200" frameborder="0" style="border:0"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="col-md-6 column_info column-menu">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <h5>Dịch vụ</h5>
+                                <?php
+                                $args = array(
+                                    'post_type'      => 'page',
+                                    'posts_per_page' => -1,
+                                    'post_parent'    => 66,
+                                    'order'          => 'ASC',
+                                    'orderby'        => 'menu_order'
+                                );
+                                $parent = new WP_Query( $args );
+                                if ( $parent->have_posts() ) : ?>
+                                    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
+                                        <a href="<<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a>
+                                    <?php endwhile; ?>
+                                <?php endif; wp_reset_postdata(); ?>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <h5>Chuyên khoa</h5>
+                                <?php
+                                $categories = get_categories(array(
+                                    'hide_empty' => false
+                                ));
+                                foreach( $categories as $category ) { ?>
+                                        <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?></a>
+                                <?php  } ?>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <h5>Hỗ trợ khách hàng</h5>
+                                <?php
+                                $args = array(
+                                    'post_type'      => 'page',
+                                    'posts_per_page' => -1,
+                                    'post_parent'    => 102,
+                                    'order'          => 'ASC',
+                                    'orderby'        => 'menu_order'
+                                );
+                                $parent = new WP_Query( $args );
+                                if ( $parent->have_posts() ) : ?>
+                                    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
+                                        <a href="<<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a>
+                                    <?php endwhile; ?>
+                                <?php endif; wp_reset_postdata(); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="text-center"><span style="font-style:italic">Copyright © 2017</span></div>
+    <div class="text-center" style="padding-top: 20px; padding-bottom: 20px;"><span style="font-style:italic">Copyright © 2017</span></div>
     <!-- live support -->
     <div class="live_support">
         <a href="<?php echo get_permalink( 94 )?>" class="dathen_fixed">

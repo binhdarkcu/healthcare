@@ -7,9 +7,8 @@
     function register_menu() {
         register_nav_menus( array(
         	'primary_menus' => 'Primary menus',
-            'top-nav' => 'Top Navigation'
+            'top_nav' => 'Top Navigation'
         ) );
-        register_nav_menu('primary_menus',__( 'primary_menus' ));
     }
     add_action( 'init', 'register_menu' );
 
@@ -318,8 +317,8 @@ function show_childpages_departments($page_id) {
             'parent_slug' => 'theme-general-settings',
         ));
         acf_add_options_sub_page(array(
-            'page_title'  => 'Bài viết liên quan',
-            'menu_title' => 'Bài viết liên quan',
+            'page_title'  => 'Mô tả ngắn',
+            'menu_title' => 'Mô tả ngắn',
             'parent_slug' => 'theme-general-settings',
         ));
     }

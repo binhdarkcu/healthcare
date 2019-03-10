@@ -17,16 +17,21 @@
 		<?php dwqa_load_template( 'captcha', 'form' ); ?>
 
 		<?php if ( dwqa_current_user_can( 'post_answer' ) && !is_user_logged_in() ) : ?>
-		<p>
-			<label for="user-email"><?php _e( 'Your Email', 'dw-question-answer' ) ?></label>
-			<?php $email = isset( $_POST['user-email'] ) ? sanitize_email( $_POST['user-email'] ) : ''; ?>
-			<input type="email" class="" name="user-email" value="<?php echo $email ?>" >
-		</p>
-		<p>
-			<label for="user-name"><?php _e( 'Your Name', 'dw-question-answer' ) ?></label>
-			<?php $name = isset( $_POST['user-name'] ) ? esc_html( $_POST['user-name'] ) : ''; ?>
-			<input type="text" class="" name="user-name" value="<?php echo $name ?>" >
-		</p>
+            <p>
+                <label for="user-name"><?php _e( 'Your Name', 'dw-question-answer' ) ?></label>
+                <?php $name = isset( $_POST['user-name'] ) ? esc_html( $_POST['user-name'] ) : ''; ?>
+                <input type="text" class="" name="user-name" value="<?php echo $name ?>" >
+            </p>
+            <p>
+                <label for="user-email"><?php _e( 'Your Email', 'dw-question-answer' ) ?></label>
+                <?php $email = isset( $_POST['user-email'] ) ? sanitize_email( $_POST['user-email'] ) : ''; ?>
+                <input type="email" class="" name="user-email" value="<?php echo $email ?>" >
+            </p>
+            <p>
+                <label for="user-phone"><?php _e( 'Your Phone', 'dw-question-answer' ) ?></label>
+                <?php $phone = isset( $_POST['user-phone'] ) ? esc_html( $_POST['user-phone'] ) : ''; ?>
+                <input type="text" class="" name="user-phone" value="<?php echo $phone ?>" >
+            </p>
 		<?php endif; ?>
 
 		<select class="dwqa-select" name="dwqa-status">

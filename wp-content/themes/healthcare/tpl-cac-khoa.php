@@ -2,6 +2,7 @@
   <div class="container">
     <div class="section-header">
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Chuyên khoa</h2>
+        <small class="short-desc"><?php echo get_field('specialist', 'option') ?></small>
     </div>
     <div class="row chuyenkhoa" style="display: flex;flex-flow: row wrap;">
       <!-- các icon chuyên khoa, bấn vào icon link đến bài viết được thiết lập. -->

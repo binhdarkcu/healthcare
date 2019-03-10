@@ -14,6 +14,7 @@
       <div class="container">
           <div class="section-header">
               <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hình ảnh</h2>
+              <small class="short-desc"><?php echo get_field('image_section', 'option') ?></small>
           </div>
           <section id="gallery-slider" style="position:relative;">
               <div class="carousel-inner" role="listbox">
