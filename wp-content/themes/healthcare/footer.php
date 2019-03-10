@@ -98,6 +98,8 @@
                                 <?php endwhile; ?>
                             </ul>
                         <?php endif; ?>
+                        <a href="http://online.gov.vn" target="_blank">
+                            <img alt="" style="max-width: 75%; margin-top: 15px" src="<?php echo get_stylesheet_directory_uri(); ?>/assets//1dathongbao.png"></a>
                     </div>
                     <div class="col-md-3" style="margin-bottom: 20px">
                         <iframe style="width: 100%;"
