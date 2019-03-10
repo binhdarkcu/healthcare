@@ -9,7 +9,9 @@
                 <h3>Các bác sĩ theo khoa</h3>
                 <ul id="basics" class="cd-faq-group">
                     <?php
-                      $categories = get_categories();
+                      $categories = get_categories(array(
+                          'hide_empty' => false
+                      ));
                       foreach( $categories as $category ) {
 
                           $imgUrl = get_field('departments_image', $category);

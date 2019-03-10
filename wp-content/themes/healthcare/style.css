@@ -436,7 +436,6 @@ body .cd-faq-group {
     padding: 15px 20px;
     color: #fff;
     text-transform: uppercase;
-    font-size: 12px;
 }
 #header .nav-menu li:first-of-type {
     padding-left: 5px;
@@ -747,6 +746,9 @@ body.single-dwqa-question #dwqa-respond {
     font-size: 13px;
     margin-top: 0;
 }
+#footer .column_info span {
+    font-size: 12px;
+}
 #footer .column_info span i {
     display: inline-block;
     margin-right: 7px;
@@ -774,5 +776,6 @@ body.single-dwqa-question #dwqa-respond {
 }
 #footer .column_info.column-menu a {
     display: table;
+    font-size: 12px;
 }
  /* end */

@@ -4,7 +4,10 @@
         <?php
             $queried_object = get_queried_object();
             $categories =  get_categories(
-                array('exclude' => array($queried_object->term_id, 1))
+                array(
+                    'exclude' => array($queried_object->term_id, 1),
+                    'hide_empty' => false
+                )
             );
         ?>
         <ul class="post-list sidebarKhoa">

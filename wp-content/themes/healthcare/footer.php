@@ -98,8 +98,6 @@
                                 <?php endwhile; ?>
                             </ul>
                         <?php endif; ?>
-                        <a href="http://online.gov.vn" target="_blank">
-                            <img alt="" style="max-width: 75%; margin-top: 15px" src="<?php echo get_stylesheet_directory_uri(); ?>/assets//1dathongbao.png"></a>
                     </div>
                     <div class="col-md-3" style="margin-bottom: 20px">
                         <iframe style="width: 100%;"
@@ -111,47 +109,30 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <h5>Dịch vụ</h5>
-                                <?php
-                                $args = array(
-                                    'post_type'      => 'page',
-                                    'posts_per_page' => -1,
-                                    'post_parent'    => 66,
-                                    'order'          => 'ASC',
-                                    'orderby'        => 'menu_order'
-                                );
-                                $parent = new WP_Query( $args );
-                                if ( $parent->have_posts() ) : ?>
-                                    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-                                        <a href="<<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a>
-                                    <?php endwhile; ?>
-                                <?php endif; wp_reset_postdata(); ?>
+                                <a href="<?php echo get_the_permalink(88) ?>">Chuyên khoa</a>
+                                <a href="<?php echo get_the_permalink(76) ?>">Gói khám tầm soát sức khoẻ</a>
+                                <a href="<?php echo get_the_permalink(217) ?>">Đặt hẹn với bác sĩ chuyên khoa</a>
+                                <a href="<?php echo get_the_permalink(227) ?>">Hồ sơ điện tử</a>
+                                <a href="<?php echo get_the_permalink(497) ?>">Sự kiện trong tháng</a>
+                                <a href="<?php echo get_the_permalink(126) ?>">Thanh toán bảo hiểm</a>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <h5>Chuyên khoa</h5>
-                                <?php
-                                $categories = get_categories(array(
-                                    'hide_empty' => false
-                                ));
-                                foreach( $categories as $category ) { ?>
-                                        <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?></a>
-                                <?php  } ?>
+                                <a href="<?php echo get_category_link(13) ?>">Nội thần kinh</a>
+                                <a href="<?php echo get_category_link(12) ?>">Khoa Nhi</a>
+                                <a href="<?php echo get_category_link(5) ?>">Khoa Mắt</a>
+                                <a href="<?php echo get_category_link(9) ?>">Sản phụ khoa</a>
+                                <a href="<?php echo get_category_link(4) ?>">Tai - Mũi - Họng</a>
+                                <a href="<?php echo get_category_link(6) ?>">Tiêu Hoá Gan Mật</a>
+                                <a href="<?php echo get_category_link(3) ?>">Chẩn Đoán Hình Ảnh</a>
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
-                                <h5>Hỗ trợ khách hàng</h5>
-                                <?php
-                                $args = array(
-                                    'post_type'      => 'page',
-                                    'posts_per_page' => -1,
-                                    'post_parent'    => 102,
-                                    'order'          => 'ASC',
-                                    'orderby'        => 'menu_order'
-                                );
-                                $parent = new WP_Query( $args );
-                                if ( $parent->have_posts() ) : ?>
-                                    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-                                        <a href="<<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a>
-                                    <?php endwhile; ?>
-                                <?php endif; wp_reset_postdata(); ?>
+                                <h5>LIÊN KẾT NHANH</h5>
+                                <a href="<?php echo get_the_permalink(8) ?>">Về chúng tôi</a>
+                                <a href="<?php echo get_the_permalink(102) ?>">Hỗ trợ khách hàng</a>
+                                <a href="<?php echo get_the_permalink(98) ?>">Tư vấn</a>
+                                <a href="#">Tuyển dụng</a>
+                                <a href="<?php echo get_the_permalink(126) ?>">Liên hệ - góp ý</a>
                             </div>
                         </div>
                     </div>

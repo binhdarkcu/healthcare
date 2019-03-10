@@ -420,10 +420,7 @@ function show_childpages_departments($page_id) {
         $id_doctor = ( isset( $_GET['id_doctor'] ) ) ? $_GET['id_doctor'] : '';
         $day_booked = ( isset( $_GET['day_booked'] ) ) ? $_GET['day_booked'] : '';
         $time = ( isset( $_GET['time'] ) ) ? $_GET['time'] : '';
-        $result = "SELECT * 
-                  FROM wp_dathen 
-                  WHERE id_doctor = $id_doctor AND dayChecked = '$day_booked' AND time = '$time'"
-        ;
+        $result = "SELECT * FROM wp_dathen WHERE id_doctor = $id_doctor AND dayChecked = '$day_booked' AND time = '$time'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)

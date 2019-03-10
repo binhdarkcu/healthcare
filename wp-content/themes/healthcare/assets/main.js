@@ -84,8 +84,8 @@
         $(".services-slider").find('.carousel-inner').owlCarousel({
             slideSpeed: 700,
             paginationSpeed: 500,
-            autoplay: false,
-            navigation: true,
+            autoplay: true,
+            navigation: false,
             dots: false,
             navigationText: [
                 "<i class='fa fa-angle-left'></i>",

@@ -17,35 +17,93 @@ $queried_object = get_queried_object();
                         </ul>
                         <div class="tab-content" style="margin-bottom: 30px;" aria-hidden="false">
                             <div id="appointment" class="tab-pane fade active in" style="width: 100%">
-                                <div class="col-md-6 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px">
-                                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required"
-                                          method="POST">
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px">
+                                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required">
                                         <div class="form-group">
-                                            <label class="col-md-4 col-sm-4 col-xs-4">Chọn bác sĩ:</label>
-                                            <div class="col-md-8 col-sm-8 col-xs-8">
-                                                <select class="form-control" id="selectDoctor">
-                                                    <option value="0">Chọn bác sĩ của bạn</option>
-                                                    <?php
-                                                    $id_doctor = $_GET['id_doctor'];
-                                                    $args = array(
-                                                        'post_type' => 'post',
-                                                        'post_status' => 'publish',
-                                                        'posts_per_page' => -1
-                                                    );
-                                                    $query = new WP_Query($args);
-                                                    while ($query->have_posts()) : $query->the_post();
-                                                        ?>
-                                                        <option <?php echo $id_doctor == get_the_ID() ? 'selected' : null ?> value="<?php echo get_the_ID() ?>"><?php echo the_title() ?></option>
-                                                    <?php
-                                                    endwhile;
-                                                    ?>
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Tên công ty:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <select class="form-control" id="">
+                                                    <option value="">Vui lòng chọn công ty bảo hiểm</option>
+                                                    <option value="Công ty AIA">Công ty AIA</option>
+                                                    <option value="Công ty Prudential">Công ty Prudential</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3" id="amount_ordered" style="opacity: 0">
+                                                <label for="">Số lượng đã đặt</label>
+                                                <input type="text" disabled="disabled" value="10" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Họ tên:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Họ tên*" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4"
+                                                   style="padding-right:0;">Ngày tháng năm sinh:* </label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <div class="input-group date" data-provide="datepicker"
+                                                     data-date-autoclose="true" data-date-format="dd/mm/yyyy"
+                                                     data-date-days-of-week-highlighted="0,6" data-date-language="vi"
+                                                     data-date-today-highlight="true">
+                                                    <input type="text"
+                                                           class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                           name="ngaysinh" id="ngaysinh" placeholder="Chọn ngày"
+                                                           ng-model="appointment.PatientDoB" aria-invalid="false">
+                                                    <div class="input-group-addon">
+                                                        <span class="fa fa-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Giới tính:* </label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="genderOptRadio" id="male"
+                                                           class="ng-pristine ng-untouched ng-valid ng-empty" value="Nam"
+                                                           aria-invalid="false">Nam
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="genderOptRadio" id="female"
+                                                           class="ng-pristine ng-untouched ng-valid ng-empty" value="Nữ"
+                                                           aria-invalid="false">Nữ
+                                                </label>
+                                                <input type="hidden" id="valueGender" value="0">
+                                                <div class="error-message text-danger" style="display: none">Vui lòng chọn
+                                                    giới tính
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Email:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Email*" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Số điện thoại:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="text" onkeypress="return isNumberKey(event)"
+                                                       class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                                                       placeholder="Số điện thoại" name="patientPhone">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Tình trạng hôn nhân:</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <select class="form-control" id="">
+                                                    <option value="" selected hidden>Vui lòng chọn tình trạng hôn nhân</option>
+                                                    <option value="single">Độc thân</option>
+                                                    <option value="married">Đã kết hôn</option>
+                                                    <option value="divorced">Ly hôn</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="dateOrder" class="col-md-4 col-sm-4 col-xs-4"
-                                                   style="padding-right:0;">Thời gian đặt hẹn: </label>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                            <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4" style="padding-right:0;">Thời gian đặt hẹn:* </label>
+                                            <div class="col-md-2 col-sm-3 col-xs-4">
                                                 <div id="dateTimePicker" class="input-group date">
                                                     <input type="text"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
@@ -56,87 +114,31 @@ $queried_object = get_queried_object();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">giờ:</label>
+                                            <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                             <div class="col-md-3 col-sm-3 col-xs-3">
                                                 <select name="timeOrder" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required">
-                                                    <option label="08:15" value="08:15" selected>08:15</option>
-                                                    <option label="08:30" value="08:30">08:30</option>
-                                                    <option label="08:45" value="08:45">08:45</option>
-                                                    <option label="09:00" value="09:00">09:00</option>
-                                                    <option label="09:15" value="09:15">09:15</option>
-                                                    <option label="09:30" value="09:30">09:30</option>
-                                                    <option label="09:45" value="09:45">09:45</option>
-                                                    <option label="10:00" value="10:00">10:00</option>
-                                                    <option label="10:15" value="10:15">10:15</option>
-                                                    <option label="10:30" value="10:30">10:30</option>
-                                                    <option label="10:45" value="10:45">10:45</option>
-                                                    <option label="11:00" value="11:00">11:00</option>
-                                                    <option label="11:15" value="11:15">11:15</option>
-                                                    <option label="11:30" value="11:30">11:30</option>
-                                                    <option label="11:45" value="11:45">11:45</option>
-                                                    <option label="12:00" value="12:00">12:00</option>
-                                                    <option label="12:15" value="12:15">12:15</option>
-                                                    <option label="12:30" value="12:30">12:30</option>
-                                                    <option label="12:45" value="12:45">12:45</option>
-                                                    <option label="13:00" value="13:00">13:00</option>
-                                                    <option label="13:15" value="13:15">13:15</option>
-                                                    <option label="13:30" value="13:30">13:30</option>
-                                                    <option label="13:45" value="13:45">13:45</option>
-                                                    <option label="14:00" value="14:00">14:00</option>
-                                                    <option label="14:15" value="14:15">14:15</option>
-                                                    <option label="14:30" value="14:30">14:30</option>
-                                                    <option label="14:45" value="14:45">14:45</option>
-                                                    <option label="15:00" value="15:00">15:00</option>
-                                                    <option label="15:15" value="15:15">15:15</option>
-                                                    <option label="15:30" value="15:30">15:30</option>
-                                                    <option label="15:45" value="15:45">15:45</option>
-                                                    <option label="16:00" value="16:00">16:00</option>
-                                                    <option label="16:15" value="16:15">16:15</option>
-                                                    <option label="16:30" value="16:30">16:30</option>
-                                                    <option label="16:45" value="16:45">16:45</option>
-                                                    <option label="17:00" value="17:00">17:00</option>
-                                                    <option label="17:15" value="17:15">17:15</option>
-                                                    <option label="17:30" value="17:30">17:30</option>
-                                                    <option label="17:45" value="17:45">17:45</option>
-                                                    <option label="18:00" value="18:00">18:00</option>
-                                                    <option label="18:15" value="18:15">18:15</option>
-                                                    <option label="18:30" value="18:30">18:30</option>
-                                                    <option label="18:45" value="18:45">18:45</option>
+                                                    <option value="Sáng">Sáng (7h30 - 11h30)</option>
+                                                    <option value="Chiều">Chiều (13h00 - 17h00)</option>
+                                                    <option value="Tối">Tối (18h00 - 19h30)</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="symptom" class="col-md-4" required="">Triệu chứng lâm sàng: </label>
-                                            <div class="col-md-8 col-sm-8">
-                                                <textarea id='symptom'
-                                                          class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                          aria-invalid="true"></textarea>
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Mã nhân viên / phòng ban:</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Nhập mã" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-4" required="">Tái khám hoặc khám mới: </label>
-                                            <div class="col-md-8 col-sm-8">
-                                                <select id="examination" class="form-control ng-pristine ng-untouched">
-                                                    <option value="" selected>Vui lòng chọn tái khám hoặc khám mới</option>
-                                                    <option value="Khám mới">Khám mới</option>
-                                                    <option value="Tái khám">Tái khám</option>
-                                                </select>
+                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Ghi chú:</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <textarea type="text" class="form-control ng-pristine ng-untouched" placeholder="Ghi chú"></textarea>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4">Mã khách hàng: </label>
-                                            <div class="col-md-8 col-sm-8">
-                                                <input id="client_code" class="form-control ng-pristine ng-untouched" placeholder="Mã khách hàng" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-offset-4 col-md-8 text-center">
-                                            <span id="duplicateTime" class="text-danger showText hidden">Bác sĩ đã được hẹn trước</span>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4"></label>
                                             <div class="col-md-8">
-                                                <button type="submit" class="btn btn-success" id="nextStep">Bước tiếp theo</button>
-                                                <a class="btn btn-default" href="<?php echo get_bloginfo('url') ?>">Trở về trang chủ</a>
+                                                <button type="submit" class="btn btn-success" id="nextStep">Đăng ký</button>
                                             </div>
                                         </div>
                                     </form>
