@@ -24,10 +24,12 @@ jQuery(document).ready(function(){
         birthday,
         response;
     $('#selectDoctor').select2();
+    /* change value radio */
     $('.radio-inline').click(function () {
         var val = $(this).find('input[type="radio"]').attr('value')
         gender = $('#valueGender').attr('value', val);
     })
+    /* checking validation and send data to server in đặt hẹn*/
     $('#registerUser').click(function () {
         console.log(examination);
         response = grecaptcha.getResponse();
@@ -80,6 +82,7 @@ jQuery(document).ready(function(){
             return false;
         }
     });
+    /* checking validation and next step in đặt hẹn */
     $('#nextStep').click(function () {
         selectDoctor = $('#selectDoctor').val();
         dateAppointment = $('#dateTimePicker input').datepicker().val();
@@ -137,4 +140,144 @@ jQuery(document).ready(function(){
         }
         return false
     });
+    
+    /* =======================================================================================*/
+    /* checking validation and send data to server in đặt hẹn công ty */
+    var nameOfCompany,
+        yourName,
+        yourBirthday,
+        yourEmail,
+        yourPhone,
+        marital_status,
+        dayOrder,
+        sessions,
+        yourCode,
+        yourGender,
+        yourNote,
+        yourAmount,
+        companyName,
+        insuranceAgent;
+    $('#registerScheduleCompany').click(function () {
+        nameOfCompany = $('.name_of_company').val();
+        yourName = $('.yourName').val();
+        yourBirthday = $('#yourBirthday').datepicker().val();
+        yourEmail = $('.yourEmail').val();
+        yourGender = $('#valueGender').val();
+        yourPhone = $('.yourPhone').val();
+        marital_status = $('.marital_status').val();
+        dayOrder = $('#dateTimePicker2').datepicker().val();
+        sessions = $('.sessions').val();
+        yourCode = $('.yourCode').val();
+        yourNote = $('.yourNote').val();
+        yourAmount = $('.yourAmount').val();
+        $('#formScheduleCompany').validate({
+            rules: {
+                nameOfCompany: "required",
+                amount: {
+                    required: true,
+                    max: 30
+                },
+                name: "required",
+                yourBirthday: 'required',
+                genderOptRadio: 'required',
+                yourEmail: {
+                    required: true,
+                    email: true
+                },
+                yourPhone: 'required',
+                timeOrder: 'required',
+                sessionOrder: 'required'
+            },
+            messages: {
+                amount: {
+                    required: 'Vui lòng điền số lượng',
+                    max: 'Số lượng cần ít hơn 30 người'
+                },
+                genderOptRadio: 'Vui lòng chọn giới tính'
+            },
+            highlight: function (element) {
+                $(element).addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).removeClass('has-error');
+            },
+            errorPlacement: function(error, element) {
+                var attrName = element.attr('name');
+                if( attrName == 'amount') {
+                    error.insertAfter(element);
+                } else if (element.is(":radio") ) {
+                    error.appendTo( element.parents('.form-group .col-xs-8') );
+                }
+            },
+            submitHandler: function () {
+                $.ajax({
+                    type: 'GET',
+                    url: my_ajax_insert_db.ajax_url,
+                    data: {
+                        action: 'action_check_time_order',
+                        company_name: nameOfCompany,
+                        day: dayOrder,
+                        sessions: sessions
+                    },
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+                $.ajax({
+                    type: 'POST',
+                    url: my_ajax_insert_db.ajax_url,
+                    data: {
+                        action:'action_insert_db_schedule_company',
+                        company_name: nameOfCompany,
+                        amount: yourAmount,
+                        name: yourName,
+                        birthday: yourBirthday,
+                        gender: yourGender,
+                        email: yourEmail,
+                        marital_status: marital_status,
+                        day: dayOrder,
+                        sessions: sessions,
+                        employee_code: yourCode,
+                        note: yourNote
+                    },
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            }
+        });
+    });
+    
+    /* checking validation and send data form 2 */
+    $('#registerCompany').click(function () {
+        companyName = $('.companyName').val();
+        insuranceAgent = $('.insuranceAgent').val();
+        $('#formCompany').validate({
+            rules: {
+                companyName: 'required',
+                insuranceAgent: 'required'
+            },
+            highlight: function (element) {
+                $(element).addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).removeClass('has-error');
+            },
+            errorPlacement: function(error, element) {},
+            submitHandler: function () {
+                $.ajax({
+                    type: 'POST',
+                    url: my_ajax_insert_db.ajax_url,
+                    data: {
+                        action: 'action_insert_db_company',
+                        companyName: companyName,
+                        insuranceAgent: insuranceAgent
+                    },
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            }
+        })
+    })
 });

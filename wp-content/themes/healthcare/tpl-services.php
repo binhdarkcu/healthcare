@@ -39,7 +39,7 @@
                                             <div class="carousel-content" style="margin-right: 20px;">
                                                 <div class="feature-col">
                                                     <a href="<?php the_permalink($items->ID);?>">
-                                                        <div class="ehr-title" style="height: 200px; background-size: cover; background: url(<?php echo $feature_image_meta[0] ?>) center no-repeat;"></div>
+                                                        <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
                                                         <div class="content">
                                                             <h2><?php echo $items->post_title ?></h2>
                                                             <p class="limit_row"><?php echo $items->post_content ?></p>

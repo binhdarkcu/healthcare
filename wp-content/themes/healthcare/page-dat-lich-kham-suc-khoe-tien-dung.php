@@ -13,35 +13,38 @@ $queried_object = get_queried_object();
                                         class="fa fa-calendar" aria-hidden="true"></i> Khám sức khỏe định kỳ công ty</a></li>
                             <li class=""><a showtab="" data-toggle="tab" href="#infoOrderer" aria-expanded="false"><i
                                         class="fa fa-id-card-o" aria-hidden="true"></i> Khám tuyển dụng - bảo hiểm</a></li>
-                            <!--<li class=""><a ng-show="mailActiveId!=undefined" showtab="" data-toggle="tab" href="#checkandConfirm"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Kiểm tra và xác nhận</a></li>-->
                         </ul>
                         <div class="tab-content" style="margin-bottom: 30px;" aria-hidden="false">
                             <div id="appointment" class="tab-pane fade active in" style="width: 100%">
-                                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px">
-                                    <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <form class="form-horizontal" id="formScheduleCompany" method="post">
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Tên công ty:*</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Tên công ty:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <select class="form-control" id="">
+                                                <select class="form-control name_of_company" name="nameOfCompany">
                                                     <option value="">Vui lòng chọn công ty bảo hiểm</option>
-                                                    <option value="Công ty AIA">Công ty AIA</option>
-                                                    <option value="Công ty Prudential">Công ty Prudential</option>
+                                                    <?php if( have_rows('schedule_company', 'option') ): while( have_rows('schedule_company', 'option') ): the_row();
+                                                        while( have_rows('company_list', 'option') ): the_row();?>
+                                                            <option value="<?php echo get_sub_field('name_of_company') ?>"><?php echo get_sub_field('name_of_company') ?></option>
+                                                        <?php endwhile;endwhile;endif; ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-3" id="amount_ordered" style="opacity: 0">
-                                                <label for="">Số lượng đã đặt</label>
-                                                <input type="text" disabled="disabled" value="10" />
-                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Họ tên:*</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4"">Số lượng cần đặt:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Họ tên*" />
+                                                <input type="number" name="amount"
+                                                       class="form-control yourAmount" placeholder="Tối đa 30 người" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4"
-                                                   style="padding-right:0;">Ngày tháng năm sinh:* </label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Họ tên:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="text" name="name" class="form-control yourName" placeholder="Họ tên*" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4">Ngày tháng năm sinh:* </label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <div class="input-group date" data-provide="datepicker"
                                                      data-date-autoclose="true" data-date-format="dd/mm/yyyy"
@@ -49,7 +52,7 @@ $queried_object = get_queried_object();
                                                      data-date-today-highlight="true">
                                                     <input type="text"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-                                                           name="ngaysinh" id="ngaysinh" placeholder="Chọn ngày"
+                                                           name="yourBirthday" id="yourBirthday" placeholder="Chọn ngày"
                                                            ng-model="appointment.PatientDoB" aria-invalid="false">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
@@ -67,33 +70,30 @@ $queried_object = get_queried_object();
                                                 </label>
                                                 <label class="radio-inline">
                                                     <input type="radio" name="genderOptRadio" id="female"
-                                                           class="ng-pristine ng-untouched ng-valid ng-empty" value="Nữ"
-                                                           aria-invalid="false">Nữ
+                                                           class="ng-pristine ng-untouched ng-valid ng-empty" value="Nữ">Nữ
                                                 </label>
                                                 <input type="hidden" id="valueGender" value="0">
-                                                <div class="error-message text-danger" style="display: none">Vui lòng chọn
-                                                    giới tính
-                                                </div>
+                                                <div class="clearfix"></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Email:*</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Email:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Email*" />
+                                                <input type="text" name="yourEmail" class="form-control ng-pristine ng-untouched yourEmail" placeholder="Email*" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Số điện thoại:*</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Số điện thoại:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <input type="text" onkeypress="return isNumberKey(event)"
-                                                       class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
-                                                       placeholder="Số điện thoại" name="patientPhone">
+                                                <input type="text" onkeypress="return isNumberKey(event)" name="yourPhone"
+                                                       class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required yourPhone"
+                                                       placeholder="Số điện thoại">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Tình trạng hôn nhân:</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Tình trạng hôn nhân:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <select class="form-control" id="">
+                                                <select class="form-control marital_status">
                                                     <option value="" selected hidden>Vui lòng chọn tình trạng hôn nhân</option>
                                                     <option value="single">Độc thân</option>
                                                     <option value="married">Đã kết hôn</option>
@@ -104,11 +104,11 @@ $queried_object = get_queried_object();
                                         <div class="form-group">
                                             <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4" style="padding-right:0;">Thời gian đặt hẹn:* </label>
                                             <div class="col-md-2 col-sm-3 col-xs-4">
-                                                <div id="dateTimePicker" class="input-group date">
-                                                    <input type="text"
+                                                <div class="input-group date">
+                                                    <input type="text" name="timeOrder"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
                                                            placeholder="Chọn ngày" autocomplete="off"
-                                                           aria-invalid="false">
+                                                           aria-invalid="false" id="dateTimePicker2">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
                                                     </div>
@@ -116,70 +116,77 @@ $queried_object = get_queried_object();
                                             </div>
                                             <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                                <select name="timeOrder" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required">
-                                                    <option value="Sáng">Sáng (7h30 - 11h30)</option>
-                                                    <option value="Chiều">Chiều (13h00 - 17h00)</option>
-                                                    <option value="Tối">Tối (18h00 - 19h30)</option>
+                                                <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionOrder">
+                                                    <option value="Sáng" selected>Sáng</option>
+                                                    <option value="Chiều">Chiều</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Mã nhân viên / phòng ban:</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Mã nhân viên / phòng ban:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Nhập mã" />
+                                                <input type="text" class="form-control ng-pristine ng-untouched yourCode" placeholder="Nhập mã" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Ghi chú:</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Ghi chú:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <textarea type="text" class="form-control ng-pristine ng-untouched" placeholder="Ghi chú"></textarea>
+                                                <textarea type="text" class="form-control ng-pristine ng-untouched yourNote" placeholder="Ghi chú"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4"></label>
                                             <div class="col-md-8">
-                                                <button type="submit" class="btn btn-success" id="nextStep">Đăng ký</button>
+                                                <button type="submit" class="btn btn-success" id="registerScheduleCompany">Đăng ký</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <small><?php echo get_field('schedule_company', 'option')['note'] ?></small>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-md-6" id="quickviewProfile">
-                                    <!---->
-                                </div>
                                 <div class="clearfix"></div>
                             </div>
                             <div id="infoOrderer" class="tab-pane fade">
-                                <form name="infoOrdererForm"
-                                         class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+                                <form id="formCompany" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email">
                                     <div class="form-group">
                                         <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Chọn công ty bảo hiểm: <span
                                                 class="red">*</span></label>
                                         <div class="col-md-6 col-sm-9 col-xs-8">
-                                            <select class="form-control" id="">
+                                            <select class="form-control companyName" name="companyName">
                                                 <option value="">Vui lòng chọn công ty bảo hiểm</option>
-                                                <option value="Công ty AIA">Công ty AIA</option>
-                                                <option value="Công ty Prudential">Công ty Prudential</option>
+                                                <?php if( have_rows('company_not_schedule', 'option') ): while( have_rows('company_not_schedule', 'option') ): the_row();
+                                                    while( have_rows('list_of_company', 'option') ): the_row();?>
+                                                        <option value="<?php echo get_sub_field('name_of_company') ?>"><?php echo get_sub_field('name_of_company') ?></option>
+                                                    <?php endwhile;endwhile;endif; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Nhân viên bảo hiểm: <span
+                                        <label class="col-md-2 col-sm-3 col-xs-4">Nhân viên bảo hiểm: <span
                                                 class="red">*</span></label>
                                         <div class="col-md-6 col-sm-9 col-xs-8">
-                                            <input type="text" class="form-control ng-pristine ng-untouched" placeholder="Nhân viên bảo hiểm" />
+                                            <input type="text" name="insuranceAgent" class="form-control insuranceAgent ng-pristine ng-untouched" placeholder="Nhân viên bảo hiểm" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 col-sm-3 col-xs-4"></label>
                                         <div class="col-md-6 col-sm-9 col-xs-8">
-                                            <a href="<?php echo get_permalink($queried_object->ID) ?>" id="registerUser" class="btn btn-success preventClick">Đăng ký</a>
+                                            <button type="submit" id="registerCompany" class="btn btn-success">Đăng ký</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <small><?php echo get_field('company_not_schedule', 'option')['note'] ?></small>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <!---->
                         </div>
-                        <h3 class="column-title">Lưu ý của công ty, lưu ý chung</h3>
+                        <h3 class="column-title">Lưu ý chung</h3>
                         <div style="padding-bottom: 30px;">
                             <?php
                             if ( have_posts() ) {

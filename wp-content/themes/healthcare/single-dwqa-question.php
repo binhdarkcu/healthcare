@@ -15,7 +15,7 @@ while ( have_posts() ) : the_post();
                             <div class="posts">
                                 <?php echo the_content()?>
                             </div>
-                            <h3 class="column-title">Câu hỏi liên quan</h3>
+                            <h3 class="column-title" style="margin-top: 20px">Câu hỏi liên quan</h3>
                             <ul class="post-list">
                                 <?php
                                 $category_detail=wp_get_post_terms( get_the_ID(), 'dwqa-question_category', array('fields'=>'all') );

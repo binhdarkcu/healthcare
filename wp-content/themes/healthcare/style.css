@@ -303,7 +303,7 @@ table.tb-shedule th {
 body a {
     color: #f7931d;
 }
-#nextStep, #registerUser {
+#nextStep, #registerUser, #registerScheduleCompany, #registerCompany {
     background: #f7931d !important;
 }
 body .column-title:after {
@@ -779,3 +779,11 @@ body.single-dwqa-question #dwqa-respond {
     font-size: 12px;
 }
  /* end */
+/* tư vấn */
+.page-template-single-dwqa-question .dwqa-questions-footer .dwqa-ask-question {
+    display: none;
+}
+/* end */
+.error {
+    color: darkred;
+}

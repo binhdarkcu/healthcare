@@ -578,7 +578,7 @@ function dwqa_comment_form( $args = array(), $post_id = null ) {
 			 */
 			echo apply_filters( 'comment_form_field_comment', $args['comment_field'] );
 			?>
-			<input name="comment-submit" type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" value="<?php echo esc_attr( $args['label_submit'] ); ?>" class="dwqa-btn dwqa-btn-primary" />
+			<input name="comment-submit" type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" value="<?php echo esc_attr( $args['label_submit'] ); ?>" class="dwqa-btn dwqa-btn-primary btn btn-success" style="margin-left: 15px;" />
 			<?php comment_id_fields( $post_id ); ?>
 			<?php
 			/**

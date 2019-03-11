@@ -36,14 +36,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&amp;subset=vietnamese" rel="stylesheet">
-    <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/animate.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.theme.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.transitions.css" rel="stylesheet">
@@ -58,13 +56,16 @@
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/lightbox.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/droplinetabs.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/select2.min.css" rel="stylesheet">
-    <script type="text/javascript">
-        var onloadCallback = function() {
-            grecaptcha.render('example1', {
-                'sitekey' : '6LdaBI8UAAAAAC_IYbbefBkIQ33GRb8K5Xb4GbUL'
-            });
-        };
-    </script>
+    <?php
+        if(is_page(94)) :?>
+            <script type="text/javascript">
+                var onloadCallback = function() {
+                    grecaptcha.render('example1', {
+                        'sitekey' : '6LdaBI8UAAAAAC_IYbbefBkIQ33GRb8K5Xb4GbUL'
+                    });
+                };
+            </script>
+    <?php endif; ?>
     <?php wp_head() ?>
 </head>
 

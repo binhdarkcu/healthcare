@@ -1,5 +1,6 @@
 <?php
     require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
+    require_once('inc/api.php'); //Customize functions of plugins Dw-question
 
     add_theme_support( 'post-thumbnails' );
 
@@ -321,6 +322,11 @@ function show_childpages_departments($page_id) {
             'menu_title' => 'Mô tả ngắn',
             'parent_slug' => 'theme-general-settings',
         ));
+        acf_add_options_sub_page(array(
+            'page_title'  => 'Danh sách công ty',
+            'menu_title' => 'Danh sách công ty',
+            'parent_slug' => 'theme-general-settings',
+        ));
     }
 
     function revcon_change_post_label() {
@@ -372,6 +378,7 @@ function show_childpages_departments($page_id) {
         wp_enqueue_script( 'bootstrap-datepicker', get_template_directory_uri() . '/assets/bootstrap-datepicker.js', array('jquery'));
         wp_enqueue_script( 'bootstrap-datepicker-vi', get_template_directory_uri() . '/assets/bootstrap-datepicker.vi.js', array('jquery'));
         wp_enqueue_script( 'main-script', get_template_directory_uri() . '/assets/main.js', array('jquery'));
+        wp_enqueue_script( 'jquery-validation', get_template_directory_uri() . '/assets/jquery.validate.min.js', array('jquery'));
         wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/assets/ajaxCall.js', array('jquery'));
         wp_localize_script('ajax-script', 'my_ajax_insert_db', [ 'ajax_url' => admin_url( 'admin-ajax.php' ) ] );
     }
@@ -412,6 +419,68 @@ function show_childpages_departments($page_id) {
     // This will allow only logged in users to use the functionality
     add_action( 'wp_ajax_action_insert_db', 'insert_db' );
 
+    function insert_db_schedule_company() {
+        // Do your processing here (save to database etc.)
+        // All WP API functions are available for you here
+        global $wpdb;
+        $company_name = ( isset( $_POST['company_name'] ) ) ? $_POST['company_name'] : '';
+        $amount = ( isset( $_POST['amount'] ) ) ? $_POST["amount"] : '';
+        $name = ( isset( $_POST['name'] ) ) ? $_POST['name'] : '';
+        $birthday = ( isset( $_POST['birthday'] ) ) ? $_POST['birthday'] : '';
+        $gender = ( isset( $_POST['gender'] ) ) ? $_POST['gender'] : '';
+        $email = ( isset( $_POST['email'] ) ) ? $_POST['email']: '';
+        $marital_status = ( isset( $_POST['marital_status'] ) ) ? $_POST['marital_status'] : '';
+        $day = ( isset( $_POST['day'] ) ) ? $_POST['day'] : '';
+        $sessions = ( isset( $_POST['sessions'] ) ) ? $_POST['sessions'] : '';
+        $employee_code = ( isset( $_POST['employee_code'] ) ) ? $_POST['employee_code'] : '';
+        $note = ( isset( $_POST['note'] ) ) ? $_POST['note'] : '';
+        $wpdb->insert('wp_company', array(
+            'company_name' => $company_name,
+            'amount' => $amount,
+            'name' => $name,
+            'birthday' => $birthday,
+            'gender' => $gender,
+            'email' => $email,
+            'marital_status' => $marital_status,
+            'day' => $day,
+            'sessions' => $sessions,
+            'employee_code' => $employee_code,
+            'note' => $note
+        ));
+        $result = "SELECT * FROM wp_company";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action( 'wp_ajax_nopriv_action_insert_db_schedule_company', 'insert_db_schedule_company' );
+    // This will allow only logged in users to use the functionality
+    add_action( 'wp_ajax_action_insert_db_schedule_company', 'insert_db_schedule_company' );
+
+    function insert_db_company() {
+        // Do your processing here (save to database etc.)
+        // All WP API functions are available for you here
+        global $wpdb;
+        $company_name = ( isset( $_POST['companyName'] ) ) ? $_POST['companyName'] : '';
+        $insuranceAgent = ( isset( $_POST['insuranceAgent'] ) ) ? $_POST["insuranceAgent"] : '';
+        $wpdb->insert('wp_company', array(
+            'company_name' => $company_name,
+            'insuranceAgent' => $insuranceAgent
+        ));
+        $result = "SELECT insuranceAgent, company_name FROM wp_company WHERE insuranceAgent !=''";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action( 'wp_ajax_nopriv_action_insert_db_company', 'insert_db_company' );
+    // This will allow only logged in users to use the functionality
+    add_action( 'wp_ajax_action_insert_db_company', 'insert_db_company' );
+
     //check time
     function checkTimeBoooked() {
         global $wpdb;
@@ -429,6 +498,25 @@ function show_childpages_departments($page_id) {
     add_action( 'wp_ajax_nopriv_action_check_time_booked', 'checkTimeBoooked' );
     // This will allow only logged in users to use the functionality
     add_action( 'wp_ajax_action_check_time_booked', 'checkTimeBoooked' );
+
+    //check company time order
+    function checkTimeOrder() {
+        global $wpdb;
+        $company_name = ( isset( $_GET['company_name'] ) ) ? $_GET['company_name'] : '';
+        $day = ( isset( $_GET['day'] ) ) ? $_GET['day'] : '';
+        $sessions = ( isset( $_GET['sessions'] ) ) ? $_GET['sessions'] : '';
+        $result = "SELECT amount, day FROM wp_company WHERE company_name = '$company_name' AND day = '$day' AND sessions = '$sessions'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action( 'wp_ajax_nopriv_action_check_time_order', 'checkTimeOrder' );
+    // This will allow only logged in users to use the functionality
+    add_action( 'wp_ajax_action_check_time_order', 'checkTimeOrder' );
+
     //get page children
     function my_get_page_children() {
         $childArgs = array(
@@ -473,91 +561,5 @@ function show_childpages_departments($page_id) {
         } else {
             return dirname( __FILE__ ) . '/single.php';
         }
-    }
-    
-    add_action('rest_api_init', function () {
-       register_rest_route('healthcare/v1', 'dat-hen', array(
-           'methods' => WP_REST_Server::CREATABLE,
-           'callback' => 'create_booking_item',
-           'args' => array(
-               'id_doctor' => array(
-                   'default' => 0,
-                   'sanitize_callback' => 'absint',
-               ),
-               'dayChecked' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'time' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'symptom' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'full_name' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'birthday' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'gender' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'email' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_email',
-               ),
-               'phone' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'examination' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-               'client_code' => array(
-                   'default' => '',
-                   'sanitize_callback' => 'sanitize_text_field',
-               ),
-           )
-       ));
-   });
-
-    function create_booking_item(WP_REST_Request $request){
-        global $wpdb;
-        $_table = $wpdb->prefix . 'dathen';
-        $params = $request->get_params();
-        
-        $result = $wpdb->insert($_table, array(
-            'id_doctor' => $params['id_doctor'],
-            'dayChecked' => $params['dayChecked'],
-            'time' => $params['time'],
-            'symptom' => $params['symptom'],
-            'full_name' => $params['full_name'],
-            'birthday' => $params['birthday'],
-            'gender' => $params['gender'],
-            'email' => $params['email'],
-            'phone' => $params['phone'],
-            'examination' => $params['examination'],
-            'client_code' => $params['client_code']
-        ), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'));
-
-        $data = null;
-        $status = 200;
-        if($result){
-            $params['id'] = $wpdb->insert_id;
-            $data = $params;
-        }else{
-            $status = 500;
-        }
-        
-        $response = new WP_REST_Response($data);
-        $response->set_status($status);
-        return $response;
     }
 ?>
