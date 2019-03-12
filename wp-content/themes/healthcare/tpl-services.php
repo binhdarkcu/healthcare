@@ -2,9 +2,10 @@
   <div class="container">
     <div class="section-header">
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('name_of_service', 'option') ?></h2>
+        <small class="short-desc"><?php echo get_field('description_of_service', 'option') ?></small>
     </div>
     <div class="row">
-        <div id="exTab1">
+        <div id="exTab1" class="col-md-12">
             <ul  class="nav nav-pills">
                 <?php
                 if( have_rows('tab', 'option') ):

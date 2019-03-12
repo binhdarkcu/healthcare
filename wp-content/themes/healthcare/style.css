@@ -493,19 +493,22 @@ body .cd-faq-group {
 @media (min-width: 991px) {
     /* fixed menu */
     body.admin-bar #header.fixed .nav-menu {
-        margin-top: 32px;
     }
-    #header.fixed .nav-menu {
+    #header.fixed {
         position: fixed;
+        margin-top: 32px;
         width: 100%;
         top: 0;
         left: 0;
-        z-index: 999;
+        z-index: 99999;
+        background: #fff;
+        transition: all 0.4s;
+
     }
-    #header.fixed .nav-menu #menu_main {
-        width: 85%;
-        margin: auto;
-    }
+    /*#header.fixed .nav-menu #menu_main {*/
+        /*width: 85%;*/
+        /*margin: auto;*/
+    /*}*/
     /* end */
     #header .nav-menu .menu-item-has-children .submenu_changed a {
         -webkit-transition: all 0.2s;
@@ -691,11 +694,11 @@ ul.language-chooser {
 .nav_small li {
     padding: 0
 }
-.nav_small li:first-of-type {
+.nav_small li:not(:last-of-type) {
     padding-right: 7px;
     position: relative;
 }
-.nav_small li:first-of-type:after {
+.nav_small li:not(:last-of-type):after {
     content: '|';
     font-size: 12px;
     color: #000;

@@ -118,13 +118,17 @@
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <h5>Chuyên khoa</h5>
-                                <a href="<?php echo get_category_link(13) ?>">Nội thần kinh</a>
-                                <a href="<?php echo get_category_link(12) ?>">Khoa Nhi</a>
-                                <a href="<?php echo get_category_link(5) ?>">Khoa Mắt</a>
+                                <a href="<?php echo get_category_link(10) ?>">Tim mạch</a>
+                                <a href="<?php echo get_category_link(1) ?>">Khoa Nội</a>
+                                <a href="<?php echo get_category_link(13) ?>">Nội thần kinh</a>
+                                <a href="<?php echo get_category_link(6) ?>">Trung tâm khám - nội soi Tiêu hoá gan mật</a>
                                 <a href="<?php echo get_category_link(9) ?>">Sản phụ khoa</a>
-                                <a href="<?php echo get_category_link(4) ?>">Tai - Mũi - Họng</a>
-                                <a href="<?php echo get_category_link(6) ?>">Tiêu Hoá Gan Mật</a>
-                                <a href="<?php echo get_category_link(3) ?>">Chẩn Đoán Hình Ảnh</a>
+                                <a href="<?php echo get_category_link(12) ?>">Khoa Nhi</a>
+                                <a href="<?php echo get_category_link(3) ?>">Chẩn đoán hình ảnh</a>
+                                <a href="<?php echo get_category_link(4) ?>">Trung tâm nội soi tai mũi họng</a>
+                                <a href="<?php echo get_category_link(3) ?>">Tiết niệu và Nam khoa</a>
+                                <a href="<?php echo get_category_link(11) ?>">Xét nghiệm</a>
+                                <a href="<?php echo get_category_link(14) ?>">Khoa Dược</a>
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <h5>LIÊN KẾT NHANH</h5>
