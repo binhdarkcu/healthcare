@@ -10,11 +10,11 @@
 
         <?php get_template_part('tpl', 'services')?>
 
-    <section id="services" class="galleries">
+    <section id="services" class="galleries" style="padding-top: 0">
       <div class="container">
           <div class="section-header">
-              <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hình ảnh</h2>
-              <small class="short-desc"><?php echo get_field('image_section', 'option') ?></small>
+              <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('image_section', 'option')['title'] ?></h2>
+              <small class="short-desc"><?php echo get_field('image_section', 'option')['description'] ?></small>
           </div>
           <section id="gallery-slider" style="position:relative;">
               <div class="carousel-inner" role="listbox">

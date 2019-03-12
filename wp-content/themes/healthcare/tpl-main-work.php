@@ -1,7 +1,8 @@
 <section id="services">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">TIỆN ÍCH NỔI BẬT</h2>
+            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('featured_gadgets', 'option')['title'] ?></h2>
+            <small class="short-desc"><?php echo get_field('featured_gadgets', 'option')['description'] ?></small>
         </div>
 
         <div class="row">

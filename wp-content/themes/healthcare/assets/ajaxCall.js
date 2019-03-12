@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
     var date = new Date();
     date.setDate(date.getDate()+1);
-    $('#dateTimePicker input').datepicker({
+    $('#dateTimePicker input, #dateTimePicker2').datepicker({
         format: 'dd/mm/yyyy',
         startDate: date,
         todayHighlight: false,
@@ -143,6 +143,7 @@ jQuery(document).ready(function(){
     
     /* =======================================================================================*/
     /* checking validation and send data to server in đặt hẹn công ty */
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
     var nameOfCompany,
         yourName,
         yourBirthday,
@@ -156,7 +157,8 @@ jQuery(document).ready(function(){
         yourNote,
         yourAmount,
         companyName,
-        insuranceAgent;
+        insuranceAgent,
+        totalAmount = [];
     $('#registerScheduleCompany').click(function () {
         nameOfCompany = $('.name_of_company').val();
         yourName = $('.yourName').val();
@@ -220,28 +222,40 @@ jQuery(document).ready(function(){
                         sessions: sessions
                     },
                     success: function (res) {
-                        console.log(res)
-                    }
-                })
-                $.ajax({
-                    type: 'POST',
-                    url: my_ajax_insert_db.ajax_url,
-                    data: {
-                        action:'action_insert_db_schedule_company',
-                        company_name: nameOfCompany,
-                        amount: yourAmount,
-                        name: yourName,
-                        birthday: yourBirthday,
-                        gender: yourGender,
-                        email: yourEmail,
-                        marital_status: marital_status,
-                        day: dayOrder,
-                        sessions: sessions,
-                        employee_code: yourCode,
-                        note: yourNote
-                    },
-                    success: function (res) {
-                        console.log(res)
+                        res.map(function (e) {
+                            return totalAmount.push(parseInt(e.amount))
+                        });
+                        totalAmount.push(parseInt(yourAmount));
+                        if(totalAmount.reduce(reducer) > 30) {
+                            alert(`Đã vượt qua số lượng cho phép, vui lòng chọn ngày khác. Số lượng hiện tại là: ${totalAmount.reduce(reducer)}`);
+                            $('#dateTimePicker2').val('');
+                            $('#dateTimePicker2').datepicker('show');
+                            totalAmount = []
+                        } else {
+                            $.ajax({
+                                type: 'POST',
+                                url: my_ajax_insert_db.ajax_url,
+                                data: {
+                                    action:'action_insert_db_schedule_company',
+                                    company_name: nameOfCompany,
+                                    amount: yourAmount,
+                                    name: yourName,
+                                    birthday: yourBirthday,
+                                    gender: yourGender,
+                                    email: yourEmail,
+                                    marital_status: marital_status,
+                                    day: dayOrder,
+                                    sessions: sessions,
+                                    employee_code: yourCode,
+                                    note: yourNote
+                                },
+                                success: function (res) {
+                                    console.log(res)
+                                }
+                            })
+                            alert('Đăng ký thành công')
+                            $('#formScheduleCompany').get(0).reset();
+                        }
                     }
                 })
             }

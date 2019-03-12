@@ -1,8 +1,8 @@
 <section style="margin-top: 40px">
   <div class="container">
     <div class="section-header">
-        <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Chuyên khoa</h2>
-        <small class="short-desc"><?php echo get_field('specialist', 'option') ?></small>
+        <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('specialist', 'option')['title'] ?></h2>
+        <small class="short-desc"><?php echo get_field('specialist', 'option')['description'] ?></small>
     </div>
     <div class="row chuyenkhoa" style="display: flex;flex-flow: row wrap;">
       <!-- các icon chuyên khoa, bấn vào icon link đến bài viết được thiết lập. -->

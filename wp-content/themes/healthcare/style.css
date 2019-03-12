@@ -711,8 +711,8 @@ ul.language-chooser {
     display: table;
     text-align: center;
     max-width: 1120px;
-    line-height: 1.2;
-    font-size: 13px;
+    line-height: 1.4;
+    font-size: 16px;
 }
 /* tu van */
 body.single-dwqa-question .dwqa-breadcrumbs {
@@ -786,4 +786,10 @@ body.single-dwqa-question #dwqa-respond {
 /* end */
 .error {
     color: darkred;
+}
+.section-header .section-title {
+    padding-bottom: 0;
+}
+.section-header .section-title:after {
+    background: none;
 }

@@ -2,8 +2,8 @@
     <div class="container">
         <div class="section-header">
             <!--<p class="section-header-desc">NEWS</p>-->
-            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hoạt động</h2>
-            <p class="text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></p>
+            <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('active', 'option')['title'] ?></h2>
+            <small class="short-desc"><?php echo get_field('active', 'option')['description'] ?></small>
         </div>
 
         <div class="row">

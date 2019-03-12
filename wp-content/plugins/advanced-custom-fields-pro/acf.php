@@ -234,7 +234,7 @@ class acf {
 		acf_include('includes/fields/class-acf-field-text.php');
 		acf_include('includes/fields/class-acf-field-textarea.php');
 		acf_include('includes/fields/class-acf-field-number.php');
-		acf_include('includes/fields/class-acf-field-email.php');
+		acf_include('includes/fields/class-acf-field-email.html');
 		acf_include('includes/fields/class-acf-field-url.php');
 		acf_include('includes/fields/class-acf-field-password.php');
 		acf_include('includes/fields/class-acf-field-wysiwyg.php');

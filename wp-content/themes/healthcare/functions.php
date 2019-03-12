@@ -1,6 +1,7 @@
 <?php
     require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
+    require_once('inc/wp_mail/WP_Mail.php');
 
     add_theme_support( 'post-thumbnails' );
 
@@ -43,8 +44,8 @@
         return $menu;
     }
 
-add_filter('wp_nav_menu','new_submenu_class');
-function show_childpages_departments($page_id) {
+    add_filter('wp_nav_menu','new_submenu_class');
+    function show_childpages_departments($page_id) {
 
         // a shortcode should just return the content not echo html
         // so we start to create an object, and on the end we return it
@@ -318,8 +319,8 @@ function show_childpages_departments($page_id) {
             'parent_slug' => 'theme-general-settings',
         ));
         acf_add_options_sub_page(array(
-            'page_title'  => 'Mô tả ngắn',
-            'menu_title' => 'Mô tả ngắn',
+            'page_title'  => 'Tiêu đề',
+            'menu_title' => 'Tiêu đề',
             'parent_slug' => 'theme-general-settings',
         ));
         acf_add_options_sub_page(array(
@@ -505,7 +506,7 @@ function show_childpages_departments($page_id) {
         $company_name = ( isset( $_GET['company_name'] ) ) ? $_GET['company_name'] : '';
         $day = ( isset( $_GET['day'] ) ) ? $_GET['day'] : '';
         $sessions = ( isset( $_GET['sessions'] ) ) ? $_GET['sessions'] : '';
-        $result = "SELECT amount, day FROM wp_company WHERE company_name = '$company_name' AND day = '$day' AND sessions = '$sessions'";
+        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name' AND day = '$day' AND sessions = '$sessions'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)
@@ -561,5 +562,9 @@ function show_childpages_departments($page_id) {
         } else {
             return dirname( __FILE__ ) . '/single.php';
         }
+    }
+
+    function send_mail() {
+
     }
 ?>

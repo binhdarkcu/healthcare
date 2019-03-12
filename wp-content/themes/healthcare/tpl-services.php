@@ -32,21 +32,19 @@
                                 $items = get_sub_field('link_to');
                                 $feature_image_id = get_post_thumbnail_id($items -> ID);
                                 $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                                $content = get_field('description_on_homepage', $items->ID);
                             ?>
-                                <div class="owl-item">
-                                    <div class="item">
-                                        <div class="slider-inner">
-                                            <div class="carousel-content" style="margin-right: 20px;">
-                                                <div class="feature-col">
-                                                    <a href="<?php the_permalink($items->ID);?>">
-                                                        <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
-                                                        <div class="content">
-                                                            <h2><?php echo $items->post_title ?></h2>
-                                                            <p class="limit_row"><?php echo $items->post_content ?></p>
-                                                            <a style="color: #f7931d;" href="<?php the_permalink($items->ID);?>"><?php echo get_field('read_more', 'option'); ?></a>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                <div class="item">
+                                    <div class="slider-inner">
+                                        <div class="carousel-content" style="margin-right: 20px;">
+                                            <div class="feature-col">
+                                                <a href="<?php the_permalink($items->ID);?>">
+                                                    <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
+                                                    <div class="content">
+                                                        <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo $items->post_title ?></h2>
+                                                        <p class="limit_row"><?php echo $content ?></p>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
