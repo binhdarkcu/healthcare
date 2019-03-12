@@ -1,4 +1,4 @@
-<div class="col-xs-12 cat-box sidebar_post">
+<div class="sidebar_post">
     <?php $queried_object = get_queried_object(); ?>
     <?php
         $sideBarTitle = codession_qtranslatex_string($queried_object->post_title)[qtrans_getLanguage()];

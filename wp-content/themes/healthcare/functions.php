@@ -251,7 +251,6 @@
                             </div>
                         </div>
                     </div><!--/.col-md-4-->
-                    <div class=""></div>
                     <?php
 
                 }//END foreach ($child_pages as $child_page)
@@ -427,6 +426,7 @@
         $company_name = ( isset( $_POST['company_name'] ) ) ? $_POST['company_name'] : '';
         $amount = ( isset( $_POST['amount'] ) ) ? $_POST["amount"] : '';
         $name = ( isset( $_POST['name'] ) ) ? $_POST['name'] : '';
+        $phone = ( isset( $_POST['phone'] ) ) ? $_POST['phone'] : '';
         $birthday = ( isset( $_POST['birthday'] ) ) ? $_POST['birthday'] : '';
         $gender = ( isset( $_POST['gender'] ) ) ? $_POST['gender'] : '';
         $email = ( isset( $_POST['email'] ) ) ? $_POST['email']: '';
@@ -442,6 +442,7 @@
             'birthday' => $birthday,
             'gender' => $gender,
             'email' => $email,
+            'phone' => $phone,
             'marital_status' => $marital_status,
             'day' => $day,
             'sessions' => $sessions,

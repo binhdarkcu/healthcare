@@ -87,7 +87,7 @@ jQuery(document).ready(function(){
         selectDoctor = $('#selectDoctor').val();
         dateAppointment = $('#dateTimePicker input').datepicker().val();
         symptom = $('#symptom').val();
-        timeAppointment = $('#timeAppointment').val();
+        timeAppointment = $('select[name="timeOrder"]').val();
         examination = $('#examination').val();
         if (selectDoctor !== 0 && dateAppointment !== '' && symptom !== '') {
             if (symptom) {
@@ -243,6 +243,7 @@ jQuery(document).ready(function(){
                                     birthday: yourBirthday,
                                     gender: yourGender,
                                     email: yourEmail,
+                                    phone: yourPhone,
                                     marital_status: marital_status,
                                     day: dayOrder,
                                     sessions: sessions,

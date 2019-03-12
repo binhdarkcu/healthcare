@@ -1,10 +1,11 @@
 <?php $queried_object = get_queried_object(); ?>
 <div style="position: sticky;top: 0;">
-    <div class="cat-box">
+    <div class=>
 
         <?php if ($queried_object->ID == 88) {
             $child_pages = get_pages(array(
                 'child_of' => $queried_object->ID,
+                'hide_empty' => false
             ));
             ?>
             <h4 class="column-title">CÁC CHUYÊN KHOA KHÁC</h4>

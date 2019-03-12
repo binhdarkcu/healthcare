@@ -146,9 +146,6 @@ $queried_object = get_queried_object();
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="downloadForm">
-                                        <a href="" class="btn btn-success"></a>
-                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

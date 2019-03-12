@@ -33,7 +33,7 @@
                                 <!----><a href="<?php echo get_permalink() ?>"><?php echo the_title() ?></a><!---->
                                 <!---->
                             </h3>
-                            <?php echo the_content() ?>
+                            <?php echo get_field('intro_description', get_the_ID()) ?>
                         </div>
                         <div class="clearfix"></div>
                         <hr>
