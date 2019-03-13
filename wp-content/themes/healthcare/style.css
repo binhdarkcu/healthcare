@@ -102,8 +102,9 @@ body#home #services-slider .owl-carousel {
 body#home #services-slider .owl-controls .owl-pagination {
     position: absolute;
     width: 100%;
-    bottom: 40px;
-    display: none !important;
+}
+body#home #services-slider .owl-controls  {
+    margin-top: 0;
 }
 body#home #services-slider .owl-controls .owl-buttons {
     position: absolute;
@@ -500,7 +501,7 @@ body .cd-faq-group {
         width: 100%;
         top: 0;
         left: 0;
-        z-index: 99999;
+        z-index: 9999;
         background: #fff;
         transition: all 0.4s;
     }
@@ -810,4 +811,16 @@ body.single-dwqa-question #dwqa-respond {
 }
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     background: #f7931d;
+}
+.cd-faq-group table td {
+    height: 36px !important;
+    border-top: none !important;
+    vertical-align: middle !important;
+}
+.cd-faq-group table {
+    width: 700px;
+    overflow: auto;
+}
+.cd-faq-group table td span {
+    display: block;
 }

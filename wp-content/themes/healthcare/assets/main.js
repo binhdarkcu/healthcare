@@ -6,6 +6,9 @@
         return false;
     });
     
+    $('.cd-faq-content').find('table').addClass('table-hover table').wrap('<div class="table-responsive"></div>');
+    $('.cd-faq-content').find('table td').css({'width': 'auto'});
+    
     $('#tohash').on('click', function () {
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
         return false;

@@ -1,6 +1,6 @@
 <?php get_header() ?>
 <?php
-$queried_object = get_queried_object();
+    $queried_object = get_queried_object();
 ?>
 <div ng-init="loadData()">
     <section>
@@ -11,14 +11,19 @@ $queried_object = get_queried_object();
                     echo show_childpages_shortcode($page->ID);
                 } else { ?>
                     <h3 class="column-title"><?php echo the_title(); ?></h3>
+                    <?php echo get_template_part('tpl-social-share'); ?>
+                    <div class="posts">
+                        <?php
+                        $page = get_post( '565' );
+                        echo codession_qtranslatex_string($page->post_content)[qtrans_getLanguage()];
+                        ?>
+                    </div>
                     <ul class="cd-faq-group" style="margin: 20px 0">
                         <?php
-                        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                         $args = array(
-                            'post_type' => 'medical_knowledge',
+                            'post_type' => 'personal_package',
                             'post_status' => 'publish',
-                            'posts_per_page'   => 10,
-                            'paged' => $paged
+                            'posts_per_page'   => -1
                         );
                         $query = new WP_Query($args);
                         while ($query->have_posts()) : $query->the_post();
@@ -28,7 +33,7 @@ $queried_object = get_queried_object();
                             <li>
                                 <a class="cd-faq-trigger"
                                    href="#0"><?php echo the_title() ?> <?php if (!empty($time)) echo '(' . $time . ')'; ?>
-                                    <span style="text-decoration: underline; float: right; color: #065fd4">Xem</span></a>
+                                    <span style="text-decoration: underline; float: right; color: #065fd4">Xem thêm</span></a>
                                 <div class="cd-faq-content row related_doctors">
                                     <?php echo get_the_content() ?>
                                     <div style="clear: both;"></div>
@@ -36,21 +41,7 @@ $queried_object = get_queried_object();
                             </li>
                         <?php endwhile; ?>
                     </ul>
-                    <style type="text/css">
-                        .cd-faq-content img {
-                            width: 100% !important;
-                        }
-                    </style>
                 <?php } ?>
-                <div class="clearfix"></div>
-                <div class="paging pagenavi">
-                    <div class="paging-normal">
-                        <?php if (function_exists('wp_pagenavi')) {
-                            wp_pagenavi(array('query' => $query));
-                        }
-                        ?>
-                    </div>
-                </div>
                 <div class="clearfix"></div>
             </div>
             <!---->

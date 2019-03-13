@@ -31,6 +31,7 @@
                             <?php
                                 if( have_rows('link', 'option') ): while( have_rows('link', 'option') ): the_row();
                                 $items = get_sub_field('link_to');
+                                if($items) :
                                 $feature_image_id = get_post_thumbnail_id($items -> ID);
                                 $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
                                 $content = get_field('description_on_homepage', $items->ID);
@@ -40,7 +41,7 @@
                                         <div class="carousel-content" style="margin-right: 20px;">
                                             <div class="feature-col">
                                                 <a href="<?php the_permalink($items->ID);?>">
-                                                    <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>"/></div>
+                                                    <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>" style="width: 100%;" /></div>
                                                     <div class="content">
                                                         <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo $items->post_title ?></h2>
                                                         <p class="limit_row"><?php echo $content ?></p>
@@ -50,7 +51,7 @@
                                         </div>
                                     </div>
                                 </div>
-                             <?php wp_reset_postdata(); endwhile; endif; ?>
+                             <?php endif; wp_reset_postdata(); endwhile; endif; ?>
                         </div>
                     </section>
                 </div>

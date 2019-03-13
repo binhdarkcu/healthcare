@@ -2,6 +2,7 @@
     require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
     require_once('inc/wp_mail/WP_Mail.php');
+    require_once('inc/send_mail.php');
 
     add_theme_support( 'post-thumbnails' );
 
@@ -245,7 +246,7 @@
                                 <div class="pull-left" style="width: 100%;text-align: center;">
                                     <i class="fa" style="background: url(<?php echo $page_img;?>); background-size: cover;"></i>
                                     <a href="<?php echo $page_link; ?>">
-                                        <h4 class="media-heading block-ellipsis-home-news-2line" style="line-height:1.5 !important"><?php echo $page_title;?></h4>
+                                        <h4 class="media-heading block-ellipsis-home-news-2line" style="line-height:1.5 !important;font-size: 15px;"><?php echo $page_title;?></h4>
                                     </a>
                                 </div>
                             </div>
@@ -412,6 +413,7 @@
             'examination' => $examination,
             'client_code' => $client_code
         ));
+        echo $this->send_email_template();
         wp_die(); // this is required to terminate immediately and return a proper response
     }
     // This will allow not logged in users to use the functionality
@@ -460,6 +462,17 @@
     add_action( 'wp_ajax_nopriv_action_insert_db_schedule_company', 'insert_db_schedule_company' );
     // This will allow only logged in users to use the functionality
     add_action( 'wp_ajax_action_insert_db_schedule_company', 'insert_db_schedule_company' );
+
+    function send_email_template() {
+        WP_Mail::init()
+            ->to('quangsang222@gmail.com')
+            ->subject('this is subject')
+            ->template(get_template_directory().'/inc/template_email/email.html', [
+                'name' => 'aaa',
+                'job' => 'bbbb'
+            ])
+            ->send();
+    }
 
     function insert_db_company() {
         // Do your processing here (save to database etc.)
@@ -563,9 +576,5 @@
         } else {
             return dirname( __FILE__ ) . '/single.php';
         }
-    }
-
-    function send_mail() {
-
     }
 ?>

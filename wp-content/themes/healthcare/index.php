@@ -10,7 +10,7 @@
 
         <?php get_template_part('tpl', 'services')?>
 
-    <section id="services" class="galleries" style="padding-top: 0">
+    <section id="services" class="galleries">
       <div class="container">
           <div class="section-header">
               <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('image_section', 'option')['title'] ?></h2>

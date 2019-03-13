@@ -31,7 +31,6 @@ jQuery(document).ready(function(){
     })
     /* checking validation and send data to server in đặt hẹn*/
     $('#registerUser').click(function () {
-        console.log(examination);
         response = grecaptcha.getResponse();
         male = $('#male').is(':checked');
         female = $('#female').is(':checked');
@@ -56,10 +55,16 @@ jQuery(document).ready(function(){
                     examination: examination,
                     client_code: $('#client_code').val()
                 },
-                url: my_ajax_insert_db.ajax_url
+                url: my_ajax_insert_db.ajax_url,
+                success:  function (res) {
+                    console.log(res)
+                },
+                fail: function (err) {
+                    console.log(err)
+                }
             });
             alert('Đăng ký thành công');
-            return true
+            return false
         } else {
             if (name.val() == '') {
                 name.addClass(clsName);

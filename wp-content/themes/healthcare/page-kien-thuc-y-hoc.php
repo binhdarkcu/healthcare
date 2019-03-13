@@ -28,7 +28,7 @@ $queried_object = get_queried_object();
                             <li>
                                 <a class="cd-faq-trigger"
                                    href="#0"><?php echo the_title() ?> <?php if (!empty($time)) echo '(' . $time . ')'; ?>
-                                    <span style="text-decoration: underline; float: right; color: #065fd4">Xem</span></a>
+                                    <span style="text-decoration: underline; float: right; color: #065fd4">Xem thêm</span></a>
                                 <div class="cd-faq-content row related_doctors">
                                     <?php echo get_the_content() ?>
                                     <div style="clear: both;"></div>
