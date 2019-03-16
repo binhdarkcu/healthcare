@@ -1,4 +1,4 @@
-<section style="margin-top: 40px">
+<section>
   <div class="container">
     <div class="section-header">
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('specialist', 'option')['title'] ?></h2>

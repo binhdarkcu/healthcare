@@ -52,8 +52,7 @@ add_action('rest_api_init', function () {
     ));
 });
 
-function create_booking_item(WP_REST_Request $request)
-{
+function create_booking_item(WP_REST_Request $request) {
     global $wpdb;
     $_table = $wpdb->prefix . 'dathen';
     $params = $request->get_params();
@@ -85,5 +84,4 @@ function create_booking_item(WP_REST_Request $request)
     $response->set_status($status);
     return $response;
 }
-
 ?>

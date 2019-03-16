@@ -97,7 +97,15 @@
             afterMove: moved,
             startDragging: pauseOnDragging
         });
-        
+        $('#video_intro').find('.carousel-inner').owlCarousel({
+            slideSpeed: 700,
+            navigation: false,
+            dots: false,
+            items: 1,
+            autoplay: true,
+            singleItem: true,
+            autoWidth:false,
+        })
         $("#gallery-slider ").find('.carousel-inner').owlCarousel({
             slideSpeed: 700,
             paginationSpeed: 500,

@@ -251,7 +251,7 @@ function show_childpages_of_mainwork($page_id)
                 $page_img = get_the_post_thumbnail_url($page_id, 'medium'); // returns the featured image <img> element
                 $page_title = $child_page->post_title; // returns the title of the child page
                 ?>
-                <div class="col-md-2 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms"
+                <div class="col-md-4 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms"
                      data-wow-delay="0ms"
                      style="visibility: visible; animation-duration: 300ms; animation-delay: 0ms; animation-name: undefined;">
                     <div class="service-box-pad">

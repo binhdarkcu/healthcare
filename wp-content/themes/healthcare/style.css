@@ -97,7 +97,14 @@ body#home #services-slider .owl-carousel {
     color: #f7931d;
     font-size: 19px;
 }
-
+#video_intro .owl-theme {
+    padding-bottom: 40px;
+}
+#video_intro .owl-theme .owl-controls {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
 body#home #services-slider .owl-controls .owl-pagination {
     position: absolute;
     width: 100%;
@@ -822,4 +829,7 @@ body.single-dwqa-question #dwqa-respond {
 }
 .cd-faq-group table td span {
     display: block;
+}
+#gallery-slider .owl-item {
+    padding: 5px;
 }
