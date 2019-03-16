@@ -137,7 +137,12 @@ class DWQA_Handle {
                                 //Specialist 
 				if ( isset( $post_author_specialist ) && !empty( $post_author_specialist ) ) {
 					update_post_meta( $answer_id, '_dwqa_anonymous_specialist', $post_author_specialist );
-				}                                
+				}      
+                                
+                                //**
+                                // SHOULD SEND EMAIL HERE!
+                                //*
+                                
 			} else {
 				if ( !dwqa_is_followed( $question_id, get_current_user_id() ) ) {
 					add_post_meta( $question_id, '_dwqa_followers', get_current_user_id() );
