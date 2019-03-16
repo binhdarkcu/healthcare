@@ -227,6 +227,7 @@ jQuery(document).ready(function(){
                         sessions: sessions
                     },
                     success: function (res) {
+                        console.log(res);
                         res.map(function (e) {
                             return totalAmount.push(parseInt(e.amount))
                         });
@@ -294,7 +295,9 @@ jQuery(document).ready(function(){
                         insuranceAgent: insuranceAgent
                     },
                     success: function (res) {
-                        console.log(res)
+                        console.log(res);
+                        alert('Đăng ký thành công')
+                        $('#formCompany').get(0).reset();
                     }
                 })
             }

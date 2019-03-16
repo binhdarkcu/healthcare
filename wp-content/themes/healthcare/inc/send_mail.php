@@ -11,6 +11,8 @@
         $mail->SMTPAuth = true;
         $mail->Username = "quangsang222@gmail.com";
         $mail->Password = "bcfwoolpqxznwaaa";
+
+
         $mail->setFrom(get_bloginfo('admin_email'), 'Admin');
         $mail->addReplyTo(get_bloginfo('admin_email'), 'Admin');
         $mail->addAddress($email, $name);

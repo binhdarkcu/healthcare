@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0020)http://bvpnt.org.vn/ -->
 <html lang="en" ng-app="MyApp" class="csstransforms csstransforms3d csstransitions"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
@@ -8,18 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="">
-    <?php $queried_object = get_queried_object();
-    $feature_image_id = get_post_thumbnail_id($queried_object -> ID);
-    $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+    <?php
+    $logoUrl = get_field('header_logo', 'option');
     ?>
-    <title>PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE</title>
+    <?php
+    if(is_home()) {
+        echo '
+        <meta property="og:title"          content="'.get_field('name_of_clinic', 'option').'" />
+        <meta property="og:url"            content="'.get_site_url().'" />
+        <meta property="og:image"          content="'.$logoUrl.'" />
+        <meta property="og:description"   content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I" />
+        ';
+    } else {
+        $queried_object = get_queried_object();
+        $feature_image_id = get_post_thumbnail_id($queried_object -> ID);
+        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');?>
+        <meta property="og:title"   content="<?php echo the_title() ?>" />
+        <meta property="og:url"            content="<?php echo get_the_permalink($queried_object->ID) ?>" />
+        <meta property="og:description"    content="<?php echo wp_trim_words( $queried_object->post_content, 20, '...' ) ?>" />
+        <meta property="og:image"          content="<?php echo $feature_image_meta[0] ?>" />';
+    <?php }
+    ?>
+    <title><?php echo get_field('name_of_clinic', 'option'); ?></title>
 
     <!--meta face-->
     <meta property="og:type" content="website">
-    <meta property="og:url"            content="<?php the_permalink();?>" />
-    <meta property="og:title"          content="<?php the_title();?>" />
-    <meta property="og:description"    content="<?php echo wp_trim_words( $queried_object->post_content, 20, '...' );?>" />
-    <meta property="og:image"          content="<?php echo $feature_image_meta[0];?>" />
     <meta name="keywords" content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I">
     <meta name="robots" content="">
     <link rel="canonical" ng-href="">
@@ -37,7 +49,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-16x16.png">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&amp;subset=latin-ext,vietnamese" rel="stylesheet">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -82,9 +94,6 @@
                     <div class="row" style="display: flex;align-items: center;">
                         <div class="col-md-3 col-xs-6"><div class="navbar-header">
                                 <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
-                                    <?php
-                                    $logoUrl = get_field('header_logo', 'option');
-                                    ?>
                                     <img src="<?php echo $logoUrl; ?>" alt="<?php echo get_field('name_of_clinic', 'option'); ?>" style="width:300px;">
                                 </a>
                             </div></div>

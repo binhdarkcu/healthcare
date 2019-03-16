@@ -12,7 +12,7 @@ $queried_object = get_queried_object();
                             <li class="active"><a showtab="" data-toggle="tab" href="#appointment" aria-expanded="true"><i
                                         class="fa fa-calendar" aria-hidden="true"></i> Khám sức khỏe định kỳ công ty</a></li>
                             <li class=""><a showtab="" data-toggle="tab" href="#infoOrderer" aria-expanded="false"><i
-                                        class="fa fa-id-card-o" aria-hidden="true"></i> Khám tuyển dụng - bảo hiểm</a></li>
+                                        class="fa fa-id-card-o" aria-hidden="true"></i> Khám sức khỏe tuyển dụng / khám theo bảo hiểm</a></li>
                         </ul>
                         <div class="tab-content" style="margin-bottom: 30px;" aria-hidden="false">
                             <div id="appointment" class="tab-pane fade active in" style="width: 100%">
@@ -22,7 +22,7 @@ $queried_object = get_queried_object();
                                             <label class="col-md-2 col-sm-3 col-xs-4">Tên công ty:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <select class="form-control name_of_company" name="nameOfCompany">
-                                                    <option value="">Vui lòng chọn công ty bảo hiểm</option>
+                                                    <option value="">Vui lòng chọn công ty của bạn</option>
                                                     <?php if( have_rows('schedule_company', 'option') ): while( have_rows('schedule_company', 'option') ): the_row();
                                                         while( have_rows('company_list', 'option') ): the_row();?>
                                                             <option value="<?php echo get_sub_field('name_of_company') ?>"><?php echo get_sub_field('name_of_company') ?></option>

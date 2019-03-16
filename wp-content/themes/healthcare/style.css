@@ -17,7 +17,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* Center the pagination */
 .wp-pagenavi { text-align:center; margin-top: 50px;}
 body {
-    font-family: 'Quicksand',sans-serif;
     position: relative;
 }
 /* Add a border */
@@ -140,7 +139,6 @@ body#home .chuyenkhoa p {
 }
 body#home .chuyenkhoa .item {
     padding-bottom: 25px;
-    min-height: 195px;
 }
 body#home .chuyenkhoa .item a {
     color: #000;
@@ -493,16 +491,16 @@ body .cd-faq-group {
 }
 @media (min-width: 991px) {
     /* fixed menu */
-    body.admin-bar #header.fixed {
+    body.admin-bar #header.fixed #navMain {
         margin-top: 32px;
     }
-    #header.fixed {
+    #header.fixed #navMain {
         position: fixed;
-        width: 100%;
-        top: 0;
         left: 0;
-        z-index: 9999;
-        background: #fff;
+        right: 0;
+        margin: auto;
+        z-index: 99;
+        top: 0;
         transition: all 0.4s;
     }
     /*#header.fixed .nav-menu #menu_main {*/
@@ -715,7 +713,7 @@ ul.language-chooser {
     text-align: center;
     max-width: 1120px;
     line-height: 1.4;
-    font-size: 16px;
+    font-size: 14px;
 }
 /* tu van */
 body.single-dwqa-question .dwqa-breadcrumbs {
@@ -792,6 +790,7 @@ body.single-dwqa-question #dwqa-respond {
 }
 .section-header .section-title {
     padding-bottom: 0;
+    font-size: 22px;
 }
 .section-header .section-title:after {
     background: none;
