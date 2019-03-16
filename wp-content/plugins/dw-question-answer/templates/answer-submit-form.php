@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-4 col-sm-9 col-xs-8 text-left">
                     <label for="user-science"><?php _e( 'Chuyên khoa', 'dw-question-answer' ) ?></label>
-                    <select class="form-control">
+                    <select class="form-control" name="user-specialist">
                         <?php
                         $categories = get_categories(array(
                             'hide_empty' => false
