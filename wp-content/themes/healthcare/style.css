@@ -818,15 +818,15 @@ body.single-dwqa-question #dwqa-respond {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     background: #f7931d;
 }
-body table td {
+body table:not(.table-condensed) td {
     height: 36px !important;
     border-top: 1px solid #000 !important;
     vertical-align: middle !important;
 }
-body table tr {
+body table:not(.table-condensed) tr {
     border-color: #000;
 }
-body table td span {
+body table:not(.table-condensed) td span {
     display: block;
 }
 #gallery-slider .owl-item {

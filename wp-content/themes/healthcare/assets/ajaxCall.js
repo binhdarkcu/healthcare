@@ -243,21 +243,24 @@ jQuery(document).ready(function(){
                                 url: my_ajax_insert_db.ajax_url,
                                 data: {
                                     action:'action_insert_db_schedule_company',
-                                    company_name: nameOfCompany,
-                                    amount: yourAmount,
-                                    name: yourName,
-                                    birthday: yourBirthday,
-                                    gender: yourGender,
-                                    email: yourEmail,
-                                    phone: yourPhone,
-                                    marital_status: marital_status,
-                                    day: dayOrder,
-                                    sessions: sessions,
-                                    employee_code: yourCode,
-                                    note: yourNote
+                                    company_name: 'cong ty test',
+                                    amount: '2',
+                                    name: 'thomas',
+                                    birthday: '11/11/1993',
+                                    gender: 'Nam',
+                                    email: 'thomas@gmail.com',
+                                    phone: '0901666555',
+                                    marital_status: 'Độc thân',
+                                    day: '28/03/2019',
+                                    sessions: 'Sáng',
+                                    employee_code: '',
+                                    note: ''
                                 },
                                 success: function (res) {
                                     console.log(res)
+                                },
+                                error: function(){
+                                    alert('error test',)
                                 }
                             })
                             alert('Đăng ký thành công')
@@ -268,7 +271,24 @@ jQuery(document).ready(function(){
             }
         });
     });
-    
+    $('.name_of_company').change(function () {
+        $.ajax({
+            type: 'GET',
+            data: {
+                action: 'action_amount_company',
+                name_company: $(this).val()
+            },
+            url: my_ajax_insert_db.ajax_url,
+            success: function (res) {
+                if(res.length > 0) {
+                    $('.info_amount').attr('style', '');
+                    res.map(function (e) {
+                        $('.info_amount #amounted').text(e.amount);
+                    })
+                }
+            }
+        })
+    })
     /* checking validation and send data form 2 */
     $('#registerCompany').click(function () {
         companyName = $('.companyName').val();

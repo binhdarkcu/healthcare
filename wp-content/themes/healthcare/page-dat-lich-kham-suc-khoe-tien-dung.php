@@ -1,6 +1,8 @@
 <?php get_header() ?>
 <?php
-$queried_object = get_queried_object();
+    global $wpdb;
+    $items = "SELECT * FROM wp_list_company";
+    $items_added = $wpdb->get_results($items);
 ?>
 <div ng-init="loadData()">
     <section>
@@ -23,11 +25,13 @@ $queried_object = get_queried_object();
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <select class="form-control name_of_company" name="nameOfCompany">
                                                     <option value="">Vui lòng chọn công ty của bạn</option>
-                                                    <?php if( have_rows('schedule_company', 'option') ): while( have_rows('schedule_company', 'option') ): the_row();
-                                                        while( have_rows('company_list', 'option') ): the_row();?>
-                                                            <option value="<?php echo get_sub_field('name_of_company') ?>"><?php echo get_sub_field('name_of_company') ?></option>
-                                                        <?php endwhile;endwhile;endif; ?>
+                                                    <?php
+                                                        foreach ($items_added as $item_added) {
+                                                            echo '<option value="'.$item_added->company_name.'">'.$item_added->company_name.'</option>';
+                                                        }
+                                                    ?>
                                                 </select>
+                                                <span class="info_amount" style="display: none">Số lượng đã đặt: <span id="amounted">0</span>/30</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

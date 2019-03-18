@@ -469,7 +469,7 @@
         echo json_encode(
             $wpdb->get_results($result, OBJECT)
         );
-        send_mail($name,$email, $detect_email = false);
+        //send_mail($name,$email, $detect_email = false);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
@@ -579,5 +579,21 @@
             endwhile;
         endwhile;
     }
-    add_action('admin_init', 'check_company_list')
+    add_action('admin_init', 'check_company_list');
+
+    /* Handle check booking amount of company */
+    function amount_company() {
+        global $wpdb;
+        $company_value = (isset($_GET['name_company'])) ? $_GET['name_company'] : '';
+        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_value'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_amount_company', 'amount_company');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_amount_company', 'amount_company');
 ?>
