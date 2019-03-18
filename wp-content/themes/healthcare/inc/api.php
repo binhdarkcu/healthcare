@@ -51,7 +51,6 @@ add_action('rest_api_init', function () {
         )
     ));
 });
-
 function create_booking_item(WP_REST_Request $request) {
     global $wpdb;
     $_table = $wpdb->prefix . 'dathen';
@@ -84,4 +83,37 @@ function create_booking_item(WP_REST_Request $request) {
     $response->set_status($status);
     return $response;
 }
+
+    /* method GET */
+    add_action( 'rest_api_init', function () {
+        register_rest_route( 'dat-hen', 'v1', array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => 'get_booking_items',
+            'args' => array(
+                'token' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                )
+            )
+        ) );
+    } );
+    function get_booking_items(WP_REST_Request $request) {
+        global $wpdb;
+        $_table = $wpdb->prefix . 'dathen';
+        $data = null;
+        $status = 200;
+        $params = $request->get_params();
+        $result = $wpdb->get_results("SELECT * FROM $_table");
+        if ($result) {
+            if($params['token'] == 'Golden_healthcare') {
+                return $data = $result;
+            }
+        } else {
+            $status = 500;
+        }
+        header('Content-Type: application/json');
+        return json_encode(
+            $wpdb->get_results($data, OBJECT)
+        );
+    }
 ?>

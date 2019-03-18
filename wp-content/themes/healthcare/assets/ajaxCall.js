@@ -64,7 +64,7 @@ jQuery(document).ready(function(){
                 }
             });
             alert('Đăng ký thành công');
-            return false
+            return true
         } else {
             if (name.val() == '') {
                 name.addClass(clsName);
