@@ -19,7 +19,7 @@ class DWQA_Handle {
 		global $dwqa_options;
 		if ( ! isset( $_POST['dwqa-action'] ) || ! isset( $_POST['submit-answer'] ) ) {
 			return false;
-		}
+	}
 		// do_action( 'dwqa_add_answer', $answer_id, $question_id );
 		// die();
 		if ( 'add-answer' !== sanitize_text_field( $_POST['dwqa-action'] ) ) {
@@ -71,6 +71,15 @@ class DWQA_Handle {
 			if ( isset( $_POST['user-name'] ) && !empty( $_POST['user-name'] ) ) {
 				$post_author_name = sanitize_text_field( $_POST['user-name'] );
 			}
+                        
+                        // Added user phone number & user specialist
+			if ( isset( $_POST['user-phone'] ) && !empty( $_POST['user-phone'] ) ) {
+				$post_author_phone_number = sanitize_text_field( $_POST['user-phone'] );
+			}
+                        
+			if ( isset( $_POST['user-specialist'] ) && !empty( $_POST['user-specialist'] ) ) {
+				$post_author_specialist = sanitize_text_field( $_POST['user-specialist'] );
+			}
 		}
 
 		$question_id = intval( $_POST['question_id'] );
@@ -120,6 +129,20 @@ class DWQA_Handle {
 				if ( isset( $post_author_name ) && !empty( $post_author_name ) ) {
 					update_post_meta( $answer_id, '_dwqa_anonymous_name', $post_author_name );
 				}
+                                
+                                //Phone number
+  				if ( isset( $post_author_phone_number ) && !empty( $post_author_phone_number ) ) {
+					update_post_meta( $answer_id, '_dwqa_anonymous_phone_number', $post_author_phone_number );
+				}                              
+                                //Specialist 
+				if ( isset( $post_author_specialist ) && !empty( $post_author_specialist ) ) {
+					update_post_meta( $answer_id, '_dwqa_anonymous_specialist', $post_author_specialist );
+				}      
+                                
+                                //**
+                                // SHOULD SEND EMAIL HERE!
+                                //*
+                                
 			} else {
 				if ( !dwqa_is_followed( $question_id, get_current_user_id() ) ) {
 					add_post_meta( $question_id, '_dwqa_followers', get_current_user_id() );
