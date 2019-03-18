@@ -243,24 +243,21 @@ jQuery(document).ready(function(){
                                 url: my_ajax_insert_db.ajax_url,
                                 data: {
                                     action:'action_insert_db_schedule_company',
-                                    company_name: 'cong ty test',
-                                    amount: '2',
-                                    name: 'thomas',
-                                    birthday: '11/11/1993',
-                                    gender: 'Nam',
-                                    email: 'thomas@gmail.com',
-                                    phone: '0901666555',
-                                    marital_status: 'Độc thân',
-                                    day: '28/03/2019',
-                                    sessions: 'Sáng',
-                                    employee_code: '',
-                                    note: ''
+                                    company_name: nameOfCompany,
+                                    amount: yourAmount,
+                                    name: yourName,
+                                    birthday: yourBirthday,
+                                    gender: yourGender,
+                                    email: yourEmail,
+                                    phone: yourPhone,
+                                    marital_status: marital_status,
+                                    day: dayOrder,
+                                    sessions: sessions,
+                                    employee_code: yourCode,
+                                    note: yourNote
                                 },
                                 success: function (res) {
                                     console.log(res)
-                                },
-                                error: function(){
-                                    alert('error test',)
                                 }
                             })
                             alert('Đăng ký thành công')

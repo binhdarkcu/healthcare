@@ -469,7 +469,7 @@
         echo json_encode(
             $wpdb->get_results($result, OBJECT)
         );
-        //send_mail($name,$email, $detect_email = false);
+        send_mail($name,$email, $detect_email = false);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
