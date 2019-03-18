@@ -818,16 +818,15 @@ body.single-dwqa-question #dwqa-respond {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     background: #f7931d;
 }
-.cd-faq-group table td {
+body table td {
     height: 36px !important;
-    border-top: none !important;
+    border-top: 1px solid #000 !important;
     vertical-align: middle !important;
 }
-.cd-faq-group table {
-    width: 700px;
-    overflow: auto;
+body table tr {
+    border-color: #000;
 }
-.cd-faq-group table td span {
+body table td span {
     display: block;
 }
 #gallery-slider .owl-item {

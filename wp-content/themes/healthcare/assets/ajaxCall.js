@@ -28,7 +28,7 @@ jQuery(document).ready(function(){
     $('.radio-inline').click(function () {
         var val = $(this).find('input[type="radio"]').attr('value')
         gender = $('#valueGender').attr('value', val);
-    })
+    });
     /* checking validation and send data to server in đặt hẹn*/
     $('#registerUser').click(function () {
         response = grecaptcha.getResponse();
@@ -302,5 +302,5 @@ jQuery(document).ready(function(){
                 })
             }
         })
-    })
+    });
 });

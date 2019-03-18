@@ -108,8 +108,6 @@ function create_booking_item(WP_REST_Request $request) {
             if($params['token'] == 'Golden_healthcare') {
                 return $data = $result;
             }
-        } else {
-            $status = 500;
         }
         header('Content-Type: application/json');
         return json_encode(

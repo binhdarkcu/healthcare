@@ -140,11 +140,6 @@ $queried_object = get_queried_object();
                                                 <button type="submit" class="btn btn-success" id="registerScheduleCompany">Đăng ký</button>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <small><?php echo get_field('schedule_company', 'option')['note'] ?></small>
-                                            </div>
-                                        </div>
                                     </form>
                                 </div>
                                 <div class="clearfix"></div>
@@ -175,11 +170,6 @@ $queried_object = get_queried_object();
                                         <label class="col-md-2 col-sm-3 col-xs-4"></label>
                                         <div class="col-md-6 col-sm-9 col-xs-8">
                                             <button type="submit" id="registerCompany" class="btn btn-success">Đăng ký</button>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <small><?php echo get_field('company_not_schedule', 'option')['note'] ?></small>
                                         </div>
                                     </div>
                                 </form>
