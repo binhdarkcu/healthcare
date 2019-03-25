@@ -567,12 +567,20 @@
         while (have_rows('schedule_company', 'option')): the_row();
             while (have_rows('cong_ty')): the_row();
                 $name = get_sub_field('name_of_company')['company_name'];
+                $session = implode(', ', get_sub_field('name_of_company')['session']);
                 $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
                 $company_name_added = $wpdb->get_var($company_name_added);
+                $arrayDb = array(
+                    'company_name'  => get_sub_field('name_of_company')['company_name'],
+                    'fromdate'  => get_sub_field('name_of_company')['fromdate'],
+                    'todate'  => get_sub_field('name_of_company')['todate'],
+                    'company_code'  => get_sub_field('name_of_company')['company_code'],
+                    'session'   => $session
+                );
                 if($company_name_added !== get_sub_field('name_of_company')['company_name']) {
-                    $wpdb->insert('wp_list_company', get_sub_field('name_of_company'));
+                    $wpdb->insert('wp_list_company', $arrayDb);
                 } else {
-                    $wpdb->update('wp_list_company', get_sub_field('name_of_company'), array(
+                    $wpdb->update('wp_list_company', $arrayDb, array(
                        'company_name'   => get_sub_field('name_of_company')['company_name']
                     ));
                 }
@@ -596,4 +604,37 @@
     add_action('wp_ajax_nopriv_action_amount_company', 'amount_company');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_amount_company', 'amount_company');
+
+    /* Handle checking infomation company */
+    function cheking_company() {
+        global $wpdb;
+        $company_value = (isset($_GET['name_company'])) ? $_GET['name_company'] : '';
+        $result = "SELECT * FROM wp_list_company WHERE company_name = '$company_value'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_cheking_company', 'cheking_company');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_cheking_company', 'cheking_company');
+
+    /* Handle check booking company code of company */
+    function companyCode() {
+        global $wpdb;
+        $company_name = (isset($_GET['company'])) ? $_GET['company'] : '';
+        $company_code = (isset($_GET['code'])) ? $_GET['code'] : '';
+        $result = "SELECT * FROM wp_list_company WHERE company_name = '$company_name' AND company_code = '$company_code'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_company_code', 'companyCode');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_company_code', 'companyCode');
 ?>

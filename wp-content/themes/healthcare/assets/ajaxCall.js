@@ -24,12 +24,18 @@ jQuery(document).ready(function(){
         birthday,
         response;
     $('#selectDoctor').select2();
-    /* change value radio */
+
+    /* 
+    * change value radio 
+    */
     $('.radio-inline').click(function () {
         var val = $(this).find('input[type="radio"]').attr('value')
         gender = $('#valueGender').attr('value', val);
     });
-    /* checking validation and send data to server in đặt hẹn*/
+
+    /* 
+    * checking validation and send data to server in đặt hẹn
+    */
     $('#registerUser').click(function () {
         response = grecaptcha.getResponse();
         male = $('#male').is(':checked');
@@ -87,7 +93,10 @@ jQuery(document).ready(function(){
             return false;
         }
     });
-    /* checking validation and next step in đặt hẹn */
+
+    /* 
+    * checking validation and next step in đặt hẹn 
+    */
     $('#nextStep').click(function () {
         selectDoctor = $('#selectDoctor').val();
         dateAppointment = $('#dateTimePicker input').datepicker().val();
@@ -268,7 +277,14 @@ jQuery(document).ready(function(){
             }
         });
     });
+
+    /* 
+    * Handle call ajax to check amount of company 
+    */
     $('.name_of_company').change(function () {
+        /* 
+        * checking amount 
+        */
         $.ajax({
             type: 'GET',
             data: {
@@ -277,16 +293,78 @@ jQuery(document).ready(function(){
             },
             url: my_ajax_insert_db.ajax_url,
             success: function (res) {
+                $('.info_amount').attr('style', '');
                 if(res.length > 0) {
-                    $('.info_amount').attr('style', '');
                     res.map(function (e) {
                         $('.info_amount #amounted').text(e.amount);
                     })
+                } else {
+                    $('.info_amount #amounted').text('0');
                 }
             }
         })
+
+        /*
+        * checking information company of db 
+        */
+       $.ajax({
+            type: 'GET',
+            data: {
+                action: 'action_cheking_company',
+                name_company: $(this).val()
+            },
+            url: my_ajax_insert_db.ajax_url,
+            success: function(res) {
+                res.map(function(i,k) {
+                    $('#dateTimePicker3').datepicker({
+                        format: 'dd/mm/yyyy',
+                        todayHighlight: false,
+                        autoclose: true,
+                        language: 'vi',
+                        daysOfWeekHighlighted: '0.6',
+                        beforeShowDay: function(date) {
+                            console.log(date)
+                        }
+                    })
+                    var array = i.session.split(",");
+                    $('select[name="sessionOrder"]').empty();
+                    array.map(function(i,k) {
+                        $('select[name="sessionOrder"]').append($('<option>', { 
+                            value: i,
+                            text : i 
+                        }));
+                    })
+                })
+            }
+       })
     })
-    /* checking validation and send data form 2 */
+
+    /* 
+    * Check company code
+    */
+   $('input[name="companyCode"]').keyup(function() {
+       console.log($(this).val());
+        $.ajax({
+            type: 'GET',
+            data: {
+                action: 'action_company_code',
+                code: $(this).val(),
+                company: $('.name_of_company').val()
+            },
+            url: my_ajax_insert_db.ajax_url,
+            success: function(res) {
+                if(res.length == 0) {
+                    $('input[name="companyCode"]').addClass('has-error')
+                } else {
+                    $('input[name="companyCode"]').removeClass('has-error')
+                }
+            }
+        })
+   })
+
+    /* 
+    * checking validation and send data form 2 
+    */
     $('#registerCompany').click(function () {
         companyName = $('.companyName').val();
         insuranceAgent = $('.insuranceAgent').val();
@@ -312,7 +390,6 @@ jQuery(document).ready(function(){
                         insuranceAgent: insuranceAgent
                     },
                     success: function (res) {
-                        console.log(res);
                         alert('Đăng ký thành công')
                         $('#formCompany').get(0).reset();
                     }

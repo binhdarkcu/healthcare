@@ -35,10 +35,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4"">Số lượng cần đặt:*</label>
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Mã công ty:*</label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <input type="input" name="companyCode"
+                                                       class="form-control yourAmount" placeholder="Mã công ty*" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-4">Số lượng cần đặt:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <input type="number" name="amount"
-                                                       class="form-control yourAmount" placeholder="Tối đa 30 người" />
+                                                       class="form-control yourAmount" placeholder="Số lượng" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -112,7 +119,7 @@
                                                     <input type="text" name="timeOrder"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
                                                            placeholder="Chọn ngày" autocomplete="off"
-                                                           aria-invalid="false" id="dateTimePicker2">
+                                                           aria-invalid="false" id="dateTimePicker3">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
                                                     </div>
