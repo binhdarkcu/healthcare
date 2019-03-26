@@ -38,7 +38,7 @@
                                             <label class="col-md-2 col-sm-3 col-xs-4">Mã công ty:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <input type="input" name="companyCode"
-                                                       class="form-control yourAmount" placeholder="Mã công ty*" />
+                                                       class="form-control yourCompanyCode" placeholder="Mã công ty*" />
                                             </div>
                                         </div>
                                         <div class="form-group">

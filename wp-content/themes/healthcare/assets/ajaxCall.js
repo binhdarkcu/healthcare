@@ -61,13 +61,7 @@ jQuery(document).ready(function(){
                     examination: examination,
                     client_code: $('#client_code').val()
                 },
-                url: my_ajax_insert_db.ajax_url,
-                success:  function (res) {
-                    console.log(res)
-                },
-                fail: function (err) {
-                    console.log(err)
-                }
+                url: my_ajax_insert_db.ajax_url
             });
             alert('Đăng ký thành công');
             return true
@@ -236,7 +230,6 @@ jQuery(document).ready(function(){
                         sessions: sessions
                     },
                     success: function (res) {
-                        console.log(res);
                         res.map(function (e) {
                             return totalAmount.push(parseInt(e.amount))
                         });
@@ -266,11 +259,10 @@ jQuery(document).ready(function(){
                                     note: yourNote
                                 },
                                 success: function (res) {
-                                    console.log(res)
                                 }
                             })
                             alert('Đăng ký thành công')
-                            $('#formScheduleCompany').get(0).reset();
+                            location.reload();
                         }
                     }
                 })
@@ -282,6 +274,8 @@ jQuery(document).ready(function(){
     * Handle call ajax to check amount of company 
     */
     $('.name_of_company').change(function () {
+        total_of_amount = [];
+        var total_of_company = [];
         /* 
         * checking amount 
         */
@@ -293,16 +287,22 @@ jQuery(document).ready(function(){
             },
             url: my_ajax_insert_db.ajax_url,
             success: function (res) {
+                res.map(function (e) {
+                    return total_of_company.push(parseInt(e.amount))
+                });
                 $('.info_amount').attr('style', '');
-                if(res.length > 0) {
-                    res.map(function (e) {
-                        $('.info_amount #amounted').text(e.amount);
-                    })
+                if(total_of_company.reduce(reducer) > 0) {
+                    $('.info_amount #amounted').text(total_of_company.reduce(reducer));
                 } else {
                     $('.info_amount #amounted').text('0');
                 }
             }
         })
+
+        function toDate(dateStr) {
+            var parts = dateStr.split("/")
+            return new Date(parts[2], parts[1] - 1, parts[0])
+        }
 
         /*
         * checking information company of db 
@@ -315,25 +315,22 @@ jQuery(document).ready(function(){
             },
             url: my_ajax_insert_db.ajax_url,
             success: function(res) {
-                res.map(function(i,k) {
-                    $('#dateTimePicker3').datepicker({
-                        format: 'dd/mm/yyyy',
-                        todayHighlight: false,
-                        autoclose: true,
-                        language: 'vi',
-                        daysOfWeekHighlighted: '0.6',
-                        beforeShowDay: function(date) {
-                            console.log(date)
-                        }
-                    })
-                    var array = i.session.split(",");
-                    $('select[name="sessionOrder"]').empty();
-                    array.map(function(i,k) {
-                        $('select[name="sessionOrder"]').append($('<option>', { 
-                            value: i,
-                            text : i 
-                        }));
-                    })
+                $('#dateTimePicker3').datepicker({
+                    format: 'dd/mm/yyyy',
+                    todayHighlight: false,
+                    autoclose: true,
+                    language: 'vi',
+                    daysOfWeekHighlighted: '0.6',
+                    startDate: toDate(res[0].fromdate),
+                    endDate: toDate(res[0].todate)
+                })
+                var array = res[0].session.split(",");
+                $('select[name="sessionOrder"]').empty();
+                array.map(function(i,k) {
+                    $('select[name="sessionOrder"]').append($('<option>', { 
+                        value: i,
+                        text : i 
+                    }));
                 })
             }
        })
@@ -343,7 +340,6 @@ jQuery(document).ready(function(){
     * Check company code
     */
    $('input[name="companyCode"]').keyup(function() {
-       console.log($(this).val());
         $.ajax({
             type: 'GET',
             data: {
@@ -361,6 +357,32 @@ jQuery(document).ready(function(){
             }
         })
    })
+
+   /*
+   * Check total amount
+   */
+    $('input[name="amount"]').keyup(function() {
+        var total_of_amount = [];
+        $.ajax({
+            type: 'GET',
+            data: {
+                action: 'action_amount_company',
+                name_company: $('.name_of_company').val()
+            },
+            url: my_ajax_insert_db.ajax_url,
+            success: function(res) {
+                res.map(function (e) {
+                    return total_of_amount.push(parseInt(e.amount))
+                });
+                var total = parseInt($('input[name="amount"]').val()) + total_of_amount.reduce(reducer);
+                if(total > 30) {
+                    $('input[name="amount"]').addClass('has-error')
+                } else {
+                    $('input[name="amount"]').removeClass('has-error')
+                }
+            }
+        })
+    })
 
     /* 
     * checking validation and send data form 2 
