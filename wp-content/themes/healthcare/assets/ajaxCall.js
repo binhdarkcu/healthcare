@@ -175,7 +175,7 @@ jQuery(document).ready(function(){
         yourGender = $('#valueGender').val();
         yourPhone = $('.yourPhone').val();
         marital_status = $('.marital_status').val();
-        dayOrder = $('#dateTimePicker2').datepicker().val();
+        dayOrder = $('#dateTimePicker3').datepicker().val();
         sessions = $('.sessions').val();
         yourCode = $('.yourCode').val();
         yourNote = $('.yourNote').val();
@@ -291,7 +291,7 @@ jQuery(document).ready(function(){
                     return total_of_company.push(parseInt(e.amount))
                 });
                 $('.info_amount').attr('style', '');
-                if(total_of_company.reduce(reducer) > 0) {
+                if(total_of_company.length > 0) {
                     $('.info_amount #amounted').text(total_of_company.reduce(reducer));
                 } else {
                     $('.info_amount #amounted').text('0');
@@ -315,7 +315,8 @@ jQuery(document).ready(function(){
             },
             url: my_ajax_insert_db.ajax_url,
             success: function(res) {
-                $('#dateTimePicker3').datepicker({
+                console.log(res);
+                $('#dateTimePicker3').datepicker('destroy').datepicker({
                     format: 'dd/mm/yyyy',
                     todayHighlight: false,
                     autoclose: true,
@@ -362,7 +363,7 @@ jQuery(document).ready(function(){
    * Check total amount
    */
     $('input[name="amount"]').keyup(function() {
-        var total_of_amount = [];
+        var total_of_amount = [], totalAll;
         $.ajax({
             type: 'GET',
             data: {
@@ -374,7 +375,8 @@ jQuery(document).ready(function(){
                 res.map(function (e) {
                     return total_of_amount.push(parseInt(e.amount))
                 });
-                var total = parseInt($('input[name="amount"]').val()) + total_of_amount.reduce(reducer);
+                totalAll = res.length == 0 ? parseInt(0) : total_of_amount.reduce(reducer)
+                var total = parseInt($('input[name="amount"]').val()) + totalAll;
                 if(total > 30) {
                     $('input[name="amount"]').addClass('has-error')
                 } else {
