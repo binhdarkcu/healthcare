@@ -307,19 +307,23 @@ jQuery(document).ready(function(){
                     url: my_ajax_insert_db.ajax_url,
                     data: {
                         action: 'action_check_total_number',
-                        companyName: $('.companyName').val()
+                        companyName: $('.companyName').val(),
+                        date: $('input[name="dateCompany"]').datepicker().val()
                     },
                     success: function (res) {
                         var total_current = [],
                         total_register = parseInt(res.list_company[0].total_members),
                         amount_current = parseInt($('input[name="amountCompany"]').val());
-                        res.company.map(function (e) {
+                        res.company.length > 0 ? res.company.map(function (e) {
                             return total_current.push(parseInt(e.amount))
-                        });
-                        if((total_current.reduce(reducer) + amount_current) > total_register) {
-                            $('#text_error').attr('style', '');
-                            $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
-                            $('input[name="amountCompany"]').addClass('has-error')
+                        }) : total_current = [];
+                        if(total_current.length > 0) {
+                            if((total_current.reduce(reducer) + amount_current) > total_register) {
+                                $('#text_error').attr('style', '');
+                                $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
+                                $('input[name="amountCompany"]').addClass('has-error');
+                                total_current = []
+                            }
                         } else {
                             $('#text_error').css('display', 'none');
                             $('input[name="amountCompany"]').removeClass('has-error');
@@ -342,7 +346,8 @@ jQuery(document).ready(function(){
                                     noteCompany: $('textarea.noteCompany').val()
                                 },
                                 success: function() {
-                                    $('#formCompany').get(0).reset()
+                                    alert('Đăng ký thành công')
+                                    location.reload();
                                 }
                             })
                         }

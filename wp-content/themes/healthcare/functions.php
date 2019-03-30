@@ -599,7 +599,8 @@
     function checkTotalnumber() {
         global $wpdb;
         $company_name = (isset($_GET['companyName'])) ? $_GET['companyName'] : '';
-        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name'";
+        $day = (isset($_GET['date'])) ? $_GET['date'] : '';
+        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name' AND day = '$day'";
         $result_list = "SELECT total_members FROM wp_list_company WHERE company_name = '$company_name' AND status_company = 'company_not_schedule'";
         header('Content-Type: application/json');
         echo json_encode(
