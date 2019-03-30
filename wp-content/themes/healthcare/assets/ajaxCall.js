@@ -29,8 +29,8 @@ jQuery(document).ready(function(){
     * change value radio 
     */
     $('.radio-inline').click(function () {
-        var val = $(this).find('input[type="radio"]').attr('value')
-        gender = $('#valueGender').attr('value', val);
+        var val = $(this).find('input[type="radio"]').attr('value');
+        gender = $(this).parents().find('input[type="hidden"]').attr('value', val);
     });
 
     /* 
@@ -164,8 +164,6 @@ jQuery(document).ready(function(){
         yourGender,
         yourNote,
         yourAmount,
-        companyName,
-        insuranceAgent,
         totalAmount = [];
     $('#registerScheduleCompany').click(function () {
         nameOfCompany = $('.name_of_company').val();
@@ -271,131 +269,26 @@ jQuery(document).ready(function(){
     });
 
     /* 
-    * Handle call ajax to check amount of company 
-    */
-    $('.name_of_company').change(function () {
-        total_of_amount = [];
-        var total_of_company = [];
-        /* 
-        * checking amount 
-        */
-        $.ajax({
-            type: 'GET',
-            data: {
-                action: 'action_amount_company',
-                name_company: $(this).val()
-            },
-            url: my_ajax_insert_db.ajax_url,
-            success: function (res) {
-                res.map(function (e) {
-                    return total_of_company.push(parseInt(e.amount))
-                });
-                $('.info_amount').attr('style', '');
-                if(total_of_company.length > 0) {
-                    $('.info_amount #amounted').text(total_of_company.reduce(reducer));
-                } else {
-                    $('.info_amount #amounted').text('0');
-                }
-            }
-        })
-
-        function toDate(dateStr) {
-            var parts = dateStr.split("/")
-            return new Date(parts[2], parts[1] - 1, parts[0])
-        }
-
-        /*
-        * checking information company of db 
-        */
-       $.ajax({
-            type: 'GET',
-            data: {
-                action: 'action_cheking_company',
-                name_company: $(this).val()
-            },
-            url: my_ajax_insert_db.ajax_url,
-            success: function(res) {
-                console.log(res);
-                $('#dateTimePicker3').datepicker('destroy').datepicker({
-                    format: 'dd/mm/yyyy',
-                    todayHighlight: false,
-                    autoclose: true,
-                    language: 'vi',
-                    daysOfWeekHighlighted: '0.6',
-                    startDate: toDate(res[0].fromdate),
-                    endDate: toDate(res[0].todate)
-                })
-                var array = res[0].session.split(",");
-                $('select[name="sessionOrder"]').empty();
-                array.map(function(i,k) {
-                    $('select[name="sessionOrder"]').append($('<option>', { 
-                        value: i,
-                        text : i 
-                    }));
-                })
-            }
-       })
-    })
-
-    /* 
-    * Check company code
-    */
-   $('input[name="companyCode"]').keyup(function() {
-        $.ajax({
-            type: 'GET',
-            data: {
-                action: 'action_company_code',
-                code: $(this).val(),
-                company: $('.name_of_company').val()
-            },
-            url: my_ajax_insert_db.ajax_url,
-            success: function(res) {
-                if(res.length == 0) {
-                    $('input[name="companyCode"]').addClass('has-error')
-                } else {
-                    $('input[name="companyCode"]').removeClass('has-error')
-                }
-            }
-        })
-   })
-
-   /*
-   * Check total amount
-   */
-    $('input[name="amount"]').keyup(function() {
-        var total_of_amount = [], totalAll;
-        $.ajax({
-            type: 'GET',
-            data: {
-                action: 'action_amount_company',
-                name_company: $('.name_of_company').val()
-            },
-            url: my_ajax_insert_db.ajax_url,
-            success: function(res) {
-                res.map(function (e) {
-                    return total_of_amount.push(parseInt(e.amount))
-                });
-                totalAll = res.length == 0 ? parseInt(0) : total_of_amount.reduce(reducer)
-                var total = parseInt($('input[name="amount"]').val()) + totalAll;
-                if(total > 30) {
-                    $('input[name="amount"]').addClass('has-error')
-                } else {
-                    $('input[name="amount"]').removeClass('has-error')
-                }
-            }
-        })
-    })
-
-    /* 
     * checking validation and send data form 2 
     */
     $('#registerCompany').click(function () {
-        companyName = $('.companyName').val();
-        insuranceAgent = $('.insuranceAgent').val();
         $('#formCompany').validate({
             rules: {
                 companyName: 'required',
-                insuranceAgent: 'required'
+                insuranceAgent: 'required',
+                amountCompany: 'required',
+                nameCompany: 'required',
+                birthdayCompany: 'required',
+                genderCompany: 'required',
+                emailCompany: {
+                    required: true,
+                    email: true
+                },
+                phoneCompany: 'required',
+                dateCompany: 'required'
+            },
+            messages: {
+                genderCompany: 'Vui lòng chọn giới tính'
             },
             highlight: function (element) {
                 $(element).addClass('has-error');
@@ -403,19 +296,56 @@ jQuery(document).ready(function(){
             unhighlight: function (element) {
                 $(element).removeClass('has-error');
             },
-            errorPlacement: function(error, element) {},
+            errorPlacement: function(error, element) {
+                if (element.is(":radio") ) {
+                    error.appendTo( element.parents('.form-group .col-xs-8') );
+                }
+            },
             submitHandler: function () {
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: my_ajax_insert_db.ajax_url,
                     data: {
-                        action: 'action_insert_db_company',
-                        companyName: companyName,
-                        insuranceAgent: insuranceAgent
+                        action: 'action_check_total_number',
+                        companyName: $('.companyName').val()
                     },
                     success: function (res) {
-                        alert('Đăng ký thành công')
-                        $('#formCompany').get(0).reset();
+                        var total_current = [],
+                        total_register = parseInt(res.list_company[0].total_members),
+                        amount_current = parseInt($('input[name="amountCompany"]').val());
+                        res.company.map(function (e) {
+                            return total_current.push(parseInt(e.amount))
+                        });
+                        if((total_current.reduce(reducer) + amount_current) > total_register) {
+                            $('#text_error').attr('style', '');
+                            $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
+                            $('input[name="amountCompany"]').addClass('has-error')
+                        } else {
+                            $('#text_error').css('display', 'none');
+                            $('input[name="amountCompany"]').removeClass('has-error');
+                            $.ajax({
+                                type: 'POST',
+                                url: my_ajax_insert_db.ajax_url,
+                                data: {
+                                    action: 'action_insert_db_compant_not_schedule',
+                                    company_name: $('.companyName').val(),
+                                    amount: amount_current,
+                                    name: $('input[name="nameCompany"]').val(),
+                                    birthday: $('input[name="birthdayCompany"]').val(),
+                                    gender: $('#valueGender01').attr('value'),
+                                    email: $('input[name="emailCompany"]').val(),
+                                    phone: $('input[name="phoneCompany"]').val(),
+                                    statusYourself: $('.statusYourself').val(),
+                                    date: $('input[name="dateCompany"]').datepicker().val(),
+                                    session: $('select[name="sessionCompany"]').val(),
+                                    codeCompany: $('input.codeCompany').val(),
+                                    noteCompany: $('textarea.noteCompany').val()
+                                },
+                                success: function() {
+                                    $('#formCompany').get(0).reset()
+                                }
+                            })
+                        }
                     }
                 })
             }

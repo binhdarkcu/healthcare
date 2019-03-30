@@ -832,3 +832,8 @@ body table:not(.table-condensed) td span {
 #gallery-slider .owl-item {
     padding: 5px;
 }
+@media (min-width: 768px) {
+    .customCol .col-md-4 {
+        padding-right: 0 !important;
+    }
+}

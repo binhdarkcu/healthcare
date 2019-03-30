@@ -8,7 +8,7 @@
                     <small class="short-desc"><?php echo get_field('featured_gadgets', 'option')['description'] ?></small>
                 </div>
                 <div class="row">
-                    <div class="features" ng-repeat="feature in features" style="">
+                    <div class="features customCol" ng-repeat="feature in features" style="">
                         <?php
                         if ($page = get_page_by_path('cac-dich-vu')) {
                             echo show_childpages_of_mainwork($page->ID);

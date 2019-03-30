@@ -10,31 +10,6 @@
     <?php
     $logoUrl = get_field('header_logo', 'option');
     ?>
-    <?php
-    if(is_home()) {
-        echo '
-        <meta property="og:title"          content="'.get_field('name_of_clinic', 'option').'" />
-        <meta property="og:url"            content="'.get_site_url().'" />
-        <meta property="og:image"          content="'.$logoUrl.'" />
-        <meta property="og:description"   content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I" />
-        ';
-    } else {
-        $queried_object = get_queried_object();
-        $feature_image_id = get_post_thumbnail_id($queried_object -> ID);
-        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');?>
-        <meta property="og:title"   content="<?php echo the_title() ?>" />
-        <meta property="og:url"            content="<?php echo get_the_permalink($queried_object->ID) ?>" />
-        <meta property="og:description"    content="<?php echo wp_trim_words( $queried_object->post_content, 20, '...' ) ?>" />
-        <meta property="og:image"          content="<?php echo $feature_image_meta[0] ?>" />';
-    <?php }
-    ?>
-    <title><?php echo get_field('name_of_clinic', 'option'); ?></title>
-
-    <!--meta face-->
-    <meta property="og:type" content="website">
-    <meta name="keywords" content="GOLDEN HEALTHCARE, bệnh viện,chuyên khoa lao, bệnh phổi, bệnh viện hạng I">
-    <meta name="robots" content="">
-    <link rel="canonical" ng-href="">
 
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-60x60.png">

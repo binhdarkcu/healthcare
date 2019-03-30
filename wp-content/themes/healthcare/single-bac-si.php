@@ -3,7 +3,7 @@
 <?php
 $idPost = get_the_ID();
 while (have_posts()) : the_post();
-    $meta_values = get_post_type($my_postid);
+    $meta_values = get_post_type($idPost);
     $post = get_post(get_the_ID());
     $bigImg = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
     ?>
