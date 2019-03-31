@@ -1,7 +1,7 @@
 <?php get_header() ?>
 <?php
     global $wpdb;
-    $schedule = "SELECT company_name FROM wp_list_company WHERE schedule = 0";
+    $schedule = "SELECT company_name FROM wp_list_company WHERE show_company = 1";
     $not_schedule = "SELECT company_name FROM wp_list_company WHERE status_company = 'company_not_schedule'";
     $items_schedule_company = $wpdb->get_results($schedule);
     $items_not_schedule_company = $wpdb->get_results($not_schedule);
@@ -13,13 +13,13 @@
             <div class="conten col-md-12 col-sm-12 col-xs-12" style="margin-top:30px;">
                     <div class="container container-bd">
                         <ul class="nav nav-tabs tabMain" aria-hidden="false">
-                            <li class=""><a showtab="" data-toggle="tab" href="#appointment" aria-expanded="true"><i
+                            <li class="active"><a showtab="" data-toggle="tab" href="#appointment" aria-expanded="true"><i
                                         class="fa fa-calendar" aria-hidden="true"></i> Khám sức khỏe định kỳ công ty</a></li>
-                            <li class="active"><a showtab="" data-toggle="tab" href="#infoOrderer" aria-expanded="false"><i
+                            <li class=""><a showtab="" data-toggle="tab" href="#infoOrderer" aria-expanded="false"><i
                                         class="fa fa-id-card-o" aria-hidden="true"></i> Khám sức khỏe tuyển dụng / khám theo bảo hiểm</a></li>
                         </ul>
                         <div class="tab-content" style="margin-bottom: 30px;" aria-hidden="false">
-                            <div id="appointment" class="tab-pane fade">
+                            <div id="appointment" class="tab-pane active fade in">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <form class="form-horizontal" id="formScheduleCompany" method="post">
                                         <div class="form-group">
@@ -33,7 +33,6 @@
                                                         }
                                                     ?>
                                                 </select>
-                                                <span class="info_amount" style="display: none">Số lượng đã đặt: <span id="amounted">0</span>/30</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -107,10 +106,10 @@
                                             <label class="col-md-2 col-sm-3 col-xs-4">Tình trạng hôn nhân:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <select class="form-control marital_status">
-                                                    <option value="" selected hidden>Vui lòng chọn tình trạng hôn nhân</option>
-                                                    <option value="single">Độc thân</option>
-                                                    <option value="married">Đã kết hôn</option>
-                                                    <option value="divorced">Ly hôn</option>
+                                                    <option value="" selected>Vui lòng chọn tình trạng hôn nhân</option>
+                                                    <option value="Độc thân">Độc thân</option>
+                                                    <option value="Đã kết hôn">Đã kết hôn</option>
+                                                    <option value="Ly hôn">Ly hôn</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -121,17 +120,16 @@
                                                     <input type="text" name="timeOrder"
                                                            class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
                                                            placeholder="Chọn ngày" autocomplete="off"
-                                                           aria-invalid="false" id="dateTimePicker3">
+                                                           aria-invalid="false">
                                                     <div class="input-group-addon">
                                                         <span class="fa fa-calendar"></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
+                                            <label class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                             <div class="col-md-3 col-sm-3 col-xs-3">
                                                 <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionOrder">
-                                                    <option value="Sáng" selected>Sáng</option>
-                                                    <option value="Chiều">Chiều</option>
+                                                    <option value="" selected>Chọn buổi</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -153,11 +151,17 @@
                                                 <button type="submit" class="btn btn-success" id="registerScheduleCompany">Đăng ký</button>
                                             </div>
                                         </div>
+                                        <div class="form-group" id="textError" style="display: none">
+                                            <label class="col-md-2 col-sm-3 col-xs-4"></label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <label>Số lượng hiện tại là: <span id="total">0</span>/30. Vui lòng chọn ít hơn <span id="countNumber">0</span>, ngày hoặc buổi khác.</label>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div id="infoOrderer" class="tab-pane active fade in">
+                            <div id="infoOrderer" class="tab-pane fade ">
                                 <form id="formCompany" class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email">
                                     <div class="form-group">
                                         <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Chọn công ty bảo hiểm: <span
@@ -260,7 +264,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
+                                        <label class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                         <div class="col-md-3 col-sm-3 col-xs-3">
                                             <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionCompany">
                                                 <option value="Sáng" selected>Sáng</option>

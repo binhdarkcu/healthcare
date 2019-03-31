@@ -497,25 +497,6 @@
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_check_time_booked', 'checkTimeBoooked');
 
-    //check company time order
-    function checkTimeOrder() {
-        global $wpdb;
-        $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
-        $day = (isset($_GET['day'])) ? $_GET['day'] : '';
-        $sessions = (isset($_GET['sessions'])) ? $_GET['sessions'] : '';
-        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name' AND day = '$day' AND sessions = '$sessions'";
-        header('Content-Type: application/json');
-        echo json_encode(
-            $wpdb->get_results($result, OBJECT)
-        );
-        wp_die(); // this is required to terminate immediately and return a proper response
-    }
-
-    // This will allow not logged in users to use the functionality
-    add_action('wp_ajax_nopriv_action_check_time_order', 'checkTimeOrder');
-    // This will allow only logged in users to use the functionality
-    add_action('wp_ajax_action_check_time_order', 'checkTimeOrder');
-
     //get page children
     function my_get_page_children() {
         $childArgs = array(
@@ -541,59 +522,66 @@
     // if theme option has row => append to db
     function check_company_list() {
         global $wpdb;
-        // $wpdb->query("TRUNCATE TABLE wp_list_company");
+        $wpdb->query("TRUNCATE TABLE wp_list_company");
+        $wpdb->query("TRUNCATE TABLE wp_company_day");
         while (have_rows('schedule_company', 'option')): the_row();
             while (have_rows('cong_ty')): the_row();
-                //var_dump(get_sub_field('name_of_company'));
-                // $name = get_sub_field('name_of_company')['company_name'];
-                // $session = implode(', ', get_sub_field('name_of_company')['session']);
-                // $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
-                // $company_name_added = $wpdb->get_var($company_name_added);
-                // $arrayDb = array(
-                //     'company_name'  => get_sub_field('name_of_company')['company_name'],
-                //     'fromdate'  => get_sub_field('name_of_company')['fromdate'],
-                //     'todate'  => get_sub_field('name_of_company')['todate'],
-                //     'company_code'  => get_sub_field('name_of_company')['company_code'],
-                //     'session'   => $session
-                // );
-                // if($company_name_added !== get_sub_field('name_of_company')['company_name']) {
-                //     $wpdb->insert('wp_list_company', $arrayDb);
-                // } else {
-                //     $wpdb->update('wp_list_company', $arrayDb, array(
-                //        'company_name'   => get_sub_field('name_of_company')['company_name']
-                //     ));
-                // }
+                $name = get_sub_field('name_of_company')['company_name'];
+                $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
+                $company_name_added = $wpdb->get_var($company_name_added);
+                $list_days = get_sub_field('name_of_company')['all_day'];
+                var_dump(get_sub_field('name_of_company')['show']);
+                $arrayDb = array(
+                    'company_name'  => $name,
+                    'company_code'  => get_sub_field('name_of_company')['company_code'],
+                    'status_company'   => 'company_schedule',
+                    'show_on_síte'  => get_sub_field('name_of_company')['show']
+                );
+                if($company_name_added !== $name) {
+                    $wpdb->insert('wp_list_company', $arrayDb);
+                } else {
+                    $wpdb->update('wp_list_company', $arrayDb, array(
+                       'company_name'   => $name
+                    ));
+                }
+
+                /*
+                * insert date and session into wp_company_day
+                */
+                foreach($list_days as $list_day) {
+                    $session = implode(', ', $list_day['session']);
+                    $date = $list_day["day"];
+                    $date_added = "SELECT date FROM wp_company_day WHERE date = '$date'";
+                    $date_added = $wpdb->get_var($date_added);
+                    if($date_added !== $date) {
+                        $wpdb->insert('wp_company_day', array(
+                            'company_name'   => $name,
+                            'date'  => $list_day['day'],
+                            'sessions'  => $session
+                        ));
+                    }
+                }
+            endwhile;
+            while (have_rows('company_not_schedule')): the_row();
+                $name = get_sub_field('company_name');
+                $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
+                $company_name_added = $wpdb->get_var($company_name_added);
+                $arrayDb = array(
+                    'company_name'  => get_sub_field('company_name'),
+                    'total_members'  => get_sub_field('total_members'),
+                    'status_company'  => 'company_not_schedule'
+                );
+                if($company_name_added !== $name) {
+                    $wpdb->insert('wp_list_company', $arrayDb);
+                } else {
+                    $wpdb->update('wp_list_company', $arrayDb, array(
+                    'company_name'   => get_sub_field('company_name')
+                    ));
+                }
             endwhile;
         endwhile;
     }
     add_action('admin_init', 'check_company_list');
-
-
-    // if theme option has row => append to db
-    function check_company_not_schedule() {
-        global $wpdb;
-        $wpdb->query("TRUNCATE TABLE wp_list_company");
-        while (have_rows('schedule_company', 'option')): the_row();
-            while (have_rows('company_not_schedule')): the_row();
-            $name = get_sub_field('company_name');
-            $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
-            $company_name_added = $wpdb->get_var($company_name_added);
-            $arrayDb = array(
-                'company_name'  => get_sub_field('company_name'),
-                'total_members'  => get_sub_field('total_members'),
-                'status_company'  => 'company_not_schedule'
-            );
-            if($company_name_added !== $name) {
-                $wpdb->insert('wp_list_company', $arrayDb);
-            } else {
-                $wpdb->update('wp_list_company', $arrayDb, array(
-                   'company_name'   => get_sub_field('company_name')
-                ));
-            }
-            endwhile;
-        endwhile;
-    }
-    add_action('admin_init', 'check_company_not_schedule');
 
     //check totals number of company
     function checkTotalnumber() {
@@ -611,7 +599,6 @@
         );
         wp_die(); // this is required to terminate immediately and return a proper response
     }
-
     // This will allow not logged in users to use the functionality
     add_action('wp_ajax_nopriv_action_check_total_number', 'checkTotalnumber');
     // This will allow only logged in users to use the functionality
@@ -653,4 +640,72 @@
     add_action('wp_ajax_nopriv_action_insert_db_compant_not_schedule', 'insert_db_compant_not_schedule');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_insert_db_compant_not_schedule', 'insert_db_compant_not_schedule');
+
+    //Handle get date company
+    function handle_check_date() {
+        global $wpdb;
+        $company_name = (isset($_GET['companyName'])) ? $_GET['companyName'] : '';
+        $result = "SELECT date FROM wp_company_day WHERE company_name = '$company_name'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_handle_check_date', 'handle_check_date');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_handle_check_date', 'handle_check_date');
+
+    //Handle get session company
+    function handle_check_session() {
+        global $wpdb;
+        $company_name = (isset($_GET['companyName'])) ? $_GET['companyName'] : '';
+        $day = (isset($_GET['day'])) ? $_GET['day'] : '';
+        $result = "SELECT sessions FROM wp_company_day WHERE company_name = '$company_name' AND date = '$day'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_handle_check_session', 'handle_check_session');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_handle_check_session', 'handle_check_session');
+
+    //Handle check code company
+    function handle_check_code() {
+        global $wpdb;
+        $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
+        $company_code = (isset($_GET['companyCode'])) ? $_GET['companyCode'] : '';
+        $result = "SELECT company_code FROM wp_list_company WHERE company_name = '$company_name' AND company_code = '$company_code'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_handle_check_code', 'handle_check_code');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_handle_check_code', 'handle_check_code');
+
+    //Handle check numbers register on sessions
+    function check_number() {
+        global $wpdb;
+        $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
+        $company_date = (isset($_GET['date'])) ? $_GET['date'] : '';
+        $company_session = (isset($_GET['session'])) ? $_GET['session'] : '';
+        $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name' AND day = '$company_date' AND sessions = '$company_session'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_check_number', 'check_number');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_check_number', 'check_number');
 ?>

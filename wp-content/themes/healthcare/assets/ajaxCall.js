@@ -7,7 +7,6 @@ jQuery(document).ready(function(){
         todayHighlight: false,
         autoclose: true,
         language: 'vi',
-        daysOfWeekHighlighted: '0.6'
     })
     var clsName = 'has-error';
     var selectDoctor, dateAppointment,
@@ -24,6 +23,10 @@ jQuery(document).ready(function(){
         birthday,
         response;
     $('#selectDoctor').select2();
+    function toDate(dateStr) {
+        var parts = dateStr.split("/")
+        return new Date(parts[2], parts[1] - 1, parts[0])
+    }
 
     /* 
     * change value radio 
@@ -152,32 +155,8 @@ jQuery(document).ready(function(){
     /* =======================================================================================*/
     /* checking validation and send data to server in đặt hẹn công ty */
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    var nameOfCompany,
-        yourName,
-        yourBirthday,
-        yourEmail,
-        yourPhone,
-        marital_status,
-        dayOrder,
-        sessions,
-        yourCode,
-        yourGender,
-        yourNote,
-        yourAmount,
-        totalAmount = [];
+    var countError = 0;
     $('#registerScheduleCompany').click(function () {
-        nameOfCompany = $('.name_of_company').val();
-        yourName = $('.yourName').val();
-        yourBirthday = $('#yourBirthday').datepicker().val();
-        yourEmail = $('.yourEmail').val();
-        yourGender = $('#valueGender').val();
-        yourPhone = $('.yourPhone').val();
-        marital_status = $('.marital_status').val();
-        dayOrder = $('#dateTimePicker3').datepicker().val();
-        sessions = $('.sessions').val();
-        yourCode = $('.yourCode').val();
-        yourNote = $('.yourNote').val();
-        yourAmount = $('.yourAmount').val();
         $('#formScheduleCompany').validate({
             rules: {
                 nameOfCompany: "required",
@@ -194,13 +173,10 @@ jQuery(document).ready(function(){
                 },
                 yourPhone: 'required',
                 timeOrder: 'required',
-                sessionOrder: 'required'
+                sessionOrder: 'required',
+                companyCode: 'required'
             },
             messages: {
-                amount: {
-                    required: 'Vui lòng điền số lượng',
-                    max: 'Số lượng cần ít hơn 30 người'
-                },
                 genderOptRadio: 'Vui lòng chọn giới tính'
             },
             highlight: function (element) {
@@ -210,10 +186,7 @@ jQuery(document).ready(function(){
                 $(element).removeClass('has-error');
             },
             errorPlacement: function(error, element) {
-                var attrName = element.attr('name');
-                if( attrName == 'amount') {
-                    error.insertAfter(element);
-                } else if (element.is(":radio") ) {
+                if (element.is(":radio") ) {
                     error.appendTo( element.parents('.form-group .col-xs-8') );
                 }
             },
@@ -222,51 +195,132 @@ jQuery(document).ready(function(){
                     type: 'GET',
                     url: my_ajax_insert_db.ajax_url,
                     data: {
-                        action: 'action_check_time_order',
-                        company_name: nameOfCompany,
-                        day: dayOrder,
-                        sessions: sessions
+                        action: 'action_handle_check_code',
+                        company_name: $('select[name="nameOfCompany"]').val(),
+                        companyCode: $('input[name="companyCode"]').val()
                     },
-                    success: function (res) {
-                        res.map(function (e) {
-                            return totalAmount.push(parseInt(e.amount))
-                        });
-                        totalAmount.push(parseInt(yourAmount));
-                        if(totalAmount.reduce(reducer) > 30) {
-                            alert(`Đã vượt qua số lượng cho phép, vui lòng chọn ngày khác. Số lượng hiện tại là: ${totalAmount.reduce(reducer)}`);
-                            $('#dateTimePicker2').val('');
-                            $('#dateTimePicker2').datepicker('show');
-                            totalAmount = []
+                    success: function(res) {
+                        if(res.length == 0) {
+                            countError++;
+                            $('input[name="companyCode"]').val('');
+                            $('input[name="companyCode"]').addClass('has-error')
+                            if(countError == 5) {
+                                alert('Vui lòng liên hệ phòng khám để nhận mã công ty');
+                                countError = 0;
+                                $('#registerScheduleCompany').addClass('disableButton').removeAttr('id')
+                                $('input[name="companyCode"]').removeClass('has-error')
+                                $('input[name="companyCode"]').prop('disabled', true);
+                            }
                         } else {
                             $.ajax({
-                                type: 'POST',
+                                type: 'GET',
                                 url: my_ajax_insert_db.ajax_url,
                                 data: {
-                                    action:'action_insert_db_schedule_company',
-                                    company_name: nameOfCompany,
-                                    amount: yourAmount,
-                                    name: yourName,
-                                    birthday: yourBirthday,
-                                    gender: yourGender,
-                                    email: yourEmail,
-                                    phone: yourPhone,
-                                    marital_status: marital_status,
-                                    day: dayOrder,
-                                    sessions: sessions,
-                                    employee_code: yourCode,
-                                    note: yourNote
+                                    action: 'action_check_number',
+                                    company_name: $('select[name="nameOfCompany"]').val(),
+                                    date: $('input[name="timeOrder"]').datepicker().val(),
+                                    session: $('select[name="sessionOrder"]').val()
                                 },
-                                success: function (res) {
+                                success: function(res) {
+                                    var calc_numbers = [];
+                                    res.length > 0 ? res.map(function (e) {
+                                        return calc_numbers.push(parseInt(e.amount))
+                                    }) : calc_numbers = [0];
+                                    if(res.length == 0 || calc_numbers.reduce(reducer) + parseInt($('.yourAmount').val()) <= 30) {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: my_ajax_insert_db.ajax_url,
+                                            data: {
+                                                action: 'action_insert_db_schedule_company',
+                                                company_name: $('select[name="nameOfCompany"]').val(),
+                                                amount: $('.yourAmount').val(),
+                                                name: $('.yourName').val(),
+                                                birthday: $('#yourBirthday').datepicker().val(),
+                                                gender: $('#valueGender').val(),
+                                                email: $('.yourEmail').val(),
+                                                phone: $('.yourPhone').val(),
+                                                marital_status: $('.marital_status').val(),
+                                                day: $('input[name="timeOrder"]').datepicker().val(),
+                                                sessions: $('select[name="sessionOrder"]').val(),
+                                                employee_code: $('.yourCode').val(),
+                                                note: $('.yourNote').val()
+                                            }
+                                        })
+                                        alert('Đăng ký thành công')
+                                        location.reload();
+                                    } else {
+                                        $('#textError').attr('style', '');
+                                        $('#textError').find('label').addClass('error')
+                                        $('#total').text(calc_numbers.reduce(reducer))
+                                        $('#countNumber').text(parseInt(30 - calc_numbers.reduce(reducer)))
+                                    }
                                 }
                             })
-                            alert('Đăng ký thành công')
-                            location.reload();
                         }
                     }
                 })
             }
         });
     });
+
+    //return date wwith format: 1/1/2011
+    function pad(num) {
+        return num.replace(/(^|\/)0+/g, '$1')
+    }
+
+    //convert string to array
+    function convertString(val) {
+        return val.split(",");
+    }
+
+    /*
+    * render calender and session when select company
+    */
+    $('select[name="nameOfCompany"]').change(function() {
+        $('input[name="timeOrder"]').datepicker("destroy");
+        var onlyThisDates = [];
+        $.ajax({
+            type: 'GET',
+            url: my_ajax_insert_db.ajax_url,
+            data: {
+                action: 'action_handle_check_date',
+                companyName: $(this).val()
+            },
+            success: function(res) {
+                res.map(function(e) {
+                    return onlyThisDates.push(pad(e.date))
+                })
+                $('input[name="timeOrder"]').datepicker({
+                    format: 'd/m/yyyy',
+                    beforeShowDay: function(date) {
+                        var dt_ddmmyyyy = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+                        return (onlyThisDates.indexOf(dt_ddmmyyyy) != -1);
+                    },
+                    autoclose: 1
+                }).on('changeDate', function(e) {
+                    $.ajax({
+                        type: 'GET',
+                        url: my_ajax_insert_db.ajax_url,
+                        data: {
+                            action: 'action_handle_check_session',
+                            companyName: $('.name_of_company').val(),
+                            day: moment(e.date).format('DD/MM/YYYY')
+                        },
+                        success: function(res) {
+                            $('select[name="sessionOrder"]').empty()
+                                                            .append('<option value="" selected>Chọn buổi</option>');
+                            convertString(res[0].sessions).map(function(e) {
+                                $('select[name="sessionOrder"]').append($('<option>', {
+                                    value: e,
+                                    text: e
+                                }))
+                            })
+                        }
+                    })
+                })
+            }
+        })
+    })
 
     /* 
     * checking validation and send data form 2 

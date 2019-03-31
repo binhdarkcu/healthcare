@@ -837,3 +837,8 @@ body table:not(.table-condensed) td span {
         padding-right: 0 !important;
     }
 }
+.disableButton {
+    background-color: #767676 !important;
+    color: #fff !important;
+    pointer-events: none;
+}
