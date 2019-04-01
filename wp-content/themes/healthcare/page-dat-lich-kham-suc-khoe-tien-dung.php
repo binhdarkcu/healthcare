@@ -1,7 +1,7 @@
 <?php get_header() ?>
 <?php
     global $wpdb;
-    $schedule = "SELECT company_name FROM wp_list_company WHERE show_company = 1";
+    $schedule = "SELECT company_name FROM wp_list_company WHERE show_on_site = 'show'";
     $not_schedule = "SELECT company_name FROM wp_list_company WHERE status_company = 'company_not_schedule'";
     $items_schedule_company = $wpdb->get_results($schedule);
     $items_not_schedule_company = $wpdb->get_results($not_schedule);

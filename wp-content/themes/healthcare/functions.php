@@ -530,30 +530,32 @@
                 $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
                 $company_name_added = $wpdb->get_var($company_name_added);
                 $list_days = get_sub_field('name_of_company')['all_day'];
-                var_dump(get_sub_field('name_of_company')['show']);
                 $arrayDb = array(
                     'company_name'  => $name,
                     'company_code'  => get_sub_field('name_of_company')['company_code'],
                     'status_company'   => 'company_schedule',
-                    'show_on_síte'  => get_sub_field('name_of_company')['show']
+                    'show_on_site'  => implode(', ', get_sub_field('name_of_company')['show_on_site'])
                 );
                 if($company_name_added !== $name) {
                     $wpdb->insert('wp_list_company', $arrayDb);
-                } else {
-                    $wpdb->update('wp_list_company', $arrayDb, array(
-                       'company_name'   => $name
-                    ));
                 }
 
                 /*
                 * insert date and session into wp_company_day
                 */
+                if(!$list_days && $company_name_added !== $name) {
+                    $wpdb->insert('wp_company_day', array(
+                        'company_name'   => $name,
+                        'date'  => '',
+                        'sessions'  => ''
+                    ));
+                }
+
                 foreach($list_days as $list_day) {
                     $session = implode(', ', $list_day['session']);
-                    $date = $list_day["day"];
-                    $date_added = "SELECT date FROM wp_company_day WHERE date = '$date'";
-                    $date_added = $wpdb->get_var($date_added);
-                    if($date_added !== $date) {
+                    $company_added = "SELECT company_name FROM wp_company_day WHERE company_added = '$name'";
+                    $company_added = $wpdb->get_var($company_added);
+                    if($company_added !== $name) {
                         $wpdb->insert('wp_company_day', array(
                             'company_name'   => $name,
                             'date'  => $list_day['day'],
@@ -573,10 +575,6 @@
                 );
                 if($company_name_added !== $name) {
                     $wpdb->insert('wp_list_company', $arrayDb);
-                } else {
-                    $wpdb->update('wp_list_company', $arrayDb, array(
-                    'company_name'   => get_sub_field('company_name')
-                    ));
                 }
             endwhile;
         endwhile;

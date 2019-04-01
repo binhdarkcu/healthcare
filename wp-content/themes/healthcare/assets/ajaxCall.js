@@ -307,8 +307,7 @@ jQuery(document).ready(function(){
                             day: moment(e.date).format('DD/MM/YYYY')
                         },
                         success: function(res) {
-                            $('select[name="sessionOrder"]').empty()
-                                                            .append('<option value="" selected>Chọn buổi</option>');
+                            $('select[name="sessionOrder"]').empty();
                             convertString(res[0].sessions).map(function(e) {
                                 $('select[name="sessionOrder"]').append($('<option>', {
                                     value: e,
