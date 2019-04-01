@@ -200,6 +200,7 @@ jQuery(document).ready(function(){
                         companyCode: $('input[name="companyCode"]').val()
                     },
                     success: function(res) {
+                        console.log(res);
                         if(res.length == 0) {
                             countError++;
                             $('input[name="companyCode"]').val('');
@@ -250,7 +251,7 @@ jQuery(document).ready(function(){
                                         location.reload();
                                     } else {
                                         $('#textError').attr('style', '');
-                                        $('#textError').find('label').addClass('error')
+                                        $('#textError').find('label').addClass('statusErr')
                                         $('#total').text(calc_numbers.reduce(reducer))
                                         $('#countNumber').text(parseInt(30 - calc_numbers.reduce(reducer)))
                                     }
@@ -287,36 +288,53 @@ jQuery(document).ready(function(){
                 companyName: $(this).val()
             },
             success: function(res) {
-                res.map(function(e) {
-                    return onlyThisDates.push(pad(e.date))
-                })
-                $('input[name="timeOrder"]').datepicker({
-                    format: 'd/m/yyyy',
-                    beforeShowDay: function(date) {
-                        var dt_ddmmyyyy = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-                        return (onlyThisDates.indexOf(dt_ddmmyyyy) != -1);
-                    },
-                    autoclose: 1
-                }).on('changeDate', function(e) {
-                    $.ajax({
-                        type: 'GET',
-                        url: my_ajax_insert_db.ajax_url,
-                        data: {
-                            action: 'action_handle_check_session',
-                            companyName: $('.name_of_company').val(),
-                            day: moment(e.date).format('DD/MM/YYYY')
-                        },
-                        success: function(res) {
-                            $('select[name="sessionOrder"]').empty();
-                            convertString(res[0].sessions).map(function(e) {
-                                $('select[name="sessionOrder"]').append($('<option>', {
-                                    value: e,
-                                    text: e
-                                }))
-                            })
-                        }
+                if(res[0].date !== '') {
+                    res.map(function(e) {
+                        return onlyThisDates.push(pad(e.date))
                     })
-                })
+                    $('input[name="timeOrder"]').datepicker({
+                        format: 'd/m/yyyy',
+                        beforeShowDay: function(date) {
+                            var dt_ddmmyyyy = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+                            return (onlyThisDates.indexOf(dt_ddmmyyyy) != -1);
+                        },
+                        autoclose: 1
+                    }).on('changeDate', function(e) {
+                        $.ajax({
+                            type: 'GET',
+                            url: my_ajax_insert_db.ajax_url,
+                            data: {
+                                action: 'action_handle_check_session',
+                                companyName: $('.name_of_company').val(),
+                                day: moment(e.date).format('DD/MM/YYYY')
+                            },
+                            success: function(res) {
+                                $('select[name="sessionOrder"]').empty();
+                                convertString(res[0].sessions).map(function(e) {
+                                    $('select[name="sessionOrder"]').append($('<option>', {
+                                        value: e,
+                                        text: e
+                                    }))
+                                })
+                            }
+                        })
+                    })
+                } else {
+                    var arrSession = ['Sáng', 'Chiều'];
+                    $('input[name="timeOrder"]').datepicker({
+                        format: 'dd/mm/yyyy',
+                        startDate: date,
+                        todayHighlight: false,
+                        autoclose: true,
+                        language: 'vi',
+                    })
+                    arrSession.map(function(e) {
+                        $('select[name="sessionOrder"]').append($('<option>', {
+                            value: e,
+                            text: e
+                        }))
+                    })
+                }
             }
         })
     })
@@ -369,14 +387,11 @@ jQuery(document).ready(function(){
                         amount_current = parseInt($('input[name="amountCompany"]').val());
                         res.company.length > 0 ? res.company.map(function (e) {
                             return total_current.push(parseInt(e.amount))
-                        }) : total_current = [];
-                        if(total_current.length > 0) {
-                            if((total_current.reduce(reducer) + amount_current) > total_register) {
-                                $('#text_error').attr('style', '');
-                                $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
-                                $('input[name="amountCompany"]').addClass('has-error');
-                                total_current = []
-                            }
+                        }) : total_current = [0];
+                        if(total_current.length > 0 && (total_current.reduce(reducer) + amount_current) > total_register) {
+                            $('#text_error').attr('style', '');
+                            $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
+                            $('input[name="amountCompany"]').addClass('has-error');
                         } else {
                             $('#text_error').css('display', 'none');
                             $('input[name="amountCompany"]').removeClass('has-error');
@@ -400,7 +415,7 @@ jQuery(document).ready(function(){
                                 },
                                 success: function() {
                                     alert('Đăng ký thành công')
-                                    location.reload();
+                                    //location.reload();
                                 }
                             })
                         }

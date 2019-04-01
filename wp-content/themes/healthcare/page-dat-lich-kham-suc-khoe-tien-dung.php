@@ -154,7 +154,7 @@
                                         <div class="form-group" id="textError" style="display: none">
                                             <label class="col-md-2 col-sm-3 col-xs-4"></label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <label>Số lượng hiện tại là: <span id="total">0</span>/30. Vui lòng chọn ít hơn <span id="countNumber">0</span>, ngày hoặc buổi khác.</label>
+                                                <label>Số lượng hiện tại là: <span id="total">0</span>/30. Số lượng còn lại là <span id="countNumber">0</span>, hoặc chọn ngày hay buổi khác.</label>
                                             </div>
                                         </div>
                                     </form>

@@ -2,7 +2,7 @@
     require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
     require_once('inc/send_mail.php');
-
+    require_once('inc/handle_create_acf.php');
     add_theme_support('post-thumbnails');
 
     //register menu
@@ -522,9 +522,9 @@
     // if theme option has row => append to db
     function check_company_list() {
         global $wpdb;
-        $wpdb->query("TRUNCATE TABLE wp_list_company");
         $wpdb->query("TRUNCATE TABLE wp_company_day");
         while (have_rows('schedule_company', 'option')): the_row();
+            $wpdb->query("TRUNCATE TABLE wp_list_company");
             while (have_rows('cong_ty')): the_row();
                 $name = get_sub_field('name_of_company')['company_name'];
                 $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
@@ -550,18 +550,15 @@
                         'sessions'  => ''
                     ));
                 }
-
                 foreach($list_days as $list_day) {
                     $session = implode(', ', $list_day['session']);
-                    $company_added = "SELECT company_name FROM wp_company_day WHERE company_added = '$name'";
+                    $company_added = "SELECT company_name FROM wp_company_day WHERE company_name = '$name'";
                     $company_added = $wpdb->get_var($company_added);
-                    if($company_added !== $name) {
-                        $wpdb->insert('wp_company_day', array(
-                            'company_name'   => $name,
-                            'date'  => $list_day['day'],
-                            'sessions'  => $session
-                        ));
-                    }
+                    $wpdb->insert('wp_company_day', array(
+                        'company_name'   => $name,
+                        'date'  => $list_day['day'],
+                        'sessions'  => $session
+                    ));
                 }
             endwhile;
             while (have_rows('company_not_schedule')): the_row();
@@ -677,7 +674,7 @@
         global $wpdb;
         $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
         $company_code = (isset($_GET['companyCode'])) ? $_GET['companyCode'] : '';
-        $result = "SELECT company_code FROM wp_list_company WHERE company_name = '$company_name' AND company_code = '$company_code'";
+        $result = "SELECT * FROM wp_list_company WHERE company_name = '$company_name' AND company_code = '$company_code'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)

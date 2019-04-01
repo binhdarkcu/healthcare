@@ -842,3 +842,6 @@ body table:not(.table-condensed) td span {
     color: #fff !important;
     pointer-events: none;
 }
+.statusErr {
+    color: darkred
+}
