@@ -160,10 +160,6 @@ jQuery(document).ready(function(){
         $('#formScheduleCompany').validate({
             rules: {
                 nameOfCompany: "required",
-                amount: {
-                    required: true,
-                    max: 30
-                },
                 name: "required",
                 yourBirthday: 'required',
                 genderOptRadio: 'required',
@@ -200,7 +196,6 @@ jQuery(document).ready(function(){
                         companyCode: $('input[name="companyCode"]').val()
                     },
                     success: function(res) {
-                        console.log(res);
                         if(res.length == 0) {
                             countError++;
                             $('input[name="companyCode"]').val('');
@@ -234,7 +229,6 @@ jQuery(document).ready(function(){
                                             data: {
                                                 action: 'action_insert_db_schedule_company',
                                                 company_name: $('select[name="nameOfCompany"]').val(),
-                                                amount: $('.yourAmount').val(),
                                                 name: $('.yourName').val(),
                                                 birthday: $('#yourBirthday').datepicker().val(),
                                                 gender: $('#valueGender').val(),
@@ -274,6 +268,66 @@ jQuery(document).ready(function(){
         return val.split(",");
     }
 
+   /**
+    * logic: send a request to server to get a Json to check amount of session with a paramatter 
+    */
+   function check_amount(val, callback) {
+        var amount = [];
+        if(val == '') {
+            return
+        } else {
+            $.ajax({
+                type: 'GET',
+                url: my_ajax_insert_db.ajax_url,
+                data: {
+                    action: 'action_check_amount_register',
+                    company_name: $('select[name="nameOfCompany"]').val(),
+                    day: $('input[name="timeOrder"]').datepicker().val(),
+                    db: 'wp_company_day'
+                },
+                success: function(res) {
+                    return Object.values(res[0]).forEach(function(element) {
+                        if(element == val) {
+                            switch(element) {
+                                case 'Sáng':
+                                    amount.push(res[0].amount_morning)
+                                    callback(amount)
+                                    break;
+                                case 'Chiều':
+                                    amount.push(res[0].amount_afternoon)
+                                    callback(amount)
+                                    break;
+                                default:
+                                    return []
+                                    break;
+                            }
+                        }
+                    })
+                },
+
+            })
+        }
+   }
+
+   /**
+    * logic: send request GET to check amount registered
+    */
+   function check_amount_registered() {
+       $.ajax({
+           type: 'GET',
+           url: my_ajax_insert_db.ajax_url,
+           data: {
+               action: 'action_check_amount_register',
+               company_name: $('select[name="nameOfCompany"]').val(),
+               day: $('input[name="timeOrder"]').datepicker().val(),
+               db: 'wp_company'
+           },
+           success: function(res) {
+               console.log(res)
+           }
+       })
+   }
+
     /*
     * render calender and session when select company
     */
@@ -289,17 +343,19 @@ jQuery(document).ready(function(){
             },
             success: function(res) {
                 if(res[0].date !== '') {
+                    //logic: check date in db and only show the day avilable (multiple days)
                     res.map(function(e) {
                         return onlyThisDates.push(pad(e.date))
                     })
                     $('input[name="timeOrder"]').datepicker({
-                        format: 'd/m/yyyy',
+                        format: 'dd/mm/yyyy',
                         beforeShowDay: function(date) {
                             var dt_ddmmyyyy = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
                             return (onlyThisDates.indexOf(dt_ddmmyyyy) != -1);
                         },
                         autoclose: 1
                     }).on('changeDate', function(e) {
+                        //logic: append buổi follow  days
                         $.ajax({
                             type: 'GET',
                             url: my_ajax_insert_db.ajax_url,
@@ -309,17 +365,40 @@ jQuery(document).ready(function(){
                                 day: moment(e.date).format('DD/MM/YYYY')
                             },
                             success: function(res) {
-                                $('select[name="sessionOrder"]').empty();
-                                convertString(res[0].sessions).map(function(e) {
-                                    $('select[name="sessionOrder"]').append($('<option>', {
+                                var sessionOrder = $('select[name="sessionOrder"]');
+                                sessionOrder.empty();
+                                var arrSessions = [];
+                                Object.keys(res[0]).forEach(function(e) {
+                                    if(res[0][e] !== '') {
+                                        arrSessions.push(res[0][e])
+                                    }
+                                })
+                                arrSessions.map(function(e) {
+                                    sessionOrder.append($('<option>', {
                                         value: e,
                                         text: e
                                     }))
+                                })
+                                $('select[name="sessionOrder"] option:first').attr('selected','selected')
+                                sessionOrder.promise().done(function() {
+                                    check_amount($(this).val(), function(res) {
+                                        $('#textError').attr('style', '');
+                                        $('#total_current').text(res.toString())
+                                        check_amount_registered()
+                                    })
+                                })
+
+                                //logic: send a request to server to get a Json to check amount of session
+                                sessionOrder.on('change', function() {
+                                    check_amount($(this).val(), function(res) {
+                                        console.log(res)
+                                    })
                                 })
                             }
                         })
                     })
                 } else {
+                    //show all date (logic: if db return date with value == [])
                     var arrSession = ['Sáng', 'Chiều'];
                     $('input[name="timeOrder"]').datepicker({
                         format: 'dd/mm/yyyy',

@@ -519,6 +519,14 @@
         }
     }
 
+    function array_value_recursive($key, array $arr){
+        $val = array();
+        array_walk_recursive($arr, function($v, $k) use($key, &$val){
+            if($k == $key) array_push($val, $v);
+        });
+        return count($val) > 1 ? $val : array_pop($val);
+    }
+
     // if theme option has row => append to db
     function check_company_list() {
         global $wpdb;
@@ -551,14 +559,15 @@
                     ));
                 }
                 foreach($list_days as $list_day) {
-                    $session = implode(', ', $list_day['session']);
-                    $company_added = "SELECT company_name FROM wp_company_day WHERE company_name = '$name'";
-                    $company_added = $wpdb->get_var($company_added);
-                    $wpdb->insert('wp_company_day', array(
+                    $arr = array(
                         'company_name'   => $name,
                         'date'  => $list_day['day'],
-                        'sessions'  => $session
-                    ));
+                        'morning'  => array_value_recursive('text_morning', $list_day['session_morning']),
+                        'amount_morning'  => array_value_recursive('amount_morning', $list_day['session_morning'])[1],
+                        'afternoon'  => array_value_recursive('text_afternoon', $list_day['session_afternoon']),
+                        'amount_afternoon'  => array_value_recursive('amount_afternoon', $list_day['session_afternoon'])[1]
+                    );
+                    $wpdb->insert('wp_company_day', $arr);
                 }
             endwhile;
             while (have_rows('company_not_schedule')): the_row();
@@ -657,7 +666,7 @@
         global $wpdb;
         $company_name = (isset($_GET['companyName'])) ? $_GET['companyName'] : '';
         $day = (isset($_GET['day'])) ? $_GET['day'] : '';
-        $result = "SELECT sessions FROM wp_company_day WHERE company_name = '$company_name' AND date = '$day'";
+        $result = "SELECT morning, afternoon FROM wp_company_day WHERE company_name = '$company_name' AND date = '$day'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)
@@ -703,4 +712,22 @@
     add_action('wp_ajax_nopriv_action_check_number', 'check_number');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_check_number', 'check_number');
+
+    //Handle check maximun amount register
+    function check_amount_register() {
+        global $wpdb;
+        $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
+        $company_date = (isset($_GET['day'])) ? $_GET['day'] : '';
+        $db_name = (isset($_GET['db'])) ? $_GET['db'] : '';
+        $result = "SELECT * FROM $db_name WHERE company_name = '$company_name' AND date = '$company_date'";
+        header('Content-Type: application/json');
+        echo json_encode(
+            $wpdb->get_results($result, OBJECT)
+        );
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_check_amount_register', 'check_amount_register');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_check_amount_register', 'check_amount_register');
 ?>

@@ -133,6 +133,12 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="form-group" id="textError" style="display: none">
+                                            <label class="col-md-2 col-sm-3 col-xs-4"></label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <label>Số lượng hiện tại là: <span id="current_register">0</span>/<span id="total_current">0</span>.</label>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-md-2 col-sm-3 col-xs-4">Mã nhân viên / phòng ban:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
@@ -149,12 +155,6 @@
                                             <label class="col-md-4"></label>
                                             <div class="col-md-8">
                                                 <button type="submit" class="btn btn-success" id="registerScheduleCompany">Đăng ký</button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="textError" style="display: none">
-                                            <label class="col-md-2 col-sm-3 col-xs-4"></label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <label>Số lượng hiện tại là: <span id="total">0</span>/30. Số lượng còn lại là <span id="countNumber">0</span>, hoặc chọn ngày hay buổi khác.</label>
                                             </div>
                                         </div>
                                     </form>
