@@ -56,7 +56,10 @@ class Company_List extends WP_List_Table {
 	public  static function get_search($per_page = -1, $page_number = 1) {
 	    global $wpdb;
 	    $key = $_GET['s'];
-        $sql = "SELECT * FROM {$wpdb->prefix}company WHERE full_name LIKE '%$key%' ORDER BY ID DESC";
+        $sql = "SELECT * FROM {$wpdb->prefix}company WHERE company_name 
+			LIKE '%$key%' OR name LIKE '%$key%' OR phone LIKE '%$key%'
+			OR day LIKE '%$key%'
+			ORDER BY ID DESC";
         if ( ! empty( $_REQUEST['orderby'] ) ) {
             $sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
             $sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';
@@ -128,7 +131,6 @@ class Company_List extends WP_List_Table {
 			case 'sessions':
 			case 'employee_code':
 			case 'note':
-			case 'insuranceAgent':
 				return $item[ $column_name ];
             case 'company_name':
                 return $query->company_name;
@@ -147,8 +149,8 @@ class Company_List extends WP_List_Table {
         $columns = [
             'cb'      => '<input type="checkbox" />',
             'company_name'    => __( 'Tên công ty', 'sp' ),
-            'name' => __( 'Họ tên', 'sp' ),
             'amount'    => __( 'Số lượng', 'sp' ),
+            'name' => __( 'Họ tên', 'sp' ),
             'birthday' => __( 'Ngày sinh', 'sp' ),
             'gender' => __( 'Giới tính', 'sp' ),
             'phone'    => __( 'SĐT', 'sp' ),
@@ -158,7 +160,6 @@ class Company_List extends WP_List_Table {
             'sessions'    => __( 'Buổi', 'sp' ),
             'employee_code'    => __( 'Mã nhân viên / phòng ban', 'sp' ),
             'note'    => __( 'Ghi chú', 'sp' ),
-            'insuranceAgent'    => __( 'Nhân viên bảo hiểm', 'sp' ),
         ];
 
         return $columns;
@@ -231,6 +232,7 @@ class Company_List extends WP_List_Table {
 
 		/** Process bulk action */
 		$this->process_bulk_action();
+		$this->get_bulk_actions_filter();
 
 		$per_page     = $this->get_items_per_page( 'customers_per_page', 10 );
 		$current_page = $this->get_pagenum();
