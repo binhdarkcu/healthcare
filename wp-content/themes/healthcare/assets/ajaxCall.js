@@ -155,7 +155,7 @@ jQuery(document).ready(function(){
     /* =======================================================================================*/
     /* checking validation and send data to server in đặt hẹn công ty */
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    var countError = 0;
+    var countError = 0, totalAmount;
     $('#registerScheduleCompany').click(function () {
         $('#formScheduleCompany').validate({
             rules: {
@@ -196,6 +196,9 @@ jQuery(document).ready(function(){
                         companyCode: $('input[name="companyCode"]').val()
                     },
                     success: function(res) {
+                        /**
+                         * logic: if company code fail equal 5, disable register
+                         */
                         if(res.length == 0) {
                             countError++;
                             $('input[name="companyCode"]').val('');
@@ -208,47 +211,34 @@ jQuery(document).ready(function(){
                                 $('input[name="companyCode"]').prop('disabled', true);
                             }
                         } else {
-                            $.ajax({
-                                type: 'GET',
-                                url: my_ajax_insert_db.ajax_url,
-                                data: {
-                                    action: 'action_check_number',
-                                    company_name: $('select[name="nameOfCompany"]').val(),
-                                    date: $('input[name="timeOrder"]').datepicker().val(),
-                                    session: $('select[name="sessionOrder"]').val()
-                                },
-                                success: function(res) {
-                                    var calc_numbers = [];
-                                    res.length > 0 ? res.map(function (e) {
-                                        return calc_numbers.push(parseInt(e.amount))
-                                    }) : calc_numbers = [0];
-                                    if(res.length == 0 || calc_numbers.reduce(reducer) + parseInt($('.yourAmount').val()) <= 30) {
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: my_ajax_insert_db.ajax_url,
-                                            data: {
-                                                action: 'action_insert_db_schedule_company',
-                                                company_name: $('select[name="nameOfCompany"]').val(),
-                                                name: $('.yourName').val(),
-                                                birthday: $('#yourBirthday').datepicker().val(),
-                                                gender: $('#valueGender').val(),
-                                                email: $('.yourEmail').val(),
-                                                phone: $('.yourPhone').val(),
-                                                marital_status: $('.marital_status').val(),
-                                                day: $('input[name="timeOrder"]').datepicker().val(),
-                                                sessions: $('select[name="sessionOrder"]').val(),
-                                                employee_code: $('.yourCode').val(),
-                                                note: $('.yourNote').val()
-                                            }
-                                        })
-                                        alert('Đăng ký thành công')
-                                        location.reload();
-                                    } else {
-                                        $('#textError').attr('style', '');
-                                        $('#textError').find('label').addClass('statusErr')
-                                        $('#total').text(calc_numbers.reduce(reducer))
-                                        $('#countNumber').text(parseInt(30 - calc_numbers.reduce(reducer)))
-                                    }
+                            /**
+                             * logic: compare amount current and maximun amount
+                             */
+                            check_amount_registered(function(res) {
+                                if(res.length >= parseInt(totalAmount)) {
+                                    $('#limitAmount').attr('style', '')
+                                    $('#limitAmount').find('label').addClass('statusErr')
+                                } else {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: my_ajax_insert_db.ajax_url,
+                                        data: {
+                                            action: 'action_insert_db_schedule_company',
+                                            company_name: $('select[name="nameOfCompany"]').val(),
+                                            name: $('.yourName').val(),
+                                            birthday: $('#yourBirthday').datepicker().val(),
+                                            gender: $('#valueGender').val(),
+                                            email: $('.yourEmail').val(),
+                                            phone: $('.yourPhone').val(),
+                                            marital_status: $('.marital_status').val(),
+                                            day: $('input[name="timeOrder"]').datepicker().val(),
+                                            sessions: $('select[name="sessionOrder"]').val(),
+                                            employee_code: $('.yourCode').val(),
+                                            note: $('.yourNote').val()
+                                        }
+                                    })
+                                    alert('Đăng ký thành công')
+                                    location.reload();
                                 }
                             })
                         }
@@ -282,8 +272,7 @@ jQuery(document).ready(function(){
                 data: {
                     action: 'action_check_amount_register',
                     company_name: $('select[name="nameOfCompany"]').val(),
-                    day: $('input[name="timeOrder"]').datepicker().val(),
-                    db: 'wp_company_day'
+                    day: $('input[name="timeOrder"]').datepicker().val()
                 },
                 success: function(res) {
                     return Object.values(res[0]).forEach(function(element) {
@@ -312,20 +301,20 @@ jQuery(document).ready(function(){
    /**
     * logic: send request GET to check amount registered
     */
-   function check_amount_registered() {
-       $.ajax({
-           type: 'GET',
-           url: my_ajax_insert_db.ajax_url,
-           data: {
-               action: 'action_check_amount_register',
-               company_name: $('select[name="nameOfCompany"]').val(),
-               day: $('input[name="timeOrder"]').datepicker().val(),
-               db: 'wp_company'
-           },
-           success: function(res) {
-               console.log(res)
-           }
-       })
+   function check_amount_registered(callback) {
+        $.ajax({
+            type: 'GET',
+            url: my_ajax_insert_db.ajax_url,
+            data: {
+                action: 'action_check_number',
+                company_name: $('select[name="nameOfCompany"]').val(),
+                date: $('input[name="timeOrder"]').datepicker().val(),
+                session: $('select[name="sessionOrder"]').val()
+            },
+            success: function(res) {
+                callback(res)
+            }
+        })
    }
 
     /*
@@ -342,7 +331,7 @@ jQuery(document).ready(function(){
                 companyName: $(this).val()
             },
             success: function(res) {
-                if(res[0].date !== '') {
+                if(res.length > 0) {
                     //logic: check date in db and only show the day avilable (multiple days)
                     res.map(function(e) {
                         return onlyThisDates.push(pad(e.date))
@@ -384,14 +373,21 @@ jQuery(document).ready(function(){
                                     check_amount($(this).val(), function(res) {
                                         $('#textError').attr('style', '');
                                         $('#total_current').text(res.toString())
-                                        check_amount_registered()
+                                        totalAmount = parseInt(res.toString())
+                                        check_amount_registered(function(res) {
+                                            $('#current_register').text(res.length)
+                                        })
                                     })
                                 })
 
                                 //logic: send a request to server to get a Json to check amount of session
                                 sessionOrder.on('change', function() {
                                     check_amount($(this).val(), function(res) {
-                                        console.log(res)
+                                        $('#total_current').text(res.toString())
+                                        totalAmount = parseInt(res.toString())
+                                        check_amount_registered(function(res) {
+                                            $('#current_register').text(res.length)
+                                        })
                                     })
                                 })
                             }
@@ -494,7 +490,7 @@ jQuery(document).ready(function(){
                                 },
                                 success: function() {
                                     alert('Đăng ký thành công')
-                                    //location.reload();
+                                    location.reload();
                                 }
                             })
                         }

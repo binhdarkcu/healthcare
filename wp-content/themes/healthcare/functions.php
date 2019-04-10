@@ -439,7 +439,6 @@
         // All WP API functions are available for you here
         global $wpdb;
         $company_name = (isset($_POST['company_name'])) ? $_POST['company_name'] : '';
-        $amount = (isset($_POST['amount'])) ? $_POST["amount"] : '';
         $name = (isset($_POST['name'])) ? $_POST['name'] : '';
         $phone = (isset($_POST['phone'])) ? $_POST['phone'] : '';
         $birthday = (isset($_POST['birthday'])) ? $_POST['birthday'] : '';
@@ -452,7 +451,6 @@
         $note = (isset($_POST['note'])) ? $_POST['note'] : '';
         $wpdb->insert('wp_company', array(
             'company_name' => $company_name,
-            'amount' => $amount,
             'name' => $name,
             'birthday' => $birthday,
             'gender' => $gender,
@@ -530,59 +528,63 @@
     // if theme option has row => append to db
     function check_company_list() {
         global $wpdb;
+        $company_name_added = "SELECT * FROM wp_list_company";
+        $company_name_added = $wpdb->get_var($company_name_added);
         $wpdb->query("TRUNCATE TABLE wp_company_day");
         while (have_rows('schedule_company', 'option')): the_row();
-            $wpdb->query("TRUNCATE TABLE wp_list_company");
-            while (have_rows('cong_ty')): the_row();
-                $name = get_sub_field('name_of_company')['company_name'];
-                $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
-                $company_name_added = $wpdb->get_var($company_name_added);
-                $list_days = get_sub_field('name_of_company')['all_day'];
-                $arrayDb = array(
-                    'company_name'  => $name,
-                    'company_code'  => get_sub_field('name_of_company')['company_code'],
-                    'status_company'   => 'company_schedule',
-                    'show_on_site'  => implode(', ', get_sub_field('name_of_company')['show_on_site'])
-                );
-                if($company_name_added !== $name) {
-                    $wpdb->insert('wp_list_company', $arrayDb);
-                }
-
-                /*
-                * insert date and session into wp_company_day
-                */
-                if(!$list_days && $company_name_added !== $name) {
-                    $wpdb->insert('wp_company_day', array(
-                        'company_name'   => $name,
-                        'date'  => '',
-                        'sessions'  => ''
-                    ));
-                }
-                foreach($list_days as $list_day) {
-                    $arr = array(
-                        'company_name'   => $name,
-                        'date'  => $list_day['day'],
-                        'morning'  => array_value_recursive('text_morning', $list_day['session_morning']),
-                        'amount_morning'  => array_value_recursive('amount_morning', $list_day['session_morning'])[1],
-                        'afternoon'  => array_value_recursive('text_afternoon', $list_day['session_afternoon']),
-                        'amount_afternoon'  => array_value_recursive('amount_afternoon', $list_day['session_afternoon'])[1]
+        $wpdb->query("TRUNCATE TABLE wp_list_company");
+            if (have_rows('cong_ty')) : 
+                while (have_rows('cong_ty')): the_row();
+                    $name = get_sub_field('name_of_company')['company_name'];
+                    $list_days = get_sub_field('name_of_company')['all_day'];
+                    $arrayDb = array(
+                        'company_name'  => $name,
+                        'company_code'  => get_sub_field('name_of_company')['company_code'],
+                        'status_company'   => 'company_schedule',
+                        'show_on_site'  => implode(', ', get_sub_field('name_of_company')['show_on_site'])
                     );
-                    $wpdb->insert('wp_company_day', $arr);
-                }
-            endwhile;
-            while (have_rows('company_not_schedule')): the_row();
-                $name = get_sub_field('company_name');
-                $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
-                $company_name_added = $wpdb->get_var($company_name_added);
-                $arrayDb = array(
-                    'company_name'  => get_sub_field('company_name'),
-                    'total_members'  => get_sub_field('total_members'),
-                    'status_company'  => 'company_not_schedule'
-                );
-                if($company_name_added !== $name) {
-                    $wpdb->insert('wp_list_company', $arrayDb);
-                }
-            endwhile;
+                    if($company_name_added !== $name) {
+                        $wpdb->insert('wp_list_company', $arrayDb);
+                    }
+
+                    /*
+                    * insert date and session into wp_company_day
+                    */
+                    if(!$list_days && $company_name_added !== $name) {
+                        $wpdb->insert('wp_company_day', array(
+                            'company_name'   => $name,
+                            'date'  => '',
+                            'sessions'  => ''
+                        ));
+                    }
+                    foreach($list_days as $list_day) {
+                        $arr = array(
+                            'company_name'   => $name,
+                            'date'  => $list_day['day'],
+                            'morning'  => array_value_recursive('text_morning', $list_day['session_morning']),
+                            'amount_morning'  => array_value_recursive('amount_morning', $list_day['session_morning'])[1],
+                            'afternoon'  => array_value_recursive('text_afternoon', $list_day['session_afternoon']),
+                            'amount_afternoon'  => array_value_recursive('amount_afternoon', $list_day['session_afternoon'])[1]
+                        );
+                        $wpdb->insert('wp_company_day', $arr);
+                    }
+                endwhile;
+            endif;
+            if (have_rows('company_not_schedule')) : 
+                while (have_rows('company_not_schedule')): the_row();
+                    $name = get_sub_field('company_name');
+                    $company_name_added = "SELECT company_name FROM wp_list_company WHERE company_name = '$name'";
+                    $company_name_added = $wpdb->get_var($company_name_added);
+                    $arrayDb = array(
+                        'company_name'  => get_sub_field('company_name'),
+                        'total_members'  => get_sub_field('total_members'),
+                        'status_company'  => 'company_not_schedule'
+                    );
+                    if($company_name_added !== $name) {
+                        $wpdb->insert('wp_list_company', $arrayDb);
+                    }
+                endwhile;
+            endif;
         endwhile;
     }
     add_action('admin_init', 'check_company_list');
@@ -683,7 +685,7 @@
         global $wpdb;
         $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
         $company_code = (isset($_GET['companyCode'])) ? $_GET['companyCode'] : '';
-        $result = "SELECT * FROM wp_list_company WHERE company_name = '$company_name' AND company_code = '$company_code'";
+        $result = "SELECT * FROM wp_list_company WHERE company_name ='$company_name' AND company_code ='$company_code'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)
@@ -718,8 +720,7 @@
         global $wpdb;
         $company_name = (isset($_GET['company_name'])) ? $_GET['company_name'] : '';
         $company_date = (isset($_GET['day'])) ? $_GET['day'] : '';
-        $db_name = (isset($_GET['db'])) ? $_GET['db'] : '';
-        $result = "SELECT * FROM $db_name WHERE company_name = '$company_name' AND date = '$company_date'";
+        $result = "SELECT * FROM wp_company_day WHERE company_name = '$company_name' AND date = '$company_date'";
         header('Content-Type: application/json');
         echo json_encode(
             $wpdb->get_results($result, OBJECT)

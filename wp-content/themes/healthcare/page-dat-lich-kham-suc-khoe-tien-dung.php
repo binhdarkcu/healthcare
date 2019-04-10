@@ -43,13 +43,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4">Số lượng cần đặt:*</label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <input type="number" name="amount"
-                                                       class="form-control yourAmount" placeholder="Số lượng" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="col-md-2 col-sm-3 col-xs-4">Họ tên:*</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <input type="text" name="name" class="form-control yourName" placeholder="Họ tên*" />
@@ -149,6 +142,12 @@
                                             <label class="col-md-2 col-sm-3 col-xs-4">Ghi chú:</label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <textarea type="text" class="form-control ng-pristine ng-untouched yourNote" placeholder="Ghi chú"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="limitAmount" style="display: none">
+                                            <label class="col-md-2 col-sm-3 col-xs-4"></label>
+                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                                <label>Đã vượt qua số lượng cho phép, vui lòng chọn ngày hoặc buổi khác.</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
