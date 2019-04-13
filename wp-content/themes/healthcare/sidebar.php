@@ -43,24 +43,22 @@
 
     <h4 class="column-title">CÁC BÀI VIẾT KHÁC</h4>
 
-    <?php $args_lienquan = array(
-        'posts_per_page' => 5,
-        'offset' => 0,
-        'orderby' => 'rand',
-        'order' => 'ASC',
-        'post_type' => array('hoat_dong', 'dich_vu', 'gioi_thieu_khoa'),
-        'post_status' => 'publish',
-    );
-    $posts_lienquan = get_posts($args_lienquan); ?>
+    
 
     <ul class="post-list">
-        <?php foreach ($posts_lienquan as $post) : setup_postdata($post);
-            $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
-            <li><a href="<?php the_permalink(); ?>" class="text-white">
-                    <img src="<?php echo $bigImg ?>" alt="">
-                    <p><?php echo the_title() ?></p>
+    <?php
+        while( have_rows('related_posts', 'option') ): the_row();
+        while( have_rows('post_difference', 'option') ): the_row();
+        $items = get_sub_field('name_of_post');
+        if($items):
+        $feature_image_id = get_post_thumbnail_id($items->ID);
+        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+    ?>
+            <li><a href="<?php the_permalink($items->ID); ?>" class="text-white">
+                    <img src="<?php echo $feature_image_meta[0] ?>" alt="">
+                    <p><?php echo get_the_title($items->ID) ?></p>
                 </a>
             </li>
-        <?php endforeach; ?>
+    <?php endif;endwhile;endwhile; ?>
     </ul>
 </div>

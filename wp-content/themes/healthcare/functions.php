@@ -731,4 +731,23 @@
     add_action('wp_ajax_nopriv_action_check_amount_register', 'check_amount_register');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_check_amount_register', 'check_amount_register');
+
+    function check_number_view() {
+        global $post;
+        $count_post = esc_attr( get_post_meta( $post->ID, '_post_views_count', true) );
+        if( $count_post == ''){
+            $count_post = 1;
+            add_post_meta( $post->ID, '_post_views_count', $count_post);
+        }else{
+            $count_post = (int)$count_post + 1;
+            update_post_meta( $post->ID, '_post_views_count', $count_post);
+        }
+        $visitor_count = get_post_meta( $post->ID, '_post_views_count', true);
+        if( $visitor_count == '' ){ $visitor_count = 0; }
+        if( $visitor_count >= 1000 ){
+            $visitor_count = round( ($visitor_count/1000), 2 );
+            $visitor_count = $visitor_count.'k';
+        }
+        return $visitor_count;
+    }
 ?>

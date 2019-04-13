@@ -69,14 +69,14 @@
                     <div class="row" style="display: flex;align-items: center;">
                         <div class="col-md-3 col-xs-6"><div class="navbar-header">
                                 <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
-                                    <img src="<?php echo $logoUrl; ?>" alt="<?php echo get_field('name_of_clinic', 'option'); ?>" style="width:300px;">
+                                    <img src="<?php echo $logoUrl; ?>" alt="<?php echo get_field('name_of_clinic', 'option'); ?>">
                                 </a>
                             </div></div>
                         <div class="col-md-9 col-xs-6">
                             <div style="float: left;margin-top: 0;font-size: 18px; font-size: 18px; width: 40%;" class="hidden_md">
                                 <h3 style="margin-top: 17px; font-size: 18px; text-transform: uppercase"><?php echo get_field('name_of_clinic', 'option'); ?></h3>
-                                Email: <?php echo get_field('footer_email', 'option'); ?> <br/>
-                                Hotline: <?php echo get_field('footer_phone', 'option'); ?>
+                                <small style="display: table;line-height: 1;">Email: <?php echo get_field('footer_email', 'option'); ?></small>
+                                <small>Hotline: <?php echo get_field('footer_phone', 'option'); ?></small>
                             </div>
                             <div class="text-right language" style="margin-bottom: 10px;">
                                 <?php

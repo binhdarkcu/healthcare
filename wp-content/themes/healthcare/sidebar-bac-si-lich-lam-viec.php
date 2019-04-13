@@ -78,38 +78,21 @@
         $posts_lienquan = get_posts($args_lienquan);
 
         ?>
-        <ul class="post-list">
-            <?php foreach ($posts_lienquan as $post) : setup_postdata($post); ?>
-                <?php
-                $feature_image_id = get_post_thumbnail_id(get_the_ID());
-                $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
-                ?>
-                <div class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
-                    <div class="col-md-4 catItemImageBlock">
-                        <div class="news">
-                            <div class="article" style="height: 70px;">
-                                <a href="<?php echo get_the_permalink($post->ID); ?>">
-                                    <div class="thumb"
-                                         style="background-image: url(<?php echo $feature_image_meta[0] ?>); height: 60px;"></div>
-                                </a>
-                                <div class="catItemDateCreated">
-                                    <?php
-                                    $currentLang = qtrans_getLanguage();
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 post-list-right">
-                        <h5>
-                            <a class="text-white"
-                               href="<?php echo get_the_permalink($post->ID); ?>"><?php echo the_title(); ?></a>
-                        </h5>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
-                </div>
-            <?php endforeach; ?>
+        <ul class="post-list sidebar_post">
+        <?php
+            while( have_rows('related_posts', 'option') ): the_row();
+            while( have_rows('post_difference', 'option') ): the_row();
+            $items = get_sub_field('name_of_post');
+            if($items):
+            $feature_image_id = get_post_thumbnail_id($items->ID);
+            $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+        ?>
+                <li><a href="<?php the_permalink($items->ID); ?>" class="text-white">
+                        <img src="<?php echo $feature_image_meta[0] ?>" alt="">
+                        <p><?php echo get_the_title($items->ID) ?></p>
+                    </a>
+                </li>
+        <?php endif;endwhile;endwhile; ?>
         </ul>
     </div>
 </div>

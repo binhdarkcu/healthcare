@@ -15,7 +15,14 @@ $queried_object = get_queried_object();
                     while ( have_posts() ) : the_post();
                         ?>
                         <h4 class="column-title" style="text-transform: uppercase"><?php echo the_title();?></h4>
-                        <?php echo get_template_part('tpl-social-share'); ?>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <?php echo get_template_part('tpl-social-share'); ?>
+                            </div>
+                            <div class="col-md-3" style="text-align: right">
+                                <span>Lượt xem: <?php echo check_number_view() ?></span>
+                            </div>
+                        </div>
                         <div class="posts">
                             <?php echo the_content() ;?>
                         </div>

@@ -147,14 +147,20 @@
     <div class="text-center" style="padding-top: 20px; padding-bottom: 20px;"><span style="font-style:italic">Copyright © 2017</span></div>
     <!-- live support -->
     <div class="live_support">
-        <a href="<?php echo get_permalink( 94 )?>" class="dathen_fixed">
+        <!-- <a href="<?php echo get_permalink( 94 )?>">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <span>Đặt hẹn ngay</span>
         </a>
-        <a href="tel: 0369.03.18.18" class="call_fixed">
+        <a href="tel: 0369.03.18.18">
             <i class="fa fa-phone-square" aria-hidden="true"></i>
             <span><?php echo get_field('footer_phone', 'option'); ?></span>
-        </a>
+        </a> -->
+        <?php while (have_rows('live_support', 'option')): the_row(); ?>
+            <a href="<?php echo get_sub_field('link_live') ?>">
+                <i class="fa fa-<?php echo get_sub_field('icon') ?>" aria-hidden="true"></i>
+                <span><?php echo get_sub_field('title_live') ?></span>
+            </a>
+        <?php endwhile; ?>
     </div>
     <?php wp_footer() ?>
 </footer><!----><!--/#footer-->
