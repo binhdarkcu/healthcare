@@ -391,6 +391,8 @@
         wp_enqueue_script('bootstrap-datepicker-vi', get_template_directory_uri() . '/assets/bootstrap-datepicker.vi.js', array('jquery'));
         wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/main.js', array('jquery'));
         wp_enqueue_script('jquery-validation', get_template_directory_uri() . '/assets/jquery.validate.min.js', array('jquery'));
+        wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/video.js', array('jquery'));
+        wp_enqueue_script('video-youtube', get_template_directory_uri() . '/assets/Youtube.js', array('jquery'));
         wp_enqueue_script('ajax-script', get_template_directory_uri() . '/assets/ajaxCall.js', array('jquery'));
         wp_localize_script('ajax-script', 'my_ajax_insert_db', ['ajax_url' => admin_url('admin-ajax.php')]);
     }

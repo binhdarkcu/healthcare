@@ -26,6 +26,7 @@
     
     //Slider
     $(document).ready(function () {
+        limitEndVideo()
         var has_children = $('#nav .menu-item-has-children');
         has_children.click(function (e) {
             has_children.find('.submenu_changed').removeClass('open');
@@ -235,7 +236,36 @@
     new WOW().init();
     //smoothScroll
     smoothScroll.init();
-    
+
+    /**
+     * VideoJS init
+     */
+    function limitEndVideo() {
+        var player;
+        $('#video_intro .embed-responsive').each(function(element, key) {
+            var srcVid = $('#playerId-'+element).attr('srccur')
+            player = videojs('vid-'+element, {
+                autoplay: false,
+                controls: true,
+                techOrder: ["youtube"],
+                sources: [{
+                    "src": srcVid,
+                    "type": "video/youtube",
+                    "youtube": {
+                        "customVars": { "wmode": "transparent" }
+                    }
+                }]
+            }, function() {
+                this.on('ended', function() {
+                    if(player.currentTime() == 0) {
+                        player.trigger('loadstart');
+                        player.trigger('pause')
+                    }
+                })
+            })
+        })
+    }
+
     // portfolio filter
     $(window).load(function () {
         'use strict';

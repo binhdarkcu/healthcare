@@ -27,14 +27,20 @@
                     <div class="col-md-12" id="video_intro">
                         <?php while (have_rows('video_intro', 'option')): the_row(); ?>
                             <div class="carousel-inner" role="listbox">
-                                <?php while (have_rows('video_link')): the_row();
+                                <?php if(have_rows('video_link')) : 
+                                    $i = 0;
+                                    while (have_rows('video_link')): the_row();
                                     $items = get_sub_field('links');
                                     ?>
-                                    <div class="embed-responsive embed-responsive-16by9" style="width: 100%;">
-                                        <iframe class="embed-responsive-item" src="<?php echo $items['url'] ?>?rel=0?version=3&&showinfo=0"
-                                                frameborder="0" allowfullscreen></iframe>
+                                    <div srccur="<?php echo $items['url'] ?>" class="embed-responsive embed-responsive-16by9" style="width: 100%;" id="playerId-<?php echo $i ?>">
+                                        <video
+                                            id="vid-<?php echo $i ?>"
+                                            class="video-js vjs-default-skin vjs-16-9"
+                                        >
+                                        </video>
                                     </div>
-                                <?php endwhile; ?>
+                                    
+                                <?php $i++; endwhile; endif; ?>
                             </div>
                         <?php endwhile; ?>
                     </div>
