@@ -35,7 +35,7 @@
                                     <div srccur="<?php echo $items['url'] ?>" class="embed-responsive embed-responsive-16by9" style="width: 100%;" id="playerId-<?php echo $i ?>">
                                         <video
                                             id="vid-<?php echo $i ?>"
-                                            class="video-js vjs-default-skin vjs-16-9"
+                                            class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered"
                                         >
                                         </video>
                                     </div>
