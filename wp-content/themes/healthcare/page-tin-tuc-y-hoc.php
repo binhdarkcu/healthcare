@@ -6,7 +6,6 @@
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">
             <div class="conten col-md-8 col-sm-12 col-xs-12">
-            
                 <?php
                     $parent_args = [
                         'taxonomy'     => 'customers_care',
@@ -72,17 +71,17 @@
                                             </div>
                                         </div>
                                     <?php endwhile;endif;
-                                            wp_reset_postdata(); ?>
-                                                </div>
-                                <div class="clearfix"></div>
-                                <div class="paging pagenavi">
-                                    <div class="paging-normal">
-                                        <?php if (function_exists('wp_pagenavi')) {
-                                            wp_pagenavi(array('query' => $query));
-                                        }
-                                        ?>
+                                wp_reset_postdata(); ?>
                                     </div>
-                                </div>
+                    <div class="clearfix"></div>
+                    <div class="paging pagenavi">
+                        <div class="paging-normal">
+                            <?php if (function_exists('wp_pagenavi')) {
+                                wp_pagenavi(array('query' => $query));
+                            }
+                            ?>
+                        </div>
+                    </div>
                             <?php }
                         }
                     }

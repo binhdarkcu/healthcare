@@ -752,4 +752,17 @@
         }
         return $visitor_count;
     }
+    // Hide protected posts
+function exclude_protected($where) {
+    global $wpdb;
+    return $where .= " AND {$wpdb->posts}.post_password = '' ";
+    }
+    // Where to display protected posts
+    function exclude_protected_action($query) {
+    if( !is_single() && !is_page() && !is_admin() ) {
+    add_filter( 'posts_where', 'exclude_protected' );
+    }
+    }
+    // Action to queue the filter at the right time
+    add_action('pre_get_posts', 'exclude_protected_action');
 ?>
