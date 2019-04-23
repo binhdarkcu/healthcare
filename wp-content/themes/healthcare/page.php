@@ -22,7 +22,6 @@
                     <?php endwhile; ?>
                     <?php
                 }
-
                 ?>
 
             </div>

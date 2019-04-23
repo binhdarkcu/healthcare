@@ -1,5 +1,4 @@
 <?php
-    require_once('dw-question/custom.php'); //Customize functions of plugins Dw-question
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
     require_once('inc/send_mail.php');
     require_once('inc/handle_create_acf.php');
