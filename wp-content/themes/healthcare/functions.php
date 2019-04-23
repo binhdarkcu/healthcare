@@ -205,7 +205,9 @@
                 echo '</div>';
 
             }//END if ($child_pages)
-
+            else{
+                echo apply_filters( 'the_content', get_post_field('post_content', $page_id) );
+            }
         }//END if (is_page())
 
         // return the object

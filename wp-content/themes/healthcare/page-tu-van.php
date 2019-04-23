@@ -8,7 +8,7 @@ $queried_object = get_queried_object();
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:0">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="btn btn-success pull-right">Đặt câu hỏi</a>
+                        <a href="<?php echo dwqa_get_ask_link();?>" class="btn btn-success pull-right">Đặt câu hỏi</a>
                     </div>
                 </div>
                 <h3>Câu hỏi hằng ngày / hỏi đáp</h3>
