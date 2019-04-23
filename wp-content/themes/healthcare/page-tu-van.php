@@ -6,6 +6,11 @@ $queried_object = get_queried_object();
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px">
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-success pull-right">Đặt câu hỏi</a>
+                    </div>
+                </div>
                 <h3>Câu hỏi hằng ngày / hỏi đáp</h3>
                 <ul class="cd-faq-group">
                     <?php
@@ -61,4 +66,3 @@ $queried_object = get_queried_object();
 
 </div>
 <?php get_footer(); ?>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/questions.js"></script>

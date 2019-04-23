@@ -373,4 +373,30 @@
             theme: "dark-3",
         });
     })
+    var form = $('#main-form-contact');
+    form.submit(function(evt) {
+        evt.preventDefault();
+        var form_status = $('<div class="form_status"></div>');
+        $.ajax({
+            type:'POST',
+            url: my_ajax_insert_db.ajax_url,
+            data: {
+                action: 'action_send_mail_contact',
+                name: form.find('input[name="name"]').val(),
+                email: form.find('input[name="email"]').val(),
+                subject: form.find('input[name="subject"]').val(),
+                phongban: form.find('select[name="phongban"]').val(),
+                message: form.find('textarea[name="message"]').val()
+            },
+            beforeSend: function() {
+                form.prepend(form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Mail đang được gửi...</p>').fadeIn());
+            },
+            error: function (request, status, error) {
+                form_status.html(error).delay(3000).fadeOut();
+            },
+            success: function() {
+                form_status.html('<p class="text-success">Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên hệ với bạn ngay khi có thể</p>').delay(3000).fadeOut();
+            }
+        })
+    })
 });

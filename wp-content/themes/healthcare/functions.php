@@ -752,17 +752,34 @@
         }
         return $visitor_count;
     }
-    // Hide protected posts
-function exclude_protected($where) {
-    global $wpdb;
-    return $where .= " AND {$wpdb->posts}.post_password = '' ";
+    // send mail contact
+    function send_mail_contact() {
+        global $wpdb;
+        $name = (isset($_POST['name'])) ? $_POST['name'] : '';
+        $email = (isset($_POST['email'])) ? $_POST['email'] : '';
+        $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
+        $phongban = (isset($_POST['phongban'])) ? $_POST['phongban'] : '';
+        $message = (isset($_POST['message'])) ? $_POST['message'] : '';
+
+        /**
+         * call function send mail template
+         */
+        send_mail(
+            $infomation = array(
+                'name'  =>  $name,
+                'email' => $email,
+                'subject'   => $subject,
+                'phongban'  => $phongban,
+                'message'   => $message,
+                'contact'   => true
+            )
+        );
+
+        wp_die(); // this is required to terminate immediately and return a proper response
     }
-    // Where to display protected posts
-    function exclude_protected_action($query) {
-    if( !is_single() && !is_page() && !is_admin() ) {
-    add_filter( 'posts_where', 'exclude_protected' );
-    }
-    }
-    // Action to queue the filter at the right time
-    add_action('pre_get_posts', 'exclude_protected_action');
+
+    // This will allow not logged in users to use the functionality
+    add_action('wp_ajax_nopriv_action_send_mail_contact', 'send_mail_contact');
+    // This will allow only logged in users to use the functionality
+    add_action('wp_ajax_action_send_mail_contact', 'send_mail_contact');
 ?>

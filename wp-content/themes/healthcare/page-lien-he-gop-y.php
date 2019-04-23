@@ -21,7 +21,7 @@
                                 <abbr title="Hotline">Email:</abbr> <?php echo get_field('footer_email', 'option'); ?><br>
                             </address>
 
-                            <form id="main-contact-form" name="contactForm" ng-submit="makeOfferAdvise(OfferAdvise)" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+                            <form id="main-form-contact" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" placeholder="Họ tên" ng-model="OfferAdvise.Name" required="" aria-invalid="true">
                                 </div>
@@ -32,10 +32,10 @@
                                     <input type="text" name="subject" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" placeholder="Chủ đề" ng-model="OfferAdvise.Status" required="" aria-invalid="true">
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control ng-pristine ng-untouched ng-empty" id="">
+                                    <select class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="phongban">
                                         <option selected>Chọn phòng ban</option>
-                                        <option value="">Ban giám đốc</option>
-                                        <option value="">Chăm sóc khách hàng</option>
+                                        <option value="giamdoc">Ban giám đốc</option>
+                                        <option value="cskh">Chăm sóc khách hàng</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
