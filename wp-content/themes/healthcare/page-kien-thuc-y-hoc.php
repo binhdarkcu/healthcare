@@ -91,7 +91,7 @@
             </div>
             <!---->
             <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
-                <?php get_sidebar(); ?>
+                <?php get_sidebar('cskh'); ?>
             </div>
     </section>
 </div>

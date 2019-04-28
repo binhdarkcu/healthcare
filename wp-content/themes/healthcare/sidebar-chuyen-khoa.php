@@ -11,9 +11,6 @@
             );
         ?>
         <ul class="post-list sidebarKhoa">
-<!--            --><?php //foreach (my_get_page_children() as $child):?>
-<!--                <li><i class="fa fa-angle-right" aria-hidden="true"></i><a style="padding-left: 15px;" href="--><?php //echo the_permalink($child->ID); ?><!--">--><?php //echo $child->post_title?><!--</a></li>-->
-<!--            --><?php //endforeach; ?>
             <?php foreach ( $categories as $category ) : setup_postdata( $category );
                     $imgUrl = get_field('departments_image', $category); ?>
                 <li>
@@ -35,9 +32,9 @@
             $feature_image_id = get_post_thumbnail_id($items->ID);
             $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
         ?>
-            <li><a href="<?php the_permalink($items->ID); ?>" class="text-white">
-                    <img src="<?php echo $feature_image_meta[0] ?>" alt="">
-                    <p><?php echo get_the_title($items->ID) ?></p>
+            <li><a href="<?php the_permalink($items->ID); ?>" class="text-white clearfix" style="width: 100%;">
+                <div style="background: url(<?php echo $feature_image_meta[0] ?>) center top no-repeat; width: 85px; height: 45px; background-size: cover; float: left"></div>
+                <p><?php echo get_the_title($items->ID) ?></p>
                 </a>
             </li>
     <?php endif;endwhile;endwhile; ?>

@@ -45,13 +45,6 @@
             'email' => $email
         ], __DIR__ . './../inc/template_email/email_for_company.php'));
     }
-    function email_contact($mail, $name, $email) {
-        $mail->Subject = 'GOLDEN HEALTHCARE: Feedback email from customer';
-        $mail->msgHTML(variable_mail([
-            'name' => $name,
-            'email' => $email
-        ], __DIR__ . './../inc/template_email/email_for_contact.php'));
-    }
     function variable_mail(array $arr, $file) {
         ob_start();
         extract($arr);

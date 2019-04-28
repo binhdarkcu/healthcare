@@ -382,6 +382,22 @@
 
     add_action('admin_head', 'customize_acf');
 
+    function views_count( $question_id = null ) {
+        if ( ! $question_id ) {
+            global $post;
+            $question_id = $post->ID;
+            if ( isset( $post->view_count ) ) {
+                return $post->view_count;
+            }
+        }
+        $views = get_post_meta( $question_id, '_dwqa_views', true );
+        if ( ! $views ) {
+            return 0;
+        } else {
+            return ( int ) $views;
+        }
+    }
+
     /* The AJAX handler function */
     function localize_my_scripts() {
         wp_enqueue_script('jquery-script', get_template_directory_uri() . '/assets/jquery.js', array('jquery'));
@@ -765,16 +781,17 @@
         /**
          * call function send mail template
          */
-        send_mail(
-            $infomation = array(
-                'name'  =>  $name,
-                'email' => $email,
-                'subject'   => $subject,
-                'phongban'  => $phongban,
-                'message'   => $message,
-                'contact'   => true
-            )
+        $infomation = array(
+            'name'  =>  $name,
+            'email' => $email,
+            'subject'   => $subject,
+            'phongban'  => $phongban,
+            'message'   => $message
         );
+        $template_path = get_template_directory() . '/inc/template_email/email_for_contact.php';
+        $template = file_get_contents($template_path);
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        wp_mail($infomation['email'], $infomation['subject'], $template, $headers);
 
         wp_die(); // this is required to terminate immediately and return a proper response
     }
@@ -783,4 +800,5 @@
     add_action('wp_ajax_nopriv_action_send_mail_contact', 'send_mail_contact');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_send_mail_contact', 'send_mail_contact');
+    
 ?>

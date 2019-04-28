@@ -770,15 +770,16 @@ body.single-dwqa-question #dwqa-respond {
 }
 #footer .column_info .social_icons a {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
     text-align: center;
     color: #fff;
     background: #055433;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 25px;
     transition: all 0.3s;
+    margin-right: 10px;
 }
 #footer .column_info .social_icons a:hover {
     background: #04844f;
