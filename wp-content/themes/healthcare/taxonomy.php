@@ -23,7 +23,6 @@
                         )
                     );
                     $query = new WP_Query( $args );
-                    var_dump($query);
                     if($query->have_posts()) : while($query->have_posts()) : $query->the_post();
                     $page_content = get_field('intro_description', get_the_ID());
                     $feature_image_id = get_post_thumbnail_id(get_the_ID());
@@ -55,14 +54,14 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                <?php endwhile;endif; ?>
+                <?php endwhile;endif;wp_reset_postdata();  ?>
                 <div class="clearfix"></div>
                 <div class="paging pagenavi">
                     <div class="paging-normal">
                         <?php if (function_exists('wp_pagenavi')) {
                             wp_pagenavi(array('query' => $query));
                         }
-                        wp_reset_query();wp_reset_postdata(); 
+                        wp_reset_query();
                         ?>
                     </div>
                 </div>
