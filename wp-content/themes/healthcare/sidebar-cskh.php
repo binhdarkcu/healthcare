@@ -9,8 +9,21 @@
             $sideBarTitle = $queried_object->post_title;
         }
     ?>
-    <h4 class="column-title" style="text-transform: uppercase;">Danh mục câu hỏi</h4>
+    <h4 class="column-title" style="text-transform: uppercase;">Danh mục</h4>
     <ul class="post-list" style="margin-bottom: 0">
+        <?php 
+            $terms = get_terms('tab_services');
+            $link = '';
+            foreach($terms as $term) {
+                if($term->term_id == 20) {
+                    $link = get_term_link($term);
+                }
+            }
+        ?>
+        <li class="clearfix"><i class="fa fa-angle-right pull-left" aria-hidden="true"></i>
+            <a class="pull-left" style="padding-bottom: 0;border: 0;margin-top: -4px;"
+            href="<?php echo $link ?>">Y học thường thức</a>
+        </li>
         <?php
             $parent_args = [
                 'taxonomy'     => $taxName,

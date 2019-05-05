@@ -1,6 +1,10 @@
 <?php get_header() ?>
 <?php
     $queried_object = get_queried_object();
+    global $wp_taxonomies;
+    $tax = $queried_object->taxonomy;
+    $post_type = $wp_taxonomies[$tax]->object_type;
+    $short_desc = $post_type[0] == 'dich_vu' ? 'field_5c872fa18db6c' : 'intro_description';
 ?>
 <div ng-init="loadData()">
     <section>
@@ -11,7 +15,7 @@
                 <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = array(
-                        'post_type' => 'cham_soc_khach_hang',
+                        'post_type' => $post_type,
                         'paged' => $paged,
                         'posts_per_page' => 10,
                         'tax_query' => array(
@@ -24,7 +28,7 @@
                     );
                     $query = new WP_Query( $args );
                     if($query->have_posts()) : while($query->have_posts()) : $query->the_post();
-                    $page_content = get_field('intro_description', get_the_ID());
+                    $page_content = get_field($short_desc);
                     $feature_image_id = get_post_thumbnail_id(get_the_ID());
                     $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full'); 
                 ?>

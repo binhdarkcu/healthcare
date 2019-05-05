@@ -1,7 +1,9 @@
 <section id="services" style="padding-top: 0">
   <div class="container">
     <div class="section-header">
-        <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Dịch vụ</h2>
+        <h2 class="section-title text-center wow fadeInDown animated"
+            style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('services', 'option')['title'] ?></h2>
+        <small class="short-desc"><?php echo get_field('services', 'option')['description'] ?></small>
     </div>
     <div class="row">
         <div id="exTab1" class="col-md-12">

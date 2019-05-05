@@ -791,7 +791,7 @@
         $template_path = get_template_directory() . '/inc/template_email/email_for_contact.php';
         $template = file_get_contents($template_path);
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        wp_mail($infomation['email'], $infomation['subject'], $template, $headers);
+        wp_mail($email, $subject, $message, $headers);
 
         wp_die(); // this is required to terminate immediately and return a proper response
     }

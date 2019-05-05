@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <select class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="phongban">
                                         <option selected>Chọn phòng ban</option>
-                                        <option value="giamdoc">Ban giám đốc</option>
+                                        <option value="quangsang222@gmail.com">Ban giám đốc</option>
                                         <option value="cskh">Chăm sóc khách hàng</option>
                                     </select>
                                 </div>
