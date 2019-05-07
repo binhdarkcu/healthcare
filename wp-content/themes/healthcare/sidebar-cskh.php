@@ -15,7 +15,7 @@
             $terms = get_terms('tab_services');
             $link = '';
             foreach($terms as $term) {
-                if($term->term_id == 20) {
+                if($term->slug == 'y-hoc-thuong-thuc') {
                     $link = get_term_link($term);
                 }
             }

@@ -95,7 +95,7 @@ $posts_doctors_array = get_posts($args_doctors);
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
                                                                 if ($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                                                 }
                                                             }
                                                         }
@@ -118,7 +118,7 @@ $posts_doctors_array = get_posts($args_doctors);
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
                                                                 if ($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                                                 }
                                                             }
                                                         }
@@ -141,7 +141,7 @@ $posts_doctors_array = get_posts($args_doctors);
                                                             $listCats = get_the_category($name->ID);
                                                             foreach ($listCats as $listCat) {
                                                                 if ($listCat->name == $queried_object->name) {
-                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                                                    echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                                                 }
                                                             }
                                                         }

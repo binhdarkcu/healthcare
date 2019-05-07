@@ -36,7 +36,7 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                     foreach ($names as $name) {
-                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
                                     ?></td>
                             <?php } endwhile; endif; ?>
@@ -54,7 +54,7 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                     foreach ($names as $name) {
-                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
                                     ?></td>
                             <?php } endwhile; endif; ?>
@@ -72,7 +72,7 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                     foreach ($names as $name) {
-                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a>';
+                                        echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
                                     ?></td>
                             <?php } endwhile; endif; ?>
