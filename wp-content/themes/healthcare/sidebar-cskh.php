@@ -1,4 +1,4 @@
-<div class="sidebar_post cat-box">
+<div class="sidebar_post">
     <?php 
         $queried_object = get_queried_object();
         $taxName = 'customers_care';

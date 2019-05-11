@@ -44,6 +44,20 @@
 					) );
 				?>
 			</div>
+			<div style="display: none">
+				<label for="question-category"><?php _e( 'Category', 'dw-question-answer' ) ?></label>
+				<?php
+					wp_dropdown_categories( array(
+						'name'          => 'question-category',
+						'id'            => 'question-category',
+						'taxonomy'      => 'dwqa-question_category',
+						'hide_empty'    => 0,
+						'value_field'	=> 'term_id',
+						'quicktags'     => array( 'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,spell,close' ),
+						'selected'      => 29,
+					) );
+				?>
+			</div>
 
 			<?php if ( dwqa_current_user_can( 'post_question' ) && !is_user_logged_in() ) : ?>
 			<div class="form-group clearfix">

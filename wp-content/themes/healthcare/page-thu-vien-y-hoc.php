@@ -2,9 +2,9 @@
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">
+                    <div class="row">
             <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
                 <div class="childpages">
-                    <div class="row">
                         <?php
                         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                         $childArgs = array(
@@ -47,7 +47,6 @@
                                 </div>
                             </div>
                             <?php endwhile;endif;wp_reset_postdata();?>
-                    </div>
                     <div class="clearfix"></div>
                     <div class="paging pagenavi">
                         <div class="paging-normal">
@@ -63,6 +62,7 @@
             <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">
                 <?php get_sidebar() ?>
             </div>
+                    </div>
         </div></section>
 
 </div>
