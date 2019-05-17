@@ -858,3 +858,15 @@ body table:not(.table-condensed) td span {
         width: 300px;
     }
 }
+.advisory {
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.advisory img {
+    height: 40px;
+    margin-right: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+}

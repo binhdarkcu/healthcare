@@ -340,21 +340,36 @@ class DWQA_Handle {
 						return false;
 					}
 
+					if ( empty( $_POST['chuyenkhoa-category'] ) ) {
+						dwqa_add_notice( __( 'Vui lòng chọn chuyên khoa', 'dw-question-answer' ), 'error' );
+						return false;
+					}
+
 					if ( !is_user_logged_in() ) {
-						if ( empty( $_POST['_dwqa_anonymous_email'] ) || !is_email( sanitize_email( $_POST['_dwqa_anonymous_email'] ) ) ) {
-							dwqa_add_notice( __( 'Missing email information', 'dw-question-answer' ), 'error' );
-							return false;
-						}
 
 						if ( empty( $_POST['_dwqa_anonymous_name'] ) ) {
 							dwqa_add_notice( __( 'Missing name information', 'dw-question-answer' ), 'error' );
 							return false;
 						}
-                                                
-						if ( empty( $_POST['_dwqa_anonymous_phone_number'] ) ) {
-							dwqa_add_notice( __( 'Missing phone number information', 'dw-question-answer' ), 'error' );
+
+						if ( empty( $_POST['_dwqa_anonymous_birthday'] ) ) {
+							dwqa_add_notice( __( 'Missing birthday information', 'dw-question-answer' ), 'error' );
 							return false;
 						}
+
+						if ( empty( $_POST['_dwqa_anonymous_gender'] ) ) {
+							dwqa_add_notice( __( 'Missing gender information', 'dw-question-answer' ), 'error' );
+							return false;
+						}
+						if ( empty( $_POST['_dwqa_anonymous_email'] ) || !is_email( sanitize_email( $_POST['_dwqa_anonymous_email'] ) ) ) {
+							dwqa_add_notice( __( 'Missing email information', 'dw-question-answer' ), 'error' );
+							return false;
+						}
+					}
+
+					if ( empty( $_POST['question-content'] ) ) {
+						dwqa_add_notice( __( 'Missing description information', 'dw-question-answer' ), 'error' );
+						return false;
 					}
 
 					$title = esc_html( $_POST['question-title'] );
@@ -454,6 +469,8 @@ class DWQA_Handle {
 							$question_author_email = isset( $_POST['_dwqa_anonymous_email'] ) && is_email( $_POST['_dwqa_anonymous_email'] ) ? sanitize_email( $_POST['_dwqa_anonymous_email'] ) : false;
 							$question_author_name = isset( $_POST['_dwqa_anonymous_name'] ) && !empty( $_POST['_dwqa_anonymous_name'] ) ? sanitize_text_field( $_POST['_dwqa_anonymous_name'] ) : false;
 							$question_author_phone_number = isset( $_POST['_dwqa_anonymous_phone_number'] ) && !empty( $_POST['_dwqa_anonymous_phone_number'] ) ? sanitize_text_field( $_POST['_dwqa_anonymous_phone_number'] ) : false;
+							$question_author_birthday = isset( $_POST['_dwqa_anonymous_birthday'] ) && !empty( $_POST['_dwqa_anonymous_birthday'] ) ? sanitize_text_field( $_POST['_dwqa_anonymous_birthday'] ) : false;
+							$question_author_gender = isset( $_POST['_dwqa_anonymous_gender'] ) && !empty( $_POST['_dwqa_anonymous_gender'] ) ? sanitize_text_field( $_POST['_dwqa_anonymous_gender'] ) : false;
 							$user_id = 0;
 						}
 					}
@@ -478,7 +495,7 @@ class DWQA_Handle {
 						'tax_input'      => array(
 							'dwqa-question_category'    => array( $category ),
 							'dwqa-question_tag'         => explode( ',', $tags ),
-                                                        'category'                  => array($chuyen_khoa)
+                            'category'                  => array($chuyen_khoa)
 						)
 					);
 
@@ -492,27 +509,29 @@ class DWQA_Handle {
 					}
 
 					if ( dwqa_count_notices( 'error' ) == 0 ) {
-                                                $to = array();
+                        $to = array();
 						if ( $is_anonymous ) {
 							update_post_meta( $new_question, '_dwqa_anonymous_email', $question_author_email );
 							update_post_meta( $new_question, '_dwqa_anonymous_name', $question_author_name );
 							update_post_meta( $new_question, '_dwqa_anonymous_phone_number', $question_author_phone_number );
+							update_post_meta( $new_question, '_dwqa_anonymous_birthday', $question_author_birthday );
+							update_post_meta( $new_question, '_dwqa_anonymous_gender', $question_author_gender );
 							update_post_meta( $new_question, '_dwqa_is_anonymous', true );
-                                                        $to[] = $question_author_email;
-                                                }else{
-                                                    $current_user = wp_get_current_user();
-                                                    $to[] = $current_user->user_email;
-                                                }
+                            $to[] = $question_author_email;
+                        } else {
+							$current_user = wp_get_current_user();
+							$to[] = $current_user->user_email;
+						}
 
-                                                //After saving question, sending emails
-                                                //Question link
-                                                $link = get_post_permalink($new_question);
-                                                
-                                                $to[] = 'chuyenkhoa@example.com';
-                                                $body = 'email content'.$link;
-                                                $subject = 'Đã đặt câu hỏi';
-                                                $headers = array('Content-Type: text/html; charset=UTF-8');
-                                                //wp_mail($to, $subject, $body, $headers);//trả về true nếu mail gửi thành công, false nếu xảy ra lỗi
+						//After saving question, sending emails
+						//Question link
+						$link = get_post_permalink($new_question);
+						
+						$to[] = 'chuyenkhoa@example.com';
+						$body = 'email content'.$link;
+						$subject = 'Đã đặt câu hỏi';
+						$headers = array('Content-Type: text/html; charset=UTF-8');
+						//wp_mail($to, $subject, $body, $headers);//trả về true nếu mail gửi thành công, false nếu xảy ra lỗi
                                                 
                                                 
 						if ( isset( $dwqa_options['enable-review-question'] ) && $dwqa_options['enable-review-question'] && !current_user_can( 'manage_options' ) && $post_status != 'private' ) {

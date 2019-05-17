@@ -39,7 +39,7 @@
                                     <div class="cd-faq-content row related_doctors">
                                         <?php if ($link) : ?>
                                             <object data="<?php echo $link ?>" type="application/pdf" style="width: 100%; height: 700px">
-                                                <iframe src="<?php echo $link ?>"></iframe>
+                                                <embed style="width: 100%; height: 700px" src="https://docs.google.com/viewer?url=<?php echo $link ?>&embedded=true" />
                                             </object>
                                         <?php else : ?>
                                             <?php echo get_the_content() ?>

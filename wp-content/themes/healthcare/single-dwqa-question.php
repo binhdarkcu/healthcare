@@ -11,7 +11,14 @@ while ( have_posts() ) : the_post();
                     <div class="col-md-8 col-sm-12 col-xs-12 wow fadeInRight postDetail conten">
                         <!----><div ng-if="!isRequiredLogin(post.PostInternal)">
                             <h3 class="column-title"><?php echo the_title();?></h3>
-                            <?php echo get_template_part('tpl-social-share'); ?>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <?php echo get_template_part('tpl-social-share'); ?>
+                                </div>
+                                <div class="col-md-3" style="text-align: right">
+                                    <span>Lượt xem: <?php echo check_number_view() ?></span>
+                                </div>
+                            </div>
                             <div class="posts">
                                 <?php echo the_content()?>
                             </div>

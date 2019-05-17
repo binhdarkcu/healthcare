@@ -1,3 +1,6 @@
+<?php
+    global $post;
+?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <h1>Tìm bác sĩ</h1>
     <div class="searchcontrols row col-lg-12">
@@ -19,6 +22,7 @@
                     </select>
                 </div>
                 <div class="col-md-2" style="padding-left:0px;">
+                    <input type="hidden" name="page" value="<?php echo $post->post_name ?>">
                     <button type="submit" class="fa fa-search searchbuttonm"></button>
                 </div>
             </div>

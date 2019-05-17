@@ -21,14 +21,14 @@
                               if ( $relatedPosts->have_posts() ) :
                                     while ( $relatedPosts->have_posts() ) : $relatedPosts->the_post();
                                         $feature_image_id = get_post_thumbnail_id(get_the_ID());
-                                        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'thumbnail');
+                                        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
                           ?>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 5px">
                               <div class="col-md-4 catItemImageBlock">
                                   <div class="news">
                                       <div class="article">
                                           <a href="<?php echo get_the_permalink(get_the_ID()); ?>">
-                                              <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0];?>)"></div>
+                                              <div class="thumb" style="background: url(<?php echo $feature_image_meta[0];?>) top center no-repeat; background-size: cover;"></div>
                                           </a>
                                       </div>
                                   </div>
