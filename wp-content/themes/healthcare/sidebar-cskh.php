@@ -20,10 +20,6 @@
                 }
             }
         ?>
-        <li class="clearfix"><i class="fa fa-angle-right pull-left" aria-hidden="true"></i>
-            <a class="pull-left" style="padding-bottom: 0;border: 0;margin-top: -4px;"
-            href="<?php echo $link ?>">Y học thường thức</a>
-        </li>
         <?php
             $parent_args = [
                 'taxonomy'     => $taxName,
@@ -49,6 +45,12 @@
                 }
             }
         ?>
+        <?php if($queried_object->ID == 104) : ?>
+            <li class="clearfix"><i class="fa fa-angle-right pull-left" aria-hidden="true"></i>
+                <a class="pull-left" style="padding-bottom: 0;border: 0;margin-top: -4px;"
+                href="<?php echo $link ?>">Y học thường thức</a>
+            </li>
+        <?php endif; ?>
     </ul>
      <br/>
     <h4 class="column-title" style="line-height: 1.1">CÁC BÀI VIẾT KHÁC</h4>

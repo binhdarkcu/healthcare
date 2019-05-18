@@ -47,41 +47,54 @@ $queried_object = get_queried_object();
                 endif;
                 wp_reset_postdata(); ?>
             </div>
-            <h3 style="margin-top: 50px">Câu hỏi thường gặp</h3>
-            <div class="question">
-                <section id="services-slider" style="position:relative;" class="services-slider">
-                    <div class="carousel-inner" role="listbox">
-                        <?php
-                            $args = array(
-                                'post_type'	 => 'dwqa-question',
-                                'post_status'	 => 'publish',
-                                'posts_per_page' => -1,
-                            );
-                            $query = new WP_Query( $args );
-                            if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
-                            $feature_image_id = get_post_thumbnail_id(get_the_ID());
-                            $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
-                            $content = get_field('description_on_homepage', get_the_ID());
-                        ?>
-                            <div class="item">
-                                <div class="slider-inner">
-                                    <div class="carousel-content" style="margin-right: 20px;">
-                                        <div class="feature-col">
-                                            <a href="<?php the_permalink(get_the_ID());?>">
-                                                <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>" style="width: 100%;" /></div>
-                                                <div class="content">
-                                                    <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo the_title() ?></h2>
-                                                    <p class="limit_row"><?php echo $content ?></p>
+            <h3 style="margin-top: 50px; margin-bottom: 30px">Câu hỏi thường gặp</h3>
+            <?php
+                $parent_args = [
+                    'taxonomy'     => 'dwqa-question_tag'
+                ];
+                $parent_terms = get_terms( $parent_args );
+                foreach($parent_terms as $key => $parent_term) { ?>
+                    <div class="question" style="margin-bottom: 30px; display: table; clear: both; width: 100%">
+                        <h4 style="margin-bottom: 20px;"><?php echo $parent_term->name ?></h4>
+                        <section class="services-slider question_number_<?php echo $key ?>">
+                            <div class="carousel-inner">
+                                <?php
+                                    $args = array(
+                                        'post_type' => 'dwqa-question',
+                                        'posts_per_page' => -1,
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => $parent_term->taxonomy,
+                                                'field' => 'slug',
+                                                'terms' => $parent_term->name
+                                            )
+                                        )
+                                    );
+                                    $query = new WP_Query( $args );
+                                    if($query->have_posts()) : while($query->have_posts()) : $query->the_post();
+                                        $feature_image_meta = get_field('avatar');
+                                ?>
+                                    <div class="item">
+                                        <div class="slider-inner">
+                                            <div class="carousel-content" style="margin-right: 20px;">
+                                                <div class="feature-col">
+                                                    <a href="<?php the_permalink(get_the_ID());?>">
+                                                        <div class="ehr-title"><img src="<?php echo $feature_image_meta["sizes"]["medium"] ?>" style="width: 100%;" /></div>
+                                                        <div class="content">
+                                                            <h2 style="font-size: 16px;font-weight: normal; text-transform: capitalize; margin: 10px 0 0;line-height: 1.3"><?php echo the_title() ?></h2>
+                                                            <p class="limit_row" style="-webkit-line-clamp: 3;"><?php echo get_the_content() ?></p>
+                                                        </div>
+                                                    </a>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endwhile;endif;
+                                    wp_reset_postdata(); ?>
                             </div>
-                        <?php endwhile;endif; wp_reset_postdata();?>
+                        </section>
                     </div>
-                </section>
-            </div>
+                <?php } ?>
         </div>
         <!---->
         <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">

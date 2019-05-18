@@ -9,7 +9,8 @@ $queried_object = get_queried_object();
             <div class="row" style="margin-bottom: 30px">
                 <div class="col-md-8">
                     <form action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search" method="post">
-                        <input value="<?php echo get_search_query()?>" name="s" class="searchinputm ng-pristine ng-untouched ng-valid ng-empty form-control" type="text" placeholder="Tìm câu hỏi" aria-invalid="false">
+                        <input value="<?php echo get_search_query()?>" name="s" class="searchinputm ng-pristine ng-untouched ng-valid ng-empty form-control" 
+                        type="text" placeholder="Tìm câu hỏi" aria-invalid="false">
                         <input type="hidden" name="page" value="<?php echo $post->post_name ?>">
                     </form>
                 </div>

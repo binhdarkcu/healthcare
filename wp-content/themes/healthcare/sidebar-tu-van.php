@@ -4,11 +4,29 @@
     <h4 class="column-title" style="text-transform: uppercase;">Danh mục câu hỏi</h4>
     <ul class="post-list">
         <?php
-        $categories = get_categories('taxonomy=dwqa-question_category');
+        $categories = get_categories(array(
+            'taxonomy' => 'dwqa-question_category',
+            'hide_empty'    => false
+        ));
         foreach ($categories as $category) { ?>
             <li><i class="fa fa-angle-right" aria-hidden="true"></i><a href="<?php echo get_category_link($category->term_id); ?>">
                     <?php echo $category->name; ?>
                 </a>
+                <?php
+                    if($category->term_id == 30) {
+                        $parent_args = [
+                            'taxonomy'     => 'dwqa-question_tag'
+                        ];
+                        $parent_terms = get_terms( $parent_args ); ?>
+                        <ul class="list-unstyled" style="padding-left:  20px;">
+                            <?php foreach($parent_terms as $parent_term) : ?>
+                                <li><i class="fa fa-angle-right" aria-hidden="true"></i><a href="<?php echo get_category_link($parent_term->term_id); ?>">
+                                    <?php echo $parent_term->name; ?>
+                                </a>
+                            <?php endforeach ?>
+                        </ul>
+                    <?php }
+                ?>
             </li>
         <?php } ?>
     </ul>
