@@ -781,15 +781,6 @@
         /**
          * call function send mail template
          */
-        $infomation = array(
-            'name'  =>  $name,
-            'email' => $email,
-            'subject'   => $subject,
-            'phongban'  => $phongban,
-            'message'   => $message
-        );
-        $template_path = get_template_directory() . '/inc/template_email/email_for_contact.php';
-        $template = file_get_contents($template_path);
         $headers = array('Content-Type: text/html; charset=UTF-8');
         wp_mail($email, $subject, $message, $headers);
 
