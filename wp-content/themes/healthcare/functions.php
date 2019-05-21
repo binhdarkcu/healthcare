@@ -481,11 +481,6 @@
             'employee_code' => $employee_code,
             'note' => $note
         ));
-        $result = "SELECT * FROM wp_company";
-        header('Content-Type: application/json');
-        echo json_encode(
-            $wpdb->get_results($result, OBJECT)
-        );
         send_mail($name,$email, $detect_email = false);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
@@ -774,7 +769,7 @@
         global $wpdb;
         $name = (isset($_POST['name'])) ? $_POST['name'] : '';
         $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-        $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
+        $subject = (isset($_POST['subject'])) ? 'Góp ý về: '.$_POST['subject'] : '';
         $phongban = (isset($_POST['phongban'])) ? $_POST['phongban'] : '';
         $message = (isset($_POST['message'])) ? $_POST['message'] : '';
 
@@ -782,7 +777,10 @@
          * call function send mail template
          */
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        wp_mail($email, $subject, $message, $headers);
+        $content = 'Tên: ' . $name. "<br/><br/>
+                    Email: " . $email . "<br/><br/>
+                    Nội dung: ".$message;
+        wp_mail($email, $subject, $content, $headers);
 
         wp_die(); // this is required to terminate immediately and return a proper response
     }

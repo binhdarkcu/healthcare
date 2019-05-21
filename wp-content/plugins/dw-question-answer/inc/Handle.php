@@ -528,11 +528,16 @@ class DWQA_Handle {
 						$emailclinic = get_field('email_of_medical', 'category_'.$_POST['chuyenkhoa-category']);
 						$emailClient = $question_author_email;
 						// $to[] = 'chuyenkhoa@example.com';
-						$body = 'email content '.$link;
+
+						$bodyClient = 'Bạn đã đặt câu hỏi ở Phòng khám Golden Healthcare.<br/>
+									Đây là đường dẫn câu hỏi của bạn.<br/>'.$link;
+
+						$bodyClinic = 'Thông báo: link câu hỏi vừa được đặt<br/>
+									'.$link;
 						$subject = 'Đã đặt câu hỏi';
 						$headers = array('Content-Type: text/html; charset=UTF-8');
-						//wp_mail($emailclinic, $subject, $body, $headers);//trả về true nếu mail gửi thành công, false nếu xảy ra lỗi
-						wp_mail($emailClient, $subject, $body, $headers);
+						wp_mail($emailClient, $subject, $bodyClient, $headers);
+						wp_mail($emailclinic, $subject, $bodyClinic, $headers);
                                                 
 						if ( isset( $dwqa_options['enable-review-question'] ) && $dwqa_options['enable-review-question'] && !current_user_can( 'manage_options' ) && $post_status != 'private' ) {
 							dwqa_add_notice( __( 'Your question is waiting moderator.', 'dw-question-answer' ), 'success' );

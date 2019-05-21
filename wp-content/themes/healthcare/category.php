@@ -158,7 +158,7 @@ $posts_doctors_array = get_posts($args_doctors);
                         <div class="childpages row">
                             <?php
                             $args = array(
-                                'post_type'	 => 'gioi_thieu_khoa',
+                                'post_type'	 => 'cham_soc_khach_hang',
                                 'post_status'	 => 'publish',
                                 'posts_per_page' => -1,
                                 'tax_query' => array(
