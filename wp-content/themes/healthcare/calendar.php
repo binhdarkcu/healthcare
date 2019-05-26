@@ -1,7 +1,7 @@
 <?php
 $queried_object = get_queried_object();
 ?>
-<div class="posts">
+<div class="posts" style="padding-top: 20px">
     <div class="table-responsive">
         <?php
         $args = array(
@@ -12,7 +12,7 @@ $queried_object = get_queried_object();
         $query = new WP_Query($args);
         if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
             ?>
-            <table class="table-bordered table-hover tb-shedule" style="width: 100%;">
+            <table class="table-bordered table-hover tb-shedule" style="width: 100%;margin-top: 0;">
                 <tbody>
                 <tr>
                     <th>Thứ 2</th>
@@ -32,7 +32,7 @@ $queried_object = get_queried_object();
                         while (have_rows('schdule_week_time_morning')): the_row();
                             $dayItems = get_sub_field('schedule_day_week_morning');
                             foreach ($dayItems as $dayItem) {
-                                $names = $dayItem["week_doctor_morning"];
+                                $names = $dayItem["week_doctor_morning"];z
                                 ?>
                                 <td class="show_doctors"><?php
                                     foreach ($names as $name) {

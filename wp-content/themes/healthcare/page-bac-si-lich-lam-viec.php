@@ -34,7 +34,7 @@
                                         $imgUrl = get_field('departments_image', $category);
                                         ?>
                                         <div class="col-md-3 col-sm-4 col-xs-12" style="text-align: center; margin-bottom: 15px;">
-                                            <img style="display: table; margin: auto;" src="<?php echo $imgUrl ?>" alt="">
+                                        <a href="<?php echo get_category_link( $category->term_id );?>"><img style="display: table; margin: auto;" src="<?php echo $imgUrl ?>" alt=""></a>
                                             <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?></a>
                                         </div>
                                     <?php endforeach; endwhile; ?>

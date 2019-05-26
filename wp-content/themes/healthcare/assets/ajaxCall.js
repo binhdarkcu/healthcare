@@ -62,7 +62,8 @@ jQuery(document).ready(function(){
                     birthday: birthday,
                     gender: gender.val(),
                     examination: examination,
-                    client_code: $('#client_code').val()
+                    client_code: $('#client_code').val(),
+                    doctorName: $('#selectDoctor').select2('data')[0]['text']
                 },
                 url: my_ajax_insert_db.ajax_url
             });

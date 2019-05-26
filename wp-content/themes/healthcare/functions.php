@@ -431,6 +431,7 @@
         $phone = (isset($_POST['phone'])) ? $_POST['phone'] : '';
         $examination = (isset($_POST['examination'])) ? $_POST['examination'] : '';
         $client_code = (isset($_POST['client_code'])) ? $_POST['client_code'] : '';
+        $doctorName = (isset($_POST['doctorName'])) ? $_POST['doctorName'] : '';
         $wpdb->insert('wp_dathen', array(
             'id_doctor' => $id_doctor,
             'dayChecked' => $day_booked,
@@ -444,7 +445,37 @@
             'examination' => $examination,
             'client_code' => $client_code
         ));
-        send_mail($full_name,$email, $detect_email = true);
+
+        /**
+         * call function send mail template
+         */
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+
+        //send email to client
+        $subject = 'Lịch hẹn Phòng khám đa khoa quốc tế Golden Healthcare';
+        $content = 'Xin chào '.$full_name.'<br/><br />
+                    Cám ơn bạn đã đặt hẹn online ở PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE<br/><br/>
+                    Lịch hẹn của bạn: '. $time_booked . ' ngày ' . $day_booked . '. Bác sĩ: '. $doctorName . '<br/><br/>
+                    Hy vọng được gặp bạn sớm. Thân chào.';
+        wp_mail($email, $subject, $content, $headers);
+
+        //send email to admin
+        $subjectAdmin = 'Lịch đặt hẹn bác sĩ';
+        $emailAdmin = get_bloginfo('admin_email');
+        $content1 = 'Xin chào Admin,<br/><br/>
+                    Vừa có 1 lịch hẹn mới: <br/><br/>
+                    Bác sĩ: .' .$doctorName. '<br/>
+                    Ngày: ' . $day_booked . '<br/>
+                    Thời gian: ' . $time_booked. '<br/>
+                    Triệu chứng lâm sàng: ' .$symptom .'<br/>
+                    Tái khám hoặc khám mới: '. $examination . '<br/>
+                    Mã khách hàng: ' .$client_code . '<br/>
+                    Tên bệnh nhân: ' . $full_name.'<br/>
+                    Ngày sinh: '. $birthday . '<br/>
+                    Giới tính: '.$gender.'<br/>
+                    Email: '.$email.'<br/>
+                    Số điện thoại: '. $phone.'<br/><br/>';
+        wp_mail($emailAdmin, $subjectAdmin, $content1, $headers);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
@@ -481,7 +512,23 @@
             'employee_code' => $employee_code,
             'note' => $note
         ));
-        send_mail($name,$email, $detect_email = false);
+        //send email to admin
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        $subjectAdmin = 'Lịch đặt hẹn công ty theo lịch';
+        $emailAdmin = get_bloginfo('admin_email');
+        $content1 = 'Xin chào Admin,<br/><br/>
+                    Vừa có 1 lịch hẹn của công ty theo lịch: <br/><br/>
+                    Tên công ty: ' . $company_name . '<br/>
+                    Tên bệnh nhân: ' . $name.'<br/>
+                    Ngày sinh: '. $birthday . '<br/>
+                    Giới tính: '.$gender.'<br/>
+                    Email: '.$email.'<br/>
+                    Số điện thoại: '. $phone.'<br/>
+                    Ngày: '. $day . '<br/>
+                    Buổi: ' . $sessions . '<br/>
+                    Mã công ty: '. $employee_code . '<br/>
+                    Ghi chú: ' . $note;
+        wp_mail($emailAdmin, $subjectAdmin, $content1, $headers);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
@@ -653,6 +700,24 @@
             'employee_code' => $codeCompany,
             'note'  => $noteCompany
         ));
+        //send email to admin
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        $subjectAdmin = 'Lịch đặt hẹn công ty không theo lịch';
+        $emailAdmin = get_bloginfo('admin_email');
+        $content1 = 'Xin chào Admin, <br/><br/>
+                    Vừa có 1 lịch hẹn của công ty không theo lịch: <br/><br/>
+                    Tên công ty: ' . $company_name . '<br/>
+                    Số lượng : ' .$amount . '<br/>
+                    Tên bệnh nhân: ' . $name.'<br/>
+                    Ngày sinh: '. $birthday . '<br/>
+                    Giới tính: '.$gender.'<br/>
+                    Email: '.$email.'<br/>
+                    Số điện thoại: '. $phone.'<br/>
+                    Ngày: '. $date . '<br/>
+                    Buổi: ' . $session . '<br/>
+                    Mã nhân viên / phòng ban: '. $codeCompany . '<br/>
+                    Ghi chú: ' . $noteCompany;
+        wp_mail($emailAdmin, $subjectAdmin, $content1, $headers);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 

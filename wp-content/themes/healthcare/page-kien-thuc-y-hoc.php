@@ -78,54 +78,6 @@
                 }
             ?>
             <div class="clearfix"></div>
-            
-            
-               <h4 class="column-title" style="text-transform: uppercase">Y học thường thức</h4>
-               <?php
-                $args = array(
-                    'post_type' => 'dich_vu',
-                    'posts_per_page' => 5,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'tab_services',
-                            'field' => 'slug',
-                            'terms' => 'y-hoc-thuong-thuc'
-                        )
-                    )
-                );
-                $query = new WP_Query( $args );
-                if($query->have_posts()) : while($query->have_posts()) : $query->the_post();
-                    $page_content = get_field('field_5c872fa18db6c');
-                    $feature_image_id = get_post_thumbnail_id(get_the_ID());
-                    $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full'); 
-                ?>
-               <div class="col-md-6 col-sm-12 wow fadeInDown animated animated animated" style="visibility: visible; margin-bottom: 40px">
-                    <div class="row wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;">
-                        <div class="col-md-4 catItemImageBlock">
-                            <div class="news">
-                                <div class="article">
-                                    <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>">
-                                        <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
-                                    </a><!---->
-                                    <!---->
-                                    <div class="catItemDateCreated">
-                                        <span class="day">Ngày <?php echo get_the_date('d') ?></span>
-                                        <span class="month">Tháng <?php echo get_the_date('m') ?></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8 post-list-right">
-                            <h3>
-                                <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>"><?php echo get_the_title() ?></a><!---->
-                                <!---->
-                            </h3>
-                            <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"><?php echo $page_content ?></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <?php endwhile;endif; wp_reset_postdata(); ?>
         </div>
         <!---->
         <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">

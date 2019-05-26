@@ -1,86 +1,81 @@
 <section id="services" style="padding-top: 0">
   <div class="container">
     <div class="section-header">
-        <h2 class="section-title text-center wow fadeInDown animated"
-            style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('services', 'option')['title'] ?></h2>
-        <small class="short-desc"><?php echo get_field('services', 'option')['description'] ?></small>
+        <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('name_of_service', 'option') ?></h2>
+        <small class="short-desc"><?php echo get_field('description_of_service', 'option') ?></small>
     </div>
     <div class="row">
         <div id="exTab1" class="col-md-12">
             <ul  class="nav nav-pills">
                 <?php
-                // We want to find the Taxonomy to this slug.
-                    $term_slug = 'tab_services';
-                    $terms = get_terms( array(
-                        'taxonomy' => $term_slug,
-                        'hide_empty' => true,
-                        'order' => 'DESC'
-                    ) );
+                if( have_rows('tab', 'option') ):
                     $i = 0;
-                    foreach ( $terms as $tax_type_key => $tern ) {
+                    while( have_rows('tab', 'option') ): the_row();
                         $i++;
                     ?>
                     <li class="<?php echo $i == 1 ? 'active': ''; ?>">
-                        <a href="#<?php echo $i;?>a" data-toggle="tab"><?php echo $tern->name; ?></a>
+                        <a href="#<?php echo $i;?>a" data-toggle="tab"><?php echo get_sub_field('ten'); ?></a>
                     </li>
-                    <?php } ?>
+                    <?php endwhile; endif; ?>
             </ul>
-            <div class="tab-content clearfix wow fadeInDown animated" style="padding: 20px 0px 10px">
+            <div class="tab-content clearfix wow fadeInDown animated" style="padding: 20px 0 10px;">
                 <?php
-                    $term_slug = 'tab_services';
-                    $terms = get_terms( array(
-                        'taxonomy' => $term_slug,
-                        'hide_empty' => true,
-                        'order' => 'DESC'
-                    ) );
-                    $i = 0;
-                    foreach ( $terms as $tax_type_key => $tern ) {
-                        $i++;
+                if( have_rows('tab', 'option') ):
+                $i = 0;
+                while( have_rows('tab', 'option') ): the_row();
+                $i++;
                 ?>
                 <div class="tab-pane <?php echo $i == 1? 'active': ''?>" id="<?php echo $i;?>a">
                     <section id="services-slider" style="position:relative;" class="services-slider">
                         <div class="carousel-inner" role="listbox">
                             <?php
-                                $args = array(
-                                    'post_type'	 => 'dich_vu',
-                                    'post_status'	 => 'publish',
-                                    'posts_per_page' => -1,
-                                    'tax_query' => array(
-                                        array(
-                                            'taxonomy' => 'tab_services',
-                                            'field' => 'term_id',
-                                            'terms' => $tern->term_id,
-                                        )
-                                    )
-                                );
-                                $query = new WP_Query( $args );
-                                if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();
-                                $feature_image_id = get_post_thumbnail_id(get_the_ID());
-                                $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
-                                $content = get_field('description_on_homepage', get_the_ID());
-                            ?>
-                                <div class="item">
-                                    <div class="slider-inner">
-                                        <div class="carousel-content" style="margin-right: 20px;">
-                                            <div class="feature-col">
-                                                <a href="<?php the_permalink(get_the_ID());?>">
-                                                    <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>" style="width: 100%;" /></div>
-                                                    <div class="content">
-                                                        <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo the_title() ?></h2>
-                                                        <p class="limit_row"><?php echo $content ?></p>
+                                while( have_rows('link', 'option') ): the_row();
+                                $items = get_sub_field('choose_post');
+                                foreach($items as $itemsChild) {
+                                    if(reset($itemsChild) == 'internal') { 
+                                        $feature_image_id = get_post_thumbnail_id($itemsChild['internal']->ID);
+                                        $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                                        $content = get_field('intro_description', $itemsChild['internal']->ID);
+                                    ?>
+                                        <div class="item">
+                                            <div class="slider-inner">
+                                                <div class="carousel-content" style="margin-right: 20px;">
+                                                    <div class="feature-col">
+                                                        <a href="<?php the_permalink(get_the_ID());?>">
+                                                            <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>" style="width: 100%;" /></div>
+                                                            <div class="content">
+                                                                <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo $itemsChild['internal']->post_title ?></h2>
+                                                                <p class="limit_row"><?php echo $content ?></p>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            <?php endwhile;endif; wp_reset_postdata();?>
+                                    <?php } else { ?>
+                                        <div class="item">
+                                            <div class="slider-inner">
+                                                <div class="carousel-content" style="margin-right: 20px;">
+                                                    <div class="feature-col">
+                                                        <a href="<?php echo $itemsChild['link'] ?>">
+                                                            <div class="ehr-title"><img src="<?php echo $itemsChild['background']['url'] ?>"/></div>
+                                                            <div class="content">
+                                                                <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo $itemsChild['title'] ?></h2>
+                                                                <p class="limit_row"><?php echo $itemsChild['description'] ?></p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   <?php }
+                                }
+                            ?>
+                             <?php endwhile; ?>
                         </div>
                     </section>
                 </div>
-
-                <?php } ?>
-
+                <?php endwhile; endif; ?>
             </div>
         </div>
     </div>
