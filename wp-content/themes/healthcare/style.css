@@ -870,3 +870,31 @@ body table:not(.table-condensed) td span {
     border-radius: 50%;
     overflow: hidden;
 }
+@media (max-width: 767px) {
+    .custom-responsive-table table {
+        border: 0 !important;
+    }
+    .custom-responsive-table .row_data {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .custom-responsive-table .row_data td {
+        display: flex;
+        flex-direction: column;
+        height: 100% !important;
+        width: 100%;
+        border-top: none !important;
+        padding: 0 0 20px 0 !important;
+    }
+    .custom-responsive-table .row_data td br {
+        display: none
+    }
+    .custom-responsive-table .row_data td span {
+        font-size: 16px;
+        color: #fff;
+        background: #f7931d;
+        font-weight: bold;
+        padding: 8px;
+    }
+}

@@ -5,10 +5,12 @@
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
         return false;
     });
-    
-    $('body').find('table').addClass('table-hover table').wrap('<div class="table-responsive"></div>');
-    $('body').find('table').css({'width': '100%'});
-    $('body').find('table').attr({'border': '1'});
+    var detectCustom = $('body').find('.custom-responsive-table');
+    if(detectCustom[0] == undefined) {
+        $('body').find('table').addClass('table-hover table').wrap('<div class="table-responsive"></div>');
+        $('body').find('table').css({'width': '100%'});
+        $('body').find('table').attr({'border': '1'});
+    }
     
     $('#tohash').on('click', function () {
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
