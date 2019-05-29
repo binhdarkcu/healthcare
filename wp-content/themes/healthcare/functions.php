@@ -240,10 +240,11 @@
                 foreach ($child_pages as $child_page) {
 
                     $page_id = $child_page->ID; // get the ID of the childpage
-                    $page_link = get_permalink($page_id); // returns the link to childpage
                     $page_content = get_field('intro_description', $page_id);
                     $page_img = get_the_post_thumbnail_url($page_id, 'medium'); // returns the featured image <img> element
                     $page_title = $child_page->post_title; // returns the title of the child page
+                    $external_link = get_field('external_link', $child_page->ID);
+                    $page_link = $external_link == null ? get_permalink($page_id) : $external_link; // returns the link to childpage
                     ?>
                     <div class="col-md-4 col-sm-6 wow fadeInUp service-box animated" data-wow-duration="300ms"
                          data-wow-delay="0ms"

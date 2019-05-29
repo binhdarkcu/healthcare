@@ -1,4 +1,4 @@
-<div class="col-xs-12 cat-box">
+<div class="col-sm-12 col-xs-12">
     <?php $queried_object = get_queried_object(); ?>
 
     <h4 class="column-title" style="text-transform: uppercase;">Danh mục câu hỏi</h4>
@@ -42,8 +42,7 @@
         'order'             => 'DESC',
         'orderby'           => 'meta_value_num',
         'meta_key'           => '_dwqa_views',
-        'post_type'         => 'dwqa-question',
-        'suppress_filters'  => false,
+        'post_type'         => 'dwqa-question'
     );
     $myposts = new WP_Query( $args );
     if ($myposts->have_posts()) {

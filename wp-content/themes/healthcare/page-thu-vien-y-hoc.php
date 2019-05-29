@@ -19,13 +19,15 @@
                         $page_content = get_field('intro_description', get_the_ID());
                             $feature_image_id = get_post_thumbnail_id(get_the_ID());
                             $feature_image_meta = wp_get_attachment_image_src($feature_image_id, 'full');
+                            $external_link = get_field('external_link', $child_page->ID);
+                            $page_link = $external_link == null ? get_permalink(get_the_ID()) : $external_link; // returns the link to childpage
                         ?>
                             <div class="col-md-6 col-sm-12 wow fadeInDown animated animated animated" style="visibility: visible; margin-bottom: 40px">
                                 <div class="row wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;">
                                     <div class="col-md-4 catItemImageBlock">
                                         <div class="news">
                                             <div class="article">
-                                                <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>">
+                                                <!----><a href="<?php echo $page_link ?>">
                                                     <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
                                                 </a><!---->
                                                 <!---->
@@ -38,7 +40,7 @@
                                     </div>
                                     <div class="col-md-8 post-list-right">
                                         <h3>
-                                            <!----><a href="<?php echo get_the_permalink(get_the_ID()) ?>"><?php echo get_the_title() ?></a><!---->
+                                            <!----><a href="<?php echo $page_link ?>"><?php echo get_the_title() ?></a><!---->
                                             <!---->
                                         </h3>
                                         <p class="block-ellipsis-home-news-3line" style="height: 100%; -webkit-line-clamp: 5;"><?php echo $page_content ?></p>

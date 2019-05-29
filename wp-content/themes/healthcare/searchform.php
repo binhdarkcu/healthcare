@@ -22,7 +22,7 @@
                     </select>
                 </div>
                 <div class="col-md-2" style="padding-left:0px;">
-                    <input type="hidden" name="page" value="<?php echo $post->post_name ?>">
+                    <input type="hidden" name="page" value="tim-bac-si">
                     <button type="submit" class="fa fa-search searchbuttonm"></button>
                 </div>
             </div>

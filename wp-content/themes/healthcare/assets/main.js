@@ -101,6 +101,15 @@
             afterMove: moved,
             startDragging: pauseOnDragging
         });
+        $('.tu-van-slider').find('.carousel-inner').owlCarousel({
+            slideSpeed: 700,
+            navigation: false,
+            dots: false,
+            items: 4,
+            autoplay: true,
+            singleItem: false,
+            autoWidth:true,
+        })
         $('#video_intro').find('.carousel-inner').owlCarousel({
             slideSpeed: 700,
             navigation: false,

@@ -1,4 +1,4 @@
-<section id="services">
+<section>
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 40px">

@@ -42,6 +42,9 @@ $queried_object = get_queried_object();
                             style="font-size: 16px;display: inline-block;padding-left: 6px;text-transform: capitalize;">
                             <?php echo get_the_title(); ?>
                         </a>
+                        <i>
+                            &nbsp;&nbsp;(Lượt xem: <?php echo (int) esc_attr( get_post_meta( get_the_ID(), '_dwqa_views', true) ) ?>)
+                        </i>
                     </div>
                 <?php endwhile;
                 endif;
@@ -54,9 +57,9 @@ $queried_object = get_queried_object();
                 ];
                 $parent_terms = get_terms( $parent_args );
                 foreach($parent_terms as $key => $parent_term) { ?>
-                    <div class="question" style="margin-bottom: 30px; display: table; clear: both; width: 100%">
+                    <div class="question" style="margin-bottom: 30px;">
                         <h4 style="margin-bottom: 20px;"><?php echo $parent_term->name ?></h4>
-                        <section class="services-slider question_number_<?php echo $key ?>">
+                        <section class="tu-van-slider question_number_<?php echo $key ?>">
                             <div class="carousel-inner">
                                 <?php
                                     $args = array(
@@ -79,10 +82,13 @@ $queried_object = get_queried_object();
                                             <div class="carousel-content" style="margin-right: 20px;">
                                                 <div class="feature-col">
                                                     <a href="<?php the_permalink(get_the_ID());?>">
-                                                        <div class="ehr-title"><img src="<?php echo $feature_image_meta["sizes"]["medium"] ?>" style="width: 100%;" /></div>
+                                                        <div class="ehr-title" 
+                                                            style="width: 100%; height: 142px; background-size: cover; background: url(<?php echo $feature_image_meta["sizes"]["medium"] ?>) no-repeat top center">
+                                                            </div>
                                                         <div class="content">
                                                             <h2 style="font-size: 16px;font-weight: normal; text-transform: capitalize; margin: 10px 0 0;line-height: 1.3"><?php echo the_title() ?></h2>
-                                                            <p class="limit_row" style="-webkit-line-clamp: 3;"><?php echo get_the_content() ?></p>
+                                                            <p class="limit_row" style="-webkit-line-clamp: 3; "><?php echo get_the_content() ?></p>
+                                                            <i>(Lượt xem: <?php echo (int) esc_attr( get_post_meta( get_the_ID(), '_dwqa_views', true) ) ?>)</i>
                                                         </div>
                                                     </a>
                                                 </div>

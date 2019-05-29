@@ -897,3 +897,6 @@ body table:not(.table-condensed) td span {
         padding: 8px;
     }
 }
+.tu-van-slider .owl-theme .owl-controls {
+    margin-top: 30px;
+}
