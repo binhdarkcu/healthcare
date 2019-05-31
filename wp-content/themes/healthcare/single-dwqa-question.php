@@ -20,7 +20,7 @@ while ( have_posts() ) : the_post();
                                 </div>
                             </div>
                             <div class="posts">
-                                <?php echo the_content()?>
+                                <?php echo the_content() ?>
                             </div>
                             <h3 class="column-title" style="margin-top: 20px">Câu hỏi liên quan</h3>
                             <ul class="post-list list-inline" style="display: table;width: 100%; margin-bottom: 50px;">

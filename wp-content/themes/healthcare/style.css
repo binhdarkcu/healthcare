@@ -725,12 +725,6 @@ ul.language-chooser {
 body.single-dwqa-question .dwqa-breadcrumbs {
     display: none;
 }
-body.single-dwqa-question .dwqa-question-meta a, body.single-dwqa-question .dwqa-comment-meta a {
-    pointer-events: none;
-}
-body.single-dwqa-question .dwqa-comment-actions a, body.single-dwqa-question .dwqa-question-actions a {
-    pointer-events: auto;
-}
 body.single-dwqa-question .dwqa-question-item {
     margin-bottom: 20px;
 }
@@ -899,4 +893,7 @@ body table:not(.table-condensed) td span {
 }
 .tu-van-slider .owl-theme .owl-controls {
     margin-top: 30px;
+}
+.dwqa-question-content p {
+    padding-left: 0
 }

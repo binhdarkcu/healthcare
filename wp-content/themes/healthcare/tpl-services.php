@@ -41,7 +41,7 @@
                                             <div class="slider-inner">
                                                 <div class="carousel-content" style="margin-right: 20px;">
                                                     <div class="feature-col">
-                                                        <a href="<?php the_permalink(get_the_ID());?>">
+                                                        <a href="<?php the_permalink($itemsChild['internal']->ID)?>">
                                                             <div class="ehr-title"><img src="<?php echo $feature_image_meta[0] ?>" style="width: 100%;" /></div>
                                                             <div class="content">
                                                                 <h2 style="font-size: 16px;font-weight: normal; text-transform: uppercase;line-height: 1.3;"><?php echo $itemsChild['internal']->post_title ?></h2>

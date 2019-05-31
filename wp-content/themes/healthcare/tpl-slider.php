@@ -1,5 +1,5 @@
 <?php global $post?>
-<section id="main-slider" style="position:relative;" class="container">
+<section id="main-slider" style="position:relative; margin-bottom: 40px" class="container">
     <div class="carousel-inner" role="listbox">
         <?php
         $args = array(
