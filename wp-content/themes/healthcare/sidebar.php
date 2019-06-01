@@ -13,21 +13,21 @@
         if($queried_object->post_type !== NULL) {
             if($queried_object->post_type !== "page") {
                 $post_data = get_post($queried_object->post_parent);
-            $tax = get_the_terms($queried_object->ID, 'chuyen_muc_hoat_dong');
-            if(empty($tax)) {
-                $parent_slug = $post_data->post_name;
-            } else {
-                $parent_slug = $tax[0]->slug;
-            }
+                $tax = get_the_terms($queried_object->ID, 'chuyen_muc_hoat_dong');
+                if(empty($tax)) {
+                    $parent_slug = $post_data->post_name;
+                } else {
+                    $parent_slug = $tax[0]->slug;
+                }
 
-            $args_lienquan = array(
-                'posts_per_page' => 5,
-                'post_type' => $queried_object->post_type,
-                'orderby' => 'rand',
-                'post_status' => 'publish',
-                'post__not_in' => array($queried_object->ID, 225, 221, 219, 223, 227, 217)
-            );
-            $posts_lienquan = get_posts($args_lienquan);
+                $args_lienquan = array(
+                    'posts_per_page' => 5,
+                    'post_type' => $queried_object->post_type,
+                    'orderby' => 'rand',
+                    'post_status' => 'publish',
+                    'post__not_in' => array($queried_object->ID, 225, 221, 219, 223, 227, 217)
+                );
+                $posts_lienquan = get_posts($args_lienquan);
     ?>
 
     <h4 class="column-title" style="text-transform: uppercase;">CÁC BÀI VIẾT LIÊN QUAN</h4>

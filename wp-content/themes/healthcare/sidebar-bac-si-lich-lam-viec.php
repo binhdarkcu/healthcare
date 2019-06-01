@@ -2,21 +2,27 @@
     $queried_object = get_queried_object();
 ?>
 <div style="position: sticky;top: 0;">
-
-        <h4 class="column-title" style="line-height: 1.4;">BÀI VIẾT KHÁC</h4>
-
-        <?php $args_lienquan = array(
-            'posts_per_page' => 5,
-            'offset' => 0,
-            'orderby' => 'rand',
-            'order' => 'ASC',
-            'post_type' => array('hoat_dong', 'dich_vu', 'gioi_thieu_khoa'),
-            'post_status' => 'publish',
-            "hide_empty" => 0,
-        );
-        $posts_lienquan = get_posts($args_lienquan);
-
+        <h4 class="column-title">CÁC CHUYÊN KHOA KHÁC</h4>
+        <?php
+            $queried_object = get_queried_object();
+            $categories =  get_categories(
+                array(
+                    'exclude' => array($queried_object->term_id, 1),
+                    'hide_empty' => false
+                )
+            );
         ?>
+        <ul class="post-list sidebarKhoa">
+            <?php foreach ( $categories as $category ) : setup_postdata( $category );
+                    $imgUrl = get_field('departments_image', $category); ?>
+                <li>
+                    <img src="<?php echo $imgUrl ?>" alt="">
+                    <a href="<?php echo get_category_link( $category->term_id );?>"><?php echo $category->name ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <br/>
+        <h4 class="column-title" style="line-height: 1.4;">BÀI VIẾT KHÁC</h4>
         <ul class="post-list sidebar_post">
         <?php
             while( have_rows('related_posts', 'option') ): the_row();

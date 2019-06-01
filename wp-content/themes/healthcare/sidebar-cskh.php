@@ -9,16 +9,10 @@
             $sideBarTitle = $queried_object->post_title;
         }
     ?>
-    <h4 class="column-title" style="text-transform: uppercase;">Danh mục</h4>
+    <h4 class="column-title" style="text-transform: uppercase;">Nhóm bài viết</h4>
     <ul class="post-list" style="margin-bottom: 0">
         <?php 
             $terms = get_terms('tab_services');
-            $link = '';
-            foreach($terms as $term) {
-                if($term->slug == 'y-hoc-thuong-thuc') {
-                    $link = get_term_link($term);
-                }
-            }
         ?>
         <?php
             $parent_args = [
