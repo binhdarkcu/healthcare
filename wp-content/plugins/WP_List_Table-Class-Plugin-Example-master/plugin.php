@@ -57,7 +57,10 @@ class Customers_List extends WP_List_Table {
 	public  static function get_search($per_page = -1, $page_number = 1) {
 	    global $wpdb;
 	    $key = $_GET['s'];
-        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE full_name LIKE '%$key%' ORDER BY ID DESC";
+        $sql = "SELECT * FROM {$wpdb->prefix}dathen WHERE examination 
+			LIKE '%$key%' OR full_name LIKE '%$key%' OR phone LIKE '%$key%'
+			OR dayChecked LIKE '%$key%' OR status LIKE '%$key%'
+			ORDER BY ID DESC";
         if ( ! empty( $_REQUEST['orderby'] ) ) {
             $sql .= ' ORDER BY ' . esc_sql( $_REQUEST['orderby'] );
             $sql .= ! empty( $_REQUEST['order'] ) ? ' ' . esc_sql( $_REQUEST['order'] ) : ' ASC';

@@ -897,3 +897,39 @@ body table:not(.table-condensed) td span {
 .dwqa-question-content p {
     padding-left: 0
 }
+.d-none {
+    display: none !important;
+}
+.text-error {
+    color: darkred
+}
+.loadingForm {
+    position: relative;
+}
+.loadingForm:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #fff url('./assets/ajax-loader.gif') center center no-repeat;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.box_BMI {
+    padding: 10px;
+    border: dashed 1px gray; 
+}
+.color_main {
+    color: #f7931d;
+}
+.box_BMI label {
+    font-weight: 300;
+}
+
+.box-result strong {
+    font-size: 20px;
+    margin-top: 20px;
+    display: inline-block;
+}

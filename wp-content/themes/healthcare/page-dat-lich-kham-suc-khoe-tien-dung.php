@@ -24,7 +24,7 @@
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-4">Tên công ty:*</label>
                                     <div class="col-md-6 col-sm-9 col-xs-8">
-                                        <select class="form-control name_of_company" name="nameOfCompany">
+                                        <select class="form-control name_of_company" name="nameOfCompany" style="background: lightyellow;">
                                             <option value="">Vui lòng chọn công ty của bạn</option>
                                             <?php
                                                 foreach ($items_schedule_company as $item_added) {
@@ -37,14 +37,15 @@
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-4">Mã công ty:*</label>
                                     <div class="col-md-6 col-sm-9 col-xs-8">
-                                        <input type="input" name="companyCode"
+                                        <input type="input" name="companyCode" style="background: lightyellow;"
                                             class="form-control yourCompanyCode" placeholder="Mã công ty*" />
+                                            <label for="" class="text-error d-none" id="companyCodeFailed">Sai mã công ty. Vui lòng nhập lại!</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-4">Họ tên:*</label>
                                     <div class="col-md-6 col-sm-9 col-xs-8">
-                                        <input type="text" name="name" class="form-control yourName" placeholder="Họ tên*" />
+                                        <input type="text" name="name" style="background: lightyellow;" class="form-control yourName" placeholder="Họ tên*" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -54,7 +55,7 @@
                                             data-date-autoclose="true" data-date-format="dd/mm/yyyy"
                                             data-date-days-of-week-highlighted="0,6" data-date-language="vi"
                                             data-date-today-highlight="true">
-                                            <input type="text"
+                                            <input type="text" style="background: lightyellow;"
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                                 name="yourBirthday" id="yourBirthday" placeholder="Chọn ngày"
                                                 ng-model="appointment.PatientDoB" aria-invalid="false">
@@ -83,13 +84,13 @@
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-4">Email:*</label>
                                     <div class="col-md-6 col-sm-9 col-xs-8">
-                                        <input type="text" name="yourEmail" class="form-control ng-pristine ng-untouched yourEmail" placeholder="Email*" />
+                                        <input style="background: lightyellow;" type="text" name="yourEmail" class="form-control ng-pristine ng-untouched yourEmail" placeholder="Email*" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-4">Số điện thoại:*</label>
                                     <div class="col-md-6 col-sm-9 col-xs-8">
-                                        <input type="text" onkeypress="return isNumberKey(event)" name="yourPhone"
+                                        <input type="text" onkeypress="return isNumberKey(event)" name="yourPhone" style="background: lightyellow;"
                                             class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required yourPhone"
                                             placeholder="Số điện thoại">
                                     </div>
@@ -101,7 +102,6 @@
                                             <option value="" selected>Vui lòng chọn tình trạng hôn nhân</option>
                                             <option value="Độc thân">Độc thân</option>
                                             <option value="Đã kết hôn">Đã kết hôn</option>
-                                            <option value="Ly hôn">Ly hôn</option>
                                         </select>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                                         <div class="input-group date">
                                             <input type="text" name="timeOrder"
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
-                                                placeholder="Chọn ngày" autocomplete="off"
+                                                placeholder="Chọn ngày" autocomplete="off" style="background: lightyellow;"
                                                 aria-invalid="false">
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar"></span>
@@ -120,7 +120,7 @@
                                     </div>
                                     <label class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                     <div class="col-md-3 col-sm-3 col-xs-3">
-                                        <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionOrder">
+                                        <select style="background: lightyellow;" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionOrder">
                                             <option value="" selected>Chọn buổi</option>
                                         </select>
                                     </div>
@@ -165,7 +165,7 @@
                                 <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Chọn công ty bảo hiểm: <span
                                         class="red">*</span></label>
                                 <div class="col-md-6 col-sm-9 col-xs-8">
-                                    <select class="form-control companyName" name="companyName">
+                                    <select class="form-control companyName" name="companyName" style="background: lightyellow;">
                                         <option value="">Vui lòng chọn công ty bảo hiểm</option>
                                         <?php foreach($items_not_schedule_company as $item_not_schedule_company): ?>
                                             <option value="<?php echo $item_not_schedule_company->company_name?>"><?php echo $item_not_schedule_company->company_name?></option>
@@ -174,16 +174,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-4">Số lượng cần đặt:*</label>
-                                <div class="col-md-6 col-sm-9 col-xs-8">
-                                    <input type="number" name="amountCompany"
-                                            class="form-control amountCompany" placeholder="Số lượng" />
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-4">Họ tên:*</label>
                                 <div class="col-md-6 col-sm-9 col-xs-8">
-                                    <input type="text" name="nameCompany"
+                                    <input type="text" name="nameCompany" style="background: lightyellow;"
                                             class="form-control nameCompany" placeholder="Họ tên" />
                                 </div>
                             </div>
@@ -196,7 +189,7 @@
                                             data-date-today-highlight="true">
                                             <input type="text"
                                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty"
-                                                name="birthdayCompany" placeholder="Chọn ngày"
+                                                name="birthdayCompany" placeholder="Chọn ngày" style="background: lightyellow;"
                                                 ng-model="appointment.PatientDoB" aria-invalid="false">
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar"></span>
@@ -223,7 +216,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-4">Email:* </label>
                                 <div class="col-md-6 col-sm-9 col-xs-8">
-                                    <input type="email"
+                                    <input type="email" style="background: lightyellow;"
                                         class="form-control ng-pristine ng-untouched"
                                         placeholder="Email" name="emailCompany"
                                         aria-invalid="true">
@@ -233,7 +226,7 @@
                                 <label class="col-md-2 col-sm-3 col-xs-4">Số điện
                                     thoại:* </label>
                                 <div class="col-md-6 col-sm-9 col-xs-8">
-                                    <input type="text" onkeypress="return isNumberKey(event)"
+                                    <input type="text" onkeypress="return isNumberKey(event)" style="background: lightyellow;"
                                         class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
                                         placeholder="Số điện thoại" name="phoneCompany">
                                 </div>
@@ -245,7 +238,6 @@
                                         <option value="" selected hidden>Vui lòng chọn tình trạng hôn nhân</option>
                                         <option value="Độc thân">Độc thân</option>
                                         <option value="Đã kết hôn">Đã kết hôn</option>
-                                        <option value="Ly hôn">Ly hôn</option>
                                     </select>
                                 </div>
                             </div>
@@ -253,7 +245,7 @@
                                 <label for="dateOrder" class="col-md-2 col-sm-3 col-xs-4" style="padding-right:0;">Thời gian đặt hẹn:* </label>
                                 <div class="col-md-2 col-sm-3 col-xs-4">
                                     <div id="dateTimePicker" class="input-group date">
-                                        <input type="text" name="dateCompany"
+                                        <input type="text" name="dateCompany" style="background: lightyellow;"
                                             class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
                                             placeholder="Chọn ngày" autocomplete="off"
                                             aria-invalid="false">
@@ -264,7 +256,7 @@
                                 </div>
                                 <label class="col-md-1 col-sm-1 col-xs-1">Buổi:*</label>
                                 <div class="col-md-3 col-sm-3 col-xs-3">
-                                    <select class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionCompany">
+                                    <select style="background: lightyellow;" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required sessions" name="sessionCompany">
                                         <option value="Sáng" selected>Sáng</option>
                                         <option value="Chiều">Chiều</option>
                                     </select>

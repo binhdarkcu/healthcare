@@ -1,6 +1,73 @@
 ﻿jQuery(function ($) {
     'use strict';
-    
+
+    $('#calc-bmi').click(function(e) {
+        $('#formBMI').validate({
+            rules: {
+                cannang: {
+                    required: true,
+                    number: true
+                },
+                chieucao: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                cannang: {
+                    required: "Vui lòng nhập cân nặng.",
+                    number: "Chỉ chấp nhận số."
+                },
+                chieucao: {
+                    required: "Vui lòng nhập chiều cao.",
+                    number: "Chỉ chấp nhận số."
+                }
+            },
+            highlight: function (element) {
+                $(element).addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).removeClass('has-error');
+            },
+            errorPlacement: function(error, element) {
+                if (element.is(":input") ) {
+                    error.appendTo( element.parents('.form-group') );
+                }
+            },
+            submitHandler: function(form) {
+                var cannang = $('input[name="cannang"]').val(),
+                chieucao = $('input[name="chieucao"]').val(),
+                resulText = $('#result-text'),
+                calc = parseFloat(cannang / (chieucao * chieucao)).toFixed(2);
+                $('#result-number').text(calc);
+                switch (true) {
+                    case (calc < 18.5):
+                        resulText.text('Bạn thiếu cân')
+                        break;
+                    case (calc > 18.5 && calc < 22.9):
+                        resulText.text('Bạn bình thường')
+                        break;
+                    case (calc == 23):
+                        resulText.text('Bạn bị thừa cân')
+                        break;          
+                    case (calc > 23 && calc < 24.9):
+                        resulText.text('Bạn bị béo phì')
+                        break;
+                    case (calc > 25 && calc < 29.9):
+                        resulText.text('Bạn bị béo phì độ 1')
+                        break;
+                    case (calc > 30 && calc < 40):
+                        resulText.text('Bạn bị béo phì độ 2')
+                        break;
+                    default:
+                        resulText.text('Bạn bị béo phì độ 3')
+                        break;
+                }
+                return false
+            }
+        })
+    })
+
     $('.navbar-collapse ul li.scroll a').on('click', function (event) {
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
         return false;

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: DW Question Answer v1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-17 16:32+0700\n"
-"PO-Revision-Date: 2016-08-17 16:32+0700\n"
+"PO-Revision-Date: 2019-06-09 22:03+0700\n"
 "Last-Translator: DesignWall <webmaster@designwall.com>\n"
 "Language-Team: \n"
 "Language: vi_VN\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
@@ -22,7 +22,7 @@ msgstr ""
 # @ dwqa
 #: dw-question-answer.php:147
 msgid "DWQA Questions"
-msgstr "Các câu hỏi DWQA"
+msgstr ""
 
 # @ dwqa
 #: dw-question-answer.php:164
@@ -116,7 +116,7 @@ msgstr "Bạn không có quyền để chỉnh sửa bình luận."
 # @ dwqa
 #: inc/Ajax.php:37
 msgid "Comment ID must be showed."
-msgstr "ID lời bình luận phải được hiện ra"
+msgstr "ID lời bình luận phải được hiện ra."
 
 #: inc/Ajax.php:51 inc/Handle.php:154
 msgid "Answer is missing."
@@ -173,7 +173,7 @@ msgstr "Vô danh"
 # @ dwqa
 #: inc/Answer_List_Table.php:101
 msgid "Answered on "
-msgstr "Đã trả lời ở"
+msgstr "Đã trả lời ở "
 
 # @ dwqa
 #: inc/Answer_List_Table.php:112 inc/Helptab.php:153
@@ -220,7 +220,7 @@ msgstr "Captcha không đúng"
 # @ dwqa
 #: inc/Handle.php:77
 msgid "Answer for "
-msgstr "Trả lời cho"
+msgstr "Trả lời cho "
 
 #: inc/Handle.php:139
 msgid "You do not have permission to edit answer."
@@ -256,7 +256,7 @@ msgstr ""
 # @ dwqa
 #: inc/Handle.php:264
 msgid "Comment content must not be empty."
-msgstr "Nội dung bình luận không được để trống"
+msgstr "Nội dung bình luận không được để trống."
 
 #: inc/Handle.php:294 inc/Handle.php:471
 msgid "You must enter a valid question title."
@@ -265,17 +265,17 @@ msgstr ""
 # @ dwqa
 #: inc/Handle.php:384
 msgid "User Registration was disabled."
-msgstr "Đăng ký thành viên đã bị vô hiệu hóa"
+msgstr "Đăng ký thành viên đã bị vô hiệu hóa."
 
 # @ dwqa
 #: inc/Handle.php:387
 msgid "This email is already registered, please choose another one."
-msgstr "Địa chỉ email này đã được đăng ký, vui lòng chọn địa chỉ email khác"
+msgstr "Địa chỉ email này đã được đăng ký, vui lòng chọn địa chỉ email khác."
 
 # @ dwqa
 #: inc/Handle.php:390
 msgid "This username is already registered. Please use another one."
-msgstr "Tên đăng nhập này đã được đăng ký. Vui lòng dùng tên đăng nhập khác"
+msgstr "Tên đăng nhập này đã được đăng ký. Vui lòng dùng tên đăng nhập khác."
 
 #: inc/Handle.php:444
 msgid "Your question is waiting moderator."
@@ -307,7 +307,7 @@ msgstr ""
 "DW Question Answer là một Plugin của WordPress giúp bạn xây dựng hệ thống "
 "câu hỏi và câu trả lời trên các trang web nền tảng WordPress. Plugin này dễ "
 "dàng cài đặt, sử dụng để tiến hành xây dựng cộng đồng với hệ thống câu hỏi "
-"và câu trả lời trên WordPress"
+"và câu trả lời trên WordPress."
 
 # @ dwqa
 #: inc/Helptab.php:52
@@ -399,7 +399,7 @@ msgstr "Dính"
 # @ dwqa
 #: inc/Metaboxes.php:29
 msgid "Pin question to top of archive page."
-msgstr "Ghim câu hỏi lên đầu trang lưu trữ"
+msgstr "Ghim câu hỏi lên đầu trang lưu trữ."
 
 # @ dwqa
 #: inc/Metaboxes.php:45 inc/Posts/Answer.php:225 inc/Posts/Answer.php:227
@@ -455,7 +455,7 @@ msgstr "Cấu hình kênh hỗ trợ của bạn"
 # @ dwqa
 #: inc/PointerHelper.php:71
 msgid "Change comment settings, and create the Submit question page."
-msgstr "Các cài đặt thay đổi lời bình luận, và tạo trang gửi câu hỏi"
+msgstr "Các cài đặt thay đổi lời bình luận, và tạo trang gửi câu hỏi."
 
 # @ default
 # @ dwqa
@@ -497,7 +497,7 @@ msgstr "Đã gửi"
 # @ dwqa
 #: inc/Posts/Answer.php:324
 msgid "on"
-msgstr "Trên"
+msgstr "trên"
 
 #: inc/Posts/Answer.php:359
 msgid "Question ID"
@@ -519,7 +519,7 @@ msgstr ""
 # @ dwqa
 #: inc/Posts/Base.php:46
 msgid "You voted for this "
-msgstr "Bạn ủng hộ cho điều này"
+msgstr "Bạn ủng hộ cho điều này "
 
 # @ default
 #: inc/Posts/Base.php:242
@@ -561,7 +561,7 @@ msgstr "Mới"
 
 #: inc/Posts/Base.php:323
 msgid "Search "
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm "
 
 #: inc/Posts/Base.php:324
 msgid "not found"
@@ -817,7 +817,7 @@ msgid ""
 msgstr ""
 "Trang này sẽ được chuyển hướng khi người dùng không có quyền nhấp chuột vào "
 "câu hỏi riêng tư. Bạn có thể tùy chỉnh thông báo của trang này. Nếu không, "
-"một trang mặc định 404 sẽ được sử dụng"
+"một trang mặc định 404 sẽ được sử dung."
 
 # @ dwqa
 #: inc/Settings.php:87
@@ -1138,7 +1138,7 @@ msgstr "Bcc"
 # @ dwqa
 #: inc/Settings.php:1376
 msgid "This address will be used as the sender of the outgoing emails."
-msgstr "Địa chỉ này được người gửi sử dụng cho các email gửi đi"
+msgstr "Địa chỉ này được người gửi sử dụng cho các email gửi đi."
 
 #: inc/Settings.php:1382
 msgid "Send a copy of every email to admin."
@@ -1237,7 +1237,7 @@ msgstr ""
 #: inc/Template.php:461
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Bạn cần phải <a href=\"%s\">đăng nhập</a> để viết bình luận"
+msgstr "Bạn cần phải <a href=\"%s\">đăng nhập</a> để viết bình luận."
 
 # @ dwqa
 #: inc/Template.php:464
@@ -1352,7 +1352,7 @@ msgstr ""
 # @ dwqa
 #: inc/widgets/Latest_Question.php:11
 msgid "DWQA Latest Questions"
-msgstr "Câu hỏi DWQA mới nhất "
+msgstr "Câu hỏi DWQA mới nhất"
 
 # @ dwqa
 #: inc/widgets/Latest_Question.php:17

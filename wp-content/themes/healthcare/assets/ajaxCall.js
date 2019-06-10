@@ -197,13 +197,15 @@ jQuery(document).ready(function(){
                         companyCode: $('input[name="companyCode"]').val()
                     },
                     success: function(res) {
+                        $('.tab-content').removeClass('loadingForm')
                         /**
                          * logic: if company code fail equal 5, disable register
                          */
                         if(res.length == 0) {
                             countError++;
                             $('input[name="companyCode"]').val('');
-                            $('input[name="companyCode"]').addClass('has-error')
+                            $('input[name="companyCode"]').addClass('has-error');
+                            $('#companyCodeFailed').removeClass('d-none')
                             if(countError == 5) {
                                 alert('Vui lòng liên hệ phòng khám để nhận mã công ty');
                                 countError = 0;
@@ -243,6 +245,9 @@ jQuery(document).ready(function(){
                                 }
                             })
                         }
+                    },
+                    beforeSend: function() {
+                        $('.tab-content').addClass('loadingForm')
                     }
                 })
             }
@@ -423,7 +428,6 @@ jQuery(document).ready(function(){
             rules: {
                 companyName: 'required',
                 insuranceAgent: 'required',
-                amountCompany: 'required',
                 nameCompany: 'required',
                 birthdayCompany: 'required',
                 genderCompany: 'required',
@@ -458,16 +462,18 @@ jQuery(document).ready(function(){
                         date: $('input[name="dateCompany"]').datepicker().val()
                     },
                     success: function (res) {
+                        $('.tab-content').removeClass('loadingForm')
                         var total_current = [],
                         total_register = parseInt(res.list_company[0].total_members),
-                        amount_current = parseInt($('input[name="amountCompany"]').val());
+                        amount_current = '';
                         res.company.length > 0 ? res.company.map(function (e) {
                             return total_current.push(parseInt(e.amount))
                         }) : total_current = [0];
-                        if(total_current.length > 0 && (total_current.reduce(reducer) + amount_current) > total_register) {
+                        amount_current = total_current.reduce(reducer)
+                        // console.log('total_register:', total_register, 'amount_current: ', amount_current)
+                        if(total_current.length > 0 && parseInt(amount_current + 1) > total_register) {
                             $('#text_error').attr('style', '');
                             $('#current_amount').text(total_current.reduce(reducer) + '/' + total_register);
-                            $('input[name="amountCompany"]').addClass('has-error');
                         } else {
                             $('#text_error').css('display', 'none');
                             $('input[name="amountCompany"]').removeClass('has-error');
@@ -477,7 +483,7 @@ jQuery(document).ready(function(){
                                 data: {
                                     action: 'action_insert_db_compant_not_schedule',
                                     company_name: $('.companyName').val(),
-                                    amount: amount_current,
+                                    amount: 1,
                                     name: $('input[name="nameCompany"]').val(),
                                     birthday: $('input[name="birthdayCompany"]').val(),
                                     gender: $('#valueGender01').attr('value'),
@@ -491,10 +497,13 @@ jQuery(document).ready(function(){
                                 },
                                 success: function() {
                                     alert('Đăng ký thành công')
-                                    location.reload();
+                                    //location.reload();
                                 }
                             })
                         }
+                    },
+                    beforeSend: function() {
+                        $('.tab-content').addClass('loadingForm')
                     }
                 })
             }

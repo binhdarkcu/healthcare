@@ -337,7 +337,7 @@
         acf_add_options_sub_page(array(
             'page_title' => 'Danh sách công ty',
             'menu_title' => 'Danh sách công ty',
-            'parent_slug' => 'theme-general-settings',
+            'parent_slug' => 'theme-general-settings'
         ));
     }
 
@@ -376,7 +376,10 @@
         echo '<style>
                 .d-none {
                     display: none !important;
-                } 
+                }
+                #toplevel_page_wp_list_table_class, #toplevel_page_wp_list_table_company {
+                    display: none !important;
+                }
           </style>';
     }
 
@@ -416,6 +419,9 @@
 
     add_action('wp_enqueue_scripts', 'localize_my_scripts');
 
+    /**
+     * đặt hẹn bác sĩ
+     */
     function insert_db() {
         // Do your processing here (save to database etc.)
         // All WP API functions are available for you here
@@ -453,15 +459,14 @@
 
         //send email to client
         $subject = 'Lịch hẹn Phòng khám đa khoa quốc tế Golden Healthcare';
-        $content = 'Xin chào '.$full_name.'<br/><br />
-                    Cám ơn bạn đã đặt hẹn online ở PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE<br/><br/>
+        $content = 'Cám ơn bạn đã đặt hẹn online ở PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE<br/><br/>
                     Lịch hẹn của bạn: '. $time_booked . ' ngày ' . $day_booked . '. Bác sĩ: '. $doctorName . '<br/><br/>
-                    Hy vọng được gặp bạn sớm. Thân chào.';
+                    Hy vọng anh/chị đến trước 15 phút để làm thủ tục. Thân chào.';
         wp_mail($email, $subject, $content, $headers);
 
         //send email to admin
         $subjectAdmin = 'Lịch đặt hẹn bác sĩ';
-        $emailAdmin = get_bloginfo('admin_email');
+        $emailAdmin = get_field('mail_dat_hen', 'option');
         $content1 = 'Xin chào Admin,<br/><br/>
                     Vừa có 1 lịch hẹn mới: <br/><br/>
                     Bác sĩ: .' .$doctorName. '<br/>
@@ -515,7 +520,11 @@
         //send email to admin
         $headers = array('Content-Type: text/html; charset=UTF-8');
         $subjectAdmin = 'Lịch đặt hẹn công ty theo lịch';
-        $emailAdmin = get_bloginfo('admin_email');
+        $subject = 'Lịch hẹn Phòng khám đa khoa quốc tế Golden Healthcare';
+        $content = 'Cám ơn bạn đã đặt hẹn online ở PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE<br/><br/>
+                    Lịch hẹn của bạn là: '. $company_name . ' ngày ' . $day . '. Buổi: '. $sessions . '<br/><br/>
+                    Hy vọng anh/chị đến trước 15 phút để làm thủ tục. Thân chào.';
+        $emailAdmin = get_field('mail_dat_hen', 'option');
         $content1 = 'Xin chào Admin,<br/><br/>
                     Vừa có 1 lịch hẹn của công ty theo lịch: <br/><br/>
                     Tên công ty: ' . $company_name . '<br/>
@@ -529,6 +538,7 @@
                     Mã công ty: '. $employee_code . '<br/>
                     Ghi chú: ' . $note;
         wp_mail($emailAdmin, $subjectAdmin, $content1, $headers);
+        wp_mail($email, $subject, $content, $headers);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
@@ -656,7 +666,10 @@
         $company_name = (isset($_GET['companyName'])) ? $_GET['companyName'] : '';
         $day = (isset($_GET['date'])) ? $_GET['date'] : '';
         $result = "SELECT amount FROM wp_company WHERE company_name = '$company_name' AND day = '$day'";
-        $result_list = "SELECT total_members FROM wp_list_company WHERE company_name = '$company_name' AND status_company = 'company_not_schedule'";
+        $result_list = "SELECT total_members 
+        FROM wp_list_company 
+        WHERE company_name = '$company_name' 
+        AND status_company = 'company_not_schedule'";
         header('Content-Type: application/json');
         echo json_encode(
             array(
@@ -703,11 +716,14 @@
         //send email to admin
         $headers = array('Content-Type: text/html; charset=UTF-8');
         $subjectAdmin = 'Lịch đặt hẹn công ty không theo lịch';
-        $emailAdmin = get_bloginfo('admin_email');
-        $content1 = 'Xin chào Admin, <br/><br/>
+        $subject = 'Lịch hẹn Phòng khám đa khoa quốc tế Golden Healthcare';
+        $content = 'Cám ơn bạn đã đặt hẹn online ở PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN HEALTHCARE<br/><br/>
+                    Lịch hẹn của bạn là: '. $company_name . ' ngày ' . $date . '. Buổi: '. $session . '<br/><br/>
+                    Hy vọng anh/chị đến trước 15 phút để làm thủ tục. Thân chào.';
+        $emailAdmin = get_field('mail_dat_hen', 'option');
+        $content1 = 'Xin chào Admin,<br/><br/>
                     Vừa có 1 lịch hẹn của công ty không theo lịch: <br/><br/>
                     Tên công ty: ' . $company_name . '<br/>
-                    Số lượng : ' .$amount . '<br/>
                     Tên bệnh nhân: ' . $name.'<br/>
                     Ngày sinh: '. $birthday . '<br/>
                     Giới tính: '.$gender.'<br/>
@@ -715,9 +731,10 @@
                     Số điện thoại: '. $phone.'<br/>
                     Ngày: '. $date . '<br/>
                     Buổi: ' . $session . '<br/>
-                    Mã nhân viên / phòng ban: '. $codeCompany . '<br/>
+                    Mã công ty: '. $codeCompany . '<br/>
                     Ghi chú: ' . $noteCompany;
         wp_mail($emailAdmin, $subjectAdmin, $content1, $headers);
+        wp_mail($email, $subject, $content, $headers);
         wp_die(); // this is required to terminate immediately and return a proper response
     }
 
@@ -854,5 +871,25 @@
     add_action('wp_ajax_nopriv_action_send_mail_contact', 'send_mail_contact');
     // This will allow only logged in users to use the functionality
     add_action('wp_ajax_action_send_mail_contact', 'send_mail_contact');
-    
+
+    add_action('admin_menu', 'custom_menu');
+    function custom_menu() {
+        add_menu_page( 'Đặt hẹn', 'Đặt hẹn', 'edit_posts', 'menu', 'callback_khachle', 'dashicons-admin-site', 5);
+        add_submenu_page( 'menu', 'Đặt hẹn công ty', 'Đặt hẹn công ty', 'edit_posts', 'callback_congty', 'callback_congty' );
+        add_submenu_page( 'menu', 'Danh sách công ty', 'Danh sách công ty', 'edit_posts', 'callback_list_company', 'callback_list_company' );
+    }
+
+    function callback_khachle() {
+        $url = admin_url('admin.php?page=wp_list_table_class');
+        echo '<script type="text/javascript">window.location.href = "'.$url.'"</script>';
+    }
+
+    function callback_congty() {
+        $url = admin_url('admin.php?page=wp_list_table_company');
+        echo '<script type="text/javascript">window.location.href = "'.$url.'"</script>';
+    }
+    function callback_list_company() {
+        $url = admin_url('admin.php?page=acf-options-danh-sach-cong-ty');
+        echo '<script type="text/javascript">window.location.href = "'.$url.'"</script>';
+    }
 ?>
