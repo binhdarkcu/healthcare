@@ -121,7 +121,6 @@ class Company_List extends WP_List_Table {
 	    $query = $wpdb->get_row("SELECT company_name FROM wp_company WHERE ID = $arr");
 		switch ( $column_name ) {
             case 'name':
-			case 'amount':
 			case 'birthday':
 			case 'gender':
 			case 'phone':
@@ -149,7 +148,6 @@ class Company_List extends WP_List_Table {
         $columns = [
             'cb'      => '<input type="checkbox" />',
             'company_name'    => __( 'Tên công ty', 'sp' ),
-            'amount'    => __( 'Số lượng', 'sp' ),
             'name' => __( 'Họ tên', 'sp' ),
             'birthday' => __( 'Ngày sinh', 'sp' ),
             'gender' => __( 'Giới tính', 'sp' ),

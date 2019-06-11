@@ -497,7 +497,7 @@ jQuery(document).ready(function(){
                                 },
                                 success: function() {
                                     alert('Đăng ký thành công')
-                                    //location.reload();
+                                    location.reload();
                                 }
                             })
                         }
