@@ -583,6 +583,8 @@
         global $post;
         if ($post->post_type == 'post') {
             return dirname(__FILE__) . '/single-bac-si.php';
+        } else if($post->post_type == 'cam_nhan_khach_hang') {
+            return dirname(__FILE__) . '/single-cam_nhan_khach_hang.php';
         } else {
             return dirname(__FILE__) . '/single.php';
         }
@@ -891,5 +893,13 @@
     function callback_list_company() {
         $url = admin_url('admin.php?page=acf-options-danh-sach-cong-ty');
         echo '<script type="text/javascript">window.location.href = "'.$url.'"</script>';
+    }
+
+    add_filter('next_posts_link_attributes', 'posts_link_attributes');
+    add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+
+    function posts_link_attributes() {
+        $code = 'class="styled-button"';
+    return str_replace('<a href=', '<a '.$code.' href=', $output);
     }
 ?>

@@ -933,3 +933,55 @@ body table:not(.table-condensed) td span {
     margin-top: 20px;
     display: inline-block;
 }
+.rowContent {
+    position: relative;
+}
+.rowContent:before {
+    content: "\f10d";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 35px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #EAEAEA;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1
+}
+.slide-cnkh .owl-theme .owl-controls {
+    margin-top: 20px;
+}
+.styleRow {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 40px;
+}
+
+.styleRow a {
+    letter-spacing: 3px;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.styleRow a:hover {
+    color: #f7931d
+}
+.pageCNKH .styleRow:last-child {
+    border-bottom: 0;
+}
+.navigation_camnhan {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation_camnhan a {
+    padding: 6px 20px;
+    background: #f7931d;
+    color: #fff;
+    border-radius: 4px;
+    border: 0px;
+}

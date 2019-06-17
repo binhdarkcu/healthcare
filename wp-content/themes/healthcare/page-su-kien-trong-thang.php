@@ -2,8 +2,11 @@
 <div ng-init="loadData()" idjhfk>
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">
-            <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
+            <div class="conten col-md-8 col-sm-12 col-xs-12">
                 <div class="childpages">
+                    <div class="row">
+                        <h4 class="column-title" style="text-transform: uppercase; margin-bottom: 40px"><?php echo the_title() ?></h4>
+                    </div>
                     <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = array(

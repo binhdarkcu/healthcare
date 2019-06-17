@@ -330,7 +330,7 @@ class Company_Schedule {
 	public function plugin_settings_page() {
 		?>
 		<div class="wrap">
-			<h2>Đặt hẹn</h2>
+			<h2>Đặt hẹn công ty</h2>
 
 			<div id="poststuff">
 				<div id="post-body" class="metabox-holder">

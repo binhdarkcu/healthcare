@@ -68,6 +68,23 @@
         })
     })
 
+    $('.owl-inner').trigger('refresh.owl.carousel');
+
+    $('.slide-cnkh').find('.carousel-inner').owlCarousel({
+        loop: true,
+        responsiveClass: true,
+        autoHeight: true,
+        items: 3,
+        responsive: {
+            1120: {
+                items: 2
+            },
+            768: {
+                items: 1
+            }
+        }
+    })
+
     $('.navbar-collapse ul li.scroll a').on('click', function (event) {
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 5}, 1000);
         return false;

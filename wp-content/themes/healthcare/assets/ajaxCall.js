@@ -281,6 +281,7 @@ jQuery(document).ready(function(){
                     day: $('input[name="timeOrder"]').datepicker().val()
                 },
                 success: function(res) {
+                    $('.tab-content').removeClass('loadingForm')
                     return Object.values(res[0]).forEach(function(element) {
                         if(element == val) {
                             switch(element) {
@@ -299,7 +300,9 @@ jQuery(document).ready(function(){
                         }
                     })
                 },
-
+                beforeSend: function() {
+                    $('.tab-content').addClass('loadingForm')
+                }
             })
         }
    }
@@ -318,7 +321,11 @@ jQuery(document).ready(function(){
                 session: $('select[name="sessionOrder"]').val()
             },
             success: function(res) {
+                $('.tab-content').removeClass('loadingForm')
                 callback(res)
+            },
+            beforeSend: function() {
+                $('.tab-content').addClass('loadingForm')
             }
         })
    }

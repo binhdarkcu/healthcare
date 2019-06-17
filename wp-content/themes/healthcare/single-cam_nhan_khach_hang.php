@@ -1,6 +1,6 @@
 <?php get_header() ?>
 <?php
-    $queried_object = get_queried_object();
+$queried_object = get_queried_object();
 ?>
 <div ng-init="loadData()">
     <section>
@@ -24,11 +24,19 @@
                                     <span>Lượt xem: <?php echo check_number_view() ?></span>
                                 </div>
                             </div>
-                            <div class="posts">
+                            <div class="posts" style="padding-bottom: 30px; border-bottom: 1px solid #ccc">
                                 <?php echo the_content() ;?>
                             </div>
+                            <div class="navigation_camnhan">
+                                <?php previous_post_link('%link','Previous'); ?>
+                                <?php next_post_link('%link','Next'); ?>
+                            </div>
                         <?php endwhile; ?>
-                        <?php } ?>
+                        <?php
+                    }
+
+                    ?>
+
                 </div>
                 <!---->
                 <div class="col-md-4 col-sm-12 col-xs-12" style="position: sticky;top: 0;">

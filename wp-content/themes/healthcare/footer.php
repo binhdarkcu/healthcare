@@ -164,9 +164,12 @@
 <!-------------------------------------------->
 <!-----------------SCRIPT--------------------->
 <!-------------------------------------------->
+<?php
+        if(is_page(94)) :?>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
 </script>
+    <?php endif; ?>
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/mousescroll.js"></script>
@@ -192,15 +195,6 @@
             }
         );
     }); // end ready
-    // function initMap() {
-    //     // The location of Uluru
-    //     var uluru = {lat: -25.344, lng: 131.036};
-    //     // The map, centered at Uluru
-    //     var map = new google.maps.Map(
-    //         document.getElementById('map'), {zoom: 4, center: uluru});
-    //     // The marker, positioned at Uluru
-    //     var marker = new google.maps.Marker({position: uluru, map: map});
-    // }
 </script>
 <script type="text/javascript">
 
