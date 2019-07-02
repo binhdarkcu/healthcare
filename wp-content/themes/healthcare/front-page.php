@@ -26,8 +26,8 @@
                     ?>
                     <div class="col-md-4 col-sm-6 col-xs-12 owl-item">
                         <div class="rowTitle clearfix" style="display: flex; align-items: center">
-                            <div style ="width: 107px;border-radius: 50%; float: left;height: 107px; overflow: hidden">
-                                <img src="<?php echo $feature_image_meta[0] ?>" alt="" style ="height: 107px; width: 100%;" />
+                            <div style ="width: 107px; float: left;height: 107px; overflow: hidden">
+                                <img src="<?php echo $feature_image_meta[0] ?>" alt="" style ="width: 100%;" />
                             </div>
                             <a href="<?php echo get_the_permalink() ?>" style="display: inline-block; margin-left: 10px; font-size: 15px; font-weight: bold"><?php echo the_title() ?></a>
                         </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="row" style="margin-top: 20px">
                 <div class="col-md-12">
-                    <a href="<?php echo get_the_permalink(991) ?>" class="btn btn-success" style="background: #f7931d;">Xem tất cả</a>
+                    <a href="<?php echo get_the_permalink(986) ?>" class="btn btn-success" style="background: #f7931d;">Xem tất cả</a>
                 </div>
             </div>
         </div>

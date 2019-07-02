@@ -344,6 +344,7 @@ jQuery(document).ready(function(){
                 companyName: $(this).val()
             },
             success: function(res) {
+                $('.tab-content').removeClass('loadingForm')
                 if(res.length > 0) {
                     //logic: check date in db and only show the day avilable (multiple days)
                     res.map(function(e) {
@@ -423,6 +424,9 @@ jQuery(document).ready(function(){
                         }))
                     })
                 }
+            },
+            beforeSend: function() {
+                $('.tab-content').addClass('loadingForm')
             }
         })
     })
