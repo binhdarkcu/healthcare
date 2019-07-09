@@ -985,3 +985,6 @@ body table:not(.table-condensed) td span {
     border-radius: 4px;
     border: 0px;
 }
+.counter_visitor {
+    padding-top: 15px
+}

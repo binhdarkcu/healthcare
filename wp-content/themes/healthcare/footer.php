@@ -98,30 +98,28 @@
                                 <?php endwhile; ?>
                             </ul>
                         <?php endif; ?>
-                        <?php
-                                session_start(); // Should always be on top
-                                if(!isset($_SESSION['counter'])) { // It's the first visit in this session
-                                    $handle = fopen("counter.txt", "r"); 
-                                    echo $handle;
-                                    if(!$handle){ 
-                                    echo "Could not open the file" ;
-                                    } 
-                                    else { 
-                                        $counter = ( int ) fread ($handle,20) ;
-                                        fclose ($handle) ;
-                                        $counter++ ; 
-                                        echo" <p> Visitor Count: ". $counter . " </p> " ; 
-                                        $handle = fopen("counter.txt", "w" ) ; 
-                                        fwrite($handle,$counter) ; 
-                                        fclose ($handle) ;
-                                        $_SESSION['counter'] = $counter;
-                                        }
-
-                                } else { // It's not the first time, do not update the counter but show the total hits stored in session
-                                    $counter = $_SESSION['counter'];
-                                    echo" <p> Visitor Count: ". $counter . " </p> " ;
+                        <div class="counter_visitor">
+                            <?php 
+                                session_start();
+                                $counter_name = "counter.txt";
+                                if (!file_exists($counter_name)) {
+                                    $f = fopen($counter_name, "w");
+                                    fwrite($f,"0");
+                                    fclose($f);
                                 }
-                        ?>
+                                $f = fopen($counter_name,"r");
+                                $counterVal = fread($f, filesize($counter_name));
+                                fclose($f);
+                                if(!isset($_SESSION['hasVisited'])){
+                                    $_SESSION['hasVisited']="yes";
+                                    $counterVal++;
+                                    $f = fopen($counter_name, "w");
+                                    fwrite($f, $counterVal);
+                                    fclose($f); 
+                                }
+                                echo "Lượt xem: $counterVal";
+                            ?>
+                        </div>
                     </div>
                     <div class="col-md-3" style="margin-bottom: 20px">
                         <iframe style="width: 100%;"
