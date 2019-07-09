@@ -252,9 +252,9 @@
                         <div class="service-box-pad">
                             <div class="media service-box">
                                 <div class="pull-left" style="width: 100%;text-align: center;">
+                                    <a href="<?php echo $page_link; ?>">
                                     <i class="fa"
                                        style="background: url(<?php echo $page_img; ?>); background-size: cover;"></i>
-                                    <a href="<?php echo $page_link; ?>">
                                         <h4 class="media-heading block-ellipsis-home-news-2line"
                                             style="line-height:1.5 !important;font-size: 15px;"><?php echo $page_title; ?></h4>
                                     </a>
