@@ -79,11 +79,13 @@
                                                                 $names = $dayItem["week_doctor_morning"];
                                                                 ?>
                                                                 <td class="show_doctors"><?php
-                                                                    foreach ($names as $name) {
-                                                                        $listCats = get_the_category($name->ID);
-                                                                        foreach ($listCats as $listCat) {
-                                                                            if($listCat->name == $category->name) {
-                                                                                echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                    if(!empty($names)) {
+                                                                        foreach ($names as $name) {
+                                                                            $listCats = get_the_category($name->ID);
+                                                                            foreach ($listCats as $listCat) {
+                                                                                if($listCat->name == $category->name) {
+                                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
@@ -102,11 +104,13 @@
                                                                 $names = $dayItem["week_doctor_afternoon"];
                                                                 ?>
                                                                 <td class="show_doctors"><?php
-                                                                    foreach ($names as $name) {
-                                                                        $listCats = get_the_category($name->ID);
-                                                                        foreach ($listCats as $listCat) {
-                                                                            if($listCat->name == $category->name) {
-                                                                                echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                    if(!empty($names)) {
+                                                                        foreach ($names as $name) {
+                                                                            $listCats = get_the_category($name->ID);
+                                                                            foreach ($listCats as $listCat) {
+                                                                                if($listCat->name == $category->name) {
+                                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
@@ -125,11 +129,13 @@
                                                                 $names = $dayItem["week_doctor_night"];
                                                                 ?>
                                                                 <td class="show_doctors"><?php
-                                                                    foreach ($names as $name) {
-                                                                        $listCats = get_the_category($name->ID);
-                                                                        foreach ($listCats as $listCat) {
-                                                                            if($listCat->name == $category->name) {
-                                                                                echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                    if(!empty($names)) {
+                                                                        foreach ($names as $name) {
+                                                                            $listCats = get_the_category($name->ID);
+                                                                            foreach ($listCats as $listCat) {
+                                                                                if($listCat->name == $category->name) {
+                                                                                    echo '<a href="'.get_the_permalink($name->ID).'">'.$name->post_title.'</a>';
+                                                                                }
                                                                             }
                                                                         }
                                                                     }

@@ -104,7 +104,7 @@
         $status = 200;
         $params = $request->get_params();
         $result = $wpdb->get_results("SELECT * FROM $_table");
-        echo $params['day'];
+        // echo $params['day'];
         if($params['day'] !== '') {
             $day = $params['day'];
             $result = $wpdb->get_results("SELECT * FROM $_table WHERE dayChecked = '$day'");
@@ -115,4 +115,5 @@
             $wpdb->get_results($data, OBJECT)
         );
     }
+    // =================================================================================
 ?>

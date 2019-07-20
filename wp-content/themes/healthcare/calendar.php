@@ -34,10 +34,12 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                 echo '<span class="visible-xs">'.$days.'</span>';
+                                if(!empty($names)) {
                                     foreach ($names as $name) {
                                         echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
-                                    ?></td>
+                                } ?>
+                                    </td>
                             <?php } endwhile; endif; ?>
                 </tr>
                 <tr class="thead-light">
@@ -54,11 +56,13 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                 echo '<span class="visible-xs">'.$days.'</span>';
+                                if(!empty($names)) {
                                     foreach ($names as $name) {
                                         echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
-                                    ?></td>
-                            <?php } endwhile; endif; ?>
+                                } ?>
+                                    </td>
+                                <?php } endwhile; endif; ?>
                 </tr>
                 <tr class="thead-light">
                     <th colspan="7">Tối (18h00 - 19h30)</th>
@@ -74,10 +78,12 @@ $queried_object = get_queried_object();
                                 ?>
                                 <td class="show_doctors"><?php
                                 echo '<span class="visible-xs">'.$days.'</span>';
+                                if(!empty($names)) {
                                     foreach ($names as $name) {
                                         echo '<a href="' . get_the_permalink($name->ID) . '">' . $name->post_title . '</a><br/>';
                                     }
-                                    ?></td>
+                                } ?>
+                                    </td>
                             <?php } endwhile; endif; ?>
                 </tr>
             </table>
