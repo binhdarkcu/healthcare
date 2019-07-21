@@ -680,7 +680,7 @@ msgstr "Pravidlá "
 #: admin/views/field-group-locations.php:6
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "Vytvorte súbor pravidiel určujúcich, ktoré obrazovky úprav budú používať "
 "Vlastné polia"
@@ -929,7 +929,7 @@ msgstr ""
 "Dúfame, že sa vám páči."
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "Jednoduchšie používanie polí"
 
 #: admin/views/settings-info.php:28
@@ -1910,7 +1910,7 @@ msgid "Other"
 msgstr "Iné "
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "Pridať možnosť 'iné' pre povolenie vlastných hodnôt"
 
 #: fields/radio.php:212

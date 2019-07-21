@@ -468,7 +468,7 @@ function qtranxf_add_admin_lang_icons ()
 	echo '<style type="text/css">'.PHP_EOL;
 	echo "#wpadminbar #wp-admin-bar-language>div.ab-item{ background-size: 0;";
 	echo 'background-image: url('.$flag_location.$q_config['flag'][$q_config['language']].');}'.PHP_EOL;
-	foreach($q_config['enabled_languages'] as $language)
+	foreach($q_config['enabled_languages'] as $language) 
 	{
 		echo '#wpadminbar ul li#wp-admin-bar-'.$language.' {background-size: 0; background-image: url('.$flag_location.$q_config['flag'][$language].'); margin-right: 5px; }'.PHP_EOL;
 	}
@@ -627,7 +627,7 @@ function qtranxf_admin_menu() {
 
 /* Add a metabox in admin menu page */
 function qtranxf_nav_menu_metabox( $object ){
-	global $nav_menu_selected_id;
+	global $nav_menu_selected_id; 
 	$nm = __('Language Menu', 'qtranslate');
 	$elems = array( '#qtransLangSwLM#' => $nm );
 
@@ -636,7 +636,7 @@ function qtranxf_nav_menu_metabox( $object ){
 		public $object = 'qtranslangsw';
 		public $object_id;
 		public $menu_item_parent = 0;
-		public $type = 'custom.php';
+		public $type = 'custom';
 		public $title;// = 'Language';
 		public $url;
 		public $target = '';
@@ -682,7 +682,7 @@ function qtranxf_nav_menu_metabox( $object ){
 	<span class="list-controls hide-if-no-js">
 		<a href="javascript:void(0);" class="help" onclick="jQuery( '#qtranxs-langsw-help' ).toggle();"><?php _e( 'Help', 'qtranslate') ?></a>
 		<span class="hide-if-js" id="qtranxs-langsw-help"><p><a name="qtranxs-langsw-help"></a>
-		<?php
+		<?php 
 		echo __('Menu item added is replaced with a drop-down menu of available languages, when menu is rendered.', 'qtranslate');
 		echo ' ';
 		printf(__('The rendered menu items have CSS classes %s and %s ("%s" is a language code), which can be defined in theme style, if desired. The label of language menu can also be customized via field "%s" in the menu configuration.', 'qtranslate'), '.qtranxs-lang-menu, .qtranxs-lang-menu-xx, .qtranxs-lang-menu-item', '.qtranxs-lang-menu-item-xx', 'xx', qtranxf_translate_wp('Navigation Label'));
@@ -714,7 +714,7 @@ function qtranxf_add_language_menu( $wp_admin_bar ){
 	}else{
 		$title = $q_config['language_name'][$q_config['language']];
 	}
-
+	
 	$wp_admin_bar->add_menu( array(
 			'id'   => 'language',
 			'parent' => 'top-secondary',
@@ -726,7 +726,7 @@ function qtranxf_add_language_menu( $wp_admin_bar ){
 
 	foreach($q_config['enabled_languages'] as $language)
 	{
-		$wp_admin_bar->add_menu(
+		$wp_admin_bar->add_menu( 
 			array
 			(
 				'id'	 => $language,

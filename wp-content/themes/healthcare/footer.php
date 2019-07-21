@@ -99,25 +99,31 @@
                             </ul>
                         <?php endif; ?>
                         <div class="counter_visitor">
-                            <?php 
-                                session_start();
-                                $counter_name = "counter.txt";
-                                if (!file_exists($counter_name)) {
-                                    $f = fopen($counter_name, "w");
-                                    fwrite($f,"0");
-                                    fclose($f);
-                                }
-                                $f = fopen($counter_name,"r");
-                                $counterVal = fread($f, filesize($counter_name));
-                                fclose($f);
-                                if(!isset($_SESSION['hasVisited'])){
-                                    $_SESSION['hasVisited']="yes";
-                                    $counterVal++;
-                                    $f = fopen($counter_name, "w");
-                                    fwrite($f, $counterVal);
-                                    fclose($f); 
-                                }
-                                echo "Lượt xem: $counterVal";
+
+                            <?php
+                                echo do_shortcode('[page_visit_counter_md backgroundcolor="transparent"]');
+                                // include("counter.php");
+                                // $counter_name = "counter.txt";
+                                // if (!file_exists($counter_name)) {
+                                //     $f = fopen($counter_name, "w");
+                                //     fwrite($f,"0");
+                                //     fclose($f);
+                                // }
+                                // $f = fopen($counter_name,"r");
+                                // print_r(filesize($counter_name));
+                                // if(filesize($counter_name) > 0) {
+                                //     $counterVal = fread($f, filesize($counter_name));
+                                //     fclose($f);
+                                //     if(!isset($_SESSION['hasVisited'])){
+                                //         $_SESSION['hasVisited']="yes";
+                                //         $counterVal++;
+                                //         $f = fopen($counter_name, "w");
+                                //         fwrite($f, $counterVal);
+                                //         fclose($f);
+                                //     }
+                                // } else {
+                                //     $counterVal = 1;
+                                // }
                             ?>
                         </div>
                     </div>

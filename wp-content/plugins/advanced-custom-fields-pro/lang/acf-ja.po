@@ -673,7 +673,7 @@ msgstr "ルール"
 #: admin/views/field-group-locations.php:6
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "どの編集画面でカスタムフィールドを表示するかを決定するルールを作成します。"
 
@@ -919,7 +919,7 @@ msgstr ""
 "に入ってもらえたら幸いです。"
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "もっとも快適なカスタムフィールド体験"
 
 #: admin/views/settings-info.php:28
@@ -1907,7 +1907,7 @@ msgid "Other"
 msgstr "その他"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "選択肢「その他」を追加する"
 
 #: fields/radio.php:212
@@ -3213,7 +3213,7 @@ msgstr ""
 #~ msgid "Modifying field option 'taxonomy'"
 #~ msgstr "フィールドオプション「タクソノミー」を変更"
 
-#~ msgid "Moving user custom.php fields from wp_options to wp_usermeta'"
+#~ msgid "Moving user custom fields from wp_options to wp_usermeta'"
 #~ msgstr ""
 #~ "ユーザーのカスタムフィールドを wp_options から wp_usermeta に変更する"
 

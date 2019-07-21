@@ -108,7 +108,7 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args ){
 			$item_title = $item->title;
 			if(!empty($item_title)){
 				if(empty($item->post_title) && !qtranxf_isMultilingual($item_title)){
-					//$item does not have custom.php menu title, then it fetches information from post_title, but it is already translated with ShowEmpty=false, which gives either valid translation or possibly something like "(English) English Text". We need to translate again and to skip menu item if translation does not exist.
+					//$item does not have custom menu title, then it fetches information from post_title, but it is already translated with ShowEmpty=false, which gives either valid translation or possibly something like "(English) English Text". We need to translate again and to skip menu item if translation does not exist.
 					switch($item->type){
 						case 'post_type':
 							$p = get_post($item->object_id);
@@ -146,7 +146,7 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args ){
 				continue;
 			}
 			$item->title = $item_title;
-			if($item->object == 'custom.php' && !empty($item->url)){
+			if($item->object == 'custom' && !empty($item->url)){
 				if(strpos($item->url,'setlang=no')===FALSE){
 					$item->url = qtranxf_convertURL($item->url,$language);
 				}else{
@@ -303,9 +303,9 @@ function qtranxf_add_language_menu_item(&$items, &$menu_order, &$itemid, $key, $
 		$item->menu_item_parent=$qtransmenu->ID;
 		$item->menu_order=++$menu_order;
 		$item->post_type='nav_menu_item';
-		$item->object='custom.php';
+		$item->object='custom';
 		$item->object_id=$qtransmenu->object_id;
-		$item->type='custom.php';
+		$item->type='custom';
 		$item->type_label='Custom';
 		$item->title='';
 		if($flags){

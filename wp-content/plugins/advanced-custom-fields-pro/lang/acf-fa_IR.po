@@ -728,7 +728,7 @@ msgid "Rules"
 msgstr "قوانین"
 
 #: admin/views/field-group-locations.php:42
-msgid "Create a set of rules to determine which edit screens will use these advanced custom.php fields"
+msgid "Create a set of rules to determine which edit screens will use these advanced custom fields"
 msgstr ""
 "مجموعه ای از قوانین را بسازید تا مشخص کنید در کدام صفحه ویرایش ، این زمینه های دلخواه سفارشی نمایش داده "
 "شوند."
@@ -893,7 +893,7 @@ msgstr ""
 "امیدواریم لذت ببرید."
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "احساس بهتر در استفاده از زمینه دلخواه"
 
 #: admin/views/settings-info.php:28
@@ -1968,7 +1968,7 @@ msgid "Other"
 msgstr "دیگر"
 
 #: fields/radio.php:268
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "افزودن گزینه 'دیگر' برای ثبت مقادیر دلخواه"
 
 #: fields/radio.php:274
@@ -3312,7 +3312,7 @@ msgstr "http://www.elliotcondon.com/"
 #~ msgid "Modifying field option 'taxonomy'"
 #~ msgstr "اصلاح گزینه 'صبقه بندی' زمینه"
 
-#~ msgid "Moving user custom.php fields from wp_options to wp_usermeta'"
+#~ msgid "Moving user custom fields from wp_options to wp_usermeta'"
 #~ msgstr "انتقال زمینه های دلخواه کاربر از wp_options به wp_usermeta"
 
 #~ msgid "blue : Blue"

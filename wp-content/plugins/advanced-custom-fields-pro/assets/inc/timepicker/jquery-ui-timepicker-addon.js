@@ -901,7 +901,7 @@
 		},
 
 		/*
-		* call custom.php onSelect.
+		* call custom onSelect.
 		* bind to sliders slidestop, and grid click.
 		*/
 		_onSelectHandler: function () {

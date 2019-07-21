@@ -261,10 +261,7 @@
                                     );
                                 ?>
                                 <div class="hidden_md">
-                                    <?php  qtranxf_generateLanguageSelectCode(array(
-                                    'type'   => 'image'
-                                ));
-                                    ?>
+                                    <?php  //qtranxf_generateLanguageSelectCode(array( 'type'   => 'image'));?>
                                 </div>
                             </div>
                             <button type="button" class="navbar-toggle collapsed show_md">

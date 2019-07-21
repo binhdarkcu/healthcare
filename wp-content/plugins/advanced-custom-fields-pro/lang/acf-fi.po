@@ -623,7 +623,7 @@ msgstr "Säännöt"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "Tästä voit määrittää, missä muokkausnäkymässä tämä kenttäryhmä näytetään"
 
@@ -907,7 +907,7 @@ msgstr ""
 "Toivomme, että pidät siitä."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "Sujuvampi kenttien muokkaus kokemus"
 
 #: includes/admin/views/settings-info.php:22
@@ -1382,7 +1382,7 @@ msgid "Allow Custom"
 msgstr "Salli tyhjä?"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom.php' values to be added"
+msgid "Allow 'custom' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1392,7 +1392,7 @@ msgstr "Siirrä muokattua kenttää"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom.php' values to the field's choices"
+msgid "Save 'custom' values to the field's choices"
 msgstr "Tallenna 'Muu’-kentän arvo kentän valinnaksi"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2161,7 +2161,7 @@ msgid "Other"
 msgstr "Muu"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "Lisää 'Muu' vaihtoehto salliaksesi mukautettuja arvoja"
 
 #: includes/fields/class-acf-field-radio.php:280

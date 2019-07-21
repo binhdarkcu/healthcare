@@ -102,7 +102,7 @@ acf.registerFieldType(acf.models.PostObjectField.extend({
     // select2
     if( this.get('ui') ) {
 
-      // populate ajax_data (allowing custom.php attribute to already exist)
+      // populate ajax_data (allowing custom attribute to already exist)
       var ajaxAction = this.get('ajax_action');
       if( !ajaxAction ) {
         ajaxAction = 'acf/fields/' + this.get('type') + '/query';

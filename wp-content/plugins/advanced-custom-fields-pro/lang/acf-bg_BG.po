@@ -624,7 +624,7 @@ msgstr "Правила"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "Създаване на група правила, определящи кои екрани за редактиране ще "
 "използват тези модерни потребителски полета"
@@ -909,7 +909,7 @@ msgstr ""
 "по-добър от всякога. Надяваме се че ще Ви хареса."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "По-удобна работа с потребителски полета"
 
 #: includes/admin/views/settings-info.php:22
@@ -1385,7 +1385,7 @@ msgid "Allow Custom"
 msgstr "Позволяване на празна стойност?"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom.php' values to be added"
+msgid "Allow 'custom' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1395,7 +1395,7 @@ msgstr "Преместване на поле"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom.php' values to the field's choices"
+msgid "Save 'custom' values to the field's choices"
 msgstr "Запазване на стойностите 'друго' към опциите на полето"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2171,7 +2171,7 @@ msgid "Other"
 msgstr "Друго"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "Добавяне на избор 'друго' като възможност за потребителските стойности"
 
 #: includes/fields/class-acf-field-radio.php:280

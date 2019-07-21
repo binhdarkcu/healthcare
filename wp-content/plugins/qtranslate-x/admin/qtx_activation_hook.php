@@ -877,7 +877,7 @@ function qtranxf_admin_notices_plugin_integration(){
 	if($pagenow == 'update.php') return;
 	$cnt = 0;
 
-	$cnt += qtranxf_admin_notice_plugin_integration('advanced-custom.php-fields/acf.php', 'ACF qTranslate', 'acf-qtranslate/acf-qtranslate.php');
+	$cnt += qtranxf_admin_notice_plugin_integration('advanced-custom-fields/acf.php', 'ACF qTranslate', 'acf-qtranslate/acf-qtranslate.php');
 
 	$cnt += qtranxf_admin_notice_plugin_integration('all-in-one-seo-pack/all_in_one_seo_pack.php', 'All in One SEO Pack & qTranslate&#8209;X', 'all-in-one-seo-pack-qtranslate-x/qaioseop.php');
 

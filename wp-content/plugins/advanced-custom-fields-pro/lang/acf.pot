@@ -614,7 +614,7 @@ msgstr ""
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 
 #: includes/admin/views/field-group-options.php:23
@@ -882,7 +882,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr ""
 
 #: includes/admin/views/settings-info.php:22
@@ -1308,7 +1308,7 @@ msgid "Allow Custom"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:358
-msgid "Allow 'custom.php' values to be added"
+msgid "Allow 'custom' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:364
@@ -1316,7 +1316,7 @@ msgid "Save Custom"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:369
-msgid "Save 'custom.php' values to the field's choices"
+msgid "Save 'custom' values to the field's choices"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:375
@@ -2075,7 +2075,7 @@ msgid "Other"
 msgstr ""
 
 #: includes/fields/class-acf-field-radio.php:259
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr ""
 
 #: includes/fields/class-acf-field-radio.php:265

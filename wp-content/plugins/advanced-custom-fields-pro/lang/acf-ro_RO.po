@@ -683,7 +683,7 @@ msgstr "Reguli"
 #: admin/views/field-group-locations.php:6
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "Crează un set de reguli pentru a determina unde vor fi afișate aceste "
 "câmpuri avansate personalizate"
@@ -935,7 +935,7 @@ msgstr ""
 "Sperăm să-ți placă."
 
 #: admin/views/settings-info.php:23
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "O folosire mai ușoara a câmpurilor personalizate."
 
 #: admin/views/settings-info.php:28
@@ -1939,7 +1939,7 @@ msgid "Other"
 msgstr "Altceva"
 
 #: fields/radio.php:206
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr "Adaugă 'Altceva' pentru a permite o valoare personalizată"
 
 #: fields/radio.php:212

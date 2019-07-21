@@ -51,7 +51,7 @@ function qtranxf_editConfig(){
 				// new language
 				if(isset($language_names[$lang])) {
 					$errors[] = __('There is already a language with the same Language Code!', 'qtranslate');
-				}
+				} 
 			}else{
 				// language update
 				if($lang!=$original_lang&&isset($language_names[$lang])) {
@@ -160,7 +160,7 @@ function qtranxf_editConfig(){
 			if($cnt_post > 0) $messages[] = sprintf(__('%d posts have been processed to set the default language.', 'qtranslate'), $cnt_post);
 			else $messages[] = __('No initially untranslated posts found to set the default language.', 'qtranslate');
 
-			$messages[] = sprintf(__('Post types other than "post" or "page", as well as unpublished entries, will have to be adjusted manually as needed, since there is no common way to automate setting the default language otherwise. It can be done with a custom.php script though. You may request a %spaid support%s for this.', 'qtranslate'), '<a href="https://qtranslatexteam.wordpress.com/contact-us/">', '</a>');
+			$messages[] = sprintf(__('Post types other than "post" or "page", as well as unpublished entries, will have to be adjusted manually as needed, since there is no common way to automate setting the default language otherwise. It can be done with a custom script though. You may request a %spaid support%s for this.', 'qtranslate'), '<a href="https://qtranslatexteam.wordpress.com/contact-us/">', '</a>');
 		}
 	}
 	elseif(isset($_GET['edit'])){
@@ -616,7 +616,7 @@ function qtranxf_updateSettings(){
 	// update front settings
 
 	/**
-	 * Opportunity to prepare special custom.php settings update on sub-plugins
+	 * Opportunity to prepare special custom settings update on sub-plugins
 	 */
 	do_action('qtranslate_update_settings_pre');
 
@@ -761,7 +761,7 @@ function qtranxf_updateSettings(){
 	$q_config['i18n-cache'] = array();//clear i18n-config cache
 
 	/**
-	 * Opportunity to update special custom.php settings on sub-plugins
+	 * Opportunity to update special custom settings on sub-plugins
 	 */
 	do_action('qtranslate_update_settings');
 }

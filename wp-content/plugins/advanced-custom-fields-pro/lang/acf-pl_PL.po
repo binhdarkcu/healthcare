@@ -630,7 +630,7 @@ msgstr "Warunki"
 #: includes/admin/views/field-group-locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
-"advanced custom.php fields"
+"advanced custom fields"
 msgstr ""
 "Utwórz zestaw warunków, które określą w których miejscach będą wykorzystane "
 "zdefiniowane tutaj własne pola"
@@ -913,7 +913,7 @@ msgstr ""
 "wcześniej. Mamy nadzieję, że go polubisz."
 
 #: includes/admin/views/settings-info.php:17
-msgid "A smoother custom.php field experience"
+msgid "A smoother custom field experience"
 msgstr "Lepsze doznania z korzystania z własnych pól"
 
 #: includes/admin/views/settings-info.php:22
@@ -1385,7 +1385,7 @@ msgid "Allow Custom"
 msgstr "Dodaj wybór \"inne\" aby pozwolić na własne wartości"
 
 #: includes/fields/class-acf-field-checkbox.php:260
-msgid "Allow 'custom.php' values to be added"
+msgid "Allow 'custom' values to be added"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:266
@@ -1395,7 +1395,7 @@ msgstr "Przenieś pole"
 
 #: includes/fields/class-acf-field-checkbox.php:271
 #, fuzzy
-msgid "Save 'custom.php' values to the field's choices"
+msgid "Save 'custom' values to the field's choices"
 msgstr "Dopisz zapisaną wartość pola 'other' do wyborów tego pola"
 
 #: includes/fields/class-acf-field-checkbox.php:277
@@ -2166,7 +2166,7 @@ msgid "Other"
 msgstr "Pozostałe"
 
 #: includes/fields/class-acf-field-radio.php:274
-msgid "Add 'other' choice to allow for custom.php values"
+msgid "Add 'other' choice to allow for custom values"
 msgstr ""
 "Dodaj pole 'other'  aby zezwolić na definiowane przez użytkownika wartości"
 

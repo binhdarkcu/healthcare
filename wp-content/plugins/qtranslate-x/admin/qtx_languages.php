@@ -33,7 +33,7 @@ function qtranxf_unsetLanguage(&$langs, $lang) {
 	//unset($langs['languages'][$lang]);
 }
 
-/**
+/** 
  * @since 3.4.2
  */
 function qtranxf_setLanguageAdmin($lang){
@@ -65,7 +65,7 @@ function qtranxf_update_config_header_css() {
 		$q_config['header_css'] = qtranxf_front_header_css_default();
 	}
 	if(!$q_config['header_css_on'] || !empty($header_css)){
-		qtranxf_add_warning(sprintf(__('A manual update to option "%s" or to the theme custom.php CSS may be needed, after some languages are changed.', 'qtranslate'), __('Head inline CSS', 'qtranslate')).' '.__('If you do not wish to customize this option, then reset it to the default by emptying its value.', 'qtranslate'));
+		qtranxf_add_warning(sprintf(__('A manual update to option "%s" or to the theme custom CSS may be needed, after some languages are changed.', 'qtranslate'), __('Head inline CSS', 'qtranslate')).' '.__('If you do not wish to customize this option, then reset it to the default by emptying its value.', 'qtranslate'));
 	}
 }
 

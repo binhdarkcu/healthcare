@@ -1,5 +1,5 @@
 (function($){
-	
+		
 	acf.fields.repeater = acf.field.extend({
 		
 		type: 'repeater',
@@ -49,7 +49,7 @@
 			
 			// disable clone
 			acf.disable_form( this.$clone, 'repeater' );
-			
+						
 			
 			// render
 			this.render();
@@ -124,17 +124,17 @@
 			
 			// reference
 			var $field = this.$field;
-			
-			
+				
+				
 			// duplicate
 			$el = acf.duplicate( this.$clone );
 			
-			
+						
 			// remove clone class
 			$el.removeClass('acf-clone');
 			
 			
-			// enable
+			// enable 
 			acf.enable_form( $el, 'repeater' );
 			
 			
@@ -167,7 +167,7 @@
 			
 			// reference
 			var self = this;
-			
+				
 			
 			// validate
 			if( this.count() <= this.o.min ) {
@@ -223,7 +223,7 @@
 			
 			
 			// update
-			acf.update_user_setting( name, collapsed.join(',') );
+			acf.update_user_setting( name, collapsed.join(',') );	
 			
 		},
 		
@@ -302,7 +302,7 @@
 			
 			// add
 			this.add( $row );
-			
+				
 		},
 		
 		_remove: function( e ){ //console.log('_remove');
@@ -366,15 +366,15 @@
 			
 			// refersh field (hide/show columns)
 			acf.do_action('refresh', this.$field);
-			
+						
 		}
 		
-	});
+	});	
 	
 })(jQuery);
 
 (function($){
-	
+		
 	acf.fields.flexible_content = acf.field.extend({
 		
 		type: 'flexible_content',
@@ -425,7 +425,7 @@
 			
 			// disable clone
 			acf.disable_form( this.$clones, 'flexible_content' );
-			
+						
 			
 			// render
 			this.render();
@@ -515,9 +515,9 @@
 					
 				}
 			});
-			
+				
 		},
-		
+			
 		validate_add: function( layout ){
 			
 			// defaults
@@ -688,7 +688,7 @@
 			// defaults
 			$before = $before || false;
 			
-			
+					
 			// bail early if validation fails
 			if( !this.validate_add(layout) ) {
 			
@@ -709,10 +709,10 @@
 			$el = acf.duplicate( $clone );
 			
 			
-			// enable
+			// enable 
 			acf.enable_form( $el, 'flexible_content' );
 			
-			
+				
 			// hide no values message
 			this.$el.children('.no-value-message').hide();
 			
@@ -1111,7 +1111,7 @@
 			
 		}
 		
-	});
+	});	
 	
 
 })(jQuery);
@@ -1202,7 +1202,7 @@
 			var self = this,
 				$field = this.$field;
 				
-				
+					
 			// sortable
 			this.$attachments.unbind('sortable').sortable({
 				
@@ -1215,7 +1215,7 @@
 					
 					ui.placeholder.html( ui.item.html() );
 					ui.placeholder.removeAttr('style');
-					
+								
 					acf.do_action('sortstart', ui.item, ui.placeholder);
 					
 	   			},
@@ -1254,7 +1254,7 @@
 			
 			// resize
 			this.resize();
-			
+					
 		},
 		
 		
@@ -1387,7 +1387,7 @@
 			this.$side.children('.acf-gallery-side-inner').css({ 'width' : width-1 });
 			this.$side.animate({ 'width' : width-1 }, 250);
 			this.$main.animate({ 'right' : width }, 250);
-			
+						
 		},
 		
 		
@@ -1600,11 +1600,11 @@
 			// image
 			if( data.type == 'image' ) {
 				
-				// remove filename
+				// remove filename	
 				$filename.remove();
 			
-			// other (video)
-			} else {
+			// other (video)	
+			} else {	
 				
 				// attempt to find attachment thumbnail
 				thumbnail = acf.maybe_get(data, 'thumb.src');
@@ -1631,11 +1631,11 @@
 			 	'alt': data.alt,
 			 	'title': data.title
 			});
-		 
-		 
+		 	
+		 	
 			// update val
 		 	acf.val( $input, data.id );
-		 	
+		 				
 		},
 		
 		
@@ -1657,8 +1657,8 @@
 			
 			// get selected values
 			this.get_attachments().each(function(){
-			
-			
+				
+				
 			})
 			
 			// popup
@@ -1703,7 +1703,7 @@
 			
 			
 			// prepare
-			data = this.prepare(data);
+			data = this.prepare(data);	
 			
 			
 			// validate
@@ -1755,14 +1755,14 @@
 				}
 				
 			}
-			
+						
 			
 			// render data
 			this.render_attachment( data );
 			
 			
 			// render
-			this.render();
+			this.render();	
 			
 			
 			// trigger change
@@ -1902,7 +1902,7 @@
 		/*
 		*  fetch
 		*
-		*  This function will fetch the sidebar html to edit an attachment
+		*  This function will fetch the sidebar html to edit an attachment 
 		*
 		*  @type	function
 		*  @date	19/04/2016
@@ -1930,7 +1930,7 @@
 			}
 			
 			
-			// add custom.php attachment
+			// add custom attachment
 			if( typeof id === 'string' && id.indexOf('_') === 0 ) {
 				
 				// vars
@@ -1987,7 +1987,7 @@
 			
 			
 			// add tr
-			$side.find('> table.form-table > tbody').append( $tr );
+			$side.find('> table.form-table > tbody').append( $tr );			
 			
 			
 			// remove origional meta table
@@ -2062,7 +2062,7 @@
 		},
 		
 		_sort_success: function( json ) {
-			
+				
 			// validate
 			if( !acf.is_ajax_success(json) ) return;
 			
@@ -2117,7 +2117,7 @@
 			$submit.before('<i class="acf-loading"></i>');
 			
 			
-			// append AJAX action
+			// append AJAX action		
 			ajaxdata.action = 'acf/fields/gallery/update_attachment';
 			
 			
@@ -2221,7 +2221,7 @@
 			
 			// select
 			this.edit_attachment(id);
-			
+						
 		},
 		
 		
@@ -2345,7 +2345,7 @@
 						
 					}
 					
-					
+						
 					// return
 					return AttachmentLibrary.prototype.render.apply( this, arguments );
 					
