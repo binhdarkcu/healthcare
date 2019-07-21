@@ -619,12 +619,11 @@
                 while (have_rows('cong_ty')): the_row();
                     $name = get_sub_field('name_of_company')['company_name'];
                     $list_days = get_sub_field('name_of_company')['all_day'];
-                    $nameOfCompanyLength = sizeof(get_sub_field('name_of_company')['show_on_site']);
-
-                    if ($nameOfCompanyLength > 1) {
-                        $implodeNameOfCompany = implode(', ', get_sub_field('name_of_company')['show_on_site']);
+                    $nameOfCompanyLength = get_sub_field('name_of_company')['show_on_site'];
+                    if ($nameOfCompanyLength) {
+                        $implodeNameOfCompany = 'show';
                     } else {
-                        $implodeNameOfCompany = get_sub_field('name_of_company')['show_on_site'];
+                        $implodeNameOfCompany = '';
                     }
 
                     $arrayDb = array(

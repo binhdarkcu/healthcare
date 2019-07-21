@@ -19,12 +19,12 @@ $queried_object = get_queried_object();
                             </ul>
                             <div class="tab-content" aria-hidden="false">
                                 <div id="appointment" class="tab-pane fade active in" style="width: 100%">
-                                    <div class="col-md-6 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px">
+                                    <div class="col-md-9 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px">
                                         <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required"
                                             method="POST">
                                             <div class="form-group">
-                                                <label class="col-md-4 col-sm-4 col-xs-4">Chọn bác sĩ:</label>
-                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                <label class="col-md-4 col-sm-6 col-xs-12">Chọn bác sĩ:</label>
+                                                <div class="col-md-8 col-sm-6 col-xs-12">
                                                     <select class="form-control" id="selectDoctor">
                                                         <option value="0">Chọn bác sĩ của bạn</option>
                                                         <?php
@@ -45,9 +45,9 @@ $queried_object = get_queried_object();
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="dateOrder" class="col-md-4 col-sm-4 col-xs-4"
+                                                <label for="dateOrder" class="col-md-4 col-sm-6 col-xs-12"
                                                     style="padding-right:0;">Thời gian đặt hẹn: </label>
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div id="dateTimePicker" class="input-group date">
                                                         <input type="text"
                                                             class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required"
@@ -58,8 +58,8 @@ $queried_object = get_queried_object();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <label for="timeOrder" class="col-md-1 col-sm-1 col-xs-1">giờ:</label>
-                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <label for="timeOrder" class="col-md-1 col-sm-6 col-xs-12" style="margin-top: 10px">Giờ:</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-6">
                                                     <select name="timeOrder" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required">
                                                         <option label="08:15" value="08:15" selected>08:15</option>
                                                         <option label="08:30" value="08:30">08:30</option>
@@ -108,7 +108,7 @@ $queried_object = get_queried_object();
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="symptom" class="col-md-4" required="">Triệu chứng lâm sàng: </label>
+                                                <label for="symptom" class="col-md-4 col-sm-4" required="">Triệu chứng lâm sàng: </label>
                                                 <div class="col-md-8 col-sm-8">
                                                     <textarea id='symptom'
                                                             class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
@@ -116,7 +116,7 @@ $queried_object = get_queried_object();
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-4" required="">Tái khám hoặc khám mới: </label>
+                                                <label class="col-md-4 col-sm-4" required="">Tái khám hoặc khám mới: </label>
                                                 <div class="col-md-8 col-sm-8">
                                                     <select id="examination" class="form-control ng-pristine ng-untouched">
                                                         <option value="" selected>Vui lòng chọn tái khám hoặc khám mới</option>
@@ -126,7 +126,7 @@ $queried_object = get_queried_object();
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-4">Mã khách hàng: </label>
+                                                <label class="col-md-4 col-sm-4">Mã khách hàng: </label>
                                                 <div class="col-md-8 col-sm-8">
                                                     <input id="client_code" class="form-control ng-pristine ng-untouched" placeholder="Mã khách hàng" />
                                                 </div>
@@ -137,7 +137,7 @@ $queried_object = get_queried_object();
                                             <div class="form-group">
                                                 <label class="col-md-4"></label>
                                                 <div class="col-md-8">
-                                                    <button type="submit" class="btn btn-success" id="nextStep">Bước tiếp theo</button>
+                                                    <button type="submit" class="btn btn-success" id="nextStep" style="margin-bottom: 10px;">Bước tiếp theo</button>
                                                     <a class="btn btn-default" href="<?php echo get_bloginfo('url') ?>">Trở về trang chủ</a>
                                                 </div>
                                             </div>
@@ -152,17 +152,17 @@ $queried_object = get_queried_object();
                                     <ng-form name="infoOrdererForm"
                                             class="form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email">
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientName">Họ tên: <span
+                                            <label class="col-md-2 col-sm-3 col-xs-12" for="patientName">Họ tên: <span
                                                         class="red">*</span></label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                            <div class="col-md-6 col-sm-9 col-xs-12">
                                                 <input type="text" name="patientName"
                                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
                                                     aria-invalid="true">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientDoB">Ngày sinh: </label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                            <label class="col-md-2 col-sm-3 col-xs-12" for="patientDoB">Ngày sinh: </label>
+                                            <div class="col-md-6 col-sm-9 col-xs-12">
                                                 <div class="input-group date" data-provide="datepicker"
                                                     data-date-autoclose="true" data-date-format="dd/mm/yyyy"
                                                     data-date-days-of-week-highlighted="0,6" data-date-language="vi"
@@ -178,8 +178,8 @@ $queried_object = get_queried_object();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4">Giới tính: </label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                            <label class="col-md-2 col-sm-3 col-xs-12">Giới tính: </label>
+                                            <div class="col-md-6 col-sm-9 col-xs-12">
                                                 <label class="radio-inline">
                                                     <input type="radio" name="genderOptRadio" id="male"
                                                         class="ng-pristine ng-untouched ng-valid ng-empty" value="Nam"
@@ -197,8 +197,8 @@ $queried_object = get_queried_object();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientEmail">Email: </label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                            <label class="col-md-2 col-sm-3 col-xs-12" for="patientEmail">Email: </label>
+                                            <div class="col-md-6 col-sm-9 col-xs-12">
                                                 <input type="email"
                                                     class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required"
                                                     placeholder="Email" name="patientEmail"
@@ -207,23 +207,21 @@ $queried_object = get_queried_object();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4" for="patientPhone">Số điện
+                                            <label class="col-md-2 col-sm-3 col-xs-12" for="patientPhone">Số điện
                                                 thoại: </label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
+                                            <div class="col-md-6 col-sm-9 col-xs-12">
                                                 <input type="text" onkeypress="return isNumberKey(event)"
                                                     class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
                                                     placeholder="Số điện thoại" name="patientPhone">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4"> </label>
-                                            <div class="col-md-6 col-sm-9 col-xs-8">
-                                                <div id="example1"></div>
+                                            <label class="col-md-2 col-sm-3 col-xs-12"> </label>
+                                                <div class="col-md-6 col-sm-9 col-xs-8" id="example1"></div>
                                                 <small style="display: none" class="text-danger msg-captcha">Please check for google captcha</small>
-                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 col-sm-3 col-xs-4"></label>
+                                            <label class="col-md-2 col-sm-3 col-xs-12"></label>
                                             <div class="col-md-6 col-sm-9 col-xs-8">
                                                 <a href="<?php echo get_permalink($queried_object->ID) ?>" id="registerUser" class="btn btn-success preventClick">Đăng ký và tiếp tục
                                                 </a>

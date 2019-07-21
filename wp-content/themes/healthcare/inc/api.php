@@ -51,11 +51,11 @@
             )
         ));
     });
-    function create_booking_item(WP_REST_Request $request) {
+    function create_booking_item(WP_REST_Request $request){
         global $wpdb;
         $_table = $wpdb->prefix . 'dathen';
         $params = $request->get_params();
-
+        
         $result = $wpdb->insert($_table, array(
             'id_doctor' => $params['id_doctor'],
             'dayChecked' => $params['dayChecked'],
@@ -69,16 +69,15 @@
             'examination' => $params['examination'],
             'client_code' => $params['client_code']
         ), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'));
-
         $data = null;
         $status = 200;
-        if ($result) {
+        if($result){
             $params['id'] = $wpdb->insert_id;
             $data = $params;
-        } else {
+        }else{
             $status = 500;
         }
-
+        
         $response = new WP_REST_Response($data);
         $response->set_status($status);
         return $response;
@@ -116,4 +115,36 @@
         );
     }
     // =================================================================================
+
+    /* method GET company */
+    add_action( 'rest_api_init', function () {
+        register_rest_route( 'company', 'v1', array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => 'get_booking_items_company',
+            'args' => array(
+                'day' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                )
+            )
+        ) );
+    } );
+    function get_booking_items_company(WP_REST_Request $request) {
+        global $wpdb;
+        $_table = $wpdb->prefix . 'company';
+        $data = null;
+        $status = 200;
+        $params = $request->get_params();
+        $result = $wpdb->get_results("SELECT * FROM $_table");
+        // echo $params['day'];
+        if($params['day'] !== '') {
+            $day = $params['day'];
+            $result = $wpdb->get_results("SELECT * FROM $_table WHERE day = '$day'");
+        }
+        return $data = $result;
+        header('Content-Type: application/json');
+        return json_encode(
+            $wpdb->get_results($data, OBJECT)
+        );
+    }
 ?>
