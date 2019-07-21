@@ -1,6 +1,6 @@
 <?php
     add_action('rest_api_init', function () {
-        register_rest_route('healthcare/v1', 'dat-hen', array(
+        register_rest_route('healthcare/v1', '/dat-hen', array(
             'methods' => WP_REST_Server::CREATABLE,
             'callback' => 'create_booking_item',
             'args' => array(
@@ -51,6 +51,7 @@
             )
         ));
     });
+
     function create_booking_item(WP_REST_Request $request){
         global $wpdb;
         $_table = $wpdb->prefix . 'dathen';
@@ -146,5 +147,89 @@
         return json_encode(
             $wpdb->get_results($data, OBJECT)
         );
+    }
+    add_action('rest_api_init', function () {
+        register_rest_route('dat-hen-company', '/v1', array(
+            'methods' => WP_REST_Server::CREATABLE,
+            'callback' => 'create_booking_item_company',
+            'args' => array(
+                'company_name' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'name' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'birthday' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'gender' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'email' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'marital_status' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'day' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_email',
+                ),
+                'sessions' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'employee_code' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'note' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+                'phone' => array(
+                    'default' => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ),
+            )
+        ));
+    });
+    
+    function create_booking_item_company(WP_REST_Request $request){
+        global $wpdb;
+        $_table = $wpdb->prefix . 'company';
+        $params = $request->get_params();
+        
+        $result = $wpdb->insert($_table, array(
+            'company_name' => $params['company_name'],
+            'name' => $params['name'],
+            'birthday' => $params['birthday'],
+            'gender' => $params['gender'],
+            'email' => $params['email'],
+            'marital_status' => $params['marital_status'],
+            'day' => $params['day'],
+            'sessions' => $params['sessions'],
+            'employee_code' => $params['employee_code'],
+            'note' => $params['note'],
+            'phone' => $params['phone']
+        ), array('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'));
+        $data = null;
+        $status = 200;
+        if($result){
+            $params['ID'] = $wpdb->insert_id;
+            $data = $params;
+        }else{
+            $status = 500;
+        }
+        
+        $response = new WP_REST_Response($data);
+        $response->set_status($status);
+        return $response;
     }
 ?>
