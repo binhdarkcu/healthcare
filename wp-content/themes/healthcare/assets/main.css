@@ -65,7 +65,19 @@ margin: 0 auto;
     background-image: -webkit-linear-gradient(4deg, #2caab3 0%, #2c8cb3 100%);
     background-image: -ms-linear-gradient(4deg, #2caab3 0%, #2c8cb3 100%);
 }
-
+.counter_visitor span {
+    background: transparent!important;
+    border: none!important;
+    color: #fff!important;
+    padding-left: 0!important;
+    margin: 0!important;
+    width: auto!important;
+    padding-right: 0!important;
+    font-size: 16px!important;
+}
+.counter_visitor span.text {
+    margin-left: 5px!important;
+}
 .section-header {
     margin-bottom: 15px;
 }
