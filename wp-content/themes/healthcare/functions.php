@@ -386,7 +386,7 @@
                 .d-none {
                     display: none !important;
                 }
-                #toplevel_page_wp_list_table_class, #toplevel_page_wp_list_table_company {
+                #toplevel_page_wp_list_table_class, #toplevel_page_wp_list_table_company, #toplevel_page_acf-options-header .wp-submenu-wrap li:last-child {
                     display: none !important;
                 }
           </style>';
