@@ -94,7 +94,7 @@ while (have_posts()) : the_post();
                                                             <?php } endwhile; endif; ?>
                                                 </tr>
                                                 <tr>
-                                                    <td>Trưa (13h00 - 17h00)</td>
+                                                    <td>Chiều (13h00 - 17h00)</td>
                                                     <?php
                                                     if (have_rows('schdule_week_time_afternoon')):
                                                         while (have_rows('schdule_week_time_afternoon')): the_row();
