@@ -2,6 +2,7 @@
     get_header();
     $count = 1;    
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <div class="container container-bd" style="padding-top:30px;">
         <div class="row">

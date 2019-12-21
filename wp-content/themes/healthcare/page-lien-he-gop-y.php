@@ -1,4 +1,5 @@
 <?php get_header()?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <section id="contact" style="margin-bottom:80px;height:700px">
         <div id="google-map" style="height:650px" data-latitude="52.365629" data-longitude="4.871331">

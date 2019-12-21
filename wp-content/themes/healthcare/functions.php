@@ -9,7 +9,7 @@
 
     add_action('init', 'register_my_session');
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
-    require_once('inc/handle_create_acf.php');
+    // require_once('inc/handle_create_acf.php');
     add_theme_support('post-thumbnails');
 
     //register menu
@@ -69,13 +69,14 @@
             // get all the children of the current page
             $child_pages = get_pages(array(
                 'child_of' => $page_id,
+                'post_status' => 'publish',
             ));
 
             // start only if we have some childpages
             if ($child_pages) {
 
                 // if we have some children, display a list wrapper
-                echo '<div class="childpages">';
+                echo '<div class="childpages 3">';
 
                 // loop trough each childpage
                 foreach ($child_pages as $child_page) {
@@ -85,6 +86,9 @@
                     $page_content = get_field('intro_description', $page_id);
                     $page_img = get_the_post_thumbnail_url($page_id, 'medium'); // returns the featured image <img> element
                     $page_title = $child_page->post_title; // returns the title of the child page
+                    $external_link = get_field('external_link', $child_page->ID);
+                    // var_dump($external_link);
+                    $page_link = $external_link == null ? get_permalink($page_id) : $external_link; // returns the link to childpage
                     ?>
                     <div class="col-md-4" style="margin-bottom: 20px;">
                         <div class="col-md-4 catItemImageBlock">
@@ -158,13 +162,14 @@
             // get all the children of the current page
             $child_pages = get_pages(array(
                 'child_of' => $page_id,
+                'post_status'  => 'publish',
             ));
 
             // start only if we have some childpages
             if ($child_pages) {
 
                 // if we have some children, display a list wrapper
-                echo '<div class="childpages">';
+                echo '<div class="childpages 1">';
 
                 // loop trough each childpage
                 foreach ($child_pages as $child_page) {
@@ -174,6 +179,8 @@
                     $page_content = get_field('intro_description', $page_id);
                     $page_img = get_the_post_thumbnail_url($page_id, 'medium'); // returns the featured image <img> element
                     $page_title = $child_page->post_title; // returns the title of the child page
+                    $external_link = get_field('external_link', $child_page->ID);
+                    $page_link = $external_link == null ? get_permalink($page_id) : $external_link; // returns the link to childpage
                     ?>
                     <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                         <div class="col-md-4 catItemImageBlock">
@@ -237,13 +244,14 @@
             // get all the children of the current page
             $child_pages = get_pages(array(
                 'child_of' => $page_id,
+                'post_status' => 'publish',
             ));
 
             // start only if we have some childpages
             if ($child_pages) {
 
                 // if we have some children, display a list wrapper
-                echo '<div class="childpages">';
+                echo '<div class="childpages 2">';
 
                 // loop trough each childpage
                 foreach ($child_pages as $child_page) {
@@ -412,7 +420,10 @@
 
     /* The AJAX handler function */
     function localize_my_scripts() {
+        wp_enqueue_style( 'slick', get_template_directory_uri(). '/assets/slick.css', array(), '0.1.0', 'all');
+        wp_enqueue_style( 'slick-theme', get_template_directory_uri(). '/assets/slick-theme.css', array(), '0.1.0', 'all');
         wp_enqueue_script('jquery-script', get_template_directory_uri() . '/assets/jquery.js', array('jquery'));
+        wp_enqueue_script('noel-script', get_template_directory_uri() . '/assets/noel.js', array('jquery'));
         wp_enqueue_script('moment-script', get_template_directory_uri() . '/assets/moment.js', array('jquery'));
         wp_enqueue_script('bootstrap-script', get_template_directory_uri() . '/assets/bootstrap.min.js', array('jquery'));
         wp_enqueue_script('moment-locales-script', get_template_directory_uri() . '/assets/moment-with-locales.js', array('jquery'));
@@ -423,6 +434,7 @@
         wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/video.js', array('jquery'));
         wp_enqueue_script('video-youtube', get_template_directory_uri() . '/assets/Youtube.js', array('jquery'));
         wp_enqueue_script('ajax-script', get_template_directory_uri() . '/assets/ajaxCall.js', array('jquery'));
+        wp_enqueue_script('slick-script', get_template_directory_uri() . '/assets/slick.js', array('jquery'));
         wp_localize_script('ajax-script', 'my_ajax_insert_db', ['ajax_url' => admin_url('admin-ajax.php')]);
     }
 

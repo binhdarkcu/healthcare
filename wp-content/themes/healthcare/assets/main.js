@@ -70,19 +70,48 @@
 
     $('.owl-inner').trigger('refresh.owl.carousel');
 
-    $('.slide-cnkh').find('.carousel-inner').owlCarousel({
+    $('.slide-cnkh').find('.carousel-inner').slick({
         loop: true,
-        responsiveClass: true,
         autoHeight: true,
-        items: 3,
-        responsive: {
-            1120: {
-                items: 2
+        dots: true,
+        slidesToShow: 4,
+        arrows: false,
+        centerPadding: '10px',
+        responsive: [
+            {
+              breakpoint: 1720,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+              }
             },
-            768: {
-                items: 1
+            {
+              breakpoint: 1280,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 750,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
             }
-        }
+        ]
+    })
+
+    $('.slide-promotion').find('.carousel-inner').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        autoplay:true,
+        prevArrow: '<i class="fa fa-angle-left"></i>',
+        nextArrow: "<i class='fa fa-angle-right'></i>"
     })
 
     $('.navbar-collapse ul li.scroll a').on('click', function (event) {
@@ -130,12 +159,12 @@
             $('#navMain').slideToggle('fast')
         })
         
-        var menu = $('#header');
+        var header = $('#header');
         $(window).scroll(function () {
             if ($(window).scrollTop() > 173) {
-                menu.addClass('fixed');
+                header.addClass('fixed');
             } else {
-                menu.removeClass('fixed');
+                header.removeClass('fixed');
             }
         });
         
@@ -169,7 +198,8 @@
             afterInit: progressBar,
             afterMove: moved,
             startDragging: pauseOnDragging,
-            transitionStyle: "fadeUp"
+            transitionStyle: "fadeUp",
+            autoHeight: true
         });
         
         $(".services-slider").find('.carousel-inner').owlCarousel({
@@ -182,6 +212,7 @@
                 "<i class='fa fa-angle-left'></i>",
                 "<i class='fa fa-angle-right'></i>"
             ],
+            items: 4,
             afterMove: moved,
             startDragging: pauseOnDragging
         });

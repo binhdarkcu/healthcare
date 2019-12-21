@@ -1,16 +1,17 @@
 <?php /* Template Name: Giới thiệu Template */ ?>
 <?php get_header() ?>
 <?php
-$queried_object = get_queried_object();
-$args_doctors = array(
-    'category' => $queried_object->term_id,
-    'category_name' => '',
-    'orderby' => 'date',
-    'order' => 'DESC',
-    'post_type' => 'post'
-);
-$posts_doctors_array = get_posts($args_doctors);
+    $queried_object = get_queried_object();
+    $args_doctors = array(
+        'category' => $queried_object->term_id,
+        'category_name' => '',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_type' => 'post'
+    );
+    $posts_doctors_array = get_posts($args_doctors);
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <div ng-show="isShow" ng-init="queryView()" aria-hidden="false" class="" style="">
         <div class="container container-bd" style="padding-top: 50px">

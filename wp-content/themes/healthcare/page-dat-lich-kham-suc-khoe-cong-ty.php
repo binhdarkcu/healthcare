@@ -6,6 +6,7 @@
     $items_schedule_company = $wpdb->get_results($schedule);
     $items_not_schedule_company = $wpdb->get_results($not_schedule);
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px">

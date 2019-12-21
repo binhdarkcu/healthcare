@@ -1,5 +1,6 @@
 <?php /* Template Name: Question */ ?>
 <?php get_header() ?>
+<?php include_once('breadcrumb.php') ?>
 <?php
 while ( have_posts() ) : the_post();
     ?>

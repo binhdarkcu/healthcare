@@ -2,6 +2,7 @@
 <?php
 $queried_object = get_queried_object();
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <div class="container container-bd" style="padding-top: 50px; width: 100% !important">
         <div class="row">

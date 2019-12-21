@@ -6,6 +6,7 @@
     $post_type = $wp_taxonomies[$tax]->object_type;
     $short_desc = $post_type[0] == 'dich_vu' ? 'field_5c872fa18db6c' : 'intro_description';
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">

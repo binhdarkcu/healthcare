@@ -158,9 +158,19 @@
     <!--<base href="/">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="">
+    <?php 
+        global $posts;
+        $title = '';
+        if(has_term('', 'category')) {
+            $terms = get_the_terms( $posts[0]->ID, 'category' );
+            $title = $terms[0]->name;
+        } else {
+            $title = $posts[0]->post_title;
+        }
+    ?>
+    <title><?php echo $title ?> - <?php echo get_field('name_of_clinic', 'option'); ?></title>
     <?php
-    $logoUrl = get_field('header_logo', 'option');
+        $logoUrl = get_field('header_logo', 'option');
     ?>
 
     <link rel="apple-touch-icon" sizes="57x57"
@@ -195,6 +205,7 @@
         content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/animate.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/bootstrap-datepicker.css" rel="stylesheet">
     <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.css" rel="stylesheet">
@@ -296,59 +307,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" id="navMain">
-                    <div class="navbar-right">
-                        <div class="nav-mobile">
-                            <div class="title_nav">
-                                <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN
-                                    HEALTHCARE</h3>
-                                Email: <?php echo get_field('footer_email', 'option'); ?> <br />
-                                Hotline: <?php echo get_field('footer_phone', 'option'); ?>
-                            </div>
-                            <div class="text-right search_nav">
-                                <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
-                                    <div class="input-group">
-                                        <input
-                                            class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
-                                            type="text" maxlength="100" placeholder="Tìm kiếm bài viết"
-                                            ng-model="searchText" style="width:300px; border-radius: 10px;"
-                                            aria-invalid="false">
-                                        <div class="input-group-btn">
-                                            <div class="btn-group" role="group">
-                                                <div>
-                                                    <button name="submit" class="btn btn-primary pull-right"
-                                                        style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
-                                                        <i class="fa fa-search"
-                                                            style="font-size: 15px;color:black;"></i>
-                                                    </button>
+                <div class="bg-nav">
+                    <div class="container" id="navMain">
+                        <div class="navbar-right">
+                            <div class="nav-mobile">
+                                <div class="title_nav">
+                                    <h3 style="margin-top: 17px; font-size: 18px;">PHÒNG KHÁM ĐA KHOA QUỐC TẾ GOLDEN
+                                        HEALTHCARE</h3>
+                                    Email: <?php echo get_field('footer_email', 'option'); ?> <br />
+                                    Hotline: <?php echo get_field('footer_phone', 'option'); ?>
+                                </div>
+                                <div class="text-right search_nav">
+                                    <form id="yw0" ng-submit="setPage(1)" class="ng-pristine ng-valid ng-valid-maxlength">
+                                        <div class="input-group">
+                                            <input
+                                                class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
+                                                type="text" maxlength="100" placeholder="Tìm kiếm bài viết"
+                                                ng-model="searchText" style="width:300px; border-radius: 10px;"
+                                                aria-invalid="false">
+                                            <div class="input-group-btn">
+                                                <div class="btn-group" role="group">
+                                                    <div>
+                                                        <button name="submit" class="btn btn-primary pull-right"
+                                                            style="width: 34px;height:34px; background-color: rgba(15, 9, 206, 0.13);border-color: #cccccc;border-radius: 10px; padding: 0px 10px 0px; margin-right: 0">
+                                                            <i class="fa fa-search"
+                                                                style="font-size: 15px;color:black;"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="nav-menu">
-                            <div id="menu_main">
-                                <ul class="list-unstyled list-inline hidden_md">
-                                    <li><a href="<?php echo get_site_url(); ?>">Trang chủ</a></li>
-                                </ul>
-                                <?php
-                                wp_nav_menu(
-                                    array(
-                                        'theme_location' => 'primary_menus',
-                                        'menu_class'     => 'list-unstyled list-inline',
-                                        'menu_id'        => 'nav'
-                                    )
-                                );
+                            <div class="nav-menu">
+                                <div id="menu_main">
+                                    <ul class="list-unstyled list-inline hidden_md">
+                                        <li><a href="<?php echo get_site_url(); ?>">Trang chủ</a></li>
+                                    </ul>
+                                    <?php
+                                        wp_nav_menu(
+                                            array(
+                                                'theme_location' => 'primary_menus',
+                                                'menu_class'     => 'list-unstyled list-inline',
+                                                'menu_id'        => 'nav'
+                                            )
+                                        );
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="show_md" style="padding-bottom: 15px;">
+                                <?php  qtranxf_generateLanguageSelectCode(array(
+                                    'type'   => 'image'
+                                ));
                                 ?>
                             </div>
-                        </div>
-                        <div class="show_md" style="padding-bottom: 15px;">
-                            <?php  qtranxf_generateLanguageSelectCode(array(
-                                'type'   => 'image'
-                            ));
-                            ?>
                         </div>
                     </div>
                 </div>

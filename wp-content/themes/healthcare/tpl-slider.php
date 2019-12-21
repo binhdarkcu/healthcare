@@ -1,11 +1,19 @@
 <?php global $post?>
-<section id="main-slider" style="position:relative; margin-bottom: 40px" class="container">
+<section id="main-slider" style="position:relative; margin-bottom: 40px" class="">
     <div class="carousel-inner" role="listbox">
         <?php
         $args = array(
             'post_type'	 => 'slide_introduction',
 	        'post_status'	 => 'publish',
-            'posts_per_page' => -1
+            'posts_per_page' => -1,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'promotion',
+                    'field'    => 'slug',
+                    'terms'    => 'uu-dai',
+                    'operator' => 'NOT IN'
+                ),
+            ),
         );
             $query = new WP_Query( $args );
             if( $query -> have_posts()) : while ($query -> have_posts()) : $query->the_post();

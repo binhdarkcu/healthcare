@@ -3,6 +3,7 @@
     get_header();
     $queried_object = get_queried_object();
 ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">

@@ -1,4 +1,5 @@
 <?php get_header() ?>
+<?php include_once('breadcrumb.php') ?>
 <div ng-init="loadData()">
     <section>
         <div class="container container-bd" id="container" style="padding-top: 50px; padding-bottom: 50px;">
@@ -22,8 +23,8 @@
                             $external_link = get_field('external_link', $child_page->ID);
                             $page_link = $external_link == null ? get_permalink(get_the_ID()) : $external_link; // returns the link to childpage
                         ?>
-                            <div class="col-md-6 col-sm-12 wow fadeInDown animated animated animated" style="visibility: visible; margin-bottom: 40px">
-                                <div class="row wow fadeInDown animated animated" style="visibility: visible; animation-name: fadeInDown;">
+                            <div class="col-md-6 col-sm-12" style="visibility: visible; margin-bottom: 40px">
+                                <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                                     <div class="col-md-4 catItemImageBlock">
                                         <div class="news">
                                             <div class="article">

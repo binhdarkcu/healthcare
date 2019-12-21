@@ -1,9 +1,9 @@
-<section id="services" style="padding-top: 0">
+<section id="services" style="padding-top: 0; padding-bottom: 0">
   <div class="container">
-    <div class="section-header">
+    <!-- <div class="section-header">
         <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"><?php echo get_field('name_of_service', 'option') ?></h2>
         <small class="short-desc"><?php echo get_field('description_of_service', 'option') ?></small>
-    </div>
+    </div> -->
     <div class="row">
         <div id="exTab1" class="col-md-12">
             <ul  class="nav nav-pills">
@@ -18,7 +18,7 @@
                     </li>
                     <?php endwhile; endif; ?>
             </ul>
-            <div class="tab-content clearfix wow fadeInDown animated" style="padding: 20px 0 10px;">
+            <div class="tab-content clearfix wow fadeInDown animated" style="padding: 20px 0 0">
                 <?php
                 if( have_rows('tab', 'option') ):
                 $i = 0;

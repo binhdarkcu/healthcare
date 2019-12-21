@@ -54,7 +54,7 @@ hr {
         left: 0;
 }
 header .navbar-default{
-    background: #fff;
+    background: transparent;
 }
 #droplinetabs1.fixed .menu-header-container {
     display: table;
@@ -1049,7 +1049,7 @@ ul.nostyle {
     }
 
 #blog {
-    padding: 40px 0 20px;
+    padding: 0 0 20px;
 }
 
     #blog .blog-post {
@@ -1286,7 +1286,7 @@ ul.nostyle {
 
 .img-thumbnail-post {
     width: 100%;
-    height: 420px;
+    height: 320px;
     background-image: none;
     background-position: center center;
     background-size: cover;

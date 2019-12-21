@@ -224,12 +224,12 @@
         );
     }); // end ready
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
     //build menu with DIV ID="myslidemenu" on page:
     droplinemenu.buildmenu("droplinetabs1")
 
-</script>
+</script> -->
 <script>
     $("#text-search").bind('keydown', function (e) {
         if (e.which == 13) {
