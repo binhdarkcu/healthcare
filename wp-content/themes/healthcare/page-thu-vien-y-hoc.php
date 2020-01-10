@@ -32,10 +32,10 @@
                                                     <div class="thumb" style="background-image: url(<?php echo $feature_image_meta[0] ?>)"></div>
                                                 </a><!---->
                                                 <!---->
-                                                <div class="catItemDateCreated">
+                                                <!-- <div class="catItemDateCreated">
                                                     <span class="day">Ngày <?php echo get_the_date('d') ?></span>
                                                     <span class="month">Tháng <?php echo get_the_date('m') ?></span>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>

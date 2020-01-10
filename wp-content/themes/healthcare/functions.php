@@ -9,14 +9,17 @@
 
     add_action('init', 'register_my_session');
     require_once('inc/api.php'); //Customize functions of plugins Dw-question
-    // require_once('inc/handle_create_acf.php');
+    require_once('inc/handle_create_acf.php');
     add_theme_support('post-thumbnails');
 
     //register menu
     function register_menu() {
         register_nav_menus(array(
             'primary_menus' => 'Primary menus',
-            'top_nav' => 'Top Navigation'
+            'top_nav' => 'Top Navigation',
+            'services' => 'Dịch vụ',
+            'specialist' => 'Chuyên khoa',
+            'link' => 'Liên kết'
         ));
     }
 
@@ -98,11 +101,11 @@
                                         <div class="thumb" style="background-image: url(<?php echo $page_img; ?>)"></div>
                                     </a><!---->
                                     <!---->
-                                    <div class="catItemDateCreated">
+                                    <!-- <div class="catItemDateCreated">
                                         <?php
-                                        $currentLang = qtrans_getLanguage();
+                                        //$currentLang = qtrans_getLanguage();
                                         ?>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -190,13 +193,13 @@
                                         <div class="thumb" style="background-image: url(<?php echo $page_img; ?>)"></div>
                                     </a><!---->
                                     <!---->
-                                    <div class="catItemDateCreated">
+                                    <!-- <div class="catItemDateCreated">
                                         <?php
-                                        $currentLang = qtrans_getLanguage();
+                                        //$currentLang = qtrans_getLanguage();
                                         ?>
                                         <span class="day"><?php echo $currentLang == 'en' ? 'Day' : 'Ngày'; ?><?php echo get_the_date('d', $page_id); ?></span>
                                         <span class="month"><?php echo $currentLang == 'en' ? 'Month' : 'Tháng'; ?><?php echo get_the_date('m', $page_id); ?></span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

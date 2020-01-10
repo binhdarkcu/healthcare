@@ -137,34 +137,36 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <h5>Dịch vụ</h5>
-                                <a href="<?php echo get_the_permalink(88) ?>">Chuyên khoa</a>
-                                <a href="<?php echo get_the_permalink(76) ?>">Gói khám tầm soát sức khoẻ</a>
-                                <a href="<?php echo get_the_permalink(217) ?>">Đặt hẹn với bác sĩ chuyên khoa</a>
-                                <a href="<?php echo get_the_permalink(227) ?>">Hồ sơ điện tử</a>
-                                <a href="<?php echo get_the_permalink(497) ?>">Sự kiện trong tháng</a>
-                                <a href="<?php echo get_the_permalink(126) ?>">Thanh toán bảo hiểm</a>
+                                <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'services',
+                                            'menu_class'     => 'list-unstyled'
+                                        )
+                                    );
+                                ?>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <h5>Chuyên khoa</h5>
-                                <a href="<?php echo get_category_link(10) ?>">Tim mạch</a>
-                                <a href="<?php echo get_category_link(1) ?>">Khoa Nội</a>
-                                <a href="<?php echo get_category_link(13) ?>">Nội thần kinh</a>
-                                <a href="<?php echo get_category_link(6) ?>">Trung tâm khám - nội soi Tiêu hoá gan mật</a>
-                                <a href="<?php echo get_category_link(9) ?>">Sản phụ khoa</a>
-                                <a href="<?php echo get_category_link(12) ?>">Khoa Nhi</a>
-                                <a href="<?php echo get_category_link(3) ?>">Chẩn đoán hình ảnh</a>
-                                <a href="<?php echo get_category_link(4) ?>">Trung tâm nội soi tai mũi họng</a>
-                                <a href="<?php echo get_category_link(3) ?>">Tiết niệu và Nam khoa</a>
-                                <a href="<?php echo get_category_link(11) ?>">Xét nghiệm</a>
-                                <a href="<?php echo get_category_link(14) ?>">Khoa Dược</a>
+                                <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'specialist',
+                                            'menu_class'     => 'list-unstyled'
+                                        )
+                                    );
+                                ?>
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <h5>LIÊN KẾT NHANH</h5>
-                                <a href="<?php echo get_the_permalink(8) ?>">Về chúng tôi</a>
-                                <a href="<?php echo get_the_permalink(102) ?>">Hỗ trợ khách hàng</a>
-                                <a href="<?php echo get_the_permalink(98) ?>">Tư vấn</a>
-                                <a href="#">Tuyển dụng</a>
-                                <a href="<?php echo get_the_permalink(126) ?>">Liên hệ - góp ý</a>
+                                <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'link',
+                                            'menu_class'     => 'list-unstyled'
+                                        )
+                                    );
+                                ?>
                             </div>
                         </div>
                     </div>

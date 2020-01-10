@@ -62,8 +62,12 @@ body {
 body#home #services-slider {
     margin-bottom: 20px;
 }
+body#home #services-slider .content h2 {
+    margin-bottom: 0;
+}
 body#home #services-slider .content p{
-    margin-bottom: 20px;    overflow: hidden;
+    margin-bottom: 0;    
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -118,7 +122,10 @@ body#home #services-slider .owl-controls .owl-pagination {
     width: 100%;
 }
 body#home #services-slider .owl-controls  {
-    margin-top: 0;
+    margin-top: -10px;
+}
+body#home #services-slider .owl-controls .owl-page span {
+    margin: 5px 4px;
 }
 body#home #services-slider .owl-controls .owl-buttons {
     position: absolute;
@@ -132,6 +139,10 @@ body#home #services-slider .owl-controls .owl-buttons .owl-prev {
     left: -30px;
     padding: 0;
     width: 26px;
+}
+
+body .slick-dots li {
+    margin: 0;
 }
 
 body#home #services-slider .owl-controls .owl-buttons .owl-next {
@@ -789,6 +800,11 @@ body.single-dwqa-question #dwqa-respond {
     display: table;
     font-size: 12px;
 }
+#footer ul:not(.social_icons) > li {
+    margin: 0;
+    padding: 0 7px;
+    display: block;
+}
  /* end */
 /* tư vấn */
 .page-template-single-dwqa-question .dwqa-questions-footer .dwqa-ask-question {
@@ -1018,7 +1034,7 @@ body table:not(.table-condensed) td span {
     display: inline-block;
     width: 12px;
     height: 12px;
-    margin: 5px 7px;
+    margin: 5px 4px;
     filter: Alpha(Opacity=50);
     opacity: 0.5;
     -webkit-border-radius: 20px;
@@ -1221,3 +1237,18 @@ body table:not(.table-condensed) td span {
     color: #ff6a00;
     opacity: 0.5;
  }
+@media (max-width: 768px) {
+    .slide-promotion .slick-arrow {
+        display: none !important;
+    }
+}
+body .cd-faq-group {
+    margin: 20px 0;
+}
+body .cd-faq-group .cd-faq-trigger {
+    padding: 12px 15px 12px 15px;
+}
+body .cd-faq-group .cd-faq-content {
+    padding: 0;
+    margin: 0;
+}

@@ -151,7 +151,7 @@
                                 </div>
                             </li>
                         <?php }  ?>
-                        </ul>
+                    </ul>
                 </div>
                 <!---->
                 <?php get_sidebar('chuyen-khoa');?>
