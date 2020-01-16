@@ -201,6 +201,17 @@
 </script>
     <?php endif; ?>
 
+    
+<!-- Start -->
+<script type="text/javascript">
+    document.write(
+        '<style type="text/css">body{padding-bottom:20px}</style><img style="position:fixed;z-index:9;bottom:20px;left:20px;max-width: 320px !important;" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/decor_tet.png"/>'
+        );
+</script> <!-- End -->
+
+
+
+
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/owl.carousel.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/mousescroll.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/smoothscroll.js"></script>

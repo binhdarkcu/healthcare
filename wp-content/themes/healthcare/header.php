@@ -173,6 +173,7 @@
         $logoUrl = get_field('header_logo', 'option');
     ?>
 
+
     <link rel="apple-touch-icon" sizes="57x57"
         href="<?php echo get_stylesheet_directory_uri(); ?>/assets/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60"

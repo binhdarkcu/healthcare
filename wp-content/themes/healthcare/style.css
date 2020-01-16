@@ -450,7 +450,7 @@ body .cd-faq-group {
 #header .nav-menu {
     border-bottom: 1px solid #f7931d;
     border-top: 1px solid #f7931d;
-    background: #f7931d;
+    background: transparent;
 }
 #header .nav-menu #menu_main {
     height: 46px;
@@ -527,12 +527,9 @@ body .cd-faq-group {
         z-index: 99;
         top: 0;
         transition: all 0.4s;
+        background: transparent url(assets/ny-miniplayer-1.jpg) left no-repeat;
+        background-size: cover;
     }
-    /*#header.fixed .nav-menu #menu_main {*/
-        /*width: 85%;*/
-        /*margin: auto;*/
-    /*}*/
-    /* end */
     #header .nav-menu .menu-item-has-children .submenu_changed a {
         -webkit-transition: all 0.2s;
         -khtml-transition: all 0.2s;
@@ -1251,4 +1248,15 @@ body .cd-faq-group .cd-faq-trigger {
 body .cd-faq-group .cd-faq-content {
     padding: 0;
     margin: 0;
+}
+
+.navbar.navbar-default:before {
+    content: " ";
+    background: url('assets/ny-header-light.jpg') center no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }

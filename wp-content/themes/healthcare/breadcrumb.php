@@ -16,7 +16,8 @@
     }
     // if($queried_object->post_title) :
 ?>
-<div class="breadcrumbHeath" style="background: url('<?php echo $bg ?>') center center no-repeat;background-size: cover;">
+<div class="breadcrumbHeath"
+    style="background: url('<?php echo $bg ?>') center center no-repeat;background-size: cover;">
     <h1><?php echo $title ?></h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -25,3 +26,4 @@
         </ol>
     </nav>
 </div>
+

@@ -426,7 +426,7 @@
         wp_enqueue_style( 'slick', get_template_directory_uri(). '/assets/slick.css', array(), '0.1.0', 'all');
         wp_enqueue_style( 'slick-theme', get_template_directory_uri(). '/assets/slick-theme.css', array(), '0.1.0', 'all');
         wp_enqueue_script('jquery-script', get_template_directory_uri() . '/assets/jquery.js', array('jquery'));
-        wp_enqueue_script('noel-script', get_template_directory_uri() . '/assets/noel.js', array('jquery'));
+        // wp_enqueue_script('noel-script', get_template_directory_uri() . '/assets/noel.js', array('jquery'));
         wp_enqueue_script('moment-script', get_template_directory_uri() . '/assets/moment.js', array('jquery'));
         wp_enqueue_script('bootstrap-script', get_template_directory_uri() . '/assets/bootstrap.min.js', array('jquery'));
         wp_enqueue_script('moment-locales-script', get_template_directory_uri() . '/assets/moment-with-locales.js', array('jquery'));
