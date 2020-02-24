@@ -7,7 +7,7 @@
                 <?php get_search_form();?>
                 <div class="doctors-grid col-md-12">
                   <div class="find-doctors">
-                    <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px">
+                    <div class="conten col-md-8 col-sm-12 col-xs-12" style="margin-top:30px; margin-bottom: 20px">
                       <div class="row wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
                           <?php
                               $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -27,7 +27,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 5px">
                               <div class="col-md-4 catItemImageBlock">
                                   <div class="news">
-                                      <div class="article">
+                                      <div class="article feedbackResponsive">
                                           <a href="<?php echo get_the_permalink(get_the_ID()); ?>">
                                               <div class="thumb" style="background: url(<?php echo $feature_image_meta[0];?>) top center no-repeat; background-size: cover;"></div>
                                           </a>
