@@ -348,7 +348,7 @@ ul.nostyle {
         background-position: center !important;
         background-repeat: no-repeat;
         background-position: 50% 0;
-        background-size: cover;
+        background-size: contain;
     }
 
     #main-slider .slider-inner h2 {
@@ -362,10 +362,10 @@ ul.nostyle {
 /*6s Plus*/
 @media screen and (max-width: 414px) {
     #main-slider .item {
-        height: 200px;
+        height: 150px;
         background-repeat: no-repeat;
         background-position: 50% 0;
-        background-size: cover;
+        background-size: contain;
     }
 
     #main-slider .slider-inner h2 {

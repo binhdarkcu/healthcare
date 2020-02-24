@@ -526,9 +526,9 @@ body .cd-faq-group {
         margin: auto;
         z-index: 99;
         top: 0;
-        transition: all 0.4s;
+        /* transition: all 0.4s;
         background: transparent url(assets/ny-miniplayer-1.jpg) left no-repeat;
-        background-size: cover;
+        background-size: cover; */
     }
     #header .nav-menu .menu-item-has-children .submenu_changed a {
         -webkit-transition: all 0.2s;
@@ -1022,7 +1022,7 @@ body table:not(.table-condensed) td span {
     height: 307px; 
     overflow: hidden;
 }
-@media (max-height: 625px) {
+@media (max-height: 625px) and (min-width: 767px) {
     #main-slider .item {
         height: 345px;
     }
@@ -1250,7 +1250,7 @@ body .cd-faq-group .cd-faq-content {
     margin: 0;
 }
 
-.navbar.navbar-default:before {
+/* .navbar.navbar-default:before {
     content: " ";
     background: url('assets/ny-header-light.jpg') center no-repeat;
     background-size: cover;
@@ -1259,4 +1259,4 @@ body .cd-faq-group .cd-faq-content {
     height: 100%;
     width: 100%;
     z-index: -1;
-}
+} */
