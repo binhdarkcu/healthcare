@@ -70,39 +70,6 @@
 
     $('.owl-inner').trigger('refresh.owl.carousel');
 
-    $('.slide-cnkh').find('.carousel-inner').slick({
-        loop: true,
-        autoHeight: true,
-        dots: true,
-        slidesToShow: 4,
-        arrows: false,
-        centerPadding: '10px',
-        responsive: [
-            {
-              breakpoint: 1720,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 1280,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            },
-            {
-              breakpoint: 750,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-        ]
-    })
-
     $('.slide-promotion').find('.carousel-inner').slick({
         dots: true,
         infinite: true,
@@ -225,6 +192,7 @@
             singleItem: false,
             autoWidth:true,
         })
+
         $('#video_intro').find('.carousel-inner').owlCarousel({
             slideSpeed: 700,
             navigation: false,
@@ -234,6 +202,7 @@
             singleItem: true,
             autoWidth:false,
         })
+        
         $("#gallery-slider ").find('.carousel-inner').owlCarousel({
             slideSpeed: 700,
             paginationSpeed: 500,
@@ -409,6 +378,39 @@
             $portfolio.isotope({filter: selector});
             return false;
         });
+        
+        $('.slide-cnkh').find('.carousel-inner').slick({
+            loop: true,
+            autoHeight: true,
+            dots: true,
+            slidesToShow: 4,
+            arrows: false,
+            centerPadding: '10px',
+            responsive: [
+                {
+                  breakpoint: 1720,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                  }
+                },
+                {
+                  breakpoint: 1280,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                  }
+                },
+                {
+                  breakpoint: 750,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+            ]
+        })
     });
     
     $(document).ready(function () {
